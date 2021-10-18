@@ -96,7 +96,30 @@
     margin-bottom: 12px;
     width: 80px;
   }
+
   .feature-box h5   {
+    font-size: 20px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+
+  .report-box{  
+    margin-top: 10px;
+    display: inline-block;
+    width: 100%;
+    padding: 20px 30px;
+    border: #222;
+    border-radius: 5px;
+    display: inline-block;
+    width: 100%;
+    padding: 20px 30px;
+    border-style: outset;
+  }
+
+  .report-box h5   {
     font-size: 20px;
     color: #999;
     text-transform: uppercase;
