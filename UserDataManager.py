@@ -23,6 +23,30 @@ class UserDataManager:
         self.cursor.execute("SELECT username FROM user WHERE user_id = %s", user_id)
         return self.cursor.fetchone()[0]
 
+    def get_presentation_name(self, presentation_id):
+        self.cursor.execute("SELECT presentation_name FROM Presentation WHERE presentation_id = %s", presentation_id)
+        return self.cursor.fetchone()[0]
+
+    def get_transcript(self, presentation_id):
+        self.cursor.execute("SELECT transcript FROM Presentation WHERE presentation_id = %s", presentation_id)
+        return self.cursor.fetchone()[0]
+
+    def get_presentation_id(self, presentation_id):
+        self.cursor.execute("SELECT presentation_id FROM Presentation WHERE presentation_id = %s", presentation_id)
+        return self.cursor.fetchone()[0]
+
+    def delete_presentation(self, presentation_id):
+        self.cursor.execute("DELETE FROM Presentation WHERE presentation_id = %s", presentation_id)
+        return self.cursor.fetchone()[0]
+
+    def update_presentation_name(self, presentation_id, updated_presentation_name):
+        self.cursor.execute("UPDATE Presentation SET presentation_name = '%s' WHERE presentation_id = %s", updated_presentation_name, presentation_id)
+        return self.cursor.fetchone()[0]
+
+    def update_transcipt(self, presentation_id, updated_transcript):
+        self.cursor.execute("UPDATE Presentation SET transcript = '%s' WHERE presentation_id = %s", updated_transcript, presentation_id)
+        return self.cursor.fetchone()[0]
+
     #create_database = '''create database prexcel'''
     #cursor.execute(create_database)
 
