@@ -5,6 +5,7 @@
 #port: 3306
 
 import pymysql
+from random import randint
 
 instance_name = "prexcel"
 username = "admin"
@@ -19,8 +20,25 @@ class UserDataManager:
         use_database = '''use prexcel'''
         self.cursor.execute(use_database)
 
+    def register_user(self, username, password, mail_address):
+        user_id = randint(100000, 999999)
+        self.cursor.execute("INSERT INTO User (user_id, username, mail_address, password) VALUES(%d, %s, %s, %s)", user_id, username, mail_address, password)
+
+    def delete_user(self, user_id):
+        self.cursor.execute("DELETE FROM User WHERE user_id = %d", user_id)
+
     def get_user_name(self, user_id):
-        self.cursor.execute("SELECT username FROM user WHERE user_id = %s", user_id)
+        self.cursor.execute("SELECT username FROM User WHERE user_id = %s", user_id)
+        return self.cursor.fetchone()[0]
+
+    def update_user_name(self, user_id, new_username):
+        self.cursor.execute("UPDATE User SET username = '%s' WHERE user_id = %s", new_username, user_id)
+
+    def update_password(self, user_id, new_password):
+        self.cursor.execute("UPDATE User SET password = '%s' WHERE user_id = %s", new_password, user_id)
+
+    def get_user_name(self, user_id):
+        self.cursor.execute("SELECT password FROM User WHERE user_id = %s", user_id)
         return self.cursor.fetchone()[0]
 
     def get_presentation_name(self, presentation_id):
@@ -59,5 +77,5 @@ class UserDataManager:
     #db.commit()
 
 udm = UserDataManager()
-username = udm.get_user_name(678213)
+udm.register_user("asd", "asd", "asd")
 print("username:",username)
