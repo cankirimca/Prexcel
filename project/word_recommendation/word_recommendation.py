@@ -64,8 +64,25 @@ def main():
         # if the model predicts the missing words any better
         probability_set = torch.softmax(logits, dim=-1)
 
-        
-        
+        mask_count = 0
+
+        for index, token in enumerate(bert_token):
+            
+            # Increase mask count when encountered
+            if token == MASK:
+                mask_count += 1
+            
+            # Output the predictions that wer made to fill in the masked zone
+            print('Top {} predictions for {}th {}:'.format(args.topk, mask_count, MASK))
+            
+            topk_prob, topk_indices = torch.topk(probability_set[index, :], args.topk)
+            topk_tokens = tokenizer.convert_ids_to_tokens(topk_indices.cpu().numpy())
+            
+            # The actual predictions are being output into the console here
+            for prob, tok in zip(topk_prob, topk_tokens):
+                print('{} {}'.format(tok, prob))
+
+            print("\n")        
     
 
 if __name__ == '__main__':
