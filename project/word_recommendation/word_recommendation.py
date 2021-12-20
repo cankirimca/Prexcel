@@ -22,6 +22,8 @@ def prepare_input(tokens, tokenizer):
 
 
 def main():
+
+    # Fixed format and checks, may change later when connecting to Deep
     args = parser.parse_args()
     assert os.path.exists(args.bert_model), '{} does not exist'.format(args.bert_model)
     assert os.path.exists(args.bert_vocab), '{} does not exist'.format(args.bert_vocab)
@@ -33,6 +35,37 @@ def main():
     print('Initialize BERT model from {}...'.format(args.bert_model))
     bert_model = BertForMaskedLM.from_pretrained(args.bert_model)
 
+  
+
+    while True:
+        
+        # Take sequences of words here, this logic will change once Speech to Text and
+        # Word Recommendation modules are connected.
+        sequence_of_words = input('Sequence of words for prediction: ').strip()
+
+
+        # Prepare the input so that Bert is able to understand it
+        bert_token = tokenizer.tokenize(sequence_of_words)
+
+
+        # Checks for the tokens, seperations, classification?
+        #TODO
+
+        # Transform the given input into a format that bert would understand
+        token_index, segment_index, mask = prepare_input(bert_token, tokenizer)
+
+        # For now log-odds function is used, may change later to see if the model
+        # predicts the missing words any better
+        with torch.no_grad():
+            logits = bert_model(token_index, segment_index, mask, masked_lm_labels=None)
+        logits = logits.squeeze(0)
+
+        # For now, as activation function softmax is used. May change later to see
+        # if the model predicts the missing words any better
+        probability_set = torch.softmax(logits, dim=-1)
+
+        
+        
     
 
 if __name__ == '__main__':
