@@ -2,11 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Login from './pages/Login'
 import reportWebVitals from './reportWebVitals';
+
+import {
+    HashRouter as Router,
+    Route,
+    Switch,
+    Link,
+    Redirect,
+    withRouter
+} from "react-router-dom";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+        <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -17,13 +17,17 @@ function createWindow () {
         width: 800,
         height: 600,
         title: "Prexcel Dev",
+        show: false,
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule:true
         }
+
     })
 
-
+    // todo
+    win.maximize();
+    win.show();
     //load the index.html from a url
     win.loadURL('http://localhost:3000');
 
