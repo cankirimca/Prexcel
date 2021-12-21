@@ -1,9 +1,6 @@
-import React from "react";
 
 // todo remove
 import logo from './logo.svg';
-
-import './App.css';
 
 import {
     HashRouter as Router,
@@ -14,11 +11,33 @@ import {
     // withRouter
 } from "react-router-dom";
 
+import React, {useState} from "react";
+import './App.css';
 import Login from "./pages/Login";
 import MainMenu from "./pages/MainMenu";
 
 function App() {
-  return (
+
+  const [currentScreen, setCurrentScreen] = useState(0);
+
+  function newScreenHandler(newScreen) {
+    setCurrentScreen(newScreen);
+  }
+
+  function navigate() {
+    if (currentScreen === 0)
+      return <Login onLoginHandler={newScreenHandler}/>;
+    else if (currentScreen === 1)
+      return <MainMenu onMainMenuHandler={newScreenHandler}/>;
+  }
+
+  return(
+    <div className="App">
+      {navigate()}
+    </div>
+  );
+
+  /*return (
      <div>
         <Router>
            <div>
@@ -37,7 +56,7 @@ function App() {
            </Routes>
         </Router>
      </div>
-  );
+  );*/
 }
 
 export default App;
