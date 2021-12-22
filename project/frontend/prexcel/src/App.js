@@ -15,6 +15,7 @@ import React, {useState} from "react";
 import './App.css';
 import Login from "./pages/Login";
 import MainMenu from "./pages/MainMenu";
+import MyPresentations from "./pages/MyPresentations";
 
 function App() {
 
@@ -29,6 +30,8 @@ function App() {
       return <Login onLoginHandler={newScreenHandler}/>;
     else if (currentScreen === 1)
       return <MainMenu onMainMenuHandler={newScreenHandler}/>;
+    else if (currentScreen === 2)
+      return <MyPresentations onMyPresentationsHandler={newScreenHandler}/>;
   }
 
   return(

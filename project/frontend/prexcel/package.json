@@ -5,6 +5,7 @@
   "main": "public/main.js",
   "dependencies": {
     "@mui/material": "^5.2.5",
+    "@mui/x-data-grid": "^5.2.1",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",

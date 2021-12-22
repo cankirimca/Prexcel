@@ -8,11 +8,17 @@ const MainMenu = (props) => {
     props.onMainMenuHandler(0);
   }
 
+  function goToMyPresentations() {
+    props.onMainMenuHandler(2);
+  }
+
     return (
         <div>
             <p>
                 main menu page
             </p>
+
+          <button onClick={goToMyPresentations}> My Presentations</button><br/>
 
           <button onClick={logOut}>Log Out</button><br/><br/>
         </div>
