@@ -16,6 +16,8 @@ import './App.css';
 import Login from "./pages/Login";
 import MainMenu from "./pages/MainMenu";
 import MyPresentations from "./pages/MyPresentations";
+import PresentationDetails from "./pages/PresentationDetails";
+import TranscriptDetails from "./pages/TranscriptDetails";
 
 function App() {
 
@@ -32,6 +34,10 @@ function App() {
       return <MainMenu onMainMenuHandler={newScreenHandler}/>;
     else if (currentScreen === 2)
       return <MyPresentations onMyPresentationsHandler={newScreenHandler}/>;
+    else if (currentScreen === 3)
+      return <PresentationDetails onPresentationDetails={newScreenHandler}/>;
+    else if (currentScreen === 4)
+      return <TranscriptDetails onTranscriptDetails={newScreenHandler}/>
   }
 
   return(

@@ -38,9 +38,17 @@ const rows = [
   { id: 5, name: "MSC 110", grade: 'S', duration: "12.00"},
 ];
 
-export default function MyPresentations() {
+export default function MyPresentations(props) {
+
+  function goToPresentationDetails() {
+    props.onMyPresentationsHandler(3);
+  }
 
   const [selectionModel, setSelectionModel] = useState(() => rows.filter((r) => true).map((r) => r.id));
+
+  function goBackToMainMenu() {
+    props.onMyPresentationsHandler(1);
+  }
 
   return (
     <div style={{ height: 400, width: '100%' }}>
@@ -56,6 +64,9 @@ export default function MyPresentations() {
         selectionModel={selectionModel}
         onSelectionModelChange={setSelectionModel}
       />
+
+      <br/><button onClick={goToPresentationDetails}>Presentation Details</button><br/><br/>
+      <button onClick={goBackToMainMenu}>Back To Main Menu</button>
     </div>
   );
 }
