@@ -2,6 +2,7 @@
 // todo remove
 import logo from './logo.svg';
 
+
 import {
     HashRouter as Router,
     Route,
@@ -19,30 +20,46 @@ import MyPresentations from "./pages/MyPresentations";
 import PresentationDetails from "./pages/PresentationDetails";
 import TranscriptDetails from "./pages/TranscriptDetails";
 
+import ScreenIds from "./pages/ScreenIds";
+
+
 function App() {
 
-  const [currentScreen, setCurrentScreen] = useState(0);
+  const [currentScreen, setCurrentScreen] = useState(ScreenIds.LOGIN_SCREEN_ID);
 
-  function newScreenHandler(newScreen) {
-    setCurrentScreen(newScreen);
+  function changeViewHandler(newScreenId) {
+    setCurrentScreen(newScreenId);
   }
 
-  function navigate() {
-    if (currentScreen === 0)
-      return <Login onLoginHandler={newScreenHandler}/>;
-    else if (currentScreen === 1)
-      return <MainMenu onMainMenuHandler={newScreenHandler}/>;
-    else if (currentScreen === 2)
-      return <MyPresentations onMyPresentationsHandler={newScreenHandler}/>;
-    else if (currentScreen === 3)
-      return <PresentationDetails onPresentationDetails={newScreenHandler}/>;
-    else if (currentScreen === 4)
-      return <TranscriptDetails onTranscriptDetails={newScreenHandler}/>
+  const UIViewController = () => {
+     if (currentScreen === ScreenIds.LOGIN_SCREEN_ID)
+        return <Login onLoginHandler={changeViewHandler}/>;
+     else if (currentScreen === ScreenIds.MAIN_MENU_SCREEN_ID)
+        return <MainMenu onMainMenuHandler={changeViewHandler}/>;
+     else if (currentScreen === ScreenIds.MY_PRESENTATIONS_SCREEN_ID)
+        return <MyPresentations onMyPresentationsHandler={changeViewHandler}/>;
+     else if (currentScreen === ScreenIds.PRESENTATION_DETAILS_SCREEN_ID)
+        return <PresentationDetails onPresentationDetails={changeViewHandler}/>;
+     else if (currentScreen === ScreenIds.TRANSCRIPT_DETAILS_SCREEN_ID)
+        return <TranscriptDetails onTranscriptDetails={changeViewHandler}/>
   }
+
+//  function navigate() {
+//    if (currentScreen === 0)
+//      return <Login onLoginHandler={newScreenHandler}/>;
+//    else if (currentScreen === 1)
+//      return <MainMenu onMainMenuHandler={newScreenHandler}/>;
+//    else if (currentScreen === 2)
+//      return <MyPresentations onMyPresentationsHandler={newScreenHandler}/>;
+//    else if (currentScreen === 3)
+//      return <PresentationDetails onPresentationDetails={newScreenHandler}/>;
+//    else if (currentScreen === 4)
+//      return <TranscriptDetails onTranscriptDetails={newScreenHandler}/>
+//  }
 
   return(
     <div className="App">
-      {navigate()}
+      {UIViewController()}
     </div>
   );
 
@@ -69,20 +86,3 @@ function App() {
 }
 
 export default App;
-
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Text text text
-//         </p>
-//         <a
-//           className="App-link"
-//           href=""
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           hyperlink hyperlink hyperlink mahmut
-//         </a>
-//       </header>
-//     </div>

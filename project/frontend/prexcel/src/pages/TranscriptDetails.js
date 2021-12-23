@@ -1,7 +1,10 @@
+import ScreenIds from "./ScreenIds";
+
+
 export default function TranscriptDetails(props) {
 
   function goBackToPresentationDetails() {
-    props.onTranscriptDetails(3);
+    props.onTranscriptDetails(ScreenIds.PRESENTATION_DETAILS_SCREEN_ID);
   }
 
   return(

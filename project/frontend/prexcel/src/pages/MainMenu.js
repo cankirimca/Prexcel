@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import {render} from "react-dom";
 import * as ReactDOM from "react-dom";
+import ScreenIds from "./ScreenIds";
 
 const MainMenu = (props) => {
 
   function logOut() {
-    props.onMainMenuHandler(0);
+     // todo discard authorization token
+
+     props.onMainMenuHandler(ScreenIds.LOGIN_SCREEN_ID);
   }
 
   function goToMyPresentations() {
-    props.onMainMenuHandler(2);
+    props.onMainMenuHandler(ScreenIds.MY_PRESENTATIONS_SCREEN_ID);
   }
 
     return (

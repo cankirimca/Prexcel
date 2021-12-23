@@ -1,14 +1,15 @@
 import * as React from 'react';
 import {Card, Grid} from "@mui/material";
+import ScreenIds from "./ScreenIds";
 
 export default function PresentationDetails(props) {
 
   function goBackToMyPresentations() {
-    props.onPresentationDetails(2);
+    props.onPresentationDetails(ScreenIds.MY_PRESENTATIONS_SCREEN_ID);
   }
 
   function goToTextTranscript() {
-    props.onPresentationDetails(4);
+    props.onPresentationDetails(ScreenIds.TRANSCRIPT_DETAILS_SCREEN_ID);
   }
 
   return(

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import {useState} from "react";
+import ScreenIds from "./ScreenIds";
 
+// todo to be removed once connected to the database
 const columns = [
   {
     field: 'id',
@@ -30,6 +32,7 @@ const columns = [
   },
 ];
 
+// todo to be removed once connected to the database
 const rows = [
   { id: 1, name: "ENG 101", grade: 'B-', duration: "12.00"},
   { id: 2, name: "ENG 102", grade: 'A-', duration: "12.00"},
@@ -41,13 +44,13 @@ const rows = [
 export default function MyPresentations(props) {
 
   function goToPresentationDetails() {
-    props.onMyPresentationsHandler(3);
+    props.onMyPresentationsHandler(ScreenIds.PRESENTATION_DETAILS_SCREEN_ID);
   }
 
   const [selectionModel, setSelectionModel] = useState(() => rows.filter((r) => true).map((r) => r.id));
 
   function goBackToMainMenu() {
-    props.onMyPresentationsHandler(1);
+    props.onMyPresentationsHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
   }
 
   return (
