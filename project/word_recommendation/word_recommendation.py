@@ -49,7 +49,12 @@ def main():
 
 
         # Checks for the tokens, seperations, classification?
-        #TODO
+        if len(bert_token) == 0:
+            continue
+        if bert_token[0] != CLS:
+            bert_token = [CLS] + bert_token
+        if bert_token[-1] != SEP:
+            bert_token.append(SEP)
 
         # Transform the given input into a format that bert would understand
         token_index, segment_index, mask = prepare_input(bert_token, tokenizer)
