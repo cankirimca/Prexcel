@@ -19,6 +19,7 @@ import MainMenu from "./pages/MainMenu";
 import MyPresentations from "./pages/MyPresentations";
 import PresentationDetails from "./pages/PresentationDetails";
 import TranscriptDetails from "./pages/TranscriptDetails";
+import SignUp from "./pages/SignUp";
 
 import ScreenIds from "./pages/ScreenIds";
 
@@ -41,7 +42,9 @@ function App() {
      else if (currentScreen === ScreenIds.PRESENTATION_DETAILS_SCREEN_ID)
         return <PresentationDetails onPresentationDetails={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.TRANSCRIPT_DETAILS_SCREEN_ID)
-        return <TranscriptDetails onTranscriptDetails={changeViewHandler}/>
+        return <TranscriptDetails onTranscriptDetails={changeViewHandler}/>;
+     else if (currentScreen === ScreenIds.SIGNUP_SCREEN_ID)
+        return <SignUp onSignUp={changeViewHandler}/>
   }
 
 //  function navigate() {

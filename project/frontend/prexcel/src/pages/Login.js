@@ -3,9 +3,12 @@ import {render} from "react-dom";
 import * as ReactDOM from "react-dom";
 import ScreenIds from "./ScreenIds";
 
+// material ui components
+import {Button, Grid, Paper, TextField} from "@mui/material";
+
+
 
 const Login = (props) => {
-
 
   function attemptLogin() {
 
@@ -24,17 +27,45 @@ const Login = (props) => {
      }
   }
 
+   function goToSignUp() {
+
+      props.onLoginHandler(ScreenIds.SIGNUP_SCREEN_ID)
+   }
+
     return (
-        <div>
-            <p>
-                login page
-            </p>
+       <Grid container spacing={2}>
+
+          <Grid item xs={12}>
+             <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >Welcome To Prexcel </h1>
+          </Grid>
+
+          <Grid item xs={4}/>
+          <Grid item xs={4}>
+             <Paper style={{marginTop: '50%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+
+                <Grid style={{ paddingTop: '5%' }} item xs={12}>
+                  Please log-in or create an account to continue:
+                </Grid>
+
+                <Grid style={{ marginTop: '5%', }} item xs={12}>
+                   <TextField id="outlined-basic" label="Username" variant="outlined" />
+                </Grid>
+
+                <Grid style={{ marginTop: '5%'}} item xs={12}>
+                   <TextField id="outlined-basic" label="Password" variant="outlined" />
+                </Grid>
+
+                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
+                   <Button style={{ marginRight: '5%'}} variant="contained" onClick={attemptLogin}>Log-In</Button>
+                   <Button variant="contained" onClick={goToSignUp}>Sign-In</Button>
+                </Grid>
+
+             </Paper>
+          </Grid>
+          <Grid item xs={4}/>
 
 
-          <button onClick={attemptLogin}>Login</button><br/><br/>
-
-        </div>
-
+       </Grid>
     );
 };
 
