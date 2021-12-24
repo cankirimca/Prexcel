@@ -1,0 +1,10 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+/project/speech_to_text/deepspeech-0.9.3-models.pbmm
+/project/speech_to_text/deepspeech-0.9.3-models.scorer

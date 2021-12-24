@@ -4,6 +4,8 @@ import numpy as np
 import os
 import wave
 
+from Prexcel.project.speech_to_text.VoiceDetectionManager import VoiceDetectionManager
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 pbmm_path = "deepspeech-0.9.3-models.pbmm"
@@ -11,14 +13,18 @@ scorer_path ="deepspeech-0.9.3-models.scorer"
 beam_width = 1000
 lm_alpha = 0.93
 lm_beta = 1.18
+DEFAULT_SAMPLE_RATE = 16000
 
 class SpeechToTextModel:
+
     def __init__(self):
         self.model = Model(pbmm_path)
         self.model.enableExternalScorer(scorer_path)
         self.model.setScorerAlphaBeta(lm_alpha, lm_beta)
         self.model.setBeamWidth(beam_width)
         self.stream = self.model.createStream()
+        self.vdm = VoiceDetectionManager()
+
 
     def read_wav_file(self, filename):
         wf = wave.open(filename, 'rb')
@@ -46,10 +52,17 @@ class SpeechToTextModel:
             print(self.stream.intermediateDecode())
             start = end
 
-    def transcribe_live(self, speech_data):
-        data16 = np.frombuffer(speech_data, dtype=np.int16)
-        return self.model.stt(data16)
+    def transcribe_live(self):
+        frames = self.vdm.vad_collector()
+        for frame in frames:
+            if frame is not None:
+                # if spinner:
+                #     spinner.start()
+                self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
+                print(self.stream.intermediateDecode())
+
+
 
 stm = SpeechToTextModel()
-x = stm.transcribe_stream("speech2.wav")
+x = stm.transcribe_live()
 #print(x)
