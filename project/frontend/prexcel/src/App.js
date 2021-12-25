@@ -44,7 +44,7 @@ function App() {
      else if (currentScreen === ScreenIds.TRANSCRIPT_DETAILS_SCREEN_ID)
         return <TranscriptDetails onTranscriptDetails={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.SIGNUP_SCREEN_ID)
-        return <SignUp onSignUp={changeViewHandler}/>
+        return <SignUp onSignUpHandler={changeViewHandler}/>
   }
 
 //  function navigate() {

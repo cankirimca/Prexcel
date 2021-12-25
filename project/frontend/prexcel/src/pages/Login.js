@@ -57,7 +57,7 @@ const Login = (props) => {
 
                 <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
                    <Button style={{ marginRight: '5%'}} variant="contained" onClick={attemptLogin}>Log-In</Button>
-                   <Button variant="contained" onClick={goToSignUp}>Sign-In</Button>
+                   <Button variant="contained" onClick={goToSignUp}>Sign-Up</Button>
                 </Grid>
 
              </Paper>
