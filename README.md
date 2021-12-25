@@ -6,4 +6,4 @@ Reports
 
 [Analysis Report](https://github.com/cankirimca/Prexcel/blob/main/reports/Analysis_Report.pdf)
 
-[High Level Design Report](https://github.com/cankirimca/Prexcel/blob/main/reports/High_Level_Design_Report.pdf)
+[High Level Design Report](https://github.com/cankirimca/Prexcel/blob/main/reports/prexcel_high_level_design_report.pdf)
