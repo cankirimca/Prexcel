@@ -77,7 +77,8 @@ class AudioRecorder():
                                       channels=self.channels,
                                       rate=self.rate,
                                       input=True,
-                                      frames_per_buffer=self.frames_per_buffer)
+                                      frames_per_buffer=self.frames_per_buffer,
+                                      input_device_index=5)
         self.audio_frames = []
 
     def record(self):
@@ -148,18 +149,18 @@ def stop_AVrecording(filename="test"):
         time.sleep(1)
 
     # Merging audio and video signal
-    if abs(recorded_fps - 6) >= 0.01:  # If the fps rate was higher/lower than expected, re-encode it to the expected
-        print("Re-encoding")
-        cmd = "ffmpeg -r " + str(recorded_fps) + " -i temp_video.avi -pix_fmt yuv420p -r 6 temp_video2.avi"
-        subprocess.call(cmd, shell=True)
-        print("Muxing")
-        cmd = "ffmpeg -y -ac 2 -channel_layout stereo -i temp_audio.wav -i temp_video2.avi -pix_fmt yuv420p " + filename + ".avi"
-        subprocess.call(cmd, shell=True)
-    else:
-        print("Normal recording\nMuxing")
-        cmd = "ffmpeg -y -ac 2 -channel_layout stereo -i temp_audio.wav -i temp_video.avi -pix_fmt yuv420p " + filename + ".avi"
-        subprocess.call(cmd, shell=True)
-        print("..")
+    # if abs(recorded_fps - 6) >= 0.01:  # If the fps rate was higher/lower than expected, re-encode it to the expected
+    #     print("Re-encoding")
+    #     cmd = "ffmpeg -r " + str(recorded_fps) + " -i temp_video.avi -pix_fmt yuv420p -r 6 temp_video2.avi"
+    #     subprocess.call(cmd, shell=True)
+    #     print("Muxing")
+    #     cmd = "ffmpeg -y -ac 2 -channel_layout stereo -i temp_audio.wav -i temp_video2.avi -pix_fmt yuv420p " + filename + ".avi"
+    #     subprocess.call(cmd, shell=True)
+    # else:
+    #     print("Normal recording\nMuxing")
+    #     cmd = "ffmpeg -y -ac 2 -channel_layout stereo -i temp_audio.wav -i temp_video.avi -pix_fmt yuv420p " + filename + ".avi"
+    #     subprocess.call(cmd, shell=True)
+    #     print("..")
 
 
 def file_manager(filename="test"):
@@ -176,7 +177,16 @@ def file_manager(filename="test"):
 
 
 if __name__ == '__main__':
+    p = pyaudio.PyAudio()
+    info = p.get_host_api_info_by_index(0)
+    numdevices = info.get('deviceCount')
+    for i in range(0, numdevices):
+        if (p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
+            print(
+                "Input Device id ", i, " - ", p.get_device_info_by_host_api_device_index(0, i).get('name'))
+
+    print("Please change the device index in the definition of audio recorder accordingly to your machine specifications")
     start_AVrecording()
     time.sleep(5)
     stop_AVrecording()
-    file_manager()
+    #file_manager()
