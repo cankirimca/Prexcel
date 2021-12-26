@@ -4,6 +4,26 @@ import * as ReactDOM from "react-dom";
 import ScreenIds from "./ScreenIds";
 import {Button, Grid, Paper, TextField} from "@mui/material";
 
+const username = document.getElementById('username')
+const email = document.getElementById('email')
+const password = document.getElementById('password')
+
+const addUser = (newUser) => {
+   fetch('http://localhost:5000/register', {
+      method: 'POST',
+      headers: {
+         'Content-Type':'application/json'
+      },
+      body:JSON.stringify(newUser)
+   })
+   .then(resp => resp.json())
+   .then((data) => {
+      console.log(data)
+   })
+   .catch(error => console.log(error))
+   console.log("can");
+};
+
 const SignUp = (props) => {
 
    function attemptSignup() {
@@ -11,10 +31,18 @@ const SignUp = (props) => {
       // todo check login credentials
       let signUpSuccessful = true;
 
+      const newData = {
+         "username": username.value,
+         "email": email.value,
+         "password": password.value
+      };
+      addUser(newData);
+
       // if successful change to main menu
       if ( signUpSuccessful){
          props.onSignUpHandler(ScreenIds.LOGIN_SCREEN_ID);
       }
+
       // otherwise reshow the login screen
       else {
          // todo display signup failed message
@@ -36,13 +64,13 @@ const SignUp = (props) => {
             <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
                <p style={{paddingTop: '5%'}}> Please fill in the following information to sign-up.</p>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="outlined-basic" label="Username" variant="outlined" />
+                  <TextField id="username" label="Username" variant="outlined" />
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="outlined-basic" label="Email" variant="outlined" />
+                  <TextField id="email" label="Email" variant="outlined" />
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="outlined-basic" label="Password" variant="outlined" />
+                  <TextField id="password" label="Password" variant="outlined" />
                </Grid>
                <Grid style={{ marginTop: '5%', marginBottom: '5%'}} item xs={12}>
                   <TextField id="outlined-basic" label="Confirm Password" variant="outlined" />

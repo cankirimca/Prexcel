@@ -22,10 +22,12 @@ class UserDataManager:
 
     def register_user(self, username, password, mail_address):
         user_id = randint(100000, 999999)
-        self.cursor.execute("INSERT INTO User (user_id, username, mail_address, password) VALUES(%d, %s, %s, %s)", user_id, username, mail_address, password)
+        self.cursor.execute("INSERT INTO User (user_id, username, mail_address, password) VALUES(%s, %s, %s, %s)", (user_id, username, mail_address, password))
+        self.connection.commit()
 
     def delete_user(self, user_id):
         self.cursor.execute("DELETE FROM User WHERE user_id = %d", user_id)
+        self.connection.commit()
 
     def get_user_name(self, user_id):
         self.cursor.execute("SELECT username FROM User WHERE user_id = %s", user_id)
@@ -33,9 +35,11 @@ class UserDataManager:
 
     def update_user_name(self, user_id, new_username):
         self.cursor.execute("UPDATE User SET username = '%s' WHERE user_id = %s", new_username, user_id)
+        self.connection.commit()
 
     def update_password(self, user_id, new_password):
         self.cursor.execute("UPDATE User SET password = '%s' WHERE user_id = %s", new_password, user_id)
+        self.connection.commit()
 
     def get_user_name(self, user_id):
         self.cursor.execute("SELECT password FROM User WHERE user_id = %s", user_id)
@@ -55,15 +59,15 @@ class UserDataManager:
 
     def delete_presentation(self, presentation_id):
         self.cursor.execute("DELETE FROM Presentation WHERE presentation_id = %s", presentation_id)
-        return self.cursor.fetchone()[0]
+        self.connection.commit()
 
     def update_presentation_name(self, presentation_id, updated_presentation_name):
         self.cursor.execute("UPDATE Presentation SET presentation_name = '%s' WHERE presentation_id = %s", updated_presentation_name, presentation_id)
-        return self.cursor.fetchone()[0]
+        self.connection.commit()
 
     def update_transcipt(self, presentation_id, updated_transcript):
         self.cursor.execute("UPDATE Presentation SET transcript = '%s' WHERE presentation_id = %s", updated_transcript, presentation_id)
-        return self.cursor.fetchone()[0]
+        self.connection.commit()
 
     #create_database = '''create database prexcel'''
     #cursor.execute(create_database)

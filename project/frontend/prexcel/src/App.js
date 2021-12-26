@@ -23,6 +23,14 @@ import SignUp from "./pages/SignUp";
 
 import ScreenIds from "./pages/ScreenIds";
 
+const mysql = require("mysql");
+const dbConnection = mysql.createConnection({
+      host     : "prexcel.clrzpgynpipe.eu-central-1.rds.amazonaws.com",
+      port     : "3306",
+      user     : "admin",
+      password : "prexcel123",
+      database : "prexcel"
+});
 
 function App() {
 

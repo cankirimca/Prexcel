@@ -6,14 +6,14 @@ import ScreenIds from "./ScreenIds";
 // material ui components
 import {Button, Grid, Paper, TextField} from "@mui/material";
 
-
-
 const Login = (props) => {
 
   function attemptLogin() {
 
      // todo check login credentials
      let loginSuccessful = true;
+
+      
 
      // if successful change to main menu
      if ( loginSuccessful){
