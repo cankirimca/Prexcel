@@ -4,9 +4,9 @@ import * as ReactDOM from "react-dom";
 import ScreenIds from "./ScreenIds";
 import {Button, Grid, Paper, TextField} from "@mui/material";
 
-const username = document.getElementById('username')
-const email = document.getElementById('email')
-const password = document.getElementById('password')
+const username = document.getElementById('register_username')
+const email = document.getElementById('register_email')
+const password = document.getElementById('register_password')
 
 const addUser = (newUser) => {
    fetch('http://localhost:5000/register', {
@@ -64,13 +64,13 @@ const SignUp = (props) => {
             <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
                <p style={{paddingTop: '5%'}}> Please fill in the following information to sign-up.</p>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="username" label="Username" variant="outlined" />
+                  <TextField id="register_username" label="Username" variant="outlined" />
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="email" label="Email" variant="outlined" />
+                  <TextField id="register_email" label="Email" variant="outlined" />
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="password" label="Password" variant="outlined" />
+                  <TextField id="register_password" label="Password" variant="outlined" />
                </Grid>
                <Grid style={{ marginTop: '5%', marginBottom: '5%'}} item xs={12}>
                   <TextField id="outlined-basic" label="Confirm Password" variant="outlined" />

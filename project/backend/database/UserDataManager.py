@@ -20,6 +20,10 @@ class UserDataManager:
         use_database = '''use prexcel'''
         self.cursor.execute(use_database)
 
+    def login(self, username, password):
+        self.cursor.execute("SELECT * FROM User WHERE username = %s AND password = %s", (username, password))
+        return self.cursor.fetchone()[3]
+
     def register_user(self, username, password, mail_address):
         user_id = randint(100000, 999999)
         self.cursor.execute("INSERT INTO User (user_id, username, mail_address, password) VALUES(%s, %s, %s, %s)", (user_id, username, mail_address, password))
@@ -31,7 +35,7 @@ class UserDataManager:
 
     def get_user_name(self, user_id):
         self.cursor.execute("SELECT username FROM User WHERE user_id = %s", user_id)
-        return self.cursor.fetchone()[0]
+        return self.cursor.fetchall()
 
     def update_user_name(self, user_id, new_username):
         self.cursor.execute("UPDATE User SET username = '%s' WHERE user_id = %s", new_username, user_id)
@@ -81,5 +85,11 @@ class UserDataManager:
     #db.commit()
 
 udm = UserDataManager()
-udm.register_user("asd", "asd", "asd")
+try:
+    id = udm.login("flaskltry", "flasktrypass")
+    print(id)
+except TypeError:
+    print("error")    
+
+
 print("username:",username)

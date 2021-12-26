@@ -19,7 +19,25 @@ def register_user():
         username = request.json["username"]
         email = request.json["email"]
         password = request.json["password"]
-        ud.register_user(username, password, email)       
+        ud.register_user(username, password, email)      
+
+@app.route('/login', methods = ['POST'])
+@cross_origin()
+def get_user():
+    if request.method == 'POST':
+        ud = UserDataManager()
+        print("asdd")
+        username = request.json["username"]
+        password = request.json["password"]
+        try:
+            user_id = ud.login(username, password)  
+            print("nays")
+            return jsonify(user_id)
+        except TypeError:
+            print("nat nays")
+            return jsonify(-1) #indicates error
+
+                  
 
 if __name__ == "__main__":
     app.run(host='localhost', port=5000)
