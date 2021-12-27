@@ -31,10 +31,8 @@ def get_user():
         password = request.json["password"]
         try:
             user_id = ud.login(username, password)  
-            print("nays")
             return jsonify(user_id)
         except TypeError:
-            print("nat nays")
             return jsonify(-1) #indicates error
 
                   

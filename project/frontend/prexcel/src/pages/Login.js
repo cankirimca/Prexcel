@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import Popup from 'reactjs-popup';
 import {render} from "react-dom";
 import * as ReactDOM from "react-dom";
 import ScreenIds from "./ScreenIds";
@@ -7,12 +6,6 @@ import ScreenIds from "./ScreenIds";
 // material ui components
 import {Button, Grid, Paper, TextField} from "@mui/material";
 
-export default () => (
-   <Popup trigger={<button> Trigger</button>} position="right center">
-     <div>Popup content here !!</div>
-   </Popup>
- );
-      
 const Login = (props) => {
    
 
