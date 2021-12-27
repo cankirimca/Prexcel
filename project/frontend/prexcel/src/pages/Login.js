@@ -7,20 +7,19 @@ import ScreenIds from "./ScreenIds";
 import {Button, Grid, Paper, TextField} from "@mui/material";
 
 const Login = (props) => {
-   
-
    const [count, setCount] = useState(0);
    useEffect(() => {
       // if successful change to main menu
       if ( count!="-1" && count!="0"){
          console.log(count);
+         props.onUserIdHandler(count);
+         console.log("User ID : " + count + " is posted to App.js");
          props.onLoginHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
       }
       // otherwise reshow the login screen
       else {
       // todo display login failed message
          props.onLoginHandler(ScreenIds.LOGIN_SCREEN_ID);
-         
       }
    });
 
@@ -41,7 +40,7 @@ const Login = (props) => {
          })
          .then((data) => {
             console.log(data);
-            setCount(data);     
+            setCount(data);
          })
          .catch(error => console.log(error))
 

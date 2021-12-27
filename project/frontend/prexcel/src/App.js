@@ -35,18 +35,23 @@ const dbConnection = mysql.createConnection({
 function App() {
 
   const [currentScreen, setCurrentScreen] = useState(ScreenIds.LOGIN_SCREEN_ID);
+  const [currentUserID, setCurrentUserID] = useState(0);
 
   function changeViewHandler(newScreenId) {
     setCurrentScreen(newScreenId);
   }
 
+  function userIdHandler(newUserId) {
+    setCurrentUserID(newUserId);
+  }
+
   const UIViewController = () => {
      if (currentScreen === ScreenIds.LOGIN_SCREEN_ID)
-        return <Login onLoginHandler={changeViewHandler}/>;
+        return <Login onUserIdHandler={userIdHandler} onLoginHandler={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.MAIN_MENU_SCREEN_ID)
         return <MainMenu onMainMenuHandler={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.MY_PRESENTATIONS_SCREEN_ID)
-        return <MyPresentations onMyPresentationsHandler={changeViewHandler}/>;
+        return <MyPresentations currentUserID={currentUserID} onMyPresentationsHandler={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.PRESENTATION_DETAILS_SCREEN_ID)
         return <PresentationDetails onPresentationDetails={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.TRANSCRIPT_DETAILS_SCREEN_ID)
