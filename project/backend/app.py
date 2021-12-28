@@ -4,7 +4,7 @@ from database.UserDataManager import UserDataManager
 from flask_cors import CORS, cross_origin
 from threading import Thread
 
-transcript = []
+transcript = [""]
 
 app = Flask(__name__)
 print("can")
@@ -70,7 +70,6 @@ def live_presentation():
 def get_transcript():
     if transcript:
         a = jsonify(transcript)
-        transcript.clear()
         return a
     return ""
             

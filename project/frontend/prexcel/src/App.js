@@ -20,17 +20,9 @@ import MyPresentations from "./pages/MyPresentations";
 import PresentationDetails from "./pages/PresentationDetails";
 import TranscriptDetails from "./pages/TranscriptDetails";
 import SignUp from "./pages/SignUp";
+import LivePresentation from "./pages/LivePresentation";
 
 import ScreenIds from "./pages/ScreenIds";
-
-const mysql = require("mysql");
-const dbConnection = mysql.createConnection({
-      host     : "prexcel.clrzpgynpipe.eu-central-1.rds.amazonaws.com",
-      port     : "3306",
-      user     : "admin",
-      password : "prexcel123",
-      database : "prexcel"
-});
 
 function App() {
 
@@ -52,6 +44,8 @@ function App() {
         return <MainMenu onMainMenuHandler={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.MY_PRESENTATIONS_SCREEN_ID)
         return <MyPresentations currentUserID={currentUserID} onMyPresentationsHandler={changeViewHandler}/>;
+     else if (currentScreen === ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID)
+        return <LivePresentation currentUserID={currentUserID} onLivePresentationHandler={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.PRESENTATION_DETAILS_SCREEN_ID)
         return <PresentationDetails onPresentationDetails={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.TRANSCRIPT_DETAILS_SCREEN_ID)

@@ -61,7 +61,7 @@ class SpeechToTextModel:
                 #     spinner.start()
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
                 #print(self.stream.intermediateDecode())
-                buffer.append(self.stream.intermediateDecode())      
+                buffer[0] = (self.stream.intermediateDecode())      
 
 
 

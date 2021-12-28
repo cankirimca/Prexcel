@@ -1,7 +1,7 @@
 import argparse
 import os
 import torch
-from pytorch_pretrained_bert import BertTokenizer, BertFoMaskedLM
+from pytorch_pretrained_bert import BertTokenizer, BertForMaskedLM
 
 PAD, MASK, CLS, SEP = '[PAD]', '[MASK]', '[CLS]', '[SEP]'
 
@@ -12,7 +12,7 @@ parser.add_argument('--topk', type=int, default=3, help='show top k predictions'
 
 
 def prepare_input(tokens, tokenizer):
-    token_index = torch.tensor(bert_tokenizer.convert_tokens_to_ids(tokens))
+    token_index = torch.tensor(tokenizer.convert_tokens_to_ids(tokens))
     seperation_index = tokens.index('[SEP]')
     segment_index = token_index * 0
     segment_index[(seperation_index + 1):] = 1
@@ -21,7 +21,7 @@ def prepare_input(tokens, tokenizer):
 
 
 
-def main():
+def predict(transcript):
 
     # Fixed format and checks, may change later when connecting to Deep
     args = parser.parse_args()
@@ -37,11 +37,11 @@ def main():
 
   
 
-    while True:
-        
+    #while True:
+    for i in range(1):
         # Take sequences of words here, this logic will change once Speech to Text and
         # Word Recommendation modules are connected.
-        sequence_of_words = input('Sequence of words for prediction: ').strip()
+        sequence_of_words = transcript[0].strip()
 
 
         # Prepare the input so that Bert is able to understand it
@@ -91,4 +91,4 @@ def main():
     
 
 if __name__ == '__main__':
-    main()
+    predict(input("Here: "))
