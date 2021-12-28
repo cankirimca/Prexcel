@@ -185,8 +185,13 @@ if __name__ == '__main__':
             print(
                 "Input Device id ", i, " - ", p.get_device_info_by_host_api_device_index(0, i).get('name'))
 
-    print("Please change the device index in the definition of audio recorder accordingly to your machine specifications")
+    print("Please change the device index in the definition of audio recorder accordingly to your machine "
+          "specifications")
+
+    print("What duration shall the recording be?")
+
+    dur = int(input())
     start_AVrecording()
-    time.sleep(5)
+    time.sleep(dur)
     stop_AVrecording()
     #file_manager()

@@ -1,1 +1,0 @@
-You need ffmpeg.exe in the directory
