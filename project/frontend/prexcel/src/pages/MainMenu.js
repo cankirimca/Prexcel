@@ -5,7 +5,7 @@ import ScreenIds from "./ScreenIds";
 
 import {Button, Grid, Paper, TextField} from "@mui/material";
 
-
+let transcript = ""
 const MainMenu = (props) => {
 
   function logOut() {
@@ -19,12 +19,43 @@ const MainMenu = (props) => {
   }
 
   function goToLivePresentation() {
-   props.onMainMenuHandler(ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID);
+
+      fetch('http://localhost:5000/livePresentation', {
+         method: 'GET',
+         headers: {
+            'Content-Type':'application/json'
+         },
+      })
+      .then(resp => resp.json())
+      .then((data) => {
+         console.log(data)
+      })
+      .catch(error => console.log(error))
+      console.log("can");
+   //props.onMainMenuHandler(ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID);
   }
 
-   function doNothing() {
-      props.onMainMenuHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
-   }
+     function doNothing() {
+         setInterval(function(){ 
+            fetch('http://localhost:5000/getTranscript', {
+            method: 'GET',
+            headers: {
+               'Content-Type':'application/json'
+            },
+            })
+            .then(resp => resp.json())
+            .then((data) => {
+               transcript = data
+            })
+            .catch(error => console.log(error))
+            console.log("can");
+         }, 1000);
+
+         console.log(transcript);
+
+         
+         //props.onMainMenuHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
+      }
 
     return (
         <div>
@@ -35,7 +66,7 @@ const MainMenu = (props) => {
                     Prexcel
                  </h1><br/>
                  <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
-                    The Multifunctional Presentation Assistant
+                  {transcript}
                  </h1><br/>
               </Grid>
 

@@ -67,7 +67,7 @@ class VoiceDetectionManager(object):
     def frame_generator(self):
         if self.input_rate == self.RATE_PROCESS:
             while True:
-                yield self.read()
+                yield self.read()       
 
     def vad_collector(self):
         frames = self.frame_generator()

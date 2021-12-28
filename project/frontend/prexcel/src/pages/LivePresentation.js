@@ -9,7 +9,6 @@ import {Button, Grid, Paper, TextField} from "@mui/material";
 const LivePresentation = (props) => {
 
    function doNothing() {
-      props.onMainMenuHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
    }
 
     return (
@@ -21,7 +20,7 @@ const LivePresentation = (props) => {
                     Prexcel
                  </h1><br/>
                  <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
-                    The Multifunctional Presentation Assistant
+                    Live Presentation
                  </h1><br/>
               </Grid>
 
