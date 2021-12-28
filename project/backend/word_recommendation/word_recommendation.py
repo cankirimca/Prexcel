@@ -6,8 +6,8 @@ from pytorch_pretrained_bert import BertTokenizer, BertForMaskedLM
 PAD, MASK, CLS, SEP = '[PAD]', '[MASK]', '[CLS]', '[SEP]'
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--bert-model', type=str, default='bert_models/bert-base-uncased.tar.gz', help='path to bert model')
-parser.add_argument('--bert-vocab', type=str, default='bert_models/bert-base-uncased-vocab.txt', help='path to bert vocabulary')
+parser.add_argument('--bert-model', type=str, default='project/backend/word_recommendation/bert_models/bert-base-uncased.tar.gz', help='path to bert model')
+parser.add_argument('--bert-vocab', type=str, default='project/backend/word_recommendation/bert_models/bert-base-uncased-vocab.txt', help='path to bert vocabulary')
 parser.add_argument('--topk', type=int, default=3, help='show top k predictions')
 
 
@@ -20,8 +20,7 @@ def prepare_input(tokens, tokenizer):
     return token_index.unsqueeze(0), segment_index.unsqueeze(0), mask.unsqueeze(0)
 
 
-
-def predict(transcript):
+if __name__ == '__main__':
 
     # Fixed format and checks, may change later when connecting to Deep
     args = parser.parse_args()
@@ -35,30 +34,21 @@ def predict(transcript):
     print('Initialize BERT model from {}...'.format(args.bert_model))
     bert_model = BertForMaskedLM.from_pretrained(args.bert_model)
 
-  
+    while True:
+        message = input('Here: ').strip()
+        tokens = tokenizer.tokenize(message)
 
-    #while True:
-    for i in range(1):
-        # Take sequences of words here, this logic will change once Speech to Text and
-        # Word Recommendation modules are connected.
-        sequence_of_words = transcript[0].strip()
-
-
-        # Prepare the input so that Bert is able to understand it
-        bert_token = tokenizer.tokenize(sequence_of_words)
-
-
-        # Checks for the tokens, seperations, classification?
-        if len(bert_token) == 0:
+        # Checks for the tokens, seperations
+        if len(tokens) == 0:
             continue
-        if bert_token[0] != CLS:
-            bert_token = [CLS] + bert_token
-        if bert_token[-1] != SEP:
-            bert_token.append(SEP)
-
-        # Transform the given input into a format that bert would understand
-        token_index, segment_index, mask = prepare_input(bert_token, tokenizer)
-
+        if tokens[0] != CLS:
+            tokens = [CLS] + tokens
+        if tokens[-1] != SEP:
+            tokens.append(SEP)
+        
+        # Transform the given input into a format that bert would understand  
+        token_index, segment_index, mask = prepare_input(tokens, tokenizer)
+        
         # For now log-odds function is used, may change later to see if the model
         # predicts the missing words any better
         with torch.no_grad():
@@ -70,25 +60,20 @@ def predict(transcript):
         probability_set = torch.softmax(logits, dim=-1)
 
         mask_count = 0
+        for idx, token in enumerate(tokens):
 
-        for index, token in enumerate(bert_token):
-            
             # Increase mask count when encountered
             if token == MASK:
                 mask_count += 1
-            
-            # Output the predictions that wer made to fill in the masked zone
-            print('Top {} predictions for {}th {}:'.format(args.topk, mask_count, MASK))
-            
-            topk_prob, topk_indices = torch.topk(probability_set[index, :], args.topk)
-            topk_tokens = tokenizer.convert_ids_to_tokens(topk_indices.cpu().numpy())
-            
-            # The actual predictions are being output into the console here
-            for prob, tok in zip(topk_prob, topk_tokens):
-                print('{} {}'.format(tok, prob))
 
-            print("\n")        
-    
+                # Output the predictions that wer made to fill in the masked zone
+                print('Top {} predictions for {}th {}:'.format(args.topk, mask_count, MASK))
+                
+                topk_prob, topk_indices = torch.topk(probability_set[idx, :], args.topk)
+                topk_tokens = tokenizer.convert_ids_to_tokens(topk_indices.cpu().numpy())
 
-if __name__ == '__main__':
-    predict(input("Here: "))
+                # The actual predictions are being output into the console here                
+                for prob, tok in zip(topk_prob, topk_tokens):
+                    print('{} {}'.format(tok, prob))
+
+                print("\n")   
