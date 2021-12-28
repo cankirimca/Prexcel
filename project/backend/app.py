@@ -22,6 +22,16 @@ thread = Thread(target = transcribe_speech)
 def get_articles():
     return jsonify({"Hello":"World"})
 
+@app.route('/getPresentations', methods = ['POST'])
+@cross_origin()
+def get_presentations():
+    if request.method == 'POST':
+        ud = UserDataManager()
+        print("hehehbebebe")
+        user_id = request.json["userID"]
+        columns = ud.get_presentations_for_user(user_id)
+    return jsonify(list(columns))
+
 @app.route('/register', methods = ['POST'])
 @cross_origin()
 def register_user():
