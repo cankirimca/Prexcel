@@ -62,9 +62,18 @@ export default function  LivePresentation(props){
                     Live Presentation
                  </h1><br/>
               </Grid>
-               {transcript}
+
+              <Grid item xs={2}/>
+              <Grid item xs={8}>
+                 <Paper style={{marginTop: '25%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+                    <p> Transcript of the user's speech: </p> <br/>
+                    {transcript}
+                 </Paper>
+              </Grid>
+              <Grid item xs={2}/>
+
+
               <Grid item xs={4}/>
-              
               <Grid item xs={4}>
                  <Paper style={{marginTop: '25%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
 
@@ -75,6 +84,7 @@ export default function  LivePresentation(props){
                  </Paper>
               </Grid>
               <Grid item xs={4}/>
+
            </Grid>
         </div>
 
