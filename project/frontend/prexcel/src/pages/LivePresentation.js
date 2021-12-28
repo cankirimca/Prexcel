@@ -9,7 +9,7 @@ let transcriptRunning = false;
 export default function  LivePresentation(props){
    const [transcript, setTranscript] = useState("");
    
-   function doNothing() {
+   function startRecording() {
       fetch('http://localhost:5000/livePresentation', {
          method: 'GET',
          headers: {
@@ -26,7 +26,7 @@ export default function  LivePresentation(props){
       transcriptRunning = true;
    }
 
-   function getTranscript(){
+   function enableTranscript(){
          setInterval(async function (){ 
             await fetch('http://localhost:5000/getTranscript', {
             method: 'GET',
@@ -40,9 +40,11 @@ export default function  LivePresentation(props){
             })
             .catch(error => console.log(error))
          }, 500);
-
-         
    }
+
+  function saveTranscript(){
+
+  }
 
   // if(transcriptRunning){
   //    getTranscript();
@@ -66,8 +68,9 @@ export default function  LivePresentation(props){
               <Grid item xs={4}>
                  <Paper style={{marginTop: '25%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
 
-                       <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={doNothing}>Start Recording</Button> <br/>
-                       <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={getTranscript}>Stop Recording</Button> <br/>
+                       <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={startRecording}>Start Presentation</Button> <br/>
+                       <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={enableTranscript}>Enable Transcript</Button> <br/>
+                       <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={saveTranscript}>Save Transcript</Button> <br/>
 
                  </Paper>
               </Grid>

@@ -4,9 +4,7 @@ import * as ReactDOM from "react-dom";
 import ScreenIds from "./ScreenIds";
 import {Button, Grid, Paper, TextField} from "@mui/material";
 
-const username = document.getElementById('register_username')
-const email = document.getElementById('register_email')
-const password = document.getElementById('register_password')
+
 
 const addUser = (newUser) => {
    fetch('http://localhost:5000/register', {
@@ -27,6 +25,10 @@ const addUser = (newUser) => {
 const SignUp = (props) => {
 
    function attemptSignup() {
+
+      const username = document.getElementById('register_username')
+      const email = document.getElementById('register_email')
+      const password = document.getElementById('register_password')
 
       // todo check login credentials
       let signUpSuccessful = true;

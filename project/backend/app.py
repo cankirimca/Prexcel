@@ -62,7 +62,7 @@ def live_presentation():
     if request.method == 'GET':
         thread.start()
     return ""
-        
+     
 
 
 @app.route('/getTranscript', methods = ['GET'])
@@ -71,7 +71,8 @@ def get_transcript():
     if transcript:
         a = jsonify(transcript)
         return a
-    return ""
+    return ""   
+
             
 
 if __name__ == "__main__":
