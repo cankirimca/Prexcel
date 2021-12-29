@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Card, Grid} from "@mui/material";
 import ScreenIds from "./ScreenIds";
+import {Button, Paper, TextField} from "@mui/material";
 
 export default function PresentationDetails(props) {
 
@@ -17,6 +18,7 @@ export default function PresentationDetails(props) {
       <h2>" ENG 101 " Presentation </h2>
       <p>Detailed Analysis Report</p>
       <Grid container spacing={2}>
+      <Grid item xs={2}/>
         <Grid item xs={4}>
       <Card sx={{ minWidth: 275, maxWidth: 500, textAlign:"left", marginLeft: 5}}>
         <p style={{textIndent: 40 , marginTop: 30}}>Final Grade is : " 86 "</p>
@@ -65,8 +67,8 @@ export default function PresentationDetails(props) {
           </Card>
         </Grid>
       </Grid>
-      <br/><br/><button onClick={goToTextTranscript}>See Text Transcript</button><br/><br/>
-      <button onClick={goBackToMyPresentations}>Back To My Presentations</button><br/><br/><br/>
+      <br/><br/><Button variant="contained" onClick={goToTextTranscript}>See Text Transcript</Button><br/><br/>
+      <Button variant="contained" onClick={goBackToMyPresentations}>Back To My Presentations</Button><br/><br/><br/>
     </div>
   );
 }

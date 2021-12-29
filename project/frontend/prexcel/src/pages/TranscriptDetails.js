@@ -1,4 +1,5 @@
 import ScreenIds from "./ScreenIds";
+import {Button, Grid, Paper, TextField} from "@mui/material";
 
 
 export default function TranscriptDetails(props) {
@@ -40,7 +41,7 @@ export default function TranscriptDetails(props) {
       8 (b) Clustering: here you begin by writing your subject or topic in the center of a blank sheet of paper. Then as ideas come into your mind you put them down in boxes or circles around the subject or topic. You will now see a sample of clustering.
       (c) Free writing, this is also a very useful technique. Here you just write down whatever comes into your mind about the topic. Continue writing for sometime without stopping to worry about grammar or spellings etc.
     </p>
-      <button onClick={goBackToPresentationDetails}>Back To Presentation Details</button>
+      <Button variant="contained" onClick={goBackToPresentationDetails}>Back To Presentation Details</Button>
     </div>
   );
 }

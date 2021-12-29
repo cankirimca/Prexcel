@@ -27,7 +27,6 @@ def get_articles():
 def get_presentations():
     if request.method == 'POST':
         ud = UserDataManager()
-        print("hehehbebebe")
         user_id = request.json["userID"]
         columns = ud.get_presentations_for_user(user_id)
     return jsonify(list(columns))
@@ -47,7 +46,6 @@ def register_user():
 def get_user():
     if request.method == 'POST':
         ud = UserDataManager()
-        print("asdd")
         username = request.json["username"]
         password = request.json["password"]
         try:

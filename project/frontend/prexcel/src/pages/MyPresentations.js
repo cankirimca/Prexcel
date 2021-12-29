@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import {useEffect, useState} from "react";
 import ScreenIds from "./ScreenIds";
+import {Button, Grid, Paper, TextField} from "@mui/material";
 
 // todo to be removed once connected to the database
 const columns = [
@@ -122,8 +123,8 @@ export default function MyPresentations(props) {
          onSelectionModelChange={setSelectionModel}
       />
 
-      <br/><button onClick={goToPresentationDetails}>Presentation Details</button><br/><br/>
-      <button onClick={goBackToMainMenu}>Back To Main Menu</button>
+      <br/><Button variant="contained" onClick={goToPresentationDetails}>Presentation Details</Button><br/><br/>
+      <Button variant="contained" onClick={goBackToMainMenu}>Back To Main Menu</Button>
     </div></div>
   );
 }

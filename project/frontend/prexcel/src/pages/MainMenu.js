@@ -34,7 +34,7 @@ const MainMenu = (props) => {
                     Prexcel
                  </h1><br/>
                  <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
-                  Record Presentation
+                  The Multifunctional Presentation Assistant
                  </h1><br/>
               </Grid>
 
