@@ -69,7 +69,7 @@ export default function  LivePresentation(props){
 
               <Grid item xs={2}/>
               <Grid item xs={8}>
-                 <Paper style={{marginTop: '25%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+                 <Paper style={{marginTop: '15%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
                     <p> Transcript of the user's speech: </p> <br/>
                     {transcript}
                  </Paper>
@@ -79,7 +79,7 @@ export default function  LivePresentation(props){
 
               <Grid item xs={4}/>
               <Grid item xs={4}>
-                 <Paper style={{marginTop: '25%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+                 <Paper style={{marginTop: '15%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
 
                        <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={startRecording}>Start Presentation</Button> <br/>
                        <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={enableTranscript}>Enable Transcript</Button> <br/>
