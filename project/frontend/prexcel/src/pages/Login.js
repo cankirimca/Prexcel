@@ -26,7 +26,7 @@ const Login = (props) => {
   function AttemptLogin() {
       let login_username = document.getElementById('login_username')
       let login_password = document.getElementById('login_password')
-      const getUser = (userData) => {
+      /*const getUser = (userData) => {
          let success = true;
          fetch('http://localhost:5000/login', {
             method: 'POST',
@@ -52,7 +52,14 @@ const Login = (props) => {
          "password": login_password.value
       };
 
-     getUser(userData);
+     getUser(userData);*/
+
+     /****************************************/
+     /* ONLY FOR BYPASSING THE DB CONNECTION */
+     setCount(1);
+     /* ------------------------------------ */
+     /****************************************/
+
 
      login_username.value = "";
      login_password.value = "";

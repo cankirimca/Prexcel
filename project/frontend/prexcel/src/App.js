@@ -29,6 +29,8 @@ function App() {
   const [currentScreen, setCurrentScreen] = useState(ScreenIds.LOGIN_SCREEN_ID);
   const [currentUserID, setCurrentUserID] = useState(0);
 
+  const [selectedPresentations, setSelectedPresentations] = useState([]);
+
   function changeViewHandler(newScreenId) {
     setCurrentScreen(newScreenId);
   }
@@ -37,19 +39,23 @@ function App() {
     setCurrentUserID(newUserId);
   }
 
+  function presentationSelectionHandler(presentations) {
+     setSelectedPresentations(presentations);
+  }
+
   const UIViewController = () => {
      if (currentScreen === ScreenIds.LOGIN_SCREEN_ID)
         return <Login onUserIdHandler={userIdHandler} onLoginHandler={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.MAIN_MENU_SCREEN_ID)
         return <MainMenu onMainMenuHandler={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.MY_PRESENTATIONS_SCREEN_ID)
-        return <MyPresentations currentUserID={currentUserID} onMyPresentationsHandler={changeViewHandler}/>;
+        return <MyPresentations currentUserID={currentUserID} onPresentationSelection={presentationSelectionHandler} onMyPresentationsHandler={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID)
         return <LivePresentation currentUserID={currentUserID} onLivePresentationHandler={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.PRESENTATION_DETAILS_SCREEN_ID)
-        return <PresentationDetails onPresentationDetails={changeViewHandler}/>;
+        return <PresentationDetails selectedPresentations={selectedPresentations} onPresentationDetails={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.TRANSCRIPT_DETAILS_SCREEN_ID)
-        return <TranscriptDetails onTranscriptDetails={changeViewHandler}/>;
+        return <TranscriptDetails selectedPresentations={selectedPresentations} onTranscriptDetails={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.SIGNUP_SCREEN_ID)
         return <SignUp onSignUpHandler={changeViewHandler}/>
   }

@@ -10,6 +10,16 @@ export default function TranscriptDetails(props) {
 
   return(
     <div>
+    <h2>Transcript {props.selectedPresentations[0].name} Presentation</h2>
+    <p style={{textAlign: "left", marginLeft: 40 , marginTop: 30, marginBottom: 30, marginRight: 40}}>
+      {props.selectedPresentations[0].transcript}
+    </p>
+      <Button variant="contained" onClick={goBackToPresentationDetails}>Back To Presentation Details</Button>
+    </div>
+  );
+
+  /*return(
+    <div>
     <h2>Transcript " ENG 101 " Presentation</h2>
     <p style={{textAlign: "left", marginLeft: 40 , marginTop: 30, marginBottom: 30, marginRight: 40}}> ENG 101 Lesson -33
       2 Lesson – 33 (Essay Writing)
@@ -43,5 +53,5 @@ export default function TranscriptDetails(props) {
     </p>
       <Button variant="contained" onClick={goBackToPresentationDetails}>Back To Presentation Details</Button>
     </div>
-  );
+  );*/
 }

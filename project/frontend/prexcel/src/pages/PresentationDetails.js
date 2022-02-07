@@ -15,7 +15,53 @@ export default function PresentationDetails(props) {
 
    return(
       <div>
-         <h2>" ENG 101 " Presentation </h2>
+         <h2>{props.selectedPresentations[0].name} Presentation </h2>
+         <p>Detailed Analysis Report</p>
+         <Grid container spacing={2}>
+            <Grid item xs={2}/>
+            <Grid item xs={4}>
+               <Card sx={{ minWidth: 275, maxWidth: 500, textAlign:"left", marginLeft: 5}}>
+                  <p style={{textIndent: 40 , marginTop: 30}}>Final Grade is : {props.selectedPresentations[0].grade}</p>
+                  <Card sx={{ marginLeft: 5, marginRight: 5, marginBottom: 5}}>
+                     <p style={{marginLeft: 10}}><u>Grades:</u></p>
+                     <p style={{marginLeft: 10}}>Fluency : " ?? "</p>
+                     <p style={{marginLeft: 10}}>Use of Language : " ?? "</p>
+                     <p style={{marginLeft: 10}}>Body Language : " ?? "</p>
+                  </Card>
+
+                  <Card sx={{ marginLeft: 5, marginRight: 5, marginBottom: 5}}>
+
+                     <p style={{marginLeft: 10}}>Some Remarks: <br/>
+                        ?? </p>
+                  </Card>
+               </Card>
+            </Grid>
+            <Grid item xs={4}>
+               <Card sx={{ minWidth: 275, maxWidth: 500, textAlign:"left", marginLeft: 5}}>
+                  <p style={{textIndent: 40 , marginTop: 30}}>Duration : " ?? "</p>
+                  <Card sx={{ marginLeft: 5, marginRight: 5, marginBottom: 5}}>
+                     <p style={{marginLeft: 10}}><u>Speech Feedback:</u></p>
+                     <p style={{marginLeft: 10}}>Percentage of Filler Words : " ?? "</p>
+                     <p style={{marginLeft: 10}}>Time Spent Idle : " ?? "</p>
+                     <p style={{marginLeft: 10}}>Time Spent UMM ing : " ?? "</p>
+                  </Card>
+
+                  <Card sx={{ marginLeft: 5, marginRight: 5, marginBottom: 5}}>
+
+                     <p style={{marginLeft: 10}}>Video Feedback: <br/>
+                        ??</p>
+                  </Card>
+               </Card>
+            </Grid>
+         </Grid>
+         <br/><br/><Button variant="contained" onClick={goToTextTranscript}>See Text Transcript</Button><br/><br/>
+         <Button variant="contained" onClick={goBackToMyPresentations}>Back To My Presentations</Button><br/><br/><br/>
+      </div>
+   );
+
+   /*return(
+      <div>
+         <h2>{props.selectedPresentations[0].name} Presentation </h2>
          <p>Detailed Analysis Report</p>
          <Grid container spacing={2}>
             <Grid item xs={2}/>
@@ -70,5 +116,5 @@ export default function PresentationDetails(props) {
          <br/><br/><Button variant="contained" onClick={goToTextTranscript}>See Text Transcript</Button><br/><br/>
          <Button variant="contained" onClick={goBackToMyPresentations}>Back To My Presentations</Button><br/><br/><br/>
       </div>
-   );
+   );*/
 }
