@@ -1,6 +1,7 @@
 import {Button, Card, Grid, Paper, TextField} from "@mui/material";
 import ScreenIds from "./ScreenIds";
 import React from "react";
+import SendIcon from '@mui/icons-material/Send';
 
 export default function ChatBotScreen(props) {
 
@@ -66,7 +67,7 @@ export default function ChatBotScreen(props) {
                   <ChatItem position={"right"} color={"lightblue"} />
                </Paper>
                <TextField sx={{width:'60%'}} label=" " variant="outlined" />
-               <Button sx={{marginLeft:'1%'}} variant="contained">send</Button><br/>
+               <Button endIcon={<SendIcon />} sx={{marginLeft:'1%'}} variant="contained">send</Button><br/>
                <Button sx={{marginTop:'2%'}} variant="contained" onClick={goBackToMainMenu}>Main Menu</Button>
             </Grid>
             <Grid item xs={4}/>
