@@ -21,6 +21,7 @@ import PresentationDetails from "./pages/PresentationDetails";
 import TranscriptDetails from "./pages/TranscriptDetails";
 import SignUp from "./pages/SignUp";
 import LivePresentation from "./pages/LivePresentation";
+import ChatBotScreen from "./pages/ChatBotScreen";
 
 import ScreenIds from "./pages/ScreenIds";
 
@@ -58,6 +59,8 @@ function App() {
         return <TranscriptDetails selectedPresentations={selectedPresentations} onTranscriptDetails={changeViewHandler}/>;
      else if (currentScreen === ScreenIds.SIGNUP_SCREEN_ID)
         return <SignUp onSignUpHandler={changeViewHandler}/>
+     else if (currentScreen === ScreenIds.CHAT_BOT_SCREEN_ID)
+        return <ChatBotScreen onChatBotScreen={changeViewHandler}/>;
   }
 
 //  function navigate() {

@@ -13,6 +13,10 @@ const MainMenu = (props) => {
      props.onMainMenuHandler(ScreenIds.LOGIN_SCREEN_ID);
   }
 
+  function goToChatBot() {
+     props.onMainMenuHandler(ScreenIds.CHAT_BOT_SCREEN_ID);
+  }
+
   function goToMyPresentations() {
     props.onMainMenuHandler(ScreenIds.MY_PRESENTATIONS_SCREEN_ID);
   }
@@ -45,6 +49,7 @@ const MainMenu = (props) => {
                        <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToMyPresentations}>My Presentations</Button> <br/>
                        <Button style={{ marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Prexcel</Button> <br/>
                        <Button style={{ marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Presentations</Button> <br/>
+                       <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToChatBot}>Chat Bot</Button> <br/>
                        <Button style={{ marginBottom: '5%'}} variant="contained" onClick={doNothing}>User-Account-Details</Button> <br/>
                        <Button style={{ marginBottom: '5%'}} variant="contained" onClick={logOut}>Log-Out</Button>
                  </Paper>
