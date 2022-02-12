@@ -28,7 +28,7 @@ class VoiceDetectionManager(object):
     BLOCKS_PER_SECOND = 50
     input_rate = 16000
 
-    def __init__(self):
+    def __init__(self, stop_flag):
         def callback(data):
             self.queue.put(data)
 
@@ -45,6 +45,7 @@ class VoiceDetectionManager(object):
         self.input_rate = input_rate
         self.vad = webrtcvad.Vad(3)
         self.pAudio = pyaudio.PyAudio()
+        self.stop_flag = stop_flag
 
         kwargs = {
             'format': pyaudio.paInt16,
@@ -66,7 +67,7 @@ class VoiceDetectionManager(object):
 
     def frame_generator(self):
         if self.input_rate == self.RATE_PROCESS:
-            while True:
+            while True and (not self.stop_flag):
                 yield self.read()       
 
     def vad_collector(self):

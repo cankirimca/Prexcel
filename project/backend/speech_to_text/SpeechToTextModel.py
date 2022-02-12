@@ -53,8 +53,8 @@ class SpeechToTextModel:
             print(self.stream.intermediateDecode())
             start = end
 
-    def transcribe_live(self, buffer):
-        frames = self.vdm.vad_collector()
+    def transcribe_live(self, buffer, stop_flag):
+        frames = self.vdm.vad_collector(stop_flag)
         for frame in frames:
             if frame is not None:
                 # if spinner:
