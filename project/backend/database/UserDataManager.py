@@ -113,7 +113,8 @@ class UserDataManager:
         self.cursor.execute("UPDATE Statistics SET filler_count = '%s' WHERE statistics_id = %s AND user_id = %s AND presentation_id = %s", new_filler_count, statistics_id, presentation_id, user_id)
         self.connection.commit()
 
-    def delete_statistic(self, statistics_id, presentation_id, user_id):
+    def delete_statistic(self, statistics_id,  user_id):
+        presentation_id = randint(100000, 999999)
         self.cursor.execute("DELETE FROM Statistics WHERE statistics_id = %s AND presentation_id = %s AND user_id = %s", statistics_id, presentation_id, user_id)
         self.connection.commit()
 
@@ -127,6 +128,9 @@ class UserDataManager:
     #cursor.execute('''SELECT password FROM user WHERE mail_address = 'johnsmith@mail.com' ''')
     #print(cursor.fetchall())
     #db.commit()
+
+    def add_presentation(self, presentation_id, presentation_name, transcript, user_id):
+        self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id) VALUES(%d, %s, %s, %d)", presentation_id, presentation_name, transcript, user_id)
 
 udm = UserDataManager()
 try:
