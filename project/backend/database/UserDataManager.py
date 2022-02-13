@@ -77,6 +77,46 @@ class UserDataManager:
         self.cursor.execute("UPDATE Presentation SET transcript = '%s' WHERE presentation_id = %s", updated_transcript, presentation_id)
         self.connection.commit()
 
+    def get_statistics_id(self, statistics_id, user_id, presentation_id):
+        self.cursor.execute("SELECT statistics_id FROM Statistics WHERE statistics_id = %s AND user_id = %s AND presentation_id = %s", statistics_id, user_id, presentation_id)
+        self.connection.commit()
+
+    def get_statistics_wpm(self, statistics_id, user_id, presentation_id):
+        self.cursor.execute("SELECT wpm FROM Statistics WHERE statistics_id = %s AND user_id = %s AND presentation_id = %s", statistics_id, user_id, presentation_id)
+        self.connection.commit()
+
+    def get_statistics_duration(self, statistics_id, user_id, presentation_id):
+        self.cursor.execute("SELECT duration FROM Statistics WHERE statistics_id = %s AND user_id = %s AND presentation_id = %s", statistics_id, user_id, presentation_id)
+        self.connection.commit()
+
+    def get_statistics_filler_duration(self, statistics_id, user_id, presentation_id):
+        self.cursor.execute("SELECT filler_duration FROM Statistics WHERE statistics_id = %s AND user_id = %s AND presentation_id = %s", statistics_id, user_id, presentation_id)
+        self.connection.commit()    
+
+    def get_statistics_filler_count(self, statistics_id, user_id, presentation_id):
+        self.cursor.execute("SELECT filler_count FROM Statistics WHERE statistics_id = %s AND user_id = %s AND presentation_id = %s", statistics_id, user_id, presentation_id)
+        self.connection.commit()
+
+    def update_wpm(self, statistics_id, presentation_id, user_id, new_wpm):
+        self.cursor.execute("UPDATE Statistics SET wpm = '%s' WHERE statistics_id = %s AND user_id = %s AND presentation_id = %s", new_wpm, statistics_id, presentation_id, user_id)
+        self.connection.commit()
+
+    def update_duration(self, statistics_id, presentation_id, user_id, new_duration):
+        self.cursor.execute("UPDATE Statistics SET duration = '%s' WHERE statistics_id = %s AND user_id = %s AND presentation_id = %s", new_duration, statistics_id, presentation_id, user_id)
+        self.connection.commit()
+    
+    def update_filler_duration(self, statistics_id, presentation_id, user_id, new_filler_duration):
+        self.cursor.execute("UPDATE Statistics SET filler_duration = '%s' WHERE statistics_id = %s AND user_id = %s AND presentation_id = %s", new_filler_duration, statistics_id, presentation_id, user_id)
+        self.connection.commit()
+
+    def update_filler_count(self, statistics_id, presentation_id, user_id, new_filler_count):
+        self.cursor.execute("UPDATE Statistics SET filler_count = '%s' WHERE statistics_id = %s AND user_id = %s AND presentation_id = %s", new_filler_count, statistics_id, presentation_id, user_id)
+        self.connection.commit()
+
+    def delete_statistic(self, statistics_id, presentation_id, user_id):
+        self.cursor.execute("DELETE FROM Statistics WHERE statistics_id = %s AND presentation_id = %s AND user_id = %s", statistics_id, presentation_id, user_id)
+        self.connection.commit()
+
     #create_database = '''create database prexcel'''
     #cursor.execute(create_database)
 

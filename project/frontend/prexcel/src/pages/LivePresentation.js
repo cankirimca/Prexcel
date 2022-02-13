@@ -46,6 +46,10 @@ export default function  LivePresentation(props){
 
   }
 
+  function goBackToMainMenu() {
+   props.onLivePresentationHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
+  }
+
   // if(transcriptRunning){
   //    getTranscript();
   // }
@@ -79,7 +83,7 @@ export default function  LivePresentation(props){
 
                        <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={startRecording}>Start Presentation</Button> <br/>
                        <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={enableTranscript}>Enable Transcript</Button> <br/>
-                       <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={saveTranscript}>Save Transcript</Button> <br/>
+                       <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={goBackToMainMenu}>Back to Main Menu</Button> <br/>
 
                  </Paper>
               </Grid>
