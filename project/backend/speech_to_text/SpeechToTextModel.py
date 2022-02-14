@@ -4,7 +4,7 @@ import numpy as np
 import os
 import wave
 import sys
-sys.path.append(".")
+#sys.path.append(".")
 from VoiceDetectionManager import VoiceDetectionManager
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -61,10 +61,10 @@ class SpeechToTextModel:
                 #     spinner.start()
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
                 #print(self.stream.intermediateDecode())
-                buffer[0] = (self.stream.intermediateDecode())      
-
-
+                buffer[0] = (self.stream.intermediateDecodeWithMetadata())
+                print(buffer[0], type)      
 
 stm = SpeechToTextModel()
-#x = stm.transcribe_live()
+buffer = [""]
+x = stm.transcribe_live(buffer, False)
 #print(x)
