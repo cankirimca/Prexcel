@@ -1,0 +1,2 @@
+word(txt='hello', start_time=0, end_time=22, tags=['d'])
+word(txt='everyone', start_time=24, end_time=42, tags=[])
