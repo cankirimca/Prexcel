@@ -1,31 +1,32 @@
-
+#from speech_to_text import VoiceDetectionManager
+from speech_to_text.VoiceDetectionManager import VoiceDetectionManager
 from deepspeech import Model
 import numpy as np
 import os
 import wave
 import sys
-#sys.path.append(".")
-from VoiceDetectionManager import VoiceDetectionManager
 import time
+sys.path.append(".")
+#sys.path.append("./speech_to_text")
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-
-pbmm_path = "deepspeech-0.9.3-models.pbmm"
-scorer_path = "deepspeech-0.9.3-models.scorer"
+root = os.path.dirname(os.path.abspath(__file__))
+pbmm_path = root + "\deepspeech-0.9.3-models.pbmm"
+scorer_path = root + "\deepspeech-0.9.3-models.scorer"
 beam_width = 1000
 lm_alpha = 0.93
 lm_beta = 1.18
 DEFAULT_SAMPLE_RATE = 16000
 
 def format_metadata_output(tokens):   
+    f = open(root + "\output.txt","w+")
     if not tokens:
         return   
     new_word = False
     start_time = 0
     end_time = 0
     word = "" 
-    words = []
     for token in tokens:
         if new_word:
             start_time = token.start_time
@@ -33,20 +34,19 @@ def format_metadata_output(tokens):
         if token == tokens[len(tokens) - 1]:
             end_time = token.start_time
             word += token.text
-            words.append((word, len(word), end_time - start_time)) 
+            #words.append((word, len(word), end_time - start_time)) 
+            f.write(word + " " + str(len(word)) + " " + str(end_time - start_time) + "\n") 
             word = ""
             break
-        if token.text != ' ':
-            end_time = token.start_time
+        if token.text != ' ':          
             word += token.text
-            new_word = True
         else:
-            words.append((word, len(word), end_time - start_time))
+            end_time = token.start_time
+            #words.append((word, len(word), end_time - start_time))
+            f.write(word + " " + str(len(word)) + " " + str(end_time - start_time) + "\n") 
             word = ""    
-        #add information of spoken word, and its length and duration    
-        
-    print(words)  
-    f = open("output.txt","w+")     
+            new_word = True
+        #add information of spoken word, and its length and duration        
         
 
 class SpeechToTextModel:
@@ -87,23 +87,26 @@ class SpeechToTextModel:
 
     def transcribe_live(self, buffer, stop_flag):
         ttime = time.time()
+        tokens = []
+        print("tr live started")
         frames = self.vdm.vad_collector(stop_flag)
+        print(frames)
+        print("tr live ended")
         for frame in frames:
             if frame is not None:
-                # if spinner:
-                #     spinner.start()
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
                 x = (self.stream.intermediateDecodeWithMetadata())
-                tokens = x.transcripts[0].tokens
-                #<class 'deepspeech.impl.Metadata'>
-            if time.time() - ttime > 5:
-                format_metadata_output(tokens)
-                break
+                if x.transcripts[0].tokens:
+                    tokens = x.transcripts[0].tokens
+                #<class 'deepspeech.impl.Metadata'> 
+        print(tokens)        
+        print("stt ended")
+        format_metadata_output(tokens)
 
     
                       
 
-stm = SpeechToTextModel()
-buffer = [""]
-x = stm.transcribe_live(buffer, False)
-#print(x)
+#stm = SpeechToTextModel()
+#buffer = [""]
+#x = stm.transcribe_live(buffer, False)
+

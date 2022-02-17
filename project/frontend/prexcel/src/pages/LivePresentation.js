@@ -9,8 +9,8 @@ let transcriptRunning = false;
 export default function  LivePresentation(props){
    const [transcript, setTranscript] = useState("");
    
-   function startRecording() {
-      fetch('http://localhost:5000/livePresentation', {
+   function startPresentation() {
+      fetch('http://localhost:5000/startPresentation', {
          method: 'GET',
          headers: {
             'Content-Type':'application/json'
@@ -22,10 +22,28 @@ export default function  LivePresentation(props){
       })
       .catch(error => console.log(error))
       console.log("can");
-      
+      //transcript = "Recording..."
       transcriptRunning = true;
    }
 
+   function endPresentation() {
+      fetch('http://localhost:5000/endPresentation', {
+         method: 'GET',
+         headers: {
+            'Content-Type':'application/json'
+         },
+      })
+      .then(resp => resp.json())
+      .then((data) => {
+         console.log(data)
+      })
+      .catch(error => console.log(error))
+      console.log("can");
+      //transcript = "Stopped"
+      
+      transcriptRunning = true;
+   }
+/*
    function enableTranscript(){
          setInterval(async function (){ 
             await fetch('http://localhost:5000/getTranscript', {
@@ -40,11 +58,8 @@ export default function  LivePresentation(props){
             })
             .catch(error => console.log(error))
          }, 500);
-   }
+   }*/
 
-  function saveTranscript(){
-
-  }
 
   function goBackToMainMenu() {
    props.onLivePresentationHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
@@ -81,8 +96,8 @@ export default function  LivePresentation(props){
               <Grid item xs={4}>
                  <Paper style={{marginTop: '15%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
 
-                       <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={startRecording}>Start Presentation</Button> <br/>
-                       <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={enableTranscript}>Enable Transcript</Button> <br/>
+                       <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={startPresentation}>Start Presentation</Button> <br/>
+                       <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={endPresentation}>End Presentation</Button> <br/>
                        <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={goBackToMainMenu}>Back to Main Menu</Button> <br/>
 
                  </Paper>

@@ -66,7 +66,7 @@ class VoiceDetectionManager(object):
 
     def frame_generator(self, stop_flag):
         if self.input_rate == self.RATE_PROCESS:
-            while True and (not stop_flag):
+            while not stop_flag[0]:
                 yield self.read()       
 
     def vad_collector(self, stop_flag):
@@ -75,7 +75,7 @@ class VoiceDetectionManager(object):
         triggered = False
 
         for frame in frames:
-            if len(frame) < 640:
+            if len(frame) < 640 or stop_flag[0]:
                 return
 
             is_speech = self.vad.is_speech(frame, self.sample_rate)
