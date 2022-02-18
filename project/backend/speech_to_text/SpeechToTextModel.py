@@ -27,7 +27,10 @@ def format_metadata_output(tokens):
     start_time = 0
     end_time = 0
     word = "" 
+
     for token in tokens:
+        f.write(token.text + " " + str(token.timestep) + "\n") 
+    """    
         if new_word:
             start_time = token.start_time
             new_word = False
@@ -47,7 +50,7 @@ def format_metadata_output(tokens):
             word = ""    
             new_word = True
         #add information of spoken word, and its length and duration        
-        
+    """    
 
 class SpeechToTextModel:
 
@@ -88,10 +91,9 @@ class SpeechToTextModel:
     def transcribe_live(self, buffer, stop_flag):
         ttime = time.time()
         tokens = []
-        print("tr live started")
+        #print("tr live started")
         frames = self.vdm.vad_collector(stop_flag)
-        print(frames)
-        print("tr live ended")
+        #print("tr live ended")
         for frame in frames:
             if frame is not None:
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
@@ -99,8 +101,8 @@ class SpeechToTextModel:
                 if x.transcripts[0].tokens:
                     tokens = x.transcripts[0].tokens
                 #<class 'deepspeech.impl.Metadata'> 
-        print(tokens)        
-        print("stt ended")
+        #print(tokens)        
+        #print("stt ended")
         format_metadata_output(tokens)
 
     
