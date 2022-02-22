@@ -64,18 +64,18 @@ class VoiceDetectionManager(object):
 
     frame_duration_ms = property(lambda self: 1000 * self.block_size // self.sample_rate)
 
-    def frame_generator(self):
+    def frame_generator(self, stop_flag):
         if self.input_rate == self.RATE_PROCESS:
-            while True:
+            while not stop_flag[0]:
                 yield self.read()       
 
-    def vad_collector(self):
-        frames = self.frame_generator()
+    def vad_collector(self, stop_flag):
+        frames = self.frame_generator(stop_flag)
         ring_buffer = collections.deque(maxlen=300 // self.frame_duration_ms)
         triggered = False
 
         for frame in frames:
-            if len(frame) < 640:
+            if len(frame) < 640 or stop_flag[0]:
                 return
 
             is_speech = self.vad.is_speech(frame, self.sample_rate)

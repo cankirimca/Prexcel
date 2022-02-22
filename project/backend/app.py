@@ -1,22 +1,24 @@
 from flask import Flask, jsonify, request
-from speech_to_text.SpeechToTextModel import SpeechToTextModel
+from PresentationAssistant import PresentationAssistant
 from database.UserDataManager import UserDataManager
 from flask_cors import CORS, cross_origin
 from threading import Thread
 
 transcript = [""]
+presentation_assistant = PresentationAssistant()
 
 app = Flask(__name__)
 print("can")
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+"""
 def transcribe_speech():
     stt = SpeechToTextModel()
     stt.transcribe_live(transcript)
 
 thread = Thread(target = transcribe_speech)
-
+"""
 
 @app.route('/', methods = ['GET'])
 def get_articles():
@@ -54,12 +56,19 @@ def get_user():
         except TypeError:
             return jsonify(-1) #indicates error
 
-@app.route('/livePresentation', methods = ['GET'])
+@app.route('/startPresentation', methods = ['GET'])
 @cross_origin()
-def live_presentation():
+def start_presentation():
     if request.method == 'GET':
-        thread.start()
+        presentation_assistant.initiate_presentation()
     return ""
+
+@app.route('/endPresentation', methods = ['GET'])
+@cross_origin()
+def end_presentation():
+    if request.method == 'GET':
+        presentation_assistant.end_presentation()
+    return ""    
      
 
 
