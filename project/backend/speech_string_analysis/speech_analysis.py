@@ -19,7 +19,7 @@ class SpeechAnalysis:
     def consolidate_tokens(self, input_list):
         tokens = []
         for inp in input_list:
-            tokens.append(token(text=inp[0],timestep=inp[1]))
+            tokens.append(token(text=inp[0], timestep=inp[1]))
 
         consolidated_tokens = []
         word_count = 0
@@ -46,6 +46,7 @@ class SpeechAnalysis:
                 curr_word += t.text
         return consolidated_tokens
 
+    # Use consolidated_tokens as input
     def tag_words(self, token_return_list):
         word_list = token_return_list
 
