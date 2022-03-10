@@ -1,5 +1,5 @@
-#from speech_to_text import VoiceDetectionManager
-from VoiceDetectionManager import VoiceDetectionManager
+from speech_to_text.VoiceDetectionManager import VoiceDetectionManager
+#from VoiceDetectionManager import VoiceDetectionManager
 from deepspeech import Model
 import numpy as np
 import os
@@ -98,23 +98,20 @@ class SpeechToTextModel:
         for frame in frames:
             if frame is not None:
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
-                #volume = np.linalg.norm(frame, 'utf-8')*10
-                #print("|" * int(volume))
-                #print(frame)
                 x = (self.stream.intermediateDecode())
-                #print(x)
-                if x.transcripts[0].tokens:
-                    tokens = x.transcripts[0].tokens
+                print(x)
+                #if x.transcripts[0].tokens:
+                    #tokens = x.transcripts[0].tokens
                 #<class 'deepspeech.impl.Metadata'> 
         #print(tokens)        
         #print("stt ended")
-        format_metadata_output(tokens, self.result_tokens)
+        #format_metadata_output(tokens, self.result_tokens)
 
     
                       
-
+"""
 stm = SpeechToTextModel()
 buffer = [""]
 sf = [False]
-x = stm.transcribe_live(buffer, sf)
+x = stm.transcribe_live(buffer, sf)"""
 

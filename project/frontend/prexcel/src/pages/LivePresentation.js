@@ -7,9 +7,9 @@ import {Button, Grid, Paper, TextField} from "@mui/material";
 let transcriptRunning = false;
 
 export default function  LivePresentation(props){
-   const [transcript, setTranscript] = useState("");
+   const [fd_flag, setFdFlag] = useState("");
    
-   function startPresentation() {
+   function startPresentationThreads(){
       fetch('http://localhost:5000/startPresentation', {
          method: 'GET',
          headers: {
@@ -24,6 +24,11 @@ export default function  LivePresentation(props){
       console.log("can");
       //transcript = "Recording..."
       transcriptRunning = true;
+   }
+
+   function startPresentation() {
+      startPresentationThreads();
+      getFaceDetectionFlag();
    }
 
    function endPresentation() {
@@ -60,6 +65,22 @@ export default function  LivePresentation(props){
          }, 500);
    }*/
 
+   function getFaceDetectionFlag(){
+      setInterval(async function (){ 
+         await fetch('http://localhost:5000/getFaceDetectionFlag', {
+         method: 'GET',
+         headers: {
+            'Content-Type':'application/json'
+         },
+         })
+         .then(resp => resp.json())
+         .then((data) => {
+            setFdFlag(data);
+         })
+         .catch(error => console.log(error))
+      }, 500);
+   }
+
 
   function goBackToMainMenu() {
    props.onLivePresentationHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
@@ -85,8 +106,8 @@ export default function  LivePresentation(props){
               <Grid item xs={2}/>
               <Grid item xs={8}>
                  <Paper style={{marginTop: '15%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
-                    <p> Transcript of the user's speech: </p> <br/>
-                    {transcript}
+                    <p> Face Detection Flag: </p> <br/>
+                    {fd_flag}
                  </Paper>
               </Grid>
               <Grid item xs={2}/>

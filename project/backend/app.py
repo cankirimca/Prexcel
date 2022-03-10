@@ -71,7 +71,7 @@ def end_presentation():
     return ""    
      
 
-
+"""
 @app.route('/getTranscript', methods = ['GET'])
 @cross_origin()
 def get_transcript():
@@ -79,6 +79,14 @@ def get_transcript():
         a = jsonify(transcript)
         return a
     return ""   
+"""    
+
+@app.route('/getFaceDetectionFlag', methods = ['GET'])
+@cross_origin()
+def get_face_detection_flag():
+    if presentation_assistant.fd_flags:
+        return jsonify(presentation_assistant.fd_flags)
+    return ""       
 
             
 

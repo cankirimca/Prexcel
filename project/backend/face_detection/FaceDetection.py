@@ -1,6 +1,7 @@
 import cv2
 import os
 import threading
+import time
 
 class FaceDetection:
     def __init__(self):
@@ -12,7 +13,7 @@ class FaceDetection:
         self.face_detection_flag = False
 
 
-    def detect_face(self, frequency, flags):
+    def detect_face(self, frequency, flags, stop_flag):
         """
         Function to detect the presenters face.
 
@@ -31,22 +32,19 @@ class FaceDetection:
 
             if len(faces) == 0:
                 print("Cannot detect face!")
-                face_detection_flag = False
+                face_detection_flag = "-"
             else:
                 print("Face is detected!")
-                face_detection_flag = True
+                face_detection_flag = "+"
 
-            for (x, y, w, h) in faces:
-                cv2.rectangle(frames, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            #for (x, y, w, h) in faces:
+                #cv2.rectangle(frames, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
-            cv2.imshow('Video', frames)
-
-            threading.Timer(frequency, self.detect_face).start()
-
+            #cv2.imshow('Video', frames)
             flags.append(face_detection_flag)
-
-            if cv2.waitKey(1) & 0xFF == ord('q'):
+            if stop_flag[0]:
                 break
+            time.sleep(1)
 
         video_capture.release()
         cv2.destroyAllWindows()
