@@ -1,5 +1,5 @@
 #from speech_to_text import VoiceDetectionManager
-from speech_to_text.VoiceDetectionManager import VoiceDetectionManager
+from VoiceDetectionManager import VoiceDetectionManager
 from deepspeech import Model
 import numpy as np
 import os
@@ -7,7 +7,6 @@ import wave
 import sys
 import time
 sys.path.append(".")
-#sys.path.append("./speech_to_text")
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
@@ -23,10 +22,10 @@ def format_metadata_output(tokens):
     f = open(root + "\output.txt","w+")
     if not tokens:
         return   
-    new_word = False
-    start_time = 0
-    end_time = 0
-    word = "" 
+    #new_word = False
+    #start_time = 0
+    #end_time = 0
+    #word = "" 
 
     for token in tokens:
         f.write(token.text + " " + str(token.timestep) + "\n") 
@@ -97,7 +96,11 @@ class SpeechToTextModel:
         for frame in frames:
             if frame is not None:
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
-                x = (self.stream.intermediateDecodeWithMetadata())
+                #volume = np.linalg.norm(frame, 'utf-8')*10
+                #print("|" * int(volume))
+                #print(frame)
+                x = (self.stream.intermediateDecode())
+                #print(x)
                 if x.transcripts[0].tokens:
                     tokens = x.transcripts[0].tokens
                 #<class 'deepspeech.impl.Metadata'> 
@@ -108,7 +111,8 @@ class SpeechToTextModel:
     
                       
 
-#stm = SpeechToTextModel()
-#buffer = [""]
-#x = stm.transcribe_live(buffer, False)
+stm = SpeechToTextModel()
+buffer = [""]
+sf = [False]
+x = stm.transcribe_live(buffer, sf)
 
