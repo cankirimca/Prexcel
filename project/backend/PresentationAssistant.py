@@ -23,7 +23,7 @@ class PresentationAssistant:
 
     def initiate_face_detection(self):
         self.face_detection_exit[0] = False
-        self.fd.face_detection_flag_freq(self.frequency, self.face_detection_flags)
+        self.fd.detect_face(self.frequency, self.face_detection_flags)
 
     def end_presentation(self):
         print("presentation ended")

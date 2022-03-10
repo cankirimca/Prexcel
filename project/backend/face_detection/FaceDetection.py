@@ -12,7 +12,7 @@ class FaceDetection:
         self.face_detection_flag = False
 
 
-    def detect_face(self):
+    def detect_face(self, frequency, flags):
         """
         Function to detect the presenters face.
 
@@ -40,29 +40,17 @@ class FaceDetection:
                 cv2.rectangle(frames, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
             cv2.imshow('Video', frames)
+
+            threading.Timer(frequency, self.detect_face).start()
+
+            flags.append(face_detection_flag)
+
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
         video_capture.release()
         cv2.destroyAllWindows()
 
-        return face_detection_flag
 
-    def face_detection_flag_freq(self, frequency, flags):
-        """
-        Function that sends the face detection flag with the given frequency.
 
-        Keyword Arguments:
-        frequency -- frequency that gives the detected face flag to the necessary parts.
-        flag_detection_flag -- the flag that is to be sent to the necessary parts.
-
-        Returns:
-        face_detection_flag -- the flag to be returned
-        """
-        fd = FaceDetection()
-        face_detection_flag = fd.detect_face()
-        threading.Timer(frequency, self.face_detection_flag_freq).start()
-
-        # append the flags to the list
-        flags.append(face_detection_flag)
 
