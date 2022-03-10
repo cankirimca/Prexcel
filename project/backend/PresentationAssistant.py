@@ -15,6 +15,7 @@ class PresentationAssistant:
         self.stt_exit = [False]
         self.face_detection_exit = [False]
         self.frequency = 3
+        self.face_detection_flag = False
 
     def initiate_speech_to_text(self):
         self.stt_exit[0] = False
@@ -22,7 +23,7 @@ class PresentationAssistant:
 
     def initiate_face_detection(self):
         self.face_detection_exit[0] = False
-        self.fd.face_detection_flag_freq(self.frequency)
+        self.face_detection_flag = self.fd.face_detection_flag_freq(self.frequency)
 
     def end_presentation(self):
         print("presentation ended")
