@@ -2,7 +2,7 @@ import cv2
 import os
 import threading
 
-class face_detection:
+class FaceDetection:
     def __init__(self):
         """
         Initialize the variables.
@@ -10,9 +10,9 @@ class face_detection:
         self.cascade_algorithm_path = os.path.dirname(cv2.__file__) + "/data/haarcascade_frontalface_default.xml"
         self.faceCascade = cv2.CascadeClassifier(self.cascade_algorithm_path)
         self.face_detection_flag = False
-        self.video_capture = cv2.VideoCapture(0)
 
-    def detect_face(self, video_capture):
+
+    def detect_face(self):
         """
         Function to detect the presenters face.
 
@@ -22,8 +22,10 @@ class face_detection:
         Returns:
         face_detection_flag -- the flag to be returned
         """
+        video_capture = cv2.VideoCapture(0)
+
         while True:
-            ret, frames = self.video_capture.read()
+            ret, frames = video_capture.read()
             gray = cv2.cvtColor(frames, cv2.COLOR_BGR2GRAY)
             faces = self.faceCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30), flags=cv2.CASCADE_SCALE_IMAGE)
 
@@ -57,7 +59,7 @@ class face_detection:
         Returns:
         face_detection_flag -- the flag to be returned
         """
-        fd = face_detection()
-        face_detection_flag = fd.detect_face(self.video_capture)
+        fd = FaceDetection()
+        face_detection_flag = fd.detect_face()
         threading.Timer(frequency, self.face_detection_flag_freq).start()
         return face_detection_flag
