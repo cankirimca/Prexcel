@@ -48,7 +48,7 @@ class FaceDetection:
 
         return face_detection_flag
 
-    def face_detection_flag_freq(self, frequency, flag):
+    def face_detection_flag_freq(self, frequency, flags):
         """
         Function that sends the face detection flag with the given frequency.
 
@@ -62,6 +62,7 @@ class FaceDetection:
         fd = FaceDetection()
         face_detection_flag = fd.detect_face()
         threading.Timer(frequency, self.face_detection_flag_freq).start()
-        return face_detection_flag
-        #if not detected:
-            #flags.append(false)
+
+        # append the flags to the list
+        flags.append(face_detection_flag)
+
