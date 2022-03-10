@@ -18,8 +18,8 @@ lm_alpha = 0.93
 lm_beta = 1.18
 DEFAULT_SAMPLE_RATE = 16000
 
-def format_metadata_output(tokens):   
-    f = open(root + "\output.txt","w+")
+def format_metadata_output(tokens, result_tokens):   
+    #f = open(root + "\output.txt","w+")
     if not tokens:
         return   
     #new_word = False
@@ -28,7 +28,8 @@ def format_metadata_output(tokens):
     #word = "" 
 
     for token in tokens:
-        f.write(token.text + " " + str(token.timestep) + "\n") 
+        #f.write(token.text + " " + str(token.timestep) + "\n") 
+        result_tokens.append((token.text, str(token.timestep)))
     """    
         if new_word:
             start_time = token.start_time
@@ -53,8 +54,9 @@ def format_metadata_output(tokens):
 
 class SpeechToTextModel:
 
-    def __init__(self):
+    def __init__(self, tokens):
         self.model = Model(pbmm_path)
+        self.result_tokens = tokens
         self.model.enableExternalScorer(scorer_path)
         self.model.setScorerAlphaBeta(lm_alpha, lm_beta)
         self.model.setBeamWidth(beam_width)
@@ -87,7 +89,7 @@ class SpeechToTextModel:
             print(self.stream.intermediateDecode())
             start = end    
 
-    def transcribe_live(self, buffer, stop_flag):
+    def transcribe_live(self, stop_flag):
         ttime = time.time()
         tokens = []
         #print("tr live started")
@@ -106,7 +108,7 @@ class SpeechToTextModel:
                 #<class 'deepspeech.impl.Metadata'> 
         #print(tokens)        
         #print("stt ended")
-        format_metadata_output(tokens)
+        format_metadata_output(tokens, self.result_tokens)
 
     
                       

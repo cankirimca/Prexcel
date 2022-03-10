@@ -13,7 +13,7 @@ token = namedtuple("token", "text timestep")
 word = recordclass("word", "txt start_time end_time tags")
 
 
-class SpeechAnalysis:
+class SpeechAnalyzer:
 
     # Generate intermediate 2d array of words with start and finish times
     def consolidate_tokens(self, input_list):
@@ -158,3 +158,9 @@ class SpeechAnalysis:
         result_file = open(r"result.txt", "w")
         result_file.write(result_string)
         result_file.close()
+
+    #this function puts together all the functions to execute analysis of tokens
+    def execute_analysis(self, input_tokens):
+        consolidated = self.consolidate_tokens(input_tokens)
+        tagged = self.tag_words(consolidated)
+        self.finalise_write_string(tagged)

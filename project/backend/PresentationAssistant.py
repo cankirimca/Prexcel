@@ -1,22 +1,24 @@
 from speech_to_text.SpeechToTextModel import SpeechToTextModel
 from project.backend.database.UserDataManager import UserDataManager
 from project.backend.face_detection import FaceDetection
+from project.backend.speech_analysis import SpeechAnalyzer
 from threading import Thread
 
 class PresentationAssistant:
 
     def __init__(self):
-        self.stt = SpeechToTextModel()
+        self.tokens = []
+        self.stt = SpeechToTextModel(self.tokens)
         self.udm = UserDataManager()
         self.fd = FaceDetection()
-        self.transcript = [""]
+        self.sa = SpeechAnalyzer()      
         self.stt_exit = [False]
         self.face_detection_exit = [False]
         self.frequency = 3
 
     def initiate_speech_to_text(self):
         self.stt_exit[0] = False
-        self.stt.transcribe_live(self.transcript, self.stt_exit)
+        self.stt.transcribe_live(self.stt_exit)
 
     def initiate_face_detection(self):
         self.face_detection_exit[0] = False
@@ -25,7 +27,8 @@ class PresentationAssistant:
     def end_presentation(self):
         print("presentation ended")
         self.stt_exit[0] = True   
-        self.face_detection_exit[0] = False 
+        self.face_detection_exit[0] = True
+        self.sa.execute_analysis(self.tokens)
 
     def save_speech_data(self):
         #todo add real presentation data
