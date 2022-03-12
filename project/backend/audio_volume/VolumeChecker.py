@@ -45,6 +45,46 @@ class VolumeChecker():
         decibel = 20 * math.log10(rms)
         return decibel
 
+    def check_volume():
+        vc = VolumeChecker()
+        s = vc.stream_start()
+
+
+        
+        #todo fix bug regarding creation of the dB list
+
+
+
+        rms = vc.rms(s)
+        db = vc.convert_rms_to_decibel(rms)
+
+        # todo check this again using external dB measurement
+        db = db + 70
+
+
+        print(db)
+
+        return db
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 if __name__=="__main__":
     vc = VolumeChecker()
     s = vc.stream_start()
@@ -55,3 +95,6 @@ if __name__=="__main__":
 
     vc.stream_stop()
     vc.close()
+
+
+"""
