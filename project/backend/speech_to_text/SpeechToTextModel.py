@@ -19,7 +19,7 @@ lm_beta = 1.18
 DEFAULT_SAMPLE_RATE = 16000
 
 def format_metadata_output(tokens, result_tokens):   
-    #f = open(root + "\output.txt","w+")
+    f = open(root + "\output.txt","w+")
     if not tokens:
         return   
     #new_word = False
@@ -28,7 +28,7 @@ def format_metadata_output(tokens, result_tokens):
     #word = "" 
 
     for token in tokens:
-        #f.write(token.text + " " + str(token.timestep) + "\n") 
+        f.write(token.text + " " + str(token.timestep) + "\n")
         result_tokens.append((token.text, str(token.timestep)))
     """    
         if new_word:
@@ -99,9 +99,10 @@ class SpeechToTextModel:
             if frame is not None:
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
                 x = (self.stream.intermediateDecode())
+                print(x)
 
-                if x.transcripts[0].tokens:
-                    tokens = x.transcripts[0].tokens
+                #if x.transcripts[0].tokens:
+                    #tokens = x.transcripts[0].tokens
                 #<class 'deepspeech.impl.Metadata'> 
         #print(tokens)        
         #print("stt ended")

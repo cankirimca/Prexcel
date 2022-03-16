@@ -54,7 +54,7 @@ def get_user():
 @cross_origin()
 def start_presentation():
     if request.method == 'GET':
-        presentation_assistant.stt.initiate_presentation()
+        presentation_assistant.initiate_presentation()
     return ""
 
 @app.route('/getTokens', methods = ['GET'])    
@@ -70,18 +70,7 @@ def get_tokens():
 def end_presentation():
     if request.method == 'GET':
         presentation_assistant.end_presentation()
-    return ""    
-     
-
-"""
-@app.route('/getTranscript', methods = ['GET'])
-@cross_origin()
-def get_transcript():
-    if transcript:
-        a = jsonify(transcript)
-        return a
-    return ""   
-"""    
+    return ""
 
 @app.route('/getFaceDetectionFlag', methods = ['GET'])
 @cross_origin()
@@ -93,9 +82,6 @@ def get_face_detection_flag():
             
 
 if __name__ == "__main__":
-    stt = SpeechToTextModel([])
-    stt.transcribe_live([False])
     app.run(host='localhost', port=5000)
-    thread.join()
 
 

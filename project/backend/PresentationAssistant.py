@@ -2,6 +2,7 @@ from speech_to_text.SpeechToTextModel import SpeechToTextModel
 from project.backend.database.UserDataManager import UserDataManager
 from project.backend.face_detection.FaceDetection import FaceDetection
 from project.backend.speech_analysis.SpeechAnalyzer import SpeechAnalyzer
+from project.backend.audio_volume.VolumeChecker import VolumeChecker
 from threading import Thread
 
 class PresentationAssistant:
@@ -11,9 +12,11 @@ class PresentationAssistant:
         self.stt = SpeechToTextModel(self.tokens)
         self.udm = UserDataManager()
         self.fd = FaceDetection()
-        self.sa = SpeechAnalyzer()      
+        self.sa = SpeechAnalyzer()
+        self.vc = VolumeChecker()      
         self.stt_exit = [False]
         self.fd_exit = [False]
+        self.vc_exit = [False]
         self.fd_period = 3
         self.fd_flags = []
 
@@ -26,6 +29,13 @@ class PresentationAssistant:
         self.fd_exit[0] = False
         self.fd.detect_face(self.fd_period, self.fd_flags, self.fd_exit)
         print("face detection terminated")
+
+
+    def initiate_volume_checker(self):
+        self.vc_exit[0] = False
+        self.vc.check_volume()
+        print(" volume checker terminated")
+
 
     def end_presentation(self):
         print("presentation ended")
@@ -40,8 +50,9 @@ class PresentationAssistant:
     def initiate_presentation(self):
         #create speech-to-text thread
         self.initiate_speech_to_text()
-        """stt_thread = Thread(target = self.initiate_speech_to_text)
+        self.initiate_face_detection()
+        stt_thread = Thread(target = self.initiate_speech_to_text)
         fd_thread = Thread(target = self.initiate_face_detection)
         stt_thread.start()
-        fd_thread.start()"""
+        fd_thread.start()
         

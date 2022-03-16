@@ -40,6 +40,7 @@ class VoiceDetectionManager(object):
 
         self.block_size = int(self.RATE_PROCESS / float(self.BLOCKS_PER_SECOND))
         self.queue = queue.Queue()
+        self.queue.queue.clear()
         self.sample_rate = self.RATE_PROCESS
         self.block_size_input = int(self.input_rate / float(self.BLOCKS_PER_SECOND))
         self.input_rate = input_rate
@@ -65,11 +66,13 @@ class VoiceDetectionManager(object):
     frame_duration_ms = property(lambda self: 1000 * self.block_size // self.sample_rate)
 
     def frame_generator(self, stop_flag):
+        self.queue.queue.clear()
         if self.input_rate == self.RATE_PROCESS:
             while not stop_flag[0]:
                 yield self.read()       
 
     def vad_collector(self, stop_flag):
+        self.queue.queue.clear()
         frames = self.frame_generator(stop_flag)
         ring_buffer = collections.deque(maxlen=300 // self.frame_duration_ms)
         triggered = False
@@ -99,3 +102,4 @@ class VoiceDetectionManager(object):
                     ring_buffer.clear()
 
 print("Run VoiceDetectionManager")
+

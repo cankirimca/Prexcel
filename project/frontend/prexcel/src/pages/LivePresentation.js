@@ -8,6 +8,7 @@ let transcriptRunning = false;
 
 export default function  LivePresentation(props){
    const [fd_flag, setFdFlag] = useState("");
+   //const [tokens, setTokens] = useState("");
    
    function startPresentationThreads(){
       fetch('http://localhost:5000/startPresentation', {
@@ -22,8 +23,6 @@ export default function  LivePresentation(props){
       })
       .catch(error => console.log(error))
       console.log("can");
-      //transcript = "Recording..."
-      transcriptRunning = true;
    }
 
    function startPresentation() {
@@ -48,8 +47,8 @@ export default function  LivePresentation(props){
       
       transcriptRunning = true;
    }
-/*
-   function enableTranscript(){
+
+  /* function enableTokens(){
          setInterval(async function (){ 
             await fetch('http://localhost:5000/getTranscript', {
             method: 'GET',
@@ -59,7 +58,7 @@ export default function  LivePresentation(props){
             })
             .then(resp => resp.json())
             .then((data) => {
-               setTranscript(data);
+               setTokens(data);
             })
             .catch(error => console.log(error))
          }, 500);
