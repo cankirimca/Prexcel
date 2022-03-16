@@ -19,6 +19,7 @@ class PresentationAssistant:
         self.vc_exit = [False]
         self.fd_period = 3
         self.fd_flags = []
+        self.vc_db_list = []
 
     def initiate_speech_to_text(self):
         self.stt_exit[0] = False
@@ -33,7 +34,7 @@ class PresentationAssistant:
 
     def initiate_volume_checker(self):
         self.vc_exit[0] = False
-        self.vc.check_volume()
+        self.vc.check_volume(self.vc_db_list, self.vc_exit)
         print(" volume checker terminated")
 
 
@@ -41,6 +42,8 @@ class PresentationAssistant:
         print("presentation ended")
         self.stt_exit[0] = True   
         self.fd_exit[0] = True
+        self.vc_exit[0] = True
+
         #self.sa.execute_analysis(self.tokens)
 
     def save_speech_data(self):
@@ -53,6 +56,8 @@ class PresentationAssistant:
         self.initiate_face_detection()
         stt_thread = Thread(target = self.initiate_speech_to_text)
         fd_thread = Thread(target = self.initiate_face_detection)
+        vc_thread = Thread(target = self.initiate_volume_checker)
         stt_thread.start()
         fd_thread.start()
-        
+        vc_thread.start()
+
