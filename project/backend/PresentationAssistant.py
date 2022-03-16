@@ -52,8 +52,6 @@ class PresentationAssistant:
 
     def initiate_presentation(self):
         #create speech-to-text thread
-        self.initiate_speech_to_text()
-        self.initiate_face_detection()
         stt_thread = Thread(target = self.initiate_speech_to_text)
         fd_thread = Thread(target = self.initiate_face_detection)
         vc_thread = Thread(target = self.initiate_volume_checker)
