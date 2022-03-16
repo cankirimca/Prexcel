@@ -35,9 +35,6 @@ class VoiceDetectionManager(object):
         def proxy_callback(in_data, frame_count, time_info, status):
             if self.chunk is not None:
                 in_data = self.wf.readframes(self.chunk)
-                volume = np.linalg.norm(in_data, 'utf-8')*10
-                print(volume)
-                print("|" * int(volume))
             callback(in_data)
             return None, pyaudio.paContinue
 

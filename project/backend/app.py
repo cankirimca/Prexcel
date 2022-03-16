@@ -4,6 +4,8 @@ from database.UserDataManager import UserDataManager
 from flask_cors import CORS, cross_origin
 from threading import Thread
 
+from project.backend.speech_to_text.SpeechToTextModel import SpeechToTextModel
+
 transcript = [""]
 presentation_assistant = PresentationAssistant()
 
@@ -11,14 +13,6 @@ app = Flask(__name__)
 print("can")
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-
-"""
-def transcribe_speech():
-    stt = SpeechToTextModel()
-    stt.transcribe_live(transcript)
-
-thread = Thread(target = transcribe_speech)
-"""
 
 @app.route('/', methods = ['GET'])
 def get_articles():
@@ -60,7 +54,15 @@ def get_user():
 @cross_origin()
 def start_presentation():
     if request.method == 'GET':
-        presentation_assistant.initiate_presentation()
+        presentation_assistant.stt.initiate_presentation()
+    return ""
+
+@app.route('/getTokens', methods = ['GET'])    
+@cross_origin()
+def get_tokens():
+    if request.method == 'GET':
+        a = jsonify(presentation_assistant)
+        return a
     return ""
 
 @app.route('/endPresentation', methods = ['GET'])
@@ -91,5 +93,9 @@ def get_face_detection_flag():
             
 
 if __name__ == "__main__":
+    stt = SpeechToTextModel([])
+    stt.transcribe_live([False])
     app.run(host='localhost', port=5000)
     thread.join()
+
+
