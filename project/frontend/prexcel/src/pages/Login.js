@@ -18,15 +18,15 @@ const Login = (props) => {
       }
       // otherwise reshow the login screen
       else {
-      // todo display login failed message
+         // todo display login failed message
          props.onLoginHandler(ScreenIds.LOGIN_SCREEN_ID);
       }
    });
 
-  function AttemptLogin() {
+   function AttemptLogin() {
       let login_username = document.getElementById('login_username')
       let login_password = document.getElementById('login_password')
-      const getUser = (userData) => {
+      /*const getUser = (userData) => {
          let success = true;
          fetch('http://localhost:5000/login', {
             method: 'POST',
@@ -43,63 +43,68 @@ const Login = (props) => {
             setCount(data);
          })
          .catch(error => console.log(error))
-
          return success;
       };
-      
+
       const userData = {
          "username": login_username.value,
          "password": login_password.value
       };
+     getUser(userData);*/
 
-     getUser(userData);
+      /****************************************/
+      /* ONLY FOR BYPASSING THE DB CONNECTION */
+      setCount(1);
+      /* ------------------------------------ */
+      /****************************************/
 
-     login_username.value = "";
-     login_password.value = "";
+
+      login_username.value = "";
+      login_password.value = "";
 
 
-  }
+   }
 
    function goToSignUp() {
 
       props.onLoginHandler(ScreenIds.SIGNUP_SCREEN_ID)
    }
 
-    return (
-       <Grid container spacing={2}>
+   return (
+      <Grid container spacing={2}>
 
-          <Grid item xs={12}>
-             <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >Welcome To Prexcel </h1>
-          </Grid>
+         <Grid item xs={12}>
+            <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >Welcome To Prexcel </h1>
+         </Grid>
 
-          <Grid item xs={4}/>
-          <Grid item xs={4}>
-             <Paper style={{marginTop: '50%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+         <Grid item xs={4}/>
+         <Grid item xs={4}>
+            <Paper style={{marginTop: '50%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
 
-                <Grid style={{ paddingTop: '5%' }} item xs={12}>
+               <Grid style={{ paddingTop: '5%' }} item xs={12}>
                   Please log-in or create an account to continue:
-                </Grid>
+               </Grid>
 
-                <Grid style={{ marginTop: '5%', }} item xs={12}>
-                   <TextField id="login_username" label="Username" variant="outlined" />
-                </Grid>
+               <Grid style={{ marginTop: '5%', }} item xs={12}>
+                  <TextField id="login_username" label="Username" variant="outlined" />
+               </Grid>
 
-                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                   <TextField id="login_password" label="Password" variant="outlined" />
-                </Grid>
+               <Grid style={{ marginTop: '5%'}} item xs={12}>
+                  <TextField id="login_password" label="Password" variant="outlined" />
+               </Grid>
 
-                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
-                   <Button style={{ marginRight: '5%'}} variant="contained" onClick={AttemptLogin}>Log-In</Button>
-                   <Button variant="contained" onClick={goToSignUp}>Sign-Up</Button>
-                </Grid>
+               <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
+                  <Button style={{ marginRight: '5%'}} variant="contained" onClick={AttemptLogin}>Log-In</Button>
+                  <Button variant="contained" onClick={goToSignUp}>Sign-Up</Button>
+               </Grid>
 
-             </Paper>
-          </Grid>
-          <Grid item xs={4}/>
+            </Paper>
+         </Grid>
+         <Grid item xs={4}/>
 
 
-       </Grid>
-    );
+      </Grid>
+   );
 };
 
 export default Login;
