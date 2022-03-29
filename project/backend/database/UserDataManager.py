@@ -20,7 +20,7 @@ class UserDataManager:
         use_database = '''use prexcel'''
         self.cursor.execute(use_database)
 
-    def add_presentation(self, presentation_name, transcript, user_id, wpm, duration, filler_ratio, word_count):
+    def add_presentation(self, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count):
         presentation_id = randint(100000, 999999)
         self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count) VALUES(%d, %s, %s, %d, %f, %f, %f, %f, %d)", presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count)    
 

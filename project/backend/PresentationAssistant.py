@@ -42,10 +42,12 @@ class PresentationAssistant:
 
 
     def end_presentation(self):
+        print(self.tokens)
         print("presentation ended")
         self.stt_exit[0] = True   
         self.fd_exit[0] = True
         self.vc_exit[0] = True
+        return
         transcript, word_count, duration, wpm, gap_ratio, filler_ratio = self.sa.analyzed_tokens(self.tokens)
         self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count) 
 

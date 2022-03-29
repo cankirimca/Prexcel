@@ -170,7 +170,7 @@ class SpeechAnalyzer:
     #this function puts together all the functions to execute analysis of tokens
     def analyzed_tokens(self, input_tokens):
         consolidated, word_count, duration_in_20_ms, total_gaps = self.consolidate_tokens(input_tokens)
-        duration_sec = duration_in_20_ms
+        duration_sec = duration_in_20_ms/50
         wpm = word_count/duration_sec
         gap_ratio = (total_gaps/duration_sec)*100
         tagged, filler_count = self.tag_words(consolidated)

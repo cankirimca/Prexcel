@@ -91,6 +91,7 @@ class SpeechToTextModel:
 
     def transcribe_live(self, stop_flag):
         ttime = time.time()
+        x = None
         tokens = []
         #print("tr live started")
         frames = self.vdm.vad_collector(stop_flag)
@@ -99,13 +100,11 @@ class SpeechToTextModel:
             if frame is not None:
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
                 x = (self.stream.intermediateDecodeWithMetadata())
-                #print(x)
-
                 if x.transcripts[0].tokens:
                     tokens = x.transcripts[0].tokens
                 #<class 'deepspeech.impl.Metadata'> 
-        #print(tokens)        
-        #print("stt ended")
+
+        print(x)
         format_metadata_output(tokens, self.result_tokens)
 
     def get_tokens(self):
