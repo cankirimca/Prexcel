@@ -20,6 +20,10 @@ class UserDataManager:
         use_database = '''use prexcel'''
         self.cursor.execute(use_database)
 
+    def add_presentation(self, presentation_name, transcript, user_id, wpm, duration, filler_ratio, word_count):
+        presentation_id = randint(100000, 999999)
+        self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count) VALUES(%d, %s, %s, %d, %f, %f, %f, %f, %d)", presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count)    
+
     def login(self, username, password):
         self.cursor.execute("SELECT * FROM User WHERE username = %s AND password = %s", (username, password))
         return self.cursor.fetchone()[3]
@@ -114,7 +118,6 @@ class UserDataManager:
         self.connection.commit()
 
     def delete_statistic(self, statistics_id, presentation_id, user_id):
-        
         self.cursor.execute("DELETE FROM Statistics WHERE statistics_id = %s AND presentation_id = %s AND user_id = %s", statistics_id, presentation_id, user_id)
         self.connection.commit()
 
@@ -128,10 +131,6 @@ class UserDataManager:
     #cursor.execute('''SELECT password FROM user WHERE mail_address = 'johnsmith@mail.com' ''')
     #print(cursor.fetchall())
     #db.commit()
-
-    def add_presentation(self, presentation_name, transcript, user_id):
-        presentation_id = randint(100000, 999999)
-        self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id) VALUES(%d, %s, %s, %d)", presentation_id, presentation_name, transcript, user_id)
 
 udm = UserDataManager()
 try:

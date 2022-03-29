@@ -1,5 +1,7 @@
 from collections import namedtuple
 from recordclass import *
+import os
+#from project.backend.database.UserDataManager import UserDataManager
 
 # Constants for determining time based tag insertion
 # Note that: 1 timestep == 0.02 seconds
@@ -25,6 +27,8 @@ class SpeechAnalyzer:
         word_count = 0
         curr_word = ""
         start = 0
+        end = 0
+        total_gaps = 0
         for t in tokens:
             if tokens.index(t) == 0:
                 curr_word = ""
@@ -34,37 +38,39 @@ class SpeechAnalyzer:
                 curr_word = ""
                 start = tokens[tokens.index(t) + 1].timestep
                 word_count += 1
+                total_gaps += tokens[tokens.index(t) + 1].timestep - tokens[tokens.index(t)].timestep
             elif tokens.index(t) == len(tokens) - 1:
                 curr_word += t.text
                 consolidated_tokens.append(word(txt=curr_word, start_time=start, end_time=t.timestep
                                                                                           + t.timestep - (tokens[
                     tokens.index(t) - 1]).timestep, tags=[]))
                 word_count += 1
+                end = t.timestep
                 break
 
             if t.text != " ":
                 curr_word += t.text
-        return consolidated_tokens
+        return consolidated_tokens, word_count, end, total_gaps
 
     # Use consolidated_tokens as input
     def tag_words(self, token_return_list):
         word_list = token_return_list
-
         fillers2d = []  # Handled dynamically in code
         # Create Fillers list from file
-        fillers_file = open(r"fillers.txt", "r")
+        fillers_file = open(r"project/backend/speech_analysis/fillers.txt", "r")
         fillers = fillers_file.readlines()
         fillers_file.close()
         # Generate 2d word array of filler phrases
         for f in fillers:
             fillers[fillers.index(f)] = f.rstrip("\n")
-            fillers2d.append(fillers[fillers.index(f)].split())
+            fillers2d.append(fillers[fillers.index(f.rstrip("\n"))].split())
 
         # Space = {/space/}
         # Filler = {filler} word/words {filler/} - "f"
         # Repeat = {repeat} word {repeat/} - "r"
         # Dragged = {dragged} word {dragged/} - "d"
 
+        filler_count = 0
         temp_curr = 0
         for w in word_list:
             curr_index = word_list.index(w)
@@ -111,6 +117,7 @@ class SpeechAnalyzer:
                         if phrase_match:
                             word_list[curr_index].tags.append("fs")  # Filler start tag
                             word_list[curr_index + w_index].tags.append("fe")  # Filler end tag
+                            filler_count += 1
 
                 # Insert space tag
                 if word_list[curr_index + 1].end_time > 0 and (
@@ -129,7 +136,7 @@ class SpeechAnalyzer:
         string_list_file.writelines(word_string_list)
         string_list_file.close()
 
-        return word_list
+        return word_list, filler_count
 
     def finalise_write_string(self, input_word_list):
         result_string = ""
@@ -155,12 +162,48 @@ class SpeechAnalyzer:
             if len(w.tags) == 0:
                 result_string += " "
 
-        result_file = open(r"result.txt", "w")
-        result_file.write(result_string)
-        result_file.close()
+        #result_file = open(r"result.txt", "w")
+        #result_file.write(result_string)
+        #result_file.close()
+        return result_string
 
     #this function puts together all the functions to execute analysis of tokens
-    def execute_analysis(self, input_tokens):
-        consolidated = self.consolidate_tokens(input_tokens)
-        tagged = self.tag_words(consolidated)
-        self.finalise_write_string(tagged)
+    def analyzed_tokens(self, input_tokens):
+        consolidated, word_count, duration_in_20_ms, total_gaps = self.consolidate_tokens(input_tokens)
+        duration_sec = duration_in_20_ms
+        wpm = word_count/duration_sec
+        gap_ratio = (total_gaps/duration_sec)*100
+        tagged, filler_count = self.tag_words(consolidated)
+        filler_ratio = filler_count/word_count
+        return self.finalise_write_string(tagged), word_count, duration_sec, wpm, gap_ratio, filler_ratio
+
+#the below code is used for the testing of this class
+"""
+#directory = os.getcwd()
+#print(directory)
+
+sa = SpeechAnalyzer()
+f = open("project/backend/speech_analysis/sa.txt", "r")
+read = f.readlines()
+tokens = []
+
+for line in read:
+    line2 = line.split()
+    if len(line2) == 2:
+        tokens.append(token(line2[0], int(line2[1])))
+    elif len(line2) == 1:
+        tokens.append(token(" ", int(line2[0])) )   
+#print(tokens)
+
+consolidated, word_count, duration_in_20_ms, total_gaps = sa.consolidate_tokens(tokens)
+duration_sec = duration_in_20_ms/50
+wpm = word_count/duration_sec
+gap_ratio = (total_gaps/duration_sec)*100
+#print(c_tokens)
+#print(type(tokens))
+tagged = sa.tag_words(consolidated)
+#print(tagged)
+ws = sa.finalise_write_string(tagged)
+print(ws)
+print("result: ", duration_sec, wpm, gap_ratio)
+"""

@@ -7,7 +7,7 @@ from threading import Thread
 from project.backend.speech_to_text.SpeechToTextModel import SpeechToTextModel
 
 transcript = [""]
-presentation_assistant = PresentationAssistant()
+presentation_assistant = PresentationAssistant("123", "name1")
 
 app = Flask(__name__)
 print("can")

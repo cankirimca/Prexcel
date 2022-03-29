@@ -7,7 +7,7 @@ from threading import Thread
 
 class PresentationAssistant:
 
-    def __init__(self):
+    def __init__(self, user_id, presentation_name):
         self.tokens = []
         self.stt = SpeechToTextModel(self.tokens)
         self.udm = UserDataManager()
@@ -20,6 +20,9 @@ class PresentationAssistant:
         self.fd_period = 3
         self.fd_flags = []
         self.vc_db_list = []
+        self.user_id = user_id
+        self.presentation_name = presentation_name
+        self.facial_orientation_score = 0
 
     def initiate_speech_to_text(self):
         self.stt_exit[0] = False
@@ -28,7 +31,7 @@ class PresentationAssistant:
 
     def initiate_face_detection(self):
         self.fd_exit[0] = False
-        self.fd.detect_face(self.fd_period, self.fd_flags, self.fd_exit)
+        self.facial_orientation_score = self.fd.detect_face(self.fd_period, self.fd_flags, self.fd_exit)
         print("face detection terminated")
 
 
@@ -43,12 +46,8 @@ class PresentationAssistant:
         self.stt_exit[0] = True   
         self.fd_exit[0] = True
         self.vc_exit[0] = True
-
-        #self.sa.execute_analysis(self.tokens)
-
-    def save_speech_data(self):
-        #todo add real presentation data
-        self.udm.add_presentation(123, 'asd', self.transcript[0], 21345)    
+        transcript, word_count, duration, wpm, gap_ratio, filler_ratio = self.sa.analyzed_tokens(self.tokens)
+        self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count) 
 
     def initiate_presentation(self):
         #create speech-to-text thread

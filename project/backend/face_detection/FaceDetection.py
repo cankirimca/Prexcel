@@ -11,6 +11,8 @@ class FaceDetection:
         self.cascade_algorithm_path = os.path.dirname(cv2.__file__) + "/data/haarcascade_frontalface_default.xml"
         self.faceCascade = cv2.CascadeClassifier(self.cascade_algorithm_path)
         self.face_detection_flag = False
+        self.face_detected_duration = 0
+        self.face_not_detected_duration = 0
 
 
     def detect_face(self, frequency, flags, stop_flag):
@@ -33,9 +35,11 @@ class FaceDetection:
             if len(faces) == 0:
                 print("Cannot detect face!")
                 face_detection_flag = "-"
+                self.face_not_detected_duration += 1
             else:
                 print("Face is detected!")
                 face_detection_flag = "+"
+                self.face_detected_duration += 1
 
             #for (x, y, w, h) in faces:
                 #cv2.rectangle(frames, (x, y), (x+w, y+h), (0, 255, 0), 2)
@@ -48,6 +52,7 @@ class FaceDetection:
 
         video_capture.release()
         cv2.destroyAllWindows()
+        return (self.face_detected_duration / (self.face_detected_duration + self.face_not_detected_duration))
 
 
 

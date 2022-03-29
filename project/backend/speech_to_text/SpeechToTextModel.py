@@ -98,11 +98,11 @@ class SpeechToTextModel:
         for frame in frames:
             if frame is not None:
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
-                x = (self.stream.intermediateDecode())
-                print(x)
+                x = (self.stream.intermediateDecodeWithMetadata())
+                #print(x)
 
-                #if x.transcripts[0].tokens:
-                    #tokens = x.transcripts[0].tokens
+                if x.transcripts[0].tokens:
+                    tokens = x.transcripts[0].tokens
                 #<class 'deepspeech.impl.Metadata'> 
         #print(tokens)        
         #print("stt ended")
@@ -110,8 +110,8 @@ class SpeechToTextModel:
 
     def get_tokens(self):
         return self.result_tokens
-
-"""stm = SpeechToTextModel([])
+"""
+stm = SpeechToTextModel([])
 buffer = [""]
 sf = [False]
 x = stm.transcribe_live( sf)"""

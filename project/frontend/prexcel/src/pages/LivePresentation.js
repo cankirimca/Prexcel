@@ -44,7 +44,7 @@ export default function  LivePresentation(props){
       .catch(error => console.log(error))
       console.log("can");
       //transcript = "Stopped"
-      
+      clearInterval();
       transcriptRunning = true;
    }
 

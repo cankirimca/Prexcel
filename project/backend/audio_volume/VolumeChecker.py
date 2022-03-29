@@ -17,7 +17,6 @@ class VolumeChecker():
 
     def stream_start(self):
         self.stream = self.p.open(format = pyaudio.paInt16, channels = 1, rate=self.rate, input = True, frames_per_buffer = self.chunk)
-        print('Type of stream obj: ', type(self.stream))
         return self.stream
 
     def stream_read(self):
@@ -71,7 +70,7 @@ class VolumeChecker():
             # todo check this again using external dB measurement
             db = db + 70
             decibel_list.append(db)
-            print(db)
+
 
 
 
