@@ -80,6 +80,21 @@ def get_face_detection_flag():
     return ""       
 
             
+@app.route('/getDecibelFlag', methods = ['GET'])
+@cross_origin()
+def get_decibel_flag():
+    if presentation_assistant.vc_db_list:
+        return jsonify(presentation_assistant.vc_db_list)
+    return ""
+
+
+@app.route('/getTranscript', methods = ['GET'])
+@cross_origin()
+def get_decibel_flag():
+    # todo add live transcript
+    #if presentation_assistant.vc_db_list:
+    #    return jsonify(presentation_assistant.vc_db_list)
+    return ""
 
 if __name__ == "__main__":
     app.run(host='localhost', port=5000)
