@@ -8,6 +8,8 @@ let transcriptRunning = false;
 
 export default function  LivePresentation(props){
    const [fd_flag, setFdFlag] = useState("");
+   const [decibel_flag, setDecibel] = useState("");
+   const [transcript, setTranscript] = useState("");
    //const [tokens, setTokens] = useState("");
    
    function startPresentationThreads(){
@@ -28,6 +30,7 @@ export default function  LivePresentation(props){
    function startPresentation() {
       startPresentationThreads();
       getFaceDetectionFlag();
+      getDecibel();
    }
 
    function endPresentation() {
@@ -80,6 +83,38 @@ export default function  LivePresentation(props){
       }, 500);
    }
 
+   function getDecibel() {
+      setInterval(async function() {
+         await fetch('http://localhost:5000/getDecibelFlag', {
+            method: 'GET',
+            headers: {
+               'ContentType':'application/json'
+            },
+         })
+         .then(resp => resp.json())
+         .then((data) =>{
+            setDecibel(data);
+         })
+         .catch(error => console.log(error))
+      }, 500);
+   }
+
+
+   function getTranscript() {
+      setInterval(async function() {
+         await fetch('http://localhost:5000/getTranscript', {
+            method: 'GET',
+            headers: {
+               'ContentType':'application/json'
+            },
+         })
+         .then(resp => resp.json())
+         .then((data) =>{
+            setDecibel(data);
+         })
+         .catch(error => console.log(error))
+      }, 500);
+   }
 
   function goBackToMainMenu() {
    props.onLivePresentationHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
@@ -107,6 +142,16 @@ export default function  LivePresentation(props){
                  <Paper style={{marginTop: '15%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
                     <p> Face Detection Flag: </p> <br/>
                     {fd_flag}
+                 </Paper>
+
+                 <Paper style={{marginTop: '15%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+                    <p> Decibel Flags: </p> <br/>
+                    {decibel_flag}
+                 </Paper>
+
+                 <Paper style={{marginTop: '15%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+                    <p> Transcript: </p> <br/>
+                    {transcript}
                  </Paper>
               </Grid>
               <Grid item xs={2}/>
