@@ -21,7 +21,7 @@ class SpeechAnalyzer:
     def consolidate_tokens(self, input_list):
         tokens = []
         for inp in input_list:
-            tokens.append(token(text=inp[0], timestep=inp[1]))
+            tokens.append(token(text=inp[0], timestep=int(inp[1])))
 
         consolidated_tokens = []
         word_count = 0
@@ -33,9 +33,10 @@ class SpeechAnalyzer:
             if tokens.index(t) == 0:
                 curr_word = ""
                 start = t.timestep
-            elif t.text == " ":
+            elif t.text == " " and tokens.index(t) != len(tokens) - 1:
                 consolidated_tokens.append(word(txt=curr_word, start_time=start, end_time=t.timestep, tags=[]))
                 curr_word = ""
+                print("index: ", tokens.index(t))
                 start = tokens[tokens.index(t) + 1].timestep
                 word_count += 1
                 total_gaps += tokens[tokens.index(t) + 1].timestep - tokens[tokens.index(t)].timestep
@@ -148,7 +149,7 @@ class SpeechAnalyzer:
             if "fs" in w.tags:
                 result_string += " {filler} "
 
-            if result_string[0] == " ":
+            if result_string and result_string[0] == " ":
                 result_string = result_string.replace(" ", "", 1)
 
             result_string += w.txt

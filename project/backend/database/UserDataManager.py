@@ -22,7 +22,9 @@ class UserDataManager:
 
     def add_presentation(self, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count):
         presentation_id = randint(100000, 999999)
-        self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count) VALUES(%d, %s, %s, %d, %f, %f, %f, %f, %d)", presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count)    
+        print(presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count)
+        self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)", (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count))   
+        self.connection.commit()
 
     def login(self, username, password):
         self.cursor.execute("SELECT * FROM User WHERE username = %s AND password = %s", (username, password))

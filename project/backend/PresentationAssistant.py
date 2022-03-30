@@ -23,6 +23,9 @@ class PresentationAssistant:
         self.user_id = user_id
         self.presentation_name = presentation_name
         self.facial_orientation_score = 0
+        self.stt_thread = Thread(target = self.initiate_speech_to_text)
+        self.fd_thread = Thread(target = self.initiate_face_detection)
+        self.vc_thread = Thread(target = self.initiate_volume_checker)
 
     def initiate_speech_to_text(self):
         self.stt_exit[0] = False
@@ -42,21 +45,19 @@ class PresentationAssistant:
 
 
     def end_presentation(self):
-        print(self.tokens)
         print("presentation ended")
         self.stt_exit[0] = True   
         self.fd_exit[0] = True
         self.vc_exit[0] = True
-        return
+        self.stt_thread.join()
+        self.fd_thread.join()
+        self.vc_thread.join()
         transcript, word_count, duration, wpm, gap_ratio, filler_ratio = self.sa.analyzed_tokens(self.tokens)
         self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count) 
 
     def initiate_presentation(self):
         #create speech-to-text thread
-        stt_thread = Thread(target = self.initiate_speech_to_text)
-        fd_thread = Thread(target = self.initiate_face_detection)
-        vc_thread = Thread(target = self.initiate_volume_checker)
-        stt_thread.start()
-        fd_thread.start()
-        vc_thread.start()
+        self.stt_thread.start()
+        self.fd_thread.start()
+        self.vc_thread.start()
 

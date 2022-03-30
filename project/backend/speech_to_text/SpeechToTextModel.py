@@ -19,6 +19,7 @@ lm_beta = 1.18
 DEFAULT_SAMPLE_RATE = 16000
 
 def format_metadata_output(tokens, result_tokens):   
+    print("format called inside")
     f = open(root + "\output.txt","w+")
     if not tokens:
         return   
@@ -28,7 +29,8 @@ def format_metadata_output(tokens, result_tokens):
     #word = "" 
 
     for token in tokens:
-        f.write(token.text + " " + str(token.timestep) + "\n")
+        #f.write(token.text + " " + str(token.timestep) + "\n")
+        print("token")
         result_tokens.append((token.text, str(token.timestep)))
     """    
         if new_word:
@@ -103,8 +105,7 @@ class SpeechToTextModel:
                 if x.transcripts[0].tokens:
                     tokens = x.transcripts[0].tokens
                 #<class 'deepspeech.impl.Metadata'> 
-
-        print(x)
+        print("format called")        
         format_metadata_output(tokens, self.result_tokens)
 
     def get_tokens(self):
