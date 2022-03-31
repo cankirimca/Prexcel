@@ -7,12 +7,22 @@ from threading import Thread
 from project.backend.speech_to_text.SpeechToTextModel import SpeechToTextModel
 
 transcript = [""]
-presentation_assistant = PresentationAssistant(7123456, "testPresentation1")
+
+#user credentials
+user_id = [None]
+username = [None]
+presentation_assistant = None
+
 
 app = Flask(__name__)
 print("can")
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+
+#set user info after login
+def initiate_user_info(id, name):
+    user_id[0] = id
+    username[0] = name
 
 @app.route('/', methods = ['GET'])
 def get_articles():
@@ -45,7 +55,8 @@ def get_user():
         username = request.json["username"]
         password = request.json["password"]
         try:
-            user_id = ud.login(username, password)  
+            user_id = ud.login(username, password)
+            initiate_user_info(user_id, username)  
             return jsonify(user_id)
         except TypeError:
             return jsonify(-1) #indicates error
@@ -54,6 +65,9 @@ def get_user():
 @cross_origin()
 def start_presentation():
     if request.method == 'GET':
+        #TODO add presentation name screen
+        #presentation_name = username = request.json["presentation_name"]
+        presentation_assistant = PresentationAssistant(user_id, "testPresentation1")
         presentation_assistant.initiate_presentation()
     return ""
 
@@ -68,14 +82,14 @@ def get_tokens():
 @app.route('/endPresentation', methods = ['GET'])
 @cross_origin()
 def end_presentation():
-    if request.method == 'GET':
+    if request.method == 'GET' and presentation_assistant:
         presentation_assistant.end_presentation()
     return ""
 
 @app.route('/getFaceDetectionFlag', methods = ['GET'])
 @cross_origin()
 def get_face_detection_flag():
-    if presentation_assistant.fd_flags:
+    if presentation_assistant and presentation_assistant.fd_flags:
         return jsonify(presentation_assistant.fd_flags)
     return ""       
 
@@ -83,14 +97,14 @@ def get_face_detection_flag():
 @app.route('/getDecibelFlag', methods = ['GET'])
 @cross_origin()
 def get_decibel_flag():
-    if presentation_assistant.vc_db_list:
-        return jsonify(presentation_assistant.vc_db_list)
+    if presentation_assistant and presentation_assistant.vc_db_list:
+        return jsonify(presentation_assistant.vc_db_list[-1])
     return ""
 
 
 @app.route('/getTranscript', methods = ['GET'])
 @cross_origin()
-def get_decibel_flag():
+def get_transcript():
     # todo add live transcript
     #if presentation_assistant.vc_db_list:
     #    return jsonify(presentation_assistant.vc_db_list)
