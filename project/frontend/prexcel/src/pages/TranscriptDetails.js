@@ -7,7 +7,7 @@ export default function TranscriptDetails(props) {
   function goBackToPresentationDetails() {
     props.onTranscriptDetails(ScreenIds.PRESENTATION_DETAILS_SCREEN_ID);
   }
-
+  // to be removed
   return(
     <div>
     <h2>Transcript " ENG 101 " Presentation</h2>
