@@ -23,6 +23,7 @@ import LivePresentation from "./pages/LivePresentation";
 import ChatBot from "./pages/ChatBot";
 
 import ScreenIds from "./pages/ScreenIds";
+import UserAccountDetails from "./pages/UserAccountDetails";
 
 function App() {
 
@@ -60,6 +61,8 @@ function App() {
          return <SignUp onSignUpHandler={changeViewHandler}/>
       else if (currentScreen === ScreenIds.CHAT_BOT_SCREEN_ID)
          return <ChatBot onChatBot={changeViewHandler}/>;
+      else if (currentScreen === ScreenIds.USER_ACC_DETAILS_SCREEN_ID)
+         return <UserAccountDetails onUserAccountDetailsHandler={changeViewHandler}/>;
    }
 
 //  function navigate() {

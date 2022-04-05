@@ -17,6 +17,10 @@ const MainMenu = (props) => {
     props.onMainMenuHandler(ScreenIds.MY_PRESENTATIONS_SCREEN_ID);
   }
 
+   function goToUserAccountDetails() {
+      props.onMainMenuHandler(ScreenIds.USER_ACC_DETAILS_SCREEN_ID);
+   }
+
   function goToLivePresentation() {
    props.onMainMenuHandler(ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID);
   }
@@ -45,7 +49,7 @@ const MainMenu = (props) => {
                        <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToMyPresentations}>My Presentations</Button> <br/>
                        <Button style={{ marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Prexcel</Button> <br/>
                        <Button style={{ marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Presentations</Button> <br/>
-                       <Button style={{ marginBottom: '5%'}} variant="contained" onClick={doNothing}>User-Account-Details</Button> <br/>
+                       <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToUserAccountDetails}>User-Account-Details</Button> <br/>
                        <Button style={{ marginBottom: '5%'}} variant="contained" onClick={logOut}>Log-Out</Button>
                  </Paper>
               </Grid>
