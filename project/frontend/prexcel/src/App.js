@@ -24,6 +24,7 @@ import ChatBot from "./pages/ChatBot";
 
 import ScreenIds from "./pages/ScreenIds";
 import UserAccountDetails from "./pages/UserAccountDetails";
+import NewPresentation from "./pages/NewPresentation";
 
 function App() {
 
@@ -63,6 +64,8 @@ function App() {
          return <ChatBot onChatBot={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.USER_ACC_DETAILS_SCREEN_ID)
          return <UserAccountDetails onUserAccountDetailsHandler={changeViewHandler}/>;
+      else if (currentScreen === ScreenIds.NEW_PRESENTATION_ID)
+         return <NewPresentation onNewPresentationHandler={changeViewHandler}/>;
    }
 
 //  function navigate() {
