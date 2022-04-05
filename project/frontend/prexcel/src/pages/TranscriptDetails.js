@@ -1,5 +1,6 @@
 import ScreenIds from "./ScreenIds";
 import {Button, Grid, Paper, TextField} from "@mui/material";
+import React from "react";
 
 
 export default function TranscriptDetails(props) {
@@ -10,11 +11,47 @@ export default function TranscriptDetails(props) {
 
   return(
      <div>
-       <h2>Transcript {props.selectedPresentations[0].name} Presentation</h2>
-       <p style={{textAlign: "left", marginLeft: 40 , marginTop: 30, marginBottom: 30, marginRight: 40}}>
-         {props.selectedPresentations[0].transcript}
-       </p>
-       <Button variant="contained" onClick={goBackToPresentationDetails}>Back To Presentation Details</Button>
+        <Grid container>
+           <Grid item xs={12}>
+              <h2>Transcript of "{props.selectedPresentations[0].name}"</h2>
+           </Grid>
+
+           <Grid item xs={7} style={{ marginTop: '1%', marginLeft: '2%'}}>
+              <Paper elevation={3}>
+                 <p>
+                    {props.selectedPresentations[0].transcript}
+                 </p>
+              </Paper>
+
+           </Grid>
+           <Grid item xs={1}/>
+           <Grid item xs={4} style={{ marginLeft: '-4%'}}>
+              <Paper elevation={3} style={{ margin: '5%', paddingBottom:'1%'}}>
+                 Legend
+                 <ul align="left">
+                    <li> <p style={{ color:"green"}}> Dragged </p> </li>
+                    <li> <p style={{ color:"red"}}> Rushed </p> </li>
+                    <li> <p style={{ color:"orange"}}> Big gap </p></li>
+                 </ul>
+              </Paper>
+              <Paper elevation={3} style={{ margin: '5%', paddingBottom:'1%'}}>
+                 Statistics
+                 <ul align="left">
+                    <li>You dragged X% of the time. </li>
+                    <li>You rushed X% of the time. </li>
+                    <li>You had a gap X% of the time. </li>
+                 </ul>
+              </Paper>
+           </Grid>
+
+           <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
+              <Button variant="contained" onClick={goBackToPresentationDetails}>Back To Presentation Details</Button>
+           </Grid>
+           <Grid item xs={4}/>
+
+
+        </Grid>
+
      </div>
   );
 
