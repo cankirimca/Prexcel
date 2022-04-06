@@ -40,6 +40,8 @@ const SignUp = (props) => {
       };
       addUser(newData);
 
+
+      // TODO we are doing something completely different here...
       // if successful change to main menu
       if ( signUpSuccessful){
          props.onSignUpHandler(ScreenIds.LOGIN_SCREEN_ID);
