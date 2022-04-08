@@ -25,6 +25,7 @@ import ChatBot from "./pages/ChatBot";
 import ScreenIds from "./pages/ScreenIds";
 import UserAccountDetails from "./pages/UserAccountDetails";
 import NewPresentation from "./pages/NewPresentation";
+import UploadRecordingScreen from "./pages/UploadRecordingScreen";
 
 function App() {
 
@@ -66,6 +67,8 @@ function App() {
          return <UserAccountDetails onUserAccountDetailsHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.NEW_PRESENTATION_ID)
          return <NewPresentation onNewPresentationHandler={changeViewHandler}/>;
+      else if (currentScreen === ScreenIds.UPLOAD_PRESENTATION_SCREEN_ID)
+         return <UploadRecordingScreen onUploadPresentationHandler={changeViewHandler}/>;
    }
 
 //  function navigate() {

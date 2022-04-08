@@ -20,7 +20,7 @@ export default function NewPresentation(props) {
 
    // todo
    function goToUploadPresentation() {
-      return null;
+      props.onNewPresentationHandler(ScreenIds.UPLOAD_PRESENTATION_SCREEN_ID);
       // props.onNewPresentationHandler(ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID)
    }
 
