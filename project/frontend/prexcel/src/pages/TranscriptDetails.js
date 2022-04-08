@@ -1,13 +1,62 @@
 import ScreenIds from "./ScreenIds";
 import {Button, Grid, Paper, TextField} from "@mui/material";
-import React from "react";
+import React, {useState} from "react";
+
+
 
 
 export default function TranscriptDetails(props) {
 
+
   function goBackToPresentationDetails() {
     props.onTranscriptDetails(ScreenIds.PRESENTATION_DETAILS_SCREEN_ID);
   }
+
+   const str_type_regular = 0;
+   const str_type_filler = 1;
+   const str_type_gap = 2;
+   const str_type_repeated = 3;
+   const str_type_dragged = 4;
+
+   const [processedTranscriptArr, setTranscriptArr] = useState([]);
+
+   // todo
+  function processTranscript() {
+     let unprocessedTranscript = props.selectedPresentations[0].transcript;
+
+     let indexTranscript = 0;
+     let textPtr = unprocessedTranscript[indexTranscript];
+
+     let processTranscriptArrTemp = [];
+
+     let tagStack = [];
+     tagStack.push(str_type_regular)
+
+     console.log("TextPtr:" + textPtr);
+
+     while(indexTranscript < unprocessedTranscript.length){
+
+        let nextWord = "";
+
+        let indexTemp = indexTranscript;
+
+        while(textPtr !== " "){
+           nextWord = nextWord.concat(unprocessedTranscript[indexTemp]);
+           indexTemp += 1;
+           textPtr = unprocessedTranscript[indexTemp]
+        }
+        nextWord = nextWord.concat(" " );
+
+        processTranscriptArrTemp.push( { type: tagStack[tagStack.length-1], word: nextWord} );
+        indexTranscript += nextWord.length;
+
+        console.log("nextWord: " + nextWord);
+
+
+     }
+
+  }
+
 
   return(
      <div>
@@ -21,6 +70,7 @@ export default function TranscriptDetails(props) {
                  <p>
                     {props.selectedPresentations[0].transcript}
                  </p>
+                 <Button variant="contained" onClick={processTranscript}>Print</Button>
               </Paper>
 
            </Grid>
@@ -30,8 +80,9 @@ export default function TranscriptDetails(props) {
                  Legend
                  <ul align="left">
                     <li> <p style={{ color:"green"}}> Dragged </p> </li>
-                    <li> <p style={{ color:"red"}}> Rushed </p> </li>
-                    <li> <p style={{ color:"orange"}}> Big gap </p></li>
+                    <li> <p style={{ color:"darkorange"}}> Repeated </p> </li>
+                    <li> <p style={{ color:"blue"}}> Filler </p> </li>
+                    <li> <p style={{ color:"red"}}> Big gap </p></li>
                  </ul>
               </Paper>
               <Paper elevation={3} style={{ margin: '5%', paddingBottom:'1%'}}>
