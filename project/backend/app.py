@@ -2,9 +2,6 @@ from flask import Flask, jsonify, request
 from PresentationAssistant import PresentationAssistant
 from database.UserDataManager import UserDataManager
 from flask_cors import CORS, cross_origin
-from threading import Thread
-
-from project.backend.speech_to_text.SpeechToTextModel import SpeechToTextModel
 
 transcript = [""]
 

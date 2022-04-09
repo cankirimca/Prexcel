@@ -88,8 +88,9 @@ class SpeechToTextModel:
             chunk = buffer[start:end]
             data16 = np.frombuffer(chunk, dtype = np.int16)
             self.stream.feedAudioContent(data16)
-            print(self.stream.intermediateDecode())
+            text = self.stream.intermediateDecode()
             start = end    
+        return text
 
     def transcribe_live(self, stop_flag):
         ttime = time.time()
@@ -114,5 +115,13 @@ class SpeechToTextModel:
 stm = SpeechToTextModel([])
 buffer = [""]
 sf = [False]
-x = stm.transcribe_live( sf)"""
+filename = root + "\\spkr3.wav"
+print("starting")
+start = time.time()
+x = stm.transcribe_stream(filename)
+end = time.time()
+print(end - start)
+print(x)
+print("ended")
+"""
 

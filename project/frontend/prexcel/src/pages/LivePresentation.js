@@ -11,7 +11,9 @@ export default function  LivePresentation(props){
    const [decibel_flag, setDecibel] = useState("");
    const [transcript, setTranscript] = useState("");
    //const [tokens, setTokens] = useState("");
-
+   
+   //disable end presentation button
+   document.getElementById("endPresentationButton").disabled = true;
 
    const [flagGap, setFlagGap] = useState(true);
 
@@ -35,6 +37,8 @@ export default function  LivePresentation(props){
    }
 
    function startPresentation() {
+      document.getElementById("startPresentationButton").disabled = true;
+      document.getElementById("endPresentationButton").disabled = false;
       startPresentationThreads();
       getFaceDetectionFlag();
       getDecibel();
@@ -55,7 +59,7 @@ export default function  LivePresentation(props){
       console.log("can");
       //transcript = "Stopped"
       clearInterval();
-      transcriptRunning = true;
+      document.getElementById("endPresentationButton").disabled = true;
    }
 
    /* function enableTokens(){
@@ -179,8 +183,8 @@ export default function  LivePresentation(props){
             <Grid item xs={6}>
                <Paper style={{marginTop: '1%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={0}>
 
-                  <Button style={{ margin: '5%'}} variant="contained" onClick={startPresentation}>Start Presentation</Button>
-                  <Button style={{ margin: '5%'}} variant="contained" onClick={endPresentation}>End Presentation</Button>
+                  <Button id="startPresentationButton" style={{ margin: '5%'}} variant="contained" onClick={startPresentation}>Start Presentation</Button>
+                  <Button id="endPresentationButton" style={{ margin: '5%'}} variant="contained" onClick={endPresentation}>End Presentation</Button>
                   <Button style={{ margin: '5%'}} variant="contained" onClick={goBackToMainMenu}>Back to Main Menu</Button>
 
 
