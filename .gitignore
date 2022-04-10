@@ -6,5 +6,5 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-/project/speech_to_text/deepspeech-0.9.3-models.pbmm
-/project/speech_to_text/deepspeech-0.9.3-models.scorer
+/project/backend/speech_to_text/deepspeech-0.9.3-models.pbmm
+/project/backend/speech_to_text/deepspeech-0.9.3-models.scorer

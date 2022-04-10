@@ -6,12 +6,15 @@ from project.backend.speech_analysis.SpeechAnalyzer import SpeechAnalyzer
 
 class PresentationAnalyzer:
 
-    def __init__(self, user_id, presentation_name, presentation_file):
+    def __init__(self, user_id, presentation_name, file_path):
+        self.tokens = []
+        self.stt = SpeechToTextModel(self.tokens)
         self.fd = FaceDetection()
         self.fd_flags = []
         self.user_id = user_id
         self.presentation_name = presentation_name
-        self.presentation_file = presentation_file
+        self.file_path = file_path
+        
 
     def initiate_speech_analyzer(self):
         pass
@@ -24,6 +27,10 @@ class PresentationAnalyzer:
 
         print("face detection module finished.")
 
+    def process_recording(self):
+        self.stt.transcribe_stream(self.file_path)
+        transcript, word_count, duration, wpm, gap_ratio, filler_ratio = self.sa.analyzed_tokens(self.tokens)
+        self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count) 
 
 
 

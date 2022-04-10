@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from PresentationAssistant import PresentationAssistant
+from PresentationAnalyzer import PresentationAnalyzer
 from database.UserDataManager import UserDataManager
 from flask_cors import CORS, cross_origin
 
@@ -9,6 +10,7 @@ transcript = [""]
 user_id = [None]
 username = [None]
 presentation_assistant = None
+presentation_analyzer = None
 
 
 app = Flask(__name__)
@@ -106,6 +108,23 @@ def get_transcript():
     #if presentation_assistant.vc_db_list:
     #    return jsonify(presentation_assistant.vc_db_list)
     return ""
+
+@app.route('/processUploadedPresentation', methods = ['POST'])
+@cross_origin()
+def process_upload():
+    try:    
+        file_path = request.json["path"]
+        print("path:", file_path)
+        file_path = file_path.replace("\\", "/")
+        print("path:", file_path)
+        presentation_name = request.json["presentation_name"]  
+        pa = PresentationAnalyzer(user_id, presentation_name, file_path)
+        pa.process_recording()
+        return "Processing successful, you may now view the report."
+    except:
+        return "An error occured during the processing. Please try again."   
+
+    
 
 if __name__ == "__main__":
     app.run(host='localhost', port=5000)

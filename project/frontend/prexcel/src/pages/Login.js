@@ -23,7 +23,7 @@ const Login = (props) => {
       }
    });
 
-  function AttemptLogin() {
+   function AttemptLogin() {
       let login_username = document.getElementById('login_username')
       let login_password = document.getElementById('login_password')
       const getUser = (userData) => {
@@ -56,8 +56,6 @@ const Login = (props) => {
 
      login_username.value = "";
      login_password.value = "";
-
-
   }
 
    function goToSignUp() {

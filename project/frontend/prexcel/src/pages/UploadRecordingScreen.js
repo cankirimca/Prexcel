@@ -11,7 +11,7 @@ export default function UploadRecordingScreen(props) {
    const [flagPresentationProcessed, setPresentationProcessed] = useState(false);
 
    const [flagProcessingPresentation, setFlagProcessingPresentation] = useState(false);
-
+   let path = ""
 
    /*const [openFileSelector, { filesContent, loading }] = useFilePicker({
       accept: '.txt',
@@ -32,22 +32,31 @@ export default function UploadRecordingScreen(props) {
    // todo
    function processRecording() {
       setFlagProcessingPresentation(true);
-      
-      console.log("cancan");
-      // todo one thing that could be / should be done here, depending on how much time processing takes is to
+
+
       // todo set the flag processing presentation such that no other button is clickable while presentation is being processed.
-      /*fetch('http://localhost:5000/startPresentation', {
-         method: 'GET',
-         headers: {
-            'Content-Type':'application/json'
-         },
-      })
-         .then(resp => resp.json())
-         .then((data) => {
-            console.log(data)
+      const processPresentation = (presentationData) => {
+         fetch('http://localhost:5000/processUploadedPresentation', {
+            method: 'POST',
+            headers: {
+               'Content-Type':'application/json'
+            },
+            body:JSON.stringify(presentationData)
          })
+         .then((resp) => {
+            console.log(resp.json())
+            return resp.json()
+         })
+
          .catch(error => console.log(error))
-      console.log("can");*/
+      };
+
+      const presentationData = {
+         "path": path,
+         "presentation_name": "tempName", //todo add real name
+      }
+
+      processPresentation(presentationData);
 
       // todo Alternatively, switch them to a new page and remove the continue to report details  button
 
@@ -56,10 +65,11 @@ export default function UploadRecordingScreen(props) {
    }
    function onFileSelected(){
       setFlagPresentationSelector(true);
-      let file = document.getElementById("file")
+      console.log("called function");
+      let file = document.getElementById("file") 
       if(file){
-         let path = file.files[0].path;
-         console.log(path);
+         path = file.files[0].path;
+         console.log("in if");
       }
    }
    /*async function selectPresentation(){

@@ -19,41 +19,13 @@ lm_beta = 1.18
 DEFAULT_SAMPLE_RATE = 16000
 
 def format_metadata_output(tokens, result_tokens):   
-    print("format called inside")
     f = open(root + "\output.txt","w+")
     if not tokens:
         return   
-    #new_word = False
-    #start_time = 0
-    #end_time = 0
-    #word = "" 
-
     for token in tokens:
         #f.write(token.text + " " + str(token.timestep) + "\n")
-        print("token")
         result_tokens.append((token.text, str(token.timestep)))
-    """    
-        if new_word:
-            start_time = token.start_time
-            new_word = False
-        if token == tokens[len(tokens) - 1]:
-            end_time = token.start_time
-            word += token.text
-            #words.append((word, len(word), end_time - start_time)) 
-            f.write(word + " " + str(len(word)) + " " + str(end_time - start_time) + "\n") 
-            word = ""
-            break
-        if token.text != ' ':          
-            word += token.text
-        else:
-            end_time = token.start_time
-            #words.append((word, len(word), end_time - start_time))
-            f.write(word + " " + str(len(word)) + " " + str(end_time - start_time) + "\n") 
-            word = ""    
-            new_word = True
-        #add information of spoken word, and its length and duration        
-    """    
-
+ 
 class SpeechToTextModel:
 
     def __init__(self, tokens):
@@ -82,46 +54,36 @@ class SpeechToTextModel:
         a = type(buffer)
         start = 0
         batch_size = 8196
-        text = ''
+        tokens = []
         while start < len(buffer):
             end = start + batch_size
             chunk = buffer[start:end]
             data16 = np.frombuffer(chunk, dtype = np.int16)
             self.stream.feedAudioContent(data16)
-            text = self.stream.intermediateDecode()
+            x = self.stream.intermediateDecode()
+            #if x.transcripts[0].tokens:
+                #tokens = x.transcripts[0].tokens
             start = end    
-        return text
+        #format_metadata_output(tokens, self.result_tokens)
+        print(x)
 
     def transcribe_live(self, stop_flag):
         ttime = time.time()
         x = None
         tokens = []
-        #print("tr live started")
         frames = self.vdm.vad_collector(stop_flag)
-        #print("tr live ended")
         for frame in frames:
             if frame is not None:
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
                 x = (self.stream.intermediateDecodeWithMetadata())
                 if x.transcripts[0].tokens:
                     tokens = x.transcripts[0].tokens
-                #<class 'deepspeech.impl.Metadata'> 
-        print("format called")        
+                #<class 'deepspeech.impl.Metadata'>       
         format_metadata_output(tokens, self.result_tokens)
 
     def get_tokens(self):
         return self.result_tokens
-"""
-stm = SpeechToTextModel([])
-buffer = [""]
-sf = [False]
-filename = root + "\\spkr3.wav"
-print("starting")
-start = time.time()
-x = stm.transcribe_stream(filename)
-end = time.time()
-print(end - start)
-print(x)
-print("ended")
-"""
+
+
+
 
