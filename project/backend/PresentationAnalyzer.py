@@ -23,7 +23,8 @@ class PresentationAnalyzer:
     def initiate_face_detection(self):
         print("face detection module started.")
 
-        self.fd.detect_face_from_file(self.presentation_file, self.fd_flags)
+        self.fd.detect_face_from_file(self.file_path, self.fd_flags)
+        print(self.fd_flags)
 
         print("face detection module finished.")
 
