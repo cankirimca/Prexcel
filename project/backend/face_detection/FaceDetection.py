@@ -71,8 +71,7 @@ class FaceDetection:
         while True:
             ret, frames = video_capture.read()
             gray = cv2.cvtColor(frames, cv2.COLOR_BGR2GRAY)
-            faces = self.faceCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30),
-                                                          flags=cv2.CASCADE_SCALE_IMAGE)
+            faces = self.faceCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30), flags=cv2.CASCADE_SCALE_IMAGE)
 
             if len(faces) == 0:
                 print("Cannot detect face!")
@@ -87,9 +86,10 @@ class FaceDetection:
             # cv2.imshow('Video', frames)
             flags.append(face_detection_flag)
 
-            # todo exit condition
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
 
-            time.sleep(1)
+        time.sleep(1)
 
         video_capture.release()
         cv2.destroyAllWindows()
