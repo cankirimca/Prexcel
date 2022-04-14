@@ -19,7 +19,7 @@ export default function UploadRecordingScreen(props) {
    });*/
 
    function goToMainMenu() {
-      props.onNewPresentationHandler(ScreenIds.MAIN_MENU_SCREEN_ID)
+      props.onUploadPresentationHandler(ScreenIds.MAIN_MENU_SCREEN_ID)
    }
 
    // todo to the presentation details of the last processed presentation
@@ -88,7 +88,7 @@ export default function UploadRecordingScreen(props) {
          <Grid item xs={8}>
             <h1>Select a Recording To Analyze...</h1>
             <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
-               <p style={{paddingTop: '5%'}}>Name of the presentation: (Bu kısım props olarak geçirilmeli)</p>
+               <p style={{paddingTop: '5%'}}>Name of the presentation: {props.newPresentationName}</p>
                <input id="file" type="file" onChange={onFileSelected} />
 
                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
