@@ -144,13 +144,13 @@ export default function  LivePresentation(props){
                   Prexcel
                </h1>
                <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
-                  Live Presentation
+                  Live Presentation for "{props.newPresentationName}"
                </h1>
             </Grid>
 
             <Grid item xs={1}/>
             <Grid item xs={6}>
-               <Paper align="left" elevation={3}>
+               <Paper sx={{backgroundColor:'#E5E5E5'}} align="left" elevation={3}>
 
                   <p style={{paddingTop: '2%', marginLeft:'5%'}}> Buralar hep kamera feed
                   </p> <br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <br/><br/>
@@ -160,14 +160,14 @@ export default function  LivePresentation(props){
             </Grid>
             <Grid item xs={4}>
 
-               <Paper align="left" elevation={3}>
+               <Paper sx={{backgroundColor:'#E5E5E5'}} align="left" elevation={3}>
                   <p style={{paddingTop: '2%', marginLeft:'5%'}}> Face Detection: {fd_flag}</p> <br/>
                   <p style={{marginLeft:'5%'}}> Current Decibel: {decibel_flag}</p> <br/>
                   <p style={{marginLeft:'5%'}}> Transcript (To be removed I believe) : {transcript} </p> <br/>
                </Paper>
 
                {flagGap &&
-                  <Paper style={{marginTop: '5%', marginBottom:'2%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} align="left" elevation={3}>
+                  <Paper style={{backgroundColor:'#E5E5E5', marginTop: '5%', marginBottom:'2%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} align="left" elevation={3}>
                      <h3 style={{paddingTop: '2%', marginLeft:'5%'}}> Word Recommendations</h3>
                      <ul style={{paddingTop: '2%', paddingBottom: '2%', marginLeft:'5%'}}>
                         <li> word 1</li>
@@ -186,7 +186,7 @@ export default function  LivePresentation(props){
 
             <Grid item xs={3}/>
             <Grid item xs={6}>
-               <Paper style={{marginTop: '1%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={0}>
+               <Paper style={{backgroundColor:'#E5E5E5', marginTop: '1%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={0}>
 
                   <Button disabled={startButtonDisabled} id="startPresentationButton" style={{ margin: '5%'}} variant="contained" onClick={startPresentation}>Start Presentation</Button>
                   <Button disabled={endButtonDisabled} id="endPresentationButton" style={{ margin: '5%'}} variant="contained" onClick={endPresentation}>End Presentation</Button>

@@ -72,18 +72,18 @@ const Login = (props) => {
 
           <Grid item xs={4}/>
           <Grid item xs={4}>
-             <Paper style={{marginTop: '50%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+             <Paper style={{backgroundColor:'#E5E5E5', marginTop: '50%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
 
                 <Grid style={{ paddingTop: '5%' }} item xs={12}>
                   Please log-in or create an account to continue:
                 </Grid>
 
                 <Grid style={{ marginTop: '5%', }} item xs={12}>
-                   <TextField id="login_username" label="Username" variant="outlined" />
+                   <TextField sx={{backgroundColor:'white'}} id="login_username" label="Username" variant="outlined" />
                 </Grid>
 
                 <Grid style={{ marginTop: '5%'}} item xs={12}>
-                   <TextField id="login_password" label="Password" variant="outlined" />
+                   <TextField sx={{backgroundColor:'white'}} id="login_password" label="Password" variant="outlined" />
                 </Grid>
 
                 <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>

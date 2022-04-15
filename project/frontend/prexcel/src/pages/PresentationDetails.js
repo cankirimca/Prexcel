@@ -20,7 +20,7 @@ export default function PresentationDetails(props) {
          <Grid container spacing={2}>
             <Grid item xs={2}/>
             <Grid item xs={4}>
-               <Card sx={{ minWidth: 275, maxWidth: 500, textAlign:"left", marginLeft: 5}}>
+               <Card sx={{backgroundColor:'#E5E5E5', minWidth: 275, maxWidth: 500, textAlign:"left", marginLeft: 5}}>
                   <p style={{textIndent: 40 , marginTop: 30}}>Final Grade is : {props.selectedPresentations[0].grade}</p>
                   <Card sx={{ marginLeft: 5, marginRight: 5, marginBottom: 5}}>
                      <p style={{marginLeft: 10}}><u>Grades:</u></p>
@@ -37,7 +37,7 @@ export default function PresentationDetails(props) {
                </Card>
             </Grid>
             <Grid item xs={4}>
-               <Card sx={{ minWidth: 275, maxWidth: 500, textAlign:"left", marginLeft: 5}}>
+               <Card sx={{backgroundColor:'#E5E5E5', minWidth: 275, maxWidth: 500, textAlign:"left", marginLeft: 5}}>
                   <p style={{textIndent: 40 , marginTop: 30}}>Duration : " ?? "</p>
                   <Card sx={{ marginLeft: 5, marginRight: 5, marginBottom: 5}}>
                      <p style={{marginLeft: 10}}><u>Speech Feedback:</u></p>

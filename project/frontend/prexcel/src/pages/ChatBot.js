@@ -49,7 +49,7 @@ export default function ChatBotScreen(props) {
       let msgObj = [{
          position: "left",
          question: "",
-         color: "lightblue"
+         color: "#507786"
       }];
       for (let i in questions) {
          msgObj[0].question = msgObj[0].question + questions[i].question + "\n";
@@ -80,6 +80,8 @@ export default function ChatBotScreen(props) {
          height: "auto",
          float: position,
          background: color,
+         color: "#E5E5E5",
+         fontWeight: "500",
 
          overflowWrap: "break-word",
          wordWrap: "break-word",
@@ -112,7 +114,7 @@ export default function ChatBotScreen(props) {
       const newQuestionNumberText = {
          position: "right",
          question: newQuestionNumber.toString(),
-         color: "lightgray"
+         color: "gray"
       };
 
       let answ = "";
@@ -129,7 +131,7 @@ export default function ChatBotScreen(props) {
       const newAnswer = {
          position: "left",
          question: answ,
-         color: "lightblue"
+         color: "#507786"
       };
       const newList = [...messageList, newQuestionNumberText, newAnswer];
       setMessageList(newList);
@@ -155,8 +157,9 @@ export default function ChatBotScreen(props) {
                marginBottom:'5%',
                alignItems:'center',
                justifyContent:'center',
-               marginLeft:'33%',
-               marginRight:'33%',
+               marginLeft:'25%',
+               marginRight:'25%',
+               backgroundColor:'#E5E5E5'
             }}
             className="App"
          >
@@ -164,7 +167,7 @@ export default function ChatBotScreen(props) {
          </Paper>
 
          <form onSubmit={questionSubmitHandler}>
-            <TextField value={value} onChange={questionAskHandler} required sx={{width:'28%'}} label="Enter the question number" variant="outlined" />
+            <TextField value={value} onChange={questionAskHandler} required sx={{width:'28%', backgroundColor:'#E5E5E5'}} label="Enter the question number" variant="outlined" />
             <Button type="submit" endIcon={<SendIcon />} sx={{marginLeft:'1%'}} variant="contained">send</Button><br/>
          </form>
 

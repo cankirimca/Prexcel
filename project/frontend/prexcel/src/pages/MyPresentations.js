@@ -147,7 +147,7 @@ export default function MyPresentations(props) {
          <Grid container spacing={2}>
             <Grid item xs={3}/>
             <Grid item xs={6}>
-               <Paper sx={{height:400, marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+               <Paper sx={{backgroundColor:'#E5E5E5', height:400, marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
                   <DataGrid
                      rows={rows}
                      columns={columns}

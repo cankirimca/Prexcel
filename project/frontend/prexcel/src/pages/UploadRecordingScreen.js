@@ -26,7 +26,7 @@ export default function UploadRecordingScreen(props) {
    function goToPresentationDetails() {
 
       // go to the details of the presentation that was processed
-      props.onNewPresentationHandler(ScreenIds.PRESENTATION_DETAILS_SCREEN_ID);
+      props.onUploadPresentationHandler(ScreenIds.PRESENTATION_DETAILS_SCREEN_ID);
    }
 
    // todo
@@ -53,7 +53,7 @@ export default function UploadRecordingScreen(props) {
 
       const presentationData = {
          "path": path,
-         "presentation_name": "tempName", //todo add real name
+         "presentation_name": props.newPresentationName, //todo add real name
       }
 
       processPresentation(presentationData);
@@ -87,7 +87,7 @@ export default function UploadRecordingScreen(props) {
          <Grid item xs={2}/>
          <Grid item xs={8}>
             <h1>Select a Recording To Analyze...</h1>
-            <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+            <Paper style={{backgroundColor:'#E5E5E5', marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
                <p style={{paddingTop: '5%'}}>Name of the presentation: {props.newPresentationName}</p>
                <input id="file" type="file" onChange={onFileSelected} />
 

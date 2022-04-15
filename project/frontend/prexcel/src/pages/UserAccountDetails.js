@@ -43,7 +43,7 @@ const UserAccountDetails = (props) => {
          <Grid item xs={3}/>
          <Grid item xs={6}>
             <h1>Account details</h1>
-            <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+            <Paper style={{backgroundColor:'#E5E5E5', marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
                <p style={{paddingTop: '5%'}}> Your current account details are as follows:</p>
                <Grid style={{ marginTop: '5%' , marginLeft:'5%'}} item xs={12} align="left">
                   <p>User name: </p>
