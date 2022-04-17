@@ -146,7 +146,7 @@ export default function ChatBotScreen(props) {
 
       if (isNaN(newQuestionNumber))
          answ = "Please enter a valid question number"; // string is not numeric
-      else if (newQuestionNumber > questions.length)
+      else if (newQuestionNumber < 1 || newQuestionNumber > questions.length)
          answ = answ + "Answer to the question " + newQuestionNumber + " is NOT available.";
       else
          answ = answ + questions[newQuestionNumber - 1].answer;
