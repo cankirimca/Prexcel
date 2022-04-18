@@ -79,7 +79,7 @@ const Login = (props) => {
                flexDirection: 'row',
                alignItems: 'center',
                justifyContent: 'center'
-            }} elevation={3}>
+            }} elevation={8}>
 
                <Grid style={{paddingTop: '5%'}} item xs={12}>
                   Please log-in or create an account to continue:

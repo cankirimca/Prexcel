@@ -46,8 +46,7 @@ export default function ChatBotScreen(props) {
       }
    ];
 
-   const [messageList, setMessageList] = useState(() => {
-
+   function initializeChatBotMessage() {
       let msgObj = [{
          position: "left",
          question: "",
@@ -58,7 +57,9 @@ export default function ChatBotScreen(props) {
          //console.log(msgObj[0].question);
       }
       return msgObj;
-   });
+   }
+
+   const [messageList, setMessageList] = useState(initializeChatBotMessage);
 
    const [newQuestionNumber, setNewQuestionNumber] = useState(0);
    const [value, setValue] = useState('');
@@ -124,6 +125,10 @@ export default function ChatBotScreen(props) {
                <ChatItem key={key0.toString()} position={message.position} color={message.color} text={message.question}/>))}
          </List>
       );
+   }
+
+   function deleteMessages() {
+      setMessageList(initializeChatBotMessage);
    }
 
    const questionAskHandler = (event) => {
@@ -209,8 +214,9 @@ export default function ChatBotScreen(props) {
                           variant="contained">send</Button><br/>
 
                </form>
-
-               <Button style={{backgroundColor: '#507786', marginTop: '2%'}} variant="contained"
+               <Button style={{backgroundColor: '#507786', marginTop: '2%', marginRight:'1%'}} variant="contained"
+                       onClick={deleteMessages}>Clear</Button>
+               <Button style={{backgroundColor: '#507786', marginTop: '2%', marginLeft:'1%'}} variant="contained"
                        onClick={goBackToMainMenu}>Main Menu</Button>
             </Grid>
             <Grid item xs={3}/>

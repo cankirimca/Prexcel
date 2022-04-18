@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 import ScreenIds from "./ScreenIds";
 import {Button, Grid, Paper, TextField} from "@mui/material";
 
-// todo to be removed once connected to the database
 const columns = [
    {
       field: 'id',
@@ -110,7 +109,7 @@ export default function MyPresentations(props) {
 
             <Grid item xs={3}/>
             <Grid item xs={6}>
-               <Paper sx={{backgroundColor:'#E5E5E5', height:400, marginTop: '2.5%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+               <Paper sx={{backgroundColor:'#E5E5E5', height:400, marginTop: '2.5%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={8}>
                   <DataGrid
                      rows={rows}
                      columns={columns}
