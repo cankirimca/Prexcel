@@ -13,6 +13,10 @@ const MainMenu = (props) => {
      props.onMainMenuHandler(ScreenIds.LOGIN_SCREEN_ID);
   }
 
+   function goToChatBot() {
+      props.onMainMenuHandler(ScreenIds.CHAT_BOT_SCREEN_ID);
+   }
+
   function goToMyPresentations() {
     props.onMainMenuHandler(ScreenIds.MY_PRESENTATIONS_SCREEN_ID);
   }
@@ -45,13 +49,14 @@ const MainMenu = (props) => {
             </Grid>
             <Grid item xs={4}/>
             <Grid item xs={4}>
-               <Paper style={{marginTop: '25%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
-                  <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={goToNewPresentation}>Start a Presentation</Button> <br/>
-                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToMyPresentations}>My Presentations</Button> <br/>
-                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Prexcel</Button> <br/>
-                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Presentations</Button> <br/>
-                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToUserAccountDetails}>User-Account-Details</Button> <br/>
-                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={logOut}>Log-Out</Button>
+               <Paper style={{backgroundColor:'#E5E5E5', marginTop: '2.5%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={8}>
+                  <Button style={{ backgroundColor:'#507786', marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={goToNewPresentation}>Start a Presentation</Button> <br/>
+                  <Button style={{ backgroundColor:'#507786', marginBottom: '5%'}} variant="contained" onClick={goToMyPresentations}>My Presentations</Button> <br/>
+                  <Button style={{ backgroundColor:'#507786', marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Prexcel</Button> <br/>
+                  <Button style={{ backgroundColor:'#507786', marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Presentations</Button> <br/>
+                  <Button style={{ backgroundColor:'#507786', marginBottom: '5%'}} variant="contained" onClick={goToUserAccountDetails}>User-Account-Details</Button> <br/>
+                  <Button style={{ backgroundColor:'#507786', marginBottom: '5%'}} variant="contained" onClick={goToChatBot}>Chat Bot</Button> <br/>
+                  <Button style={{ backgroundColor:'#507786', marginBottom: '5%'}} variant="contained" onClick={logOut}>Log-Out</Button>
                </Paper>
             </Grid>
             <Grid item xs={4}/>

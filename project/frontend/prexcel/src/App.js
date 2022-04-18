@@ -33,6 +33,7 @@ function App() {
    const [currentUserID, setCurrentUserID] = useState(0);
 
    const [selectedPresentations, setSelectedPresentations] = useState([]);
+   const [newPresentationName, setNewPresentationName] = useState("");
 
    function changeViewHandler(newScreenId) {
       setCurrentScreen(newScreenId);
@@ -46,6 +47,10 @@ function App() {
       setSelectedPresentations(presentations);
    }
 
+   function newPresentationNameHandler(newPresentationName) {
+      setNewPresentationName(newPresentationName);
+   }
+
    const UIViewController = () => {
       if (currentScreen === ScreenIds.LOGIN_SCREEN_ID)
          return <Login onUserIdHandler={userIdHandler} onLoginHandler={changeViewHandler}/>;
@@ -54,7 +59,7 @@ function App() {
       else if (currentScreen === ScreenIds.MY_PRESENTATIONS_SCREEN_ID)
          return <MyPresentations currentUserID={currentUserID} onPresentationSelection={presentationSelectionHandler} onMyPresentationsHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID)
-         return <LivePresentation currentUserID={currentUserID} onLivePresentationHandler={changeViewHandler}/>;
+         return <LivePresentation newPresentationName={newPresentationName} currentUserID={currentUserID} onLivePresentationHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.PRESENTATION_DETAILS_SCREEN_ID)
          return <PresentationDetails selectedPresentations={selectedPresentations} onPresentationDetails={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.TRANSCRIPT_DETAILS_SCREEN_ID)
@@ -66,9 +71,9 @@ function App() {
       else if (currentScreen === ScreenIds.USER_ACC_DETAILS_SCREEN_ID)
          return <UserAccountDetails onUserAccountDetailsHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.NEW_PRESENTATION_ID)
-         return <NewPresentation onNewPresentationHandler={changeViewHandler}/>;
+         return <NewPresentation onNewPresentationName={newPresentationNameHandler} onNewPresentationHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.UPLOAD_PRESENTATION_SCREEN_ID)
-         return <UploadRecordingScreen onUploadPresentationHandler={changeViewHandler}/>;
+         return <UploadRecordingScreen newPresentationName={newPresentationName} onUploadPresentationHandler={changeViewHandler}/>;
    }
 
 //  function navigate() {
@@ -85,7 +90,7 @@ function App() {
 //  }
 
    return(
-      <div className="App" style={{backgroundColor:"lightblue", height: "101vh" }}>
+      <div className="App" style={{backgroundColor:"lightblue", height: "102vh" }}>
          {UIViewController()}
       </div>
    );

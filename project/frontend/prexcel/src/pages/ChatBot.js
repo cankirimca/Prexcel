@@ -1,7 +1,8 @@
-import {Button, Card, Grid, Paper, TextField, List} from "@mui/material";
+import {Button, Card, Grid, List, Paper, TextField} from "@mui/material";
 import ScreenIds from "./ScreenIds";
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import SendIcon from '@mui/icons-material/Send';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 
 export default function ChatBotScreen(props) {
@@ -45,27 +46,41 @@ export default function ChatBotScreen(props) {
       }
    ];
 
-   const [messageList, setMessageList] = useState(()=>{
+   function initializeChatBotMessage() {
       let msgObj = [{
          position: "left",
          question: "",
-         color: "lightblue"
+         color: "#507786"
       }];
       for (let i in questions) {
          msgObj[0].question = msgObj[0].question + questions[i].question + "\n";
-         console.log(msgObj[0].question);
+         //console.log(msgObj[0].question);
       }
       return msgObj;
-   });
+   }
+
+   const [messageList, setMessageList] = useState(initializeChatBotMessage);
 
    const [newQuestionNumber, setNewQuestionNumber] = useState(0);
    const [value, setValue] = useState('');
+
+   /////
+   const ref = useRef();
+
+   function scrollToTop() {
+      if (ref.current) {
+         ref.current.scrollIntoView({behavior: "smooth", block: "end"});
+      }
+   }
+   /////
+
 
    function goBackToMainMenu() {
       props.onChatBot(ScreenIds.MAIN_MENU_SCREEN_ID);
    }
 
-   function ChatItem({ position, color, text }) {
+   function ChatItem(props) {
+
       const rootStyle = {
          width: "100%",
          height: "auto",
@@ -78,8 +93,9 @@ export default function ChatBotScreen(props) {
          marginTop: "1.5%",
          marginBottom: '1.5%',
          height: "auto",
-         float: position,
-         background: color,
+         float: props.position,
+         background: props.color,
+         color: "#E5E5E5",
 
          overflowWrap: "break-word",
          wordWrap: "break-word",
@@ -88,17 +104,31 @@ export default function ChatBotScreen(props) {
 
       return (
          <div style={rootStyle}>
-            <Card style={messageStyle}>{text.split('\n').map(str => <p>{str}</p>)}</Card>
+            <Card elevation={8} style={messageStyle}>{props.text.split('\n').map(str => <p
+               style={{marginLeft: '5%', marginRight: '5%'}}>{str}</p>)}</Card>
          </div>
       );
    }
 
+   function makeKey() {
+      const key = Math.random().toString(16).substr(2);
+      return key;
+   }
+
    function TextList(props) {
+
+      const key0 = makeKey();
+
       return (
          <List>
-            {props.messageList.map((message) => ( <ChatItem position={message.position} color={message.color} text={message.question}/>))}
+            {props.messageList.map((message) => (
+               <ChatItem key={key0.toString()} position={message.position} color={message.color} text={message.question}/>))}
          </List>
       );
+   }
+
+   function deleteMessages() {
+      setMessageList(initializeChatBotMessage);
    }
 
    const questionAskHandler = (event) => {
@@ -112,7 +142,7 @@ export default function ChatBotScreen(props) {
       const newQuestionNumberText = {
          position: "right",
          question: newQuestionNumber.toString(),
-         color: "lightgray"
+         color: "gray"
       };
 
       let answ = "";
@@ -121,7 +151,7 @@ export default function ChatBotScreen(props) {
 
       if (isNaN(newQuestionNumber))
          answ = "Please enter a valid question number"; // string is not numeric
-      else if (newQuestionNumber > questions.length)
+      else if (newQuestionNumber < 1 || newQuestionNumber > questions.length)
          answ = answ + "Answer to the question " + newQuestionNumber + " is NOT available.";
       else
          answ = answ + questions[newQuestionNumber - 1].answer;
@@ -129,7 +159,7 @@ export default function ChatBotScreen(props) {
       const newAnswer = {
          position: "left",
          question: answ,
-         color: "lightblue"
+         color: "#507786"
       };
       const newList = [...messageList, newQuestionNumberText, newAnswer];
       setMessageList(newList);
@@ -138,38 +168,61 @@ export default function ChatBotScreen(props) {
    }
 
    return (
-      <div style={{height: "100vh"}}>
+      <div>
+         <Grid container spacing={2}>
 
-         <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
-            ChatBot
-         </h1><br/>
+            <Grid item xs={3}/>
+            <Grid item xs={6} style={{height: "100vh"}}>
 
-         <Paper
-            elevation={3}
-            sx={{
-               border: "1px solid black",
-               height:'50%',
-               maxHeight:'50%',
-               overflow: "auto",
-               marginTop: '5%',
-               marginBottom:'5%',
-               alignItems:'center',
-               justifyContent:'center',
-               marginLeft:'33%',
-               marginRight:'33%',
-            }}
-            className="App"
-         >
-            <TextList messageList={messageList}/>
-         </Paper>
+               <h1 style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                  ChatBot
+               </h1>
 
-         <form onSubmit={questionSubmitHandler}>
-            <TextField value={value} onChange={questionAskHandler} required sx={{width:'28%'}} label="Enter the question number" variant="outlined" />
-            <Button type="submit" endIcon={<SendIcon />} sx={{marginLeft:'1%'}} variant="contained">send</Button><br/>
-         </form>
+               <Paper
+                  elevation={8}
+                  sx={{
 
-         <Button sx={{marginTop:'2%'}} variant="contained" onClick={goBackToMainMenu}>Main Menu</Button>
+                     height: '65%',
+                     maxHeight: '65%',
+                     overflow: "auto",
+                     marginTop: '5%',
+                     marginBottom: '5%',
+                     alignItems: 'center',
+                     justifyContent: 'center',
+                     backgroundColor: '#E5E5E5'
+                  }}
+                  className="App"
+               >
+                  <TextList messageList={messageList}/>
+                  <div ref={ref}/>
+               </Paper>
 
+               <form onSubmit={questionSubmitHandler}>
+                  <Button onClick={scrollToTop} style={{color:"#507786"}} size="large" endIcon={<ArrowUpwardIcon/>} variant="text"> </Button>
+                  <TextField size="small" sx={{
+                     marginLeft: '1%',
+                     marginRight: '1%',
+                     alignItems: 'center',
+                     border: "2px solid #507786",
+                     borderRadius: '5px',
+                     backgroundColor: 'whitesmoke'
+                  }} value={value} onChange={questionAskHandler} required
+                             label="Enter question no"
+                             variant="filled"/>
+
+                  <Button size="large" type="submit" endIcon={<SendIcon/>} style={{fontSize:'119%', backgroundColor: '#507786',}}
+                          variant="contained">send</Button><br/>
+
+               </form>
+               <Button style={{backgroundColor: '#507786', marginTop: '2%', marginRight:'1%'}} variant="contained"
+                       onClick={deleteMessages}>Clear</Button>
+               <Button style={{backgroundColor: '#507786', marginTop: '2%', marginLeft:'1%'}} variant="contained"
+                       onClick={goBackToMainMenu}>Main Menu</Button>
+            </Grid>
+            <Grid item xs={3}/>
+
+         </Grid>
       </div>
    );
 }
+//<Paper sx={{marginLeft:'40%', marginRight:'40%', alignItems:'center', backgroundColor: 'lightblue'}} elevation={4}>
