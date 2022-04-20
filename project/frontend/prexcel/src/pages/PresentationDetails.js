@@ -27,18 +27,18 @@ export default function PresentationDetails(props) {
             <Grid item xs={4}>
                <Card sx={{backgroundColor:'#E5E5E5', textAlign:"left", marginLeft: '5%', marginRight: '5%'}} elevation={8}>
 
-                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%', marginTop:'5%'}} elevation={6}>
+                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%', marginTop:'5%'}} elevation={4}>
                      <p style={{textIndent: '2.5%' , marginTop: '4%'}}>Final Grade is : {props.selectedPresentations[0].grade}</p>
                   </Card>
 
-                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={6}>
+                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
                      <p style={{marginLeft: '2.5%'}}><u>Grades:</u></p>
                      <p style={{marginLeft: '2.5%'}}>Fluency : " ?? "</p>
                      <p style={{marginLeft: '2.5%'}}>Use of Language : " ?? "</p>
                      <p style={{marginLeft: '2.5%'}}>Body Language : " ?? "</p>
                   </Card>
 
-                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={6}>
+                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
 
                      <p style={{marginLeft: '2.5%'}}>Some Remarks: <br/>
                         ??</p>
@@ -48,18 +48,18 @@ export default function PresentationDetails(props) {
             <Grid item xs={4}>
                <Card sx={{backgroundColor:'#E5E5E5', textAlign:"left", marginLeft: '5%', marginRight: '5%'}} elevation={8}>
 
-                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%', marginTop:'5%'}} elevation={6}>
+                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%', marginTop:'5%'}} elevation={4}>
                      <p style={{textIndent: '2.5%' , marginTop: '4%'}}>Duration : " ?? "</p>
                   </Card>
 
-                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={6}>
+                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
                      <p style={{marginLeft: '2.5%'}}><u>Speech Feedback:</u></p>
                      <p style={{marginLeft: '2.5%'}}>Percentage of Filler Words : " ?? "</p>
                      <p style={{marginLeft: '2.5%'}}>Time Spent Idle : " ?? "</p>
                      <p style={{marginLeft: '2.5%'}}>Time Spent UMM ing : " ?? "</p>
                   </Card>
 
-                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={6}>
+                  <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
 
                      <p style={{marginLeft: '2.5%'}}>Video Feedback: <br/>
                         ??</p>
