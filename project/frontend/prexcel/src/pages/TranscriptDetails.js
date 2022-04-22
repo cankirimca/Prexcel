@@ -32,7 +32,6 @@ export default function TranscriptDetails(props) {
      let tagStack = [];
      tagStack.push(str_type_regular)
 
-     console.log("TextPtr:" + textPtr);
 
      while(indexTranscript < unprocessedTranscript.length){
 
@@ -49,11 +48,15 @@ export default function TranscriptDetails(props) {
 
         processTranscriptArrTemp.push( { type: tagStack[tagStack.length-1], word: nextWord} );
         indexTranscript += nextWord.length;
+        textPtr += nextWord.length;
 
         console.log("nextWord: " + nextWord);
 
 
      }
+
+     console.log(processTranscriptArrTemp);
+
 
   }
 
