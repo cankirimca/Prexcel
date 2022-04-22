@@ -22,8 +22,14 @@ export default function TranscriptDetails(props) {
 
    // todo
   function processTranscript() {
-     let unprocessedTranscript = props.selectedPresentations[0].transcript;
+     let transcript = props.selectedPresentations[0].transcript;
 
+     transcriptTokens = transcript.split(" ");
+     for (let i = 0; i < transcriptTokens.length; i++) {
+         processTranscriptArrTemp.push( { type: tagStack[tagStack.length-1], word: transcript[i]} );
+     } 
+
+     /*
      let indexTranscript = 0;
      let textPtr = unprocessedTranscript[indexTranscript];
 
@@ -34,7 +40,7 @@ export default function TranscriptDetails(props) {
 
 
      while(indexTranscript < unprocessedTranscript.length){
-
+         
         let nextWord = "";
 
         let indexTemp = indexTranscript;
@@ -56,7 +62,7 @@ export default function TranscriptDetails(props) {
      }
 
      console.log(processTranscriptArrTemp);
-
+     */
 
   }
 

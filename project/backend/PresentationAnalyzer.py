@@ -5,7 +5,7 @@ from project.backend.speech_analysis.SpeechAnalyzer import SpeechAnalyzer
 
 import os
 import sys
-from moviepy.editor import VideoFileClip
+#from moviepy.editor import VideoFileClip
 
 class PresentationAnalyzer:
 
