@@ -104,3 +104,6 @@ for word in test_string:
     test_vector.append(wv_model.key_to_index[word])
 y_pred = model.predict(np.array([test_vector]))
 print(wv_model.most_similar( y_pred, [], 10))
+
+# save the model
+#model.save('my_model.h5')
