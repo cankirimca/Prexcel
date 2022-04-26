@@ -8,3 +8,4 @@
 /dataSources.local.xml
 /project/backend/speech_to_text/deepspeech-0.9.3-models.pbmm
 /project/backend/speech_to_text/deepspeech-0.9.3-models.scorer
+/project/backend/word_recommendation/ted.txt
