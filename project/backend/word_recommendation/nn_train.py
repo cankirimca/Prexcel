@@ -16,11 +16,13 @@ import string
 import gensim
 from gensim.models import Word2Vec
 from sklearn.model_selection import train_test_split
+import os
 
 import gensim.downloader as gd
+root = os.path.dirname(os.path.abspath(__file__))
 wv_model = gd.load('glove-wiki-gigaword-50')
 
-ted = open("ted.txt", "r", encoding='utf-8').read()
+ted = open(root + "\\ted.txt", "r", encoding='utf-8').read()
 ted = remove_stopwords(ted)
 print(ted[:100])
 ted = re.sub(r"\([^()]*\)","", ted)
@@ -101,3 +103,6 @@ for word in test_string:
     test_vector.append(wv_model.key_to_index[word])
 y_pred = model.predict(np.array([test_vector]))
 print(wv_model.most_similar( y_pred, [], 10))
+
+# save the model
+model.save('my_model.h5')
