@@ -4,6 +4,8 @@ from PresentationAnalyzer import PresentationAnalyzer
 from database.UserDataManager import UserDataManager
 from flask_cors import CORS, cross_origin
 
+from project.backend.word_recommendation.WordRecommender import WordRecommender
+
 transcript = [""]
 
 #user credentials
@@ -11,6 +13,7 @@ user_id = [None]
 username = [None]
 presentation_assistant = None
 presentation_analyzer = None
+word_recommender = None
 
 
 app = Flask(__name__)

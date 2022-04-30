@@ -28,7 +28,7 @@ def format_metadata_output(tokens, result_tokens):
  
 class SpeechToTextModel:
 
-    def __init__(self, tokens):
+    def __init__(self, tokens, words):
         self.model = Model(pbmm_path)
         self.result_tokens = tokens
         self.model.enableExternalScorer(scorer_path)
@@ -36,6 +36,7 @@ class SpeechToTextModel:
         self.model.setBeamWidth(beam_width)
         self.stream = self.model.createStream()
         self.vdm = VoiceDetectionManager()
+        self.words = words
 
     def read_wav_file(self, filename):
         wf = wave.open(filename, 'rb')
@@ -61,6 +62,7 @@ class SpeechToTextModel:
             data16 = np.frombuffer(chunk, dtype = np.int16)
             self.stream.feedAudioContent(data16)
             x = self.stream.intermediateDecode()
+            print(x)
             #if x.transcripts[0].tokens:
                 #tokens = x.transcripts[0].tokens
             start = end    
@@ -75,15 +77,24 @@ class SpeechToTextModel:
         for frame in frames:
             if frame is not None:
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
-                x = (self.stream.intermediateDecodeWithMetadata())
+                x = self.stream.intermediateDecodeWithMetadata()
+                y = self.stream.intermediateDecode()
+                self.words[0] = y.split()
+                #print(self.words[0])
                 if x.transcripts[0].tokens:
                     tokens = x.transcripts[0].tokens
+                    #print(len(self.words))
+                    
+                    #print(self.words)    
                 #<class 'deepspeech.impl.Metadata'>       
         format_metadata_output(tokens, self.result_tokens)
 
     def get_tokens(self):
         return self.result_tokens
 
+#words = [None]
+#st = SpeechToTextModel([],words)
+#st.transcribe_live([False])
 
 
 

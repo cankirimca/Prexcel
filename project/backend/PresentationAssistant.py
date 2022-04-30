@@ -1,6 +1,7 @@
 from speech_to_text.SpeechToTextModel import SpeechToTextModel
 from project.backend.database.UserDataManager import UserDataManager
 from project.backend.face_detection.FaceDetection import FaceDetection
+from project.backend.word_recommendation.WordRecommender import WordRecommender
 from project.backend.speech_analysis.SpeechAnalyzer import SpeechAnalyzer
 from project.backend.audio_volume.VolumeChecker import VolumeChecker
 from threading import Thread
@@ -9,14 +10,18 @@ class PresentationAssistant:
 
     def __init__(self, user_id, presentation_name):
         self.tokens = []
-        self.stt = SpeechToTextModel(self.tokens)
+        self.words = [None]
+        self.recommendations = [None]
+        self.stt = SpeechToTextModel(self.tokens, self.words)
         self.udm = UserDataManager()
         self.fd = FaceDetection()
         self.sa = SpeechAnalyzer()
-        self.vc = VolumeChecker()      
+        self.vc = VolumeChecker()   
+        self.wr = WordRecommender(self.words, self.recommendations)   
         self.stt_exit = [False]
         self.fd_exit = [False]
         self.vc_exit = [False]
+        self.wr_exit = [False]
         self.fd_period = 3
         self.fd_flags = []
         self.vc_db_list = []
@@ -26,6 +31,8 @@ class PresentationAssistant:
         self.stt_thread = Thread(target = self.initiate_speech_to_text)
         self.fd_thread = Thread(target = self.initiate_face_detection)
         self.vc_thread = Thread(target = self.initiate_volume_checker)
+        self.wr_thread = Thread(target = self.initiate_word_recommender)
+
 
     def initiate_speech_to_text(self):
         self.stt_exit[0] = False
@@ -43,12 +50,18 @@ class PresentationAssistant:
         self.vc.check_volume(self.vc_db_list, self.vc_exit)
         print(" volume checker terminated")
 
+    def initiate_word_recommender(self):
+        print("recom thread----------------------------------")
+        self.wr_exit[0] = False
+        self.wr.check_recommendations(self.wr_exit)
+
 
     def end_presentation(self):
         print("presentation ended")
         self.stt_exit[0] = True   
         self.fd_exit[0] = True
         self.vc_exit[0] = True
+        self.wr_exit[0] = True
         self.stt_thread.join()
         self.fd_thread.join()
         self.vc_thread.join()
@@ -58,6 +71,7 @@ class PresentationAssistant:
     def initiate_presentation(self):
         #create speech-to-text thread
         self.stt_thread.start()
-        self.fd_thread.start()
-        self.vc_thread.start()
+        #self.fd_thread.start()
+        #self.vc_thread.start()
+        self.wr_thread.start()
 

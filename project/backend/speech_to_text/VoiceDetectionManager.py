@@ -88,6 +88,8 @@ class VoiceDetectionManager(object):
                 num_voiced = len([f for f, speech in ring_buffer if speech])
                 if num_voiced > 0.75 * ring_buffer.maxlen:
                     triggered = True
+                    #self.idle[0] = False
+                    #print("spoke")
                     for f, s in ring_buffer:
                         yield f
                     ring_buffer.clear()
