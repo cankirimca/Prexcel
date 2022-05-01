@@ -45,6 +45,10 @@ export default function MyPresentations(props) {
       props.onMyPresentationsHandler(ScreenIds.PRESENTATION_DETAILS_SCREEN_ID);
    }
 
+   function goToProgressTracking() {
+      props.onMyPresentationsHandler(ScreenIds.PROGRESS_TRACKING_SCREEN_ID);
+   }
+
    /* DO NOT OPEN BELOW COMMENT */
    //const [selectionModel, setSelectionModel] = useState(() => rows.filter((r) => true).map((r) => r.presentation_id));
    const [selectedRows, setSelectedRows] = useState([]);
@@ -129,9 +133,11 @@ export default function MyPresentations(props) {
                   />
                   {console.log(JSON.stringify(selectedRows, null, 4))}
                   <br/>
-                  <Button style={{backgroundColor:'#507786',}} disabled={!(selectedRows.length === 1)} variant="contained" onClick={goToPresentationDetails}>View Report</Button><br/><br/>
-                  <Button style={{backgroundColor:'#507786',}} disabled={!(selectedRows.length >= 2)} variant="contained">See Progress</Button><br/><br/>
-                  <Button style={{backgroundColor:'#507786',}} variant="contained" onClick={goBackToMainMenu}>Back To Main Menu</Button>
+               </Paper>
+               <Paper sx={{marginRight:'25%', marginLeft:'25%', backgroundColor:'#E5E5E5'}} elevation={8}>
+                  <Button style={{marginTop:'5%', backgroundColor:'#507786',}} disabled={!(selectedRows.length === 1)} variant="contained" onClick={goToPresentationDetails}>View Report</Button><br/><br/>
+                  <Button style={{backgroundColor:'#507786',}} disabled={!(selectedRows.length >= 2)} variant="contained" onClick={goToProgressTracking}>See Progress</Button><br/><br/>
+                  <Button style={{marginBottom:'5%', backgroundColor:'#507786',}} variant="contained" onClick={goBackToMainMenu}>Back To Main Menu</Button>
                </Paper>
             </Grid>
             <Grid item xs={3}/>
