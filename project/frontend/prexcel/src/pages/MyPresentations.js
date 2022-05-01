@@ -16,20 +16,6 @@ const columns = [
       width: 150,
       editable: true,
    },
-   {
-      field: 'transcript',
-      headerName: 'Transcript',
-      type: 'number',
-      width: 110,
-      editable: true,
-   },
-   {
-      field: 'user_id',
-      headerName: 'UserID',
-      type: 'number',
-      width: 110,
-      editable: true,
-   },
 ];
 
 export default function MyPresentations(props) {
@@ -43,6 +29,10 @@ export default function MyPresentations(props) {
 
    function goToPresentationDetails() {
       props.onMyPresentationsHandler(ScreenIds.PRESENTATION_DETAILS_SCREEN_ID);
+   }
+
+   function goToProgressTracking() {
+      props.onMyPresentationsHandler(ScreenIds.PROGRESS_TRACKING_SCREEN_ID);
    }
 
    /* DO NOT OPEN BELOW COMMENT */
@@ -93,6 +83,12 @@ export default function MyPresentations(props) {
          newObj.name = arr2d[i][1];
          newObj.transcript = arr2d[i][2];
          newObj.user_id = arr2d[i][3];
+         newObj.wpm = arr2d[i][4];
+         newObj.duration = arr2d[i][5];
+         newObj.filler_ratio = arr2d[i][6];
+         newObj.word_count = arr2d[i][7];
+         newObj.gap_ratio = arr2d[i][8];
+
          fixedRows.push(newObj);
       }
       return fixedRows;
@@ -129,9 +125,11 @@ export default function MyPresentations(props) {
                   />
                   {console.log(JSON.stringify(selectedRows, null, 4))}
                   <br/>
-                  <Button style={{backgroundColor:'#507786',}} disabled={!(selectedRows.length === 1)} variant="contained" onClick={goToPresentationDetails}>View Report</Button><br/><br/>
-                  <Button style={{backgroundColor:'#507786',}} disabled={!(selectedRows.length >= 2)} variant="contained">See Progress</Button><br/><br/>
-                  <Button style={{backgroundColor:'#507786',}} variant="contained" onClick={goBackToMainMenu}>Back To Main Menu</Button>
+               </Paper>
+               <Paper sx={{marginRight:'25%', marginLeft:'25%', backgroundColor:'#E5E5E5'}} elevation={8}>
+                  <Button style={{marginTop:'5%', backgroundColor:'#507786',}} disabled={!(selectedRows.length === 1)} variant="contained" onClick={goToPresentationDetails}>View Report</Button><br/><br/>
+                  <Button style={{backgroundColor:'#507786',}} disabled={!(selectedRows.length >= 2)} variant="contained" onClick={goToProgressTracking}>See Progress</Button><br/><br/>
+                  <Button style={{marginBottom:'5%', backgroundColor:'#507786',}} variant="contained" onClick={goBackToMainMenu}>Back To Main Menu</Button>
                </Paper>
             </Grid>
             <Grid item xs={3}/>

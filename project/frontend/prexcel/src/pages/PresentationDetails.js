@@ -33,15 +33,14 @@ export default function PresentationDetails(props) {
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
                      <p style={{marginLeft: '2.5%'}}><u>Grades:</u></p>
-                     <p style={{marginLeft: '2.5%'}}>Fluency : " ?? "</p>
-                     <p style={{marginLeft: '2.5%'}}>Use of Language : " ?? "</p>
-                     <p style={{marginLeft: '2.5%'}}>Body Language : " ?? "</p>
+                     <p style={{marginLeft: '2.5%'}}>Gap Ratio : {props.selectedPresentations[0].gap_ratio}</p>
+                     <p style={{marginLeft: '2.5%'}}>Filler Ratio : {props.selectedPresentations[0].filler_ratio}</p>
+                     <p style={{marginLeft: '2.5%'}}>Face Recognition Score : " ?? "</p>
                   </Card>
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
 
-                     <p style={{marginLeft: '2.5%'}}>Some Remarks: <br/>
-                        ??</p>
+                     <p style={{marginLeft: '2.5%'}}>Some Remarks:</p>
                   </Card>
                </Card>
             </Grid>
@@ -49,7 +48,7 @@ export default function PresentationDetails(props) {
                <Card sx={{backgroundColor:'#E5E5E5', textAlign:"left", marginLeft: '5%', marginRight: '5%'}} elevation={8}>
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%', marginTop:'5%'}} elevation={4}>
-                     <p style={{textIndent: '2.5%' , marginTop: '4%'}}>Duration : " ?? "</p>
+                     <p style={{textIndent: '2.5%' , marginTop: '4%'}}>Duration : {props.selectedPresentations[0].duration} seconds</p>
                   </Card>
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
@@ -61,8 +60,7 @@ export default function PresentationDetails(props) {
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
 
-                     <p style={{marginLeft: '2.5%'}}>Video Feedback: <br/>
-                        ??</p>
+                     <p style={{marginLeft: '2.5%'}}>Word per minute (wpm) : {props.selectedPresentations[0].wpm}</p>
                   </Card>
                </Card>
             </Grid>

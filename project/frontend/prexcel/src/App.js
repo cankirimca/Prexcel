@@ -26,6 +26,7 @@ import ScreenIds from "./pages/ScreenIds";
 import UserAccountDetails from "./pages/UserAccountDetails";
 import NewPresentation from "./pages/NewPresentation";
 import UploadRecordingScreen from "./pages/UploadRecordingScreen";
+import ProgressTracking from "./pages/ProgressTracking";
 
 function App() {
 
@@ -74,6 +75,8 @@ function App() {
          return <NewPresentation onNewPresentationName={newPresentationNameHandler} onNewPresentationHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.UPLOAD_PRESENTATION_SCREEN_ID)
          return <UploadRecordingScreen newPresentationName={newPresentationName} onUploadPresentationHandler={changeViewHandler}/>;
+      else if (currentScreen === ScreenIds.PROGRESS_TRACKING_SCREEN_ID)
+         return <ProgressTracking selectedPresentations={selectedPresentations} onProgressTracking={changeViewHandler}/>;
    }
 
 //  function navigate() {
