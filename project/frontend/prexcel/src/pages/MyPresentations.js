@@ -16,20 +16,6 @@ const columns = [
       width: 150,
       editable: true,
    },
-   {
-      field: 'transcript',
-      headerName: 'Transcript',
-      type: 'number',
-      width: 110,
-      editable: true,
-   },
-   {
-      field: 'user_id',
-      headerName: 'UserID',
-      type: 'number',
-      width: 110,
-      editable: true,
-   },
 ];
 
 export default function MyPresentations(props) {
@@ -97,6 +83,12 @@ export default function MyPresentations(props) {
          newObj.name = arr2d[i][1];
          newObj.transcript = arr2d[i][2];
          newObj.user_id = arr2d[i][3];
+         newObj.wpm = arr2d[i][4];
+         newObj.duration = arr2d[i][5];
+         newObj.filler_ratio = arr2d[i][6];
+         newObj.word_count = arr2d[i][7];
+         newObj.gap_ratio = arr2d[i][8];
+
          fixedRows.push(newObj);
       }
       return fixedRows;
