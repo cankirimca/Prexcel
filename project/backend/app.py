@@ -127,7 +127,12 @@ def process_upload():
     except:
         return "An error occured during the processing. Please try again."   
 
-    
+@app.route('/getUserInfo', methods = ['GET'])
+@cross_origin()
+def get_user_info():
+    ud = UserDataManager()
+    info = ud.get_user_info(user_id[0])[0]
+    return jsonify(info)
 
 if __name__ == "__main__":
     app.run(host='localhost', port=5000)

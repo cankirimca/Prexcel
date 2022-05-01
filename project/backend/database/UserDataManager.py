@@ -7,6 +7,8 @@
 import pymysql
 from random import randint
 
+#from project.backend.app import get_user_info
+
 instance_name = "prexcel"
 username = "admin"
 db_password = "prexcel123"
@@ -37,10 +39,15 @@ class UserDataManager:
 
     def delete_user(self, user_id):
         self.cursor.execute("DELETE FROM User WHERE user_id = %d", user_id)
+        #self.cursor.execute("DELETE FROM Presentation WHERE user_id = %d", user_id)
         self.connection.commit()
 
     def get_user_name(self, user_id):
         self.cursor.execute("SELECT username FROM User WHERE user_id = %s", user_id)
+        return self.cursor.fetchall()
+
+    def get_user_info(self, user_id):
+        self.cursor.execute("SELECT * FROM User WHERE user_id = %s", user_id)
         return self.cursor.fetchall()
 
     def update_user_name(self, user_id, new_username):
@@ -134,12 +141,6 @@ class UserDataManager:
     #print(cursor.fetchall())
     #db.commit()
 
-udm = UserDataManager()
-try:
-    id = udm.login("flaskltry", "flasktrypass")
-    print(id)
-except TypeError:
-    print("error")    
-
-
-print("username:",username)
+##udm = UserDataManager()
+#a = udm.get_user_info('616500')
+#print(a[0])

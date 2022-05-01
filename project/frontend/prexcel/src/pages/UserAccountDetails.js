@@ -5,6 +5,7 @@ import ScreenIds from "./ScreenIds";
 import {Button, Grid, Paper, TextField} from "@mui/material";
 
 
+
 // TODO
 const deleteUser = (currUser) => {
 
@@ -12,6 +13,11 @@ const deleteUser = (currUser) => {
 };
 
 const UserAccountDetails = (props) => {
+
+   const [id, setID] = useState([]);
+   const [username, setUsername] = useState([]);
+   const [presentationCount, setPresentationCount] = useState([]);   
+   const [email, setEmail] = useState([]);   
 
    // TODO
    function attemptDelete() {
@@ -38,6 +44,33 @@ const UserAccountDetails = (props) => {
       props.onUserAccountDetailsHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
    }
 
+   function getUserInfo(){
+      let success = true;
+      fetch('http://localhost:5000/getUserInfo', {
+         method: 'GET',
+         headers: {
+            'Content-Type':'application/json'
+         },
+
+      })
+         .then((resp) => {
+            return resp.json()
+         })
+         .then((data) => {
+            console.log(data);
+            setUsername(data[0])
+            setEmail(data[2])
+            setID(data[3])
+            setPresentationCount(data[4])
+         })
+         .catch(error => console.log(error))
+
+      return success;
+   };
+
+   getUserInfo();
+
+
    return (
       <Grid container spacing={2}>
          <Grid item xs={3}/>
@@ -46,13 +79,16 @@ const UserAccountDetails = (props) => {
             <Paper style={{backgroundColor:'#E5E5E5', marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
                <p style={{paddingTop: '5%'}}> Your current account details are as follows:</p>
                <Grid style={{ marginTop: '5%' , marginLeft:'5%'}} item xs={12} align="left">
-                  <p>User name: </p>
+                  <p><b>User name:</b> {username}</p>
+               </Grid>
+               <Grid style={{ marginTop: '5%' , marginLeft:'5%'}} item xs={12} align="left">
+                  <p><b>User id:</b> {id}</p>
                </Grid>
                <Grid style={{ marginTop: '5%', marginLeft:'5%'}} item xs={12} align="left">
-                  <p>Number of presentations in your account: </p>
+                  <p><b>Number of presentations in your account:</b> {presentationCount}</p>
                </Grid>
                <Grid style={{ marginTop: '5%', marginLeft:'5%'}} item xs={12} align="left">
-                  <p>Registration date: </p>
+                  <p><b>E-mail address:</b> {email}</p>
                </Grid>
                <Grid style={{ marginTop: '5%', marginBottom: '5%'}} item xs={12}>
                      You may delete your account, but beware, this process cannot be reversed!
