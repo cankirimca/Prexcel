@@ -36,7 +36,6 @@ class SpeechAnalyzer:
             elif t.text == " " and tokens.index(t) != len(tokens) - 1:
                 consolidated_tokens.append(word(txt=curr_word, start_time=start, end_time=t.timestep, tags=[]))
                 curr_word = ""
-                print("index: ", tokens.index(t))
                 start = tokens[tokens.index(t) + 1].timestep
                 word_count += 1
                 total_gaps += tokens[tokens.index(t) + 1].timestep - tokens[tokens.index(t)].timestep
@@ -173,7 +172,7 @@ class SpeechAnalyzer:
         consolidated, word_count, duration_in_20_ms, total_gaps = self.consolidate_tokens(input_tokens)
         duration_sec = duration_in_20_ms/50
         wpm = (word_count/duration_sec)*60
-        gap_ratio = (total_gaps/duration_sec)*100
+        gap_ratio = ((total_gaps/50)/duration_sec)
         tagged, filler_count = self.tag_words(consolidated)
         filler_ratio = filler_count/word_count
         return self.finalise_write_string(tagged), word_count, duration_sec, wpm, gap_ratio, filler_ratio

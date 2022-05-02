@@ -66,7 +66,6 @@ class SpeechToTextModel:
                 tokens = x.transcripts[0].tokens
             start = end    
         format_metadata_output(tokens, self.result_tokens)
-        print(x)
 
     def transcribe_live(self, stop_flag):
         ttime = time.time()

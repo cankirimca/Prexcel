@@ -25,24 +25,19 @@ class PresentationAnalyzer:
 
     def process_video_recording(self):
         self.convert_video_to_audio()
-        print("converted to audio")
         self.stt.transcribe_stream(root + "\\temp_audio_mono.wav")
-        print(self.tokens)
-        print("transcribe complete")
         transcript, word_count, duration, wpm, gap_ratio, filler_ratio = self.sa.analyzed_tokens(self.tokens)
-        print("analyzed tokens")
-
-        print("face detection module started.")
         self.fd.detect_face_from_file(self.file_path, self.fd_flags)
-        print("face detection module started.")
         fd_score = 0
         for flag in self.fd_flags:
             if flag == "+":
                 fd_score += 1
         fd_score = fd_score/len(self.fd_flags)   
-
+        print("fd score:", fd_score)
+        score = ((1-filler_ratio)+(1-gap_ratio)+(fd_score))/3
+        print(score)
         print("face detection module finished.")
-        self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score) 
+        self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score, score) 
         print("pushed to database")
 
     def process_recording(self):
