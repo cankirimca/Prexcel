@@ -61,12 +61,11 @@ class SpeechToTextModel:
             chunk = buffer[start:end]
             data16 = np.frombuffer(chunk, dtype = np.int16)
             self.stream.feedAudioContent(data16)
-            x = self.stream.intermediateDecode()
-            print(x)
-            #if x.transcripts[0].tokens:
-                #tokens = x.transcripts[0].tokens
+            x = self.stream.intermediateDecodeWithMetadata()
+            if x.transcripts[0].tokens:
+                tokens = x.transcripts[0].tokens
             start = end    
-        #format_metadata_output(tokens, self.result_tokens)
+        format_metadata_output(tokens, self.result_tokens)
         print(x)
 
     def transcribe_live(self, stop_flag):
@@ -92,9 +91,9 @@ class SpeechToTextModel:
     def get_tokens(self):
         return self.result_tokens
 
-#words = [None]
-#st = SpeechToTextModel([],words)
-#st.transcribe_live([False])
+"""words = [None]
+st = SpeechToTextModel([],words)
+st.transcribe_stream("C:/Users/can/Downloads/new_temp_audio.wav")"""
 
 
 

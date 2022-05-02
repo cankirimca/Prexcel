@@ -6,6 +6,7 @@ from project.backend.speech_analysis.SpeechAnalyzer import SpeechAnalyzer
 import os
 import sys
 from moviepy.editor import VideoFileClip
+from pydub import AudioSegment
 root = os.path.dirname(os.path.abspath(__file__))
 
 class PresentationAnalyzer:
@@ -23,9 +24,9 @@ class PresentationAnalyzer:
         self.udm = UserDataManager()
 
     def process_video_recording(self):
-        self.convert_video_to_audio("wav")
+        self.convert_video_to_audio()
         print("converted to audio")
-        self.stt.transcribe_stream(root + "\\temp_audio.wav")
+        self.stt.transcribe_stream(root + "\\temp_audio_mono.wav")
         print(self.tokens)
         print("transcribe complete")
         transcript, word_count, duration, wpm, gap_ratio, filler_ratio = self.sa.analyzed_tokens(self.tokens)
@@ -33,7 +34,7 @@ class PresentationAnalyzer:
 
         print("face detection module started.")
         self.fd.detect_face_from_file(self.file_path, self.fd_flags)
-
+        print("face detection module started.")
         fd_score = 0
         for flag in self.fd_flags:
             if flag == "+":
@@ -68,12 +69,16 @@ class PresentationAnalyzer:
         self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count, 0) 
         print("processing ended")  
 
-    def convert_video_to_audio(self, output_extension):
+    def convert_video_to_audio(self):
         print("in convert")
-        file_name, extension = os.path.splitext(self.file_path)
         clip = VideoFileClip(self.file_path)
-        path = root + "\\temp_audio.wav"
-        
-        clip.audio.write_audiofile(path)
+        path = root + "\\temp_audio_stereo.wav"       
+        clip.audio.write_audiofile(path, fps=16000, codec='pcm_s16le')
+
+        sound = AudioSegment.from_wav(root + "\\temp_audio_stereo.wav")
+        sound = sound.set_channels(1)
+        sound.export(root + "\\temp_audio_mono.wav" , format="wav")
         print("convert ended")
 
+#pa = PresentationAnalyzer(12, "qwe", "C:/Users/can/Downloads/speech.mp4")
+#pa.convert_video_to_audio("sad")

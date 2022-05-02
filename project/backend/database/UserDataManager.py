@@ -34,7 +34,7 @@ class UserDataManager:
 
     def register_user(self, username, password, mail_address):
         user_id = randint(100000, 999999)
-        self.cursor.execute("INSERT INTO User (user_id, username, mail_address, password) VALUES(%s, %s, %s, %s)", (user_id, username, mail_address, password))
+        self.cursor.execute("INSERT INTO User (user_id, username, mail_address, password, presentation_count) VALUES(%s, %s, %s, %s, %s)", (user_id, username, mail_address, password, 0))
         self.connection.commit()
 
     def delete_user(self, user_id):
