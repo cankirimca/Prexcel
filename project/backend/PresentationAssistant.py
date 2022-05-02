@@ -41,7 +41,7 @@ class PresentationAssistant:
 
     def initiate_face_detection(self):
         self.fd_exit[0] = False
-        self.facial_orientation_score = self.fd.detect_face(self.fd_period, self.fd_flags, self.fd_exit)
+        self.facial_orientation_score = self.fd.detect_face( self.fd_flags, self.fd_exit)
         print("face detection terminated")
 
 
