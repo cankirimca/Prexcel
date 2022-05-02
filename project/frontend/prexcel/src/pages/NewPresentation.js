@@ -90,7 +90,7 @@ export default function NewPresentation(props) {
                   <Button style={{backgroundColor: '#507786',}} variant="contained"
                           onClick={goToMainMenu}>Cancel</Button>
                   <DialogBox open={dialogOpen} onClose={handleClose}
-                             dialogContent={"Prexcel is going to analyze your presentation, it needs a valid presentation name to proceed. Kind Regards."}
+                             dialogContent={"Please enter a presentation name to continue."}
                              dialogTitle={"Presentation name is required!"}/>
                </Grid>
 
