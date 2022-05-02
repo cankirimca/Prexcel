@@ -22,10 +22,10 @@ class UserDataManager:
         use_database = '''use prexcel'''
         self.cursor.execute(use_database)
 
-    def add_presentation(self, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count):
+    def add_presentation(self, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score,grade):
         presentation_id = randint(100000, 999999)
-        print(presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count)
-        self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)", (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count))   
+        print(presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score, grade)
+        self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count,fd_score,grade) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score,grade))   
         self.connection.commit()
 
     def login(self, username, password):

@@ -2,6 +2,7 @@ import cv2
 import os
 import threading
 import time
+import numpy as np
 
 class FaceDetection:
     def __init__(self):
@@ -70,16 +71,17 @@ class FaceDetection:
 
         while True:
             ret, frames = video_capture.read()
+            #if frames is null, file ended -> break the loop
+            if np.shape(frames) == ():
+                break
             gray = cv2.cvtColor(frames, cv2.COLOR_BGR2GRAY)
             faces = self.faceCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30), flags=cv2.CASCADE_SCALE_IMAGE)
 
             if len(faces) == 0:
-                print("Cannot detect face!")
                 face_detection_flag = "-"
                 self.face_not_detected_duration += 1
 
             else:
-                print("Face is detected!")
                 face_detection_flag = "+"
                 self.face_detected_duration += 1
 
@@ -89,9 +91,6 @@ class FaceDetection:
 
             # cv2.imshow('Video', frames)
             flags.append(face_detection_flag)
-
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
 
         time.sleep(1)
 
