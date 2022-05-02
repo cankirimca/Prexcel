@@ -35,7 +35,7 @@ export default function PresentationDetails(props) {
                      <p style={{marginLeft: '2.5%'}}><u>Grades:</u></p>
                      <p style={{marginLeft: '2.5%'}}>Gap Ratio : {props.selectedPresentations[0].gap_ratio}</p>
                      <p style={{marginLeft: '2.5%'}}>Filler Ratio : {props.selectedPresentations[0].filler_ratio}</p>
-                     <p style={{marginLeft: '2.5%'}}>Face Recognition Score : " ?? "</p>
+                     <p style={{marginLeft: '2.5%'}}>Face Recognition Score : {props.selectedPresentations[0].fd_score}</p>
                   </Card>
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
