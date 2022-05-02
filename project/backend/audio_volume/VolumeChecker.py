@@ -71,9 +71,17 @@ class VolumeChecker():
             db = db + 70
             decibel_list.append(db)
 
+            #print(decibel_list)
+
+        return decibel_list
 
 
-
+if __name__ == '__main__':
+    l = []
+    f = [False]
+    vc = VolumeChecker()
+    vc.check_volume(l, f)
+    
 
 
 
