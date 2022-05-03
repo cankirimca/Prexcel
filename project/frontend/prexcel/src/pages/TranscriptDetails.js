@@ -165,7 +165,7 @@ export default function TranscriptDetails(props) {
                <h2>Transcript of "{props.selectedPresentations[0].name}"</h2>
             </Grid>
 
-            <Grid item xs={7} style={{ marginTop: '1%', marginLeft: '2%'}}>
+            <Grid item xs={7} style={{ marginTop: '1.65%', marginLeft: '2%'}}>
 
                <Paper elevation={3} style={{ padding:'2%'}}>
                      { (props.processedTranscriptArr).map(item => (
@@ -190,8 +190,8 @@ export default function TranscriptDetails(props) {
                   Statistics
                   <ul align="left">
                      <li>You dragged X% of the time. </li>
-                     <li>You rushed X% of the time. </li>
-                     <li>You had a gap X% of the time. </li>
+                     <li>You fill {props.selectedPresentations[0].filler_ratio} of the time. </li>
+                     <li>You had a gap {props.selectedPresentations[0].gap_ratio} of the time. </li>
                   </ul>
                </Paper>
             </Grid>
