@@ -90,6 +90,9 @@ export default function MyPresentations(props) {
          newObj.gap_ratio = arr2d[i][8];
          newObj.fd_score = arr2d[i][9];
          newObj.grade = arr2d[i][10];
+         newObj.dragged_ratio = arr2d[i][11];
+         newObj.repeated_ratio = arr2d[i][12];
+         newObj.p_date = arr2d[i][13];
 
          fixedRows.push(newObj);
       }
