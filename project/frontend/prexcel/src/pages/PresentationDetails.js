@@ -118,9 +118,7 @@ export default function PresentationDetails(props) {
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
                      <p style={{marginLeft: '2.5%'}}><u>Speech Feedback:</u></p>
-                     <p style={{marginLeft: '2.5%'}}>Percentage of Filler Words : " ?? "</p>
-                     <p style={{marginLeft: '2.5%'}}>Time Spent Idle : " ?? "</p>
-                     <p style={{marginLeft: '2.5%'}}>Time Spent UMM ing : " ?? "</p>
+                     <p style={{marginLeft: '2.5%'}}>Percentage of Filler Words : {props.selectedPresentations[0].filler_ratio}</p>
                   </Card>
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
