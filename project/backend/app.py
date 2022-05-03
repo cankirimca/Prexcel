@@ -63,14 +63,15 @@ def get_user():
         except TypeError:
             return jsonify(-1) #indicates error
 
-@app.route('/startPresentation', methods = ['GET'])
+@app.route('/startPresentation', methods = ['POST'])
 @cross_origin()
 def start_presentation():
-    if request.method == 'GET':
+    if request.method == 'POST':
         #TODO add presentation name screen
         #presentation_name = username = request.json["presentation_name"]
         global presentation_assistant
-        presentation_assistant = PresentationAssistant(user_id, "testPresentation1")
+        presentation_name = request.json["presentation_name"] 
+        presentation_assistant = PresentationAssistant(user_id, presentation_name)
         presentation_assistant.initiate_presentation()
     return jsonify("")
 
@@ -86,6 +87,7 @@ def get_tokens():
 @app.route('/endPresentation', methods = ['GET'])
 @cross_origin()
 def end_presentation():
+    global presentation_assistant
     if request.method == 'GET' and presentation_assistant:
         presentation_assistant.end_presentation()
     return jsonify("")

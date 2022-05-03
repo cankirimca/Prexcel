@@ -58,10 +58,11 @@ export default function LivePresentation(props) {
 
    function startPresentationThreads() {
       fetch('http://localhost:5000/startPresentation', {
-         method: 'GET',
+         method: 'POST',
          headers: {
             'Content-Type': 'application/json'
          },
+         body:JSON.stringify(presentationData)
       })
          .then(resp => resp.json())
          .then((data) => {
@@ -69,6 +70,10 @@ export default function LivePresentation(props) {
          })
          .catch(error => console.log(error))
       console.log("can");
+   }
+
+   const presentationData = {
+      "presentation_name": props.newPresentationName //todo add real name
    }
 
    function startPresentation() {
