@@ -95,7 +95,7 @@ const Login = (props) => {
                <Grid style={{marginTop: '5%'}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '33%', marginLeft: '32.1%'}} elevation={4}>
                      <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="login_password" label="Password"
-                                variant="filled"/>
+                                variant="filled" type="password"/>
                   </Paper>
                </Grid>
 
