@@ -100,11 +100,13 @@ export default function ProgressTracking(props) {
 
             </Grid>
             <Grid item xs={3}>
-               <ul align="left">
-                  { (props.selectedPresentations).map(item => (
-                     PresentationInstance(item.name, "no date specified") ))
-                  }
-               </ul>
+               <Paper sx={{backgroundColor:'#E5E5E5', padding:'1%'}} elevation={8}>
+                  <ul align="left">
+                     { (props.selectedPresentations).map(item => (
+                        PresentationInstance(item.name, "no date specified") ))
+                     }
+                  </ul>
+               </Paper>
 
             </Grid>
             <Grid item xs={1}/>
