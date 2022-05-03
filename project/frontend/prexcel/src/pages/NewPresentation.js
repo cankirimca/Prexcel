@@ -68,9 +68,9 @@ export default function NewPresentation(props) {
                flexDirection: 'row',
                alignItems: 'center',
                justifyContent: 'center',
-               backgroundColor: '#E5E5E5'
+               backgroundColor: '#2C2F33'
             }} elevation={8}>
-               <p style={{paddingTop: '5%'}}> Enter the name for your presentation:</p>
+               <p style={{color: 'white', paddingTop: '5%'}}> Enter the name for your presentation:</p>
 
                <Grid style={{marginTop: '5%'}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '33%', marginLeft: '33%'}} elevation={4}>
@@ -81,13 +81,13 @@ export default function NewPresentation(props) {
                </Grid>
 
                <Grid style={{marginTop: '5%', paddingBottom: '5%'}} item xs={12}>
-                  <Button style={{backgroundColor: '#507786', marginRight: '5%'}} variant="contained"
+                  <Button style={{backgroundColor: '#5865F2', marginRight: '5%'}} variant="contained"
                           onClick={goToLivePresentation}>Perform a
                      Live Presentation</Button>
-                  <Button style={{backgroundColor: '#507786', marginRight: '5%'}} variant="contained"
+                  <Button style={{backgroundColor: '#5865F2', marginRight: '5%'}} variant="contained"
                           onClick={goToUploadPresentation}>Upload a
                      Recording</Button>
-                  <Button style={{backgroundColor: '#507786',}} variant="contained"
+                  <Button style={{backgroundColor: '#5865F2',}} variant="contained"
                           onClick={goToMainMenu}>Cancel</Button>
                   <DialogBox open={dialogOpen} onClose={handleClose}
                              dialogContent={"Please enter a presentation name to continue."}

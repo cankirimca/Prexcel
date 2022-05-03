@@ -75,27 +75,27 @@ const UserAccountDetails = (props) => {
       <Grid container spacing={2}>
          <Grid item xs={3}/>
          <Grid item xs={6}>
-            <h1>Account details</h1>
-            <Paper style={{backgroundColor:'#E5E5E5', marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
-               <p style={{paddingTop: '5%'}}> Your current account details are as follows:</p>
+            <h1 style={{color:'white'}}>Account details</h1>
+            <Paper style={{backgroundColor:'#2C2F33', marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+               <p style={{color:'white', paddingTop: '5%'}}> Your current account details are as follows:</p>
                <Grid style={{ marginTop: '5%' , marginLeft:'5%'}} item xs={12} align="left">
-                  <p><b>User name:</b> {username}</p>
+                  <p style={{color:'white'}}> <b>User name:</b> {username}</p>
                </Grid>
                <Grid style={{ marginTop: '5%' , marginLeft:'5%'}} item xs={12} align="left">
-                  <p><b>User id:</b> {id}</p>
+                  <p style={{color:'white'}}><b>User id:</b> {id}</p>
                </Grid>
                <Grid style={{ marginTop: '5%', marginLeft:'5%'}} item xs={12} align="left">
-                  <p><b>Number of presentations in your account:</b> {presentationCount}</p>
+                  <p style={{color:'white'}}><b>Number of presentations in your account:</b> {presentationCount}</p>
                </Grid>
                <Grid style={{ marginTop: '5%', marginLeft:'5%'}} item xs={12} align="left">
-                  <p><b>E-mail address:</b> {email}</p>
+                  <p style={{color:'white'}}><b>E-mail address:</b> {email}</p>
                </Grid>
-               <Grid style={{ marginTop: '5%', marginBottom: '5%'}} item xs={12}>
+               <Grid style={{ color:'white', marginTop: '5%', marginBottom: '5%'}} item xs={12}>
                      You may delete your account, but beware, this process cannot be reversed!
                </Grid>
                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
-                  <Button style={{ marginRight: '5%'}} variant="contained" onClick={attemptDelete}>Delete Account</Button>
-                  <Button variant="contained" onClick={goToMainMenu}>Back To Main Menu</Button>
+                  <Button style={{backgroundColor:'#5865F2', marginRight: '5%'}} variant="contained" onClick={attemptDelete}>Delete Account</Button>
+                  <Button style={{backgroundColor:'#5865F2'}} variant="contained" onClick={goToMainMenu}>Back To Main Menu</Button>
                </Grid>
             </Paper>
          </Grid>

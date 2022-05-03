@@ -128,10 +128,10 @@ export default function MyPresentations(props) {
                   {console.log(JSON.stringify(selectedRows, null, 4))}
                   <br/>
                </Paper>
-               <Paper sx={{marginRight:'25%', marginLeft:'25%', backgroundColor:'#E5E5E5'}} elevation={8}>
-                  <Button style={{marginTop:'5%', backgroundColor:'#507786',}} disabled={!(selectedRows.length === 1)} variant="contained" onClick={goToPresentationDetails}>View Report</Button><br/><br/>
-                  <Button style={{backgroundColor:'#507786',}} disabled={!(selectedRows.length >= 2)} variant="contained" onClick={goToProgressTracking}>See Progress</Button><br/><br/>
-                  <Button style={{marginBottom:'5%', backgroundColor:'#507786',}} variant="contained" onClick={goBackToMainMenu}>Back To Main Menu</Button>
+               <Paper sx={{marginRight:'25%', marginLeft:'25%', backgroundColor:'#2C2F33'}} elevation={8}>
+                  <Button style={{marginTop:'5%', backgroundColor:'#5865F2',}} disabled={!(selectedRows.length === 1)} variant="contained" onClick={goToPresentationDetails}>View Report</Button><br/><br/>
+                  <Button style={{backgroundColor:'#5865F2',}} disabled={!(selectedRows.length >= 2)} variant="contained" onClick={goToProgressTracking}>See Progress</Button><br/><br/>
+                  <Button style={{marginBottom:'5%', backgroundColor:'#5865F2',}} variant="contained" onClick={goBackToMainMenu}>Back To Main Menu</Button>
                </Paper>
             </Grid>
             <Grid item xs={3}/>
