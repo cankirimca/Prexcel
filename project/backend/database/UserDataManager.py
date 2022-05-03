@@ -6,6 +6,7 @@
 
 import pymysql
 from random import randint
+from datetime import date
 
 #from project.backend.app import get_user_info
 
@@ -24,8 +25,9 @@ class UserDataManager:
 
     def add_presentation(self, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score,grade, dragged_ratio, repeated_ratio):
         presentation_id = randint(100000, 999999)
+        today = date.today()
         print(presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score, grade, dragged_ratio, repeated_ratio)
-        self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count,fd_score,grade, dragged_ratio, repeated_ratio) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score,grade, dragged_ratio, repeated_ratio))   
+        self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count,fd_score,grade, dragged_ratio, repeated_ratio, today) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score,grade, dragged_ratio, repeated_ratio, today))   
         self.connection.commit()
 
     def login(self, username, password):
