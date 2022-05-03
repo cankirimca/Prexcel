@@ -72,6 +72,8 @@ class SpeechAnalyzer:
 
         filler_count = 0
         temp_curr = 0
+        dragged_count = 0
+        repeated_count = 0
         for w in word_list:
             curr_index = word_list.index(w)
             # Not at the end of the list
@@ -92,12 +94,14 @@ class SpeechAnalyzer:
                         if "r" not in word_list[i].tags:
                             # Add "r" tag
                             word_list[i].tags.append("r")
+                            repeated_count += 1
 
                 # Insert dragged tag
                 if word_list[curr_index].end_time - word_list[curr_index].start_time > DRAG_CONST_PER_CHAR * len(
                         word_list[curr_index].txt):
                     # Add "d" tag
                     word_list[curr_index].tags.append("d")
+                    dragged_count += 1
 
                 # Insert filler tag
                 for row in fillers2d:
@@ -117,7 +121,7 @@ class SpeechAnalyzer:
                         if phrase_match:
                             word_list[curr_index].tags.append("fs")  # Filler start tag
                             word_list[curr_index + w_index].tags.append("fe")  # Filler end tag
-                            filler_count += 1
+                            filler_count += w_index
 
                 # Insert space tag
                 if word_list[curr_index + 1].end_time > 0 and (
@@ -136,7 +140,7 @@ class SpeechAnalyzer:
         string_list_file.writelines(word_string_list)
         string_list_file.close()
 
-        return word_list, filler_count
+        return word_list, filler_count, dragged_count, repeated_count
 
     def finalise_write_string(self, input_word_list):
         result_string = ""
@@ -173,9 +177,11 @@ class SpeechAnalyzer:
         duration_sec = duration_in_20_ms/50
         wpm = (word_count/duration_sec)*60
         gap_ratio = ((total_gaps/50)/duration_sec)
-        tagged, filler_count = self.tag_words(consolidated)
+        tagged, filler_count, dragged_count, repeated_count = self.tag_words(consolidated)
         filler_ratio = filler_count/word_count
-        return self.finalise_write_string(tagged), word_count, duration_sec, wpm, gap_ratio, filler_ratio
+        dragged_ratio = dragged_count/word_count
+        repeated_ratio = repeated_count/word_count
+        return self.finalise_write_string(tagged), word_count, duration_sec, wpm, gap_ratio, filler_ratio, dragged_ratio, repeated_ratio
 
 #the below code is used for the testing of this class
 """
