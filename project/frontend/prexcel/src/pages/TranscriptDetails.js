@@ -19,9 +19,12 @@ export default function TranscriptDetails(props) {
 
    // todo
   function processTranscript() {
+
+     console.log(props.processedTranscriptArr);
+
      // let transcript = props.selectedPresentations[0].transcript;
 
-     let transcript = "The short story is {dragged} usually concerned with a single {dragged/} effect conveyed in only one or {repeated} a few significant episodes {repeated/} or scenes. The form {filler} encourages {filler/} economy of setting, {dragged} concise {repeated} narrative, and the {repeated/} omission of a {dragged/} complex plot; character is disclosed {/space/} in action and dramatic encounter but is seldom fully developed. Despite {/space/} its relatively limited scope, though, a short story is often judged by its ability {dragged} to provide {/space/} a “complete” or {dragged/} satisfying treatment of its characters and subject.";
+     /*let transcript = "The short story is {dragged} usually concerned with a single {dragged/} effect conveyed in only one or {repeated} a few significant episodes {repeated/} or scenes. The form {filler} encourages {filler/} economy of setting, {dragged} concise {repeated} narrative, and the {repeated/} omission of a {dragged/} complex plot; character is disclosed {/space/} in action and dramatic encounter but is seldom fully developed. Despite {/space/} its relatively limited scope, though, a short story is often judged by its ability {dragged} to provide {/space/} a “complete” or {dragged/} satisfying treatment of its characters and subject.";
 
      let transcriptTokens = transcript.split(" ");
 

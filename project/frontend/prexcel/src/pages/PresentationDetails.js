@@ -16,7 +16,7 @@ export default function PresentationDetails(props) {
    const str_type_repeated = 3;
    const str_type_dragged = 4;
 
-   const [processedTranscriptArr, setTranscriptArr] = useState([]);
+   //const [processedTranscriptArr, setTranscriptArr] = useState([]);
 
    function goToTextTranscript() {
       // let transcript = props.selectedPresentations[0].transcript;
@@ -71,7 +71,7 @@ export default function PresentationDetails(props) {
       }
 
       console.log(processTranscriptArrTemp);
-      setTranscriptArr(processTranscriptArrTemp);
+      props.processTranscriptHandler(processTranscriptArrTemp);
       // variable: processTranscriptArrTemp
       // hook: processedTranscriptArr, setTranscriptArr
 
