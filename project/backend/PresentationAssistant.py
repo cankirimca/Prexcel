@@ -65,6 +65,7 @@ class PresentationAssistant:
         self.stt_thread.join()
         self.fd_thread.join()
         self.vc_thread.join()
+        self.wr_thread.join()
         transcript, word_count, duration, wpm, gap_ratio, filler_ratio, dragged_ratio, repeated_ratio = self.sa.analyzed_tokens(self.tokens)
         fd_score = 0
         for flag in self.fd_flags:
@@ -77,7 +78,7 @@ class PresentationAssistant:
     def initiate_presentation(self):
         #create speech-to-text thread
         self.stt_thread.start()
-        #self.fd_thread.start()
-        #self.vc_thread.start()
+        self.fd_thread.start()
+        self.vc_thread.start()
         self.wr_thread.start()
 

@@ -69,31 +69,34 @@ def start_presentation():
     if request.method == 'GET':
         #TODO add presentation name screen
         #presentation_name = username = request.json["presentation_name"]
+        global presentation_assistant
         presentation_assistant = PresentationAssistant(user_id, "testPresentation1")
         presentation_assistant.initiate_presentation()
-    return ""
+    return jsonify("")
 
 @app.route('/getTokens', methods = ['GET'])    
 @cross_origin()
 def get_tokens():
     if request.method == 'GET':
+        global presentation_assistant
         a = jsonify(presentation_assistant)
         return a
-    return ""
+    return jsonify("")
 
 @app.route('/endPresentation', methods = ['GET'])
 @cross_origin()
 def end_presentation():
     if request.method == 'GET' and presentation_assistant:
         presentation_assistant.end_presentation()
-    return ""
+    return jsonify("")
 
 @app.route('/getFaceDetectionFlag', methods = ['GET'])
 @cross_origin()
 def get_face_detection_flag():
     if presentation_assistant and presentation_assistant.fd_flags:
+        print( jsonify(presentation_assistant.fd_flags))
         return jsonify(presentation_assistant.fd_flags)
-    return ""       
+    return jsonify("")      
 
             
 @app.route('/getDecibelFlag', methods = ['GET'])
@@ -101,7 +104,7 @@ def get_face_detection_flag():
 def get_decibel_flag():
     if presentation_assistant and presentation_assistant.vc_db_list:
         return jsonify(presentation_assistant.vc_db_list[-1])
-    return ""
+    return jsonify("")
 
 
 @app.route('/getTranscript', methods = ['GET'])
@@ -110,7 +113,7 @@ def get_transcript():
     # todo add live transcript
     #if presentation_assistant.vc_db_list:
     #    return jsonify(presentation_assistant.vc_db_list)
-    return ""
+    return jsonify("")
 
 @app.route('/processUploadedPresentation', methods = ['POST'])
 @cross_origin()

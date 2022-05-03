@@ -7,6 +7,10 @@ import {Button, Grid, Paper, TextField} from "@mui/material";
 
 let transcriptRunning = false;
 
+var interval1 = 0;
+var interval2 = 0;
+var interval3 = 0;
+
 export default function LivePresentation(props) {
 
    const [playing, setPlaying] = useState(false);
@@ -14,6 +18,9 @@ export default function LivePresentation(props) {
    const [fd_flag, setFdFlag] = useState("");
    const [decibel_flag, setDecibel] = useState("");
    const [transcript, setTranscript] = useState("");
+   
+
+
    //const [tokens, setTokens] = useState("");
 
    //disable end presentation button
@@ -75,6 +82,9 @@ export default function LivePresentation(props) {
    }
 
    function endPresentation() {
+      clearInterval(interval1);
+      clearInterval(interval2);
+      clearInterval(interval3);
       fetch('http://localhost:5000/endPresentation', {
          method: 'GET',
          headers: {
@@ -88,7 +98,7 @@ export default function LivePresentation(props) {
          .catch(error => console.log(error))
       console.log("can");
       //transcript = "Stopped"
-      clearInterval();
+      
       //document.getElementById("endPresentationButton").disabled = true;
       setEndButtonDisabled(true);
    }
@@ -110,7 +120,7 @@ export default function LivePresentation(props) {
     }*/
 
    function getFaceDetectionFlag() {
-      setInterval(async function () {
+      interval1 = setInterval(async function () {
          await fetch('http://localhost:5000/getFaceDetectionFlag', {
             method: 'GET',
             headers: {
@@ -119,39 +129,41 @@ export default function LivePresentation(props) {
          })
             .then(resp => resp.json())
             .then((data) => {
-               setFdFlag(data);
+               setFdFlag(data)
             })
             .catch(error => console.log(error))
       }, 500);
    }
 
    function getDecibel() {
-      setInterval(async function () {
+      interval2 = setInterval(async function () {
          await fetch('http://localhost:5000/getDecibelFlag', {
             method: 'GET',
             headers: {
-               'ContentType': 'application/json'
+               'ContentType': 'application/json',
+               'Accept': 'application/json'
             },
          })
             .then(resp => resp.json())
             .then((data) => {
-               setDecibel(data);
+               setDecibel(data)
             })
             .catch(error => console.log(error))
       }, 500);
    }
 
    function getTranscript() {
-      setInterval(async function () {
+      interval3 = setInterval(async function () {
          await fetch('http://localhost:5000/getTranscript', {
             method: 'GET',
             headers: {
-               'ContentType': 'application/json'
+               'ContentType': 'application/json',
+               'Accept': 'application/json'
             },
          })
             .then(resp => resp.json())
             .then((data) => {
-               setDecibel(data);
+               setDecibel(data)
             })
             .catch(error => console.log(error))
       }, 500);
