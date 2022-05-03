@@ -2,9 +2,6 @@ import ScreenIds from "./ScreenIds";
 import {Button, Grid, Paper, TextField} from "@mui/material";
 import React, {useState} from "react";
 
-
-
-
 export default function TranscriptDetails(props) {
 
 
@@ -73,36 +70,32 @@ export default function TranscriptDetails(props) {
         }
      }
 
-     console.log(processTranscriptArrTemp);
+     //console.log(processTranscriptArrTemp);
 
-     // todo
-     console.log(" FINAL VERSION:");
-     let processedTranscriptArr = [];
-     let tagStack2 = [];
+     //// todo
+     //console.log(" FINAL VERSION:");
+     //let processedTranscriptArr = [];
+     //let tagStack2 = [];
 
-     processedTranscriptArr.push(processTranscriptArrTemp[0])
-     tagStack2.push(processTranscriptArrTemp[0].type);
+     //processedTranscriptArr.push(processTranscriptArrTemp[0])
+     //tagStack2.push(processTranscriptArrTemp[0].type);
 
-     let i = 0;
-     for (let currWord in processTranscriptArrTemp) {
-        if( i !== 0){
-           if(currWord.type === tagStack2[tagStack2.length - 1]){
-              let str1 = " " + currWord.word;
-
-              let w1 = (processedTranscriptArr[processedTranscriptArr.length - 1].word) + str1;
-              processedTranscriptArr[processedTranscriptArr.length - 1].word = w1;
-           }
-
-           else {
-              processedTranscriptArr.push({type: currWord.type, word: currWord.word});
-              tagStack2.push(currWord.type);
-           }
-        }
-
-        i = 1;
-
-     }
-     console.log(processedTranscriptArr);
+     //let i = 0;
+     //for (let currWord in processTranscriptArrTemp) {
+     //   if( i !== 0){
+     //      if(currWord.type === tagStack2[tagStack2.length - 1]){
+     //         let str1 = " " + currWord.word;
+     //         let w1 = (processedTranscriptArr[processedTranscriptArr.length - 1].word) + str1;
+     //         processedTranscriptArr[processedTranscriptArr.length - 1].word = w1;
+     //      }
+     //      else {
+     //         processedTranscriptArr.push({type: currWord.type, word: currWord.word});
+     //         tagStack2.push(currWord.type);
+     //      }
+     //   }
+     //   i = 1;
+     //}
+     //console.log(processedTranscriptArr);
 
      /*
      let indexTranscript = 0;
