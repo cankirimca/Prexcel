@@ -27,7 +27,7 @@ class UserDataManager:
         presentation_id = randint(100000, 999999)
         today = date.today()
         print(presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score, grade, dragged_ratio, repeated_ratio)
-        self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count,fd_score,grade, dragged_ratio, repeated_ratio, today) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score,grade, dragged_ratio, repeated_ratio, today))   
+        self.cursor.execute("INSERT INTO Presentation (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count,fd_score,grade, dragged_ratio, repeated_ratio, p_date) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (presentation_id, presentation_name, transcript, user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score,grade, dragged_ratio, repeated_ratio, today))   
         self.connection.commit()
 
     def login(self, username, password):
