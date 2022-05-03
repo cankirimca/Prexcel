@@ -63,6 +63,11 @@ export default function ProgressTracking(props) {
       props.onProgressTracking(ScreenIds.MY_PRESENTATIONS_SCREEN_ID);
    }
 
+   function PresentationInstance(pName, pDate) {
+
+      return <li>  <p> {pName}  -  {pDate} </p> </li>;
+   }
+
    return (
       <div>
          <Grid container spacing={2}>
@@ -71,10 +76,10 @@ export default function ProgressTracking(props) {
                <h1>Progress Tracking</h1>
             </Grid>
 
-            <Grid item xs={3}/>
-            <Grid item xs={6}>
+            <Grid item xs={1}/>
+            <Grid item xs={7}>
 
-               <Paper sx={{backgroundColor:'#E5E5E5'}} elevation={8}>
+               <Paper sx={{backgroundColor:'#E5E5E5', padding:'3%'}} elevation={8}>
                   <Line
                      data={state}
                      options={{
@@ -94,7 +99,15 @@ export default function ProgressTracking(props) {
                <Button variant="contained" onClick={goToMyPresentations}>Back</Button>
 
             </Grid>
-            <Grid item xs={3}/>
+            <Grid item xs={3}>
+               <ul align="left">
+                  { (props.selectedPresentations).map(item => (
+                     PresentationInstance(item.name, "no date specified") ))
+                  }
+               </ul>
+
+            </Grid>
+            <Grid item xs={1}/>
 
          </Grid>
       </div>
