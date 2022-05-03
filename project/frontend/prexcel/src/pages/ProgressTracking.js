@@ -9,16 +9,25 @@ export default function ProgressTracking(props) {
 
    Chart.register(...registerables);
 
-   function formLabels(objArr) {
-      let labels = [];
+   function formData(objArr, dataType) {
+      let data = [];
       for (const obj of objArr) {
-         labels.push(obj.name);
+         data.push(returnDataObj(obj, dataType));
       }
-      return labels;
+      return data;
+   }
+
+   function returnDataObj(obj, dataType) {
+      if (dataType === "name")
+         return obj.name;
+      else if (dataType === "fd_score")
+         return obj.fd_score;
+      else if (dataType === "grade")
+         return obj.grade;
    }
 
    const state = {
-      labels: formLabels(props.selectedPresentations),
+      labels: formData(props.selectedPresentations, "name"),
       datasets: [
          {
             label: 'Final Grade',
@@ -27,18 +36,18 @@ export default function ProgressTracking(props) {
             backgroundColor: 'black',
             borderColor: 'black',
             borderWidth: 2,
-            data: [65, 59, 80, 81, 56]
+            data: formData(props.selectedPresentations, "grade")
          },
          {
-            label: 'Grade 1',
+            label: 'Face Detection Score',
             fill: false,
             lineTension: 0,
             backgroundColor: '#0d98ba',
             borderColor: '#0d98ba',
             borderWidth: 2,
-            data: [32, 78, 25, 76, 38]
+            data: formData(props.selectedPresentations, "fd_score")
          },
-         {
+         /*{
             label: 'Grade 2',
             fill: false,
             lineTension: 0,
@@ -46,7 +55,7 @@ export default function ProgressTracking(props) {
             borderColor: '#56358a',
             borderWidth: 2,
             data: [64, 28, 75, 35, 91]
-         }
+         }*/
       ]
    }
 

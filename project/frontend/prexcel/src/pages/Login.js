@@ -5,8 +5,15 @@ import ScreenIds from "./ScreenIds";
 
 // material ui components
 import {Button, Grid, Paper, TextField} from "@mui/material";
+import DialogBox from "./DialogBox";
 
 const Login = (props) => {
+
+   const [dialogOpen, setDialogOpen] = useState(false);
+   const handleClose = () => {
+      setDialogOpen(false);
+   };
+
    const [count, setCount] = useState(0);
    useEffect(() => {
       // if successful change to main menu
@@ -18,7 +25,6 @@ const Login = (props) => {
       }
       // otherwise reshow the login screen
       else {
-         // todo display login failed message
          props.onLoginHandler(ScreenIds.LOGIN_SCREEN_ID);
       }
    });
@@ -41,6 +47,10 @@ const Login = (props) => {
             .then((data) => {
                console.log(data);
                setCount(data);
+               if (data === -1) {
+                  console.log("dialog box opening");
+                  setDialogOpen(true);
+               }
             })
             .catch(error => console.log(error))
 
@@ -95,13 +105,16 @@ const Login = (props) => {
                <Grid style={{marginTop: '5%'}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '33%', marginLeft: '32.1%'}} elevation={4}>
                      <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="login_password" label="Password"
-                                variant="filled"/>
+                                variant="filled" type="password"/>
                   </Paper>
                </Grid>
 
                <Grid style={{marginTop: '5%', paddingBottom: '5%'}} item xs={12}>
                   <Button style={{backgroundColor:'#507786', marginRight: '5%'}} variant="contained" onClick={AttemptLogin}>Log-In</Button>
                   <Button style={{backgroundColor:'#507786'}} variant="contained" onClick={goToSignUp}>Sign-Up</Button>
+                  <DialogBox open={dialogOpen} onClose={handleClose}
+                             dialogContent={"Please re-enter your login credentials."}
+                             dialogTitle={"Incorrect password or username!"}/>
                </Grid>
 
             </Paper>

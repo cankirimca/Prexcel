@@ -88,6 +88,8 @@ export default function MyPresentations(props) {
          newObj.filler_ratio = arr2d[i][6];
          newObj.word_count = arr2d[i][7];
          newObj.gap_ratio = arr2d[i][8];
+         newObj.fd_score = arr2d[i][9];
+         newObj.grade = arr2d[i][10];
 
          fixedRows.push(newObj);
       }

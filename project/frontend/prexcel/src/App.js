@@ -30,11 +30,17 @@ import ProgressTracking from "./pages/ProgressTracking";
 
 function App() {
 
+   const [processedTranscriptArr, setTranscriptArr] = useState([]);
+
    const [currentScreen, setCurrentScreen] = useState(ScreenIds.LOGIN_SCREEN_ID);
    const [currentUserID, setCurrentUserID] = useState(0);
 
    const [selectedPresentations, setSelectedPresentations] = useState([]);
    const [newPresentationName, setNewPresentationName] = useState("");
+
+   function processTranscriptHandler (transcript) {
+      setTranscriptArr(transcript);
+   }
 
    function changeViewHandler(newScreenId) {
       setCurrentScreen(newScreenId);
@@ -62,9 +68,9 @@ function App() {
       else if (currentScreen === ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID)
          return <LivePresentation newPresentationName={newPresentationName} currentUserID={currentUserID} onLivePresentationHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.PRESENTATION_DETAILS_SCREEN_ID)
-         return <PresentationDetails selectedPresentations={selectedPresentations} onPresentationDetails={changeViewHandler}/>;
+         return <PresentationDetails processTranscriptHandler={processTranscriptHandler} selectedPresentations={selectedPresentations} onPresentationDetails={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.TRANSCRIPT_DETAILS_SCREEN_ID)
-         return <TranscriptDetails selectedPresentations={selectedPresentations} onTranscriptDetails={changeViewHandler}/>;
+         return <TranscriptDetails processedTranscriptArr={processedTranscriptArr} selectedPresentations={selectedPresentations} onTranscriptDetails={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.SIGNUP_SCREEN_ID)
          return <SignUp onSignUpHandler={changeViewHandler}/>
       else if (currentScreen === ScreenIds.CHAT_BOT_SCREEN_ID)
