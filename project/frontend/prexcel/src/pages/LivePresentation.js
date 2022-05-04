@@ -255,7 +255,7 @@ export default function LivePresentation(props) {
                      Menu</Button>
 
 
-                  <Button style={{backgroundColor:'darkblue', margin: '1.5%'}} variant="contained" onClick={changeFlagGap}>Enable Word Recommendations</Button>
+                  <Button style={{ margin: '1.5%'}} variant="contained" onClick={changeFlagGap}>Enable Word Recommendations</Button>
 
 
                </Paper>
