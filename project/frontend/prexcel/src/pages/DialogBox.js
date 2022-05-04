@@ -8,16 +8,16 @@ export default function DialogBox(props) {
 
       <div>
          <Dialog open={props.open} onClose={props.onClose}>
-            <DialogTitle sx={{backgroundColor: '#F5F5F5'}} id="alert-dialog-title">
+            <DialogTitle sx={{backgroundColor: 'whitesmoke'}} id="alert-dialog-title">
                {props.dialogTitle}
             </DialogTitle>
-            <DialogContent sx={{backgroundColor: '#F5F5F5'}}>
+            <DialogContent sx={{backgroundColor: 'whitesmoke'}}>
                <DialogContentText id="alert-dialog-description">
                   {props.dialogContent}
                </DialogContentText>
             </DialogContent>
-            <DialogActions sx={{backgroundColor: '#F5F5F5'}}>
-               <Button sx={{color:'#507786',}} onClick={props.onClose} autoFocus>
+            <DialogActions sx={{backgroundColor: 'whitesmoke'}}>
+               <Button  onClick={props.onClose} autoFocus>
                   Go Back
                </Button>
             </DialogActions>

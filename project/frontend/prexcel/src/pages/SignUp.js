@@ -52,7 +52,7 @@ const SignUp = (props) => {
       else if (username.value === "" || email.value === "" || password.value === "" || password2.value === "") {
          signUpSuccessful = false;
          setDialogTitle("Some fields are empty!");
-         setDialogContent("Please fill the empty field.");
+         setDialogContent("Please fill the empty field or fields.");
       }
 
       const newData = {
@@ -89,36 +89,27 @@ const SignUp = (props) => {
          <Grid item xs={3}/>
          <Grid item xs={6}>
             <h1> Sign Up To Prexcel</h1>
-            <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center', backgroundColor: '#E5E5E5'}} elevation={3}>
+            <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center', backgroundColor: 'whitesmoke'}} elevation={8}>
                <p style={{paddingTop: '5%'}}> Please fill in the following information to sign-up.</p>
-               <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField data-testid="register_username_id" id="register_username" label="Username" variant="outlined" required/>
-               </Grid>
-               <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField data-testid="register_email_id" id="register_email" label="Email" variant="outlined" required/>
-               </Grid>
-               <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField data-testid="register_password_id_1" id="register_password" label="Password" variant="outlined" required/>
-               </Grid>
+
                <Grid style={{ marginTop: '5%', marginBottom: '5%'}} item xs={12}>
-                  <TextField data-testid="register_password_id_2" id="register_password_2" label="Confirm Password" variant="outlined" required/>
                   <Paper sx={{backgroundColor: 'white', marginRight: '36%', marginLeft: '36%'}} elevation={4}>
-                     <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="register_username" label="Username" variant="filled" required/>
+                     <TextField sx={{width:'99%', border: "2px solid #2c778f", borderRadius:'5px',}} data-testid="register_username_id" id="register_username" label="Username" variant="filled" required/>
                   </Paper>
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '36%', marginLeft: '36%'}} elevation={4}>
-                     <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="register_email" label="Email" variant="filled" required/>
+                     <TextField sx={{width:'99%', border: "2px solid #2c778f", borderRadius:'5px',}} data-testid="register_email_id" id="register_email" label="Email" variant="filled" required/>
                   </Paper>
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '36%', marginLeft: '36%'}} elevation={4}>
-                     <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="register_password" label="Password" variant="filled" required/>
+                     <TextField sx={{width:'99%', border: "2px solid #2c778f", borderRadius:'5px',}} data-testid="register_password_id_1" id="register_password" label="Password" variant="filled" required/>
                   </Paper>
                </Grid>
                <Grid style={{ marginTop: '5%', marginBottom: '5%'}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '36%', marginLeft: '36%'}} elevation={4}>
-                     <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="register_password_2" label="Confirm Password" variant="filled" required/>
+                     <TextField sx={{width:'99%', border: "2px solid #2c778f", borderRadius:'5px',}} data-testid="register_password_id_2" id="register_password_2" label="Confirm Password" variant="filled" required/>
                   </Paper>
                </Grid>
                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>

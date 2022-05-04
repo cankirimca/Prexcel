@@ -90,7 +90,7 @@ export default function UploadRecordingScreen(props) {
          <Grid item xs={2}/>
          <Grid item xs={8}>
             <h1>Select a Recording To Analyze...</h1>
-            <Paper style={{backgroundColor:'#E5E5E5', marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+            <Paper style={{backgroundColor:'whitesmoke', marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
                <p style={{paddingTop: '5%'}}>Name of the presentation: {props.newPresentationName}</p>
                <input id="file" type="file" onChange={onFileSelected} onInput={onFileSelected}/>
 

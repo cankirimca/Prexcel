@@ -83,7 +83,7 @@ const Login = (props) => {
          <Grid item xs={4}/>
          <Grid item xs={4}>
             <Paper style={{
-               backgroundColor: '#E5E5E5',
+               backgroundColor: 'whitesmoke',
                marginTop: '50%',
                marginBottom: '5%',
                flexDirection: 'row',
@@ -97,14 +97,14 @@ const Login = (props) => {
 
                <Grid style={{marginTop: '5%',}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '33%', marginLeft: '32.1%'}} elevation={4}>
-                     <TextField data-testid="login_username_field" sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="login_username" label="Username"
+                     <TextField data-testid="login_username_field" sx={{width:'99%', border: "2px solid #2c778f", borderRadius:'5px',}} id="login_username" label="Username"
                                 variant="filled"/>
                   </Paper>
                </Grid>
 
                <Grid style={{marginTop: '5%'}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '33%', marginLeft: '32.1%'}} elevation={4}>
-                     <TextField data-testid="login_password_field" sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="login_password" label="Password"
+                     <TextField data-testid="login_password_field" sx={{width:'99%', border: "2px solid #2c778f", borderRadius:'5px',}} id="login_password" label="Password"
                                 variant="filled" type="password"/>
                   </Paper>
                </Grid>
