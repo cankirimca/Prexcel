@@ -6,8 +6,8 @@ import os
 # Constants for determining time based tag insertion
 # Note that: 1 timestep == 0.02 seconds
 
-SPACE_CONST = 25
-DRAG_CONST_PER_CHAR = 4
+SPACE_CONST = 16
+DRAG_CONST_PER_CHAR = 7
 REPEAT_RANGE = 20
 REPEAT_COUNT = 3
 
@@ -57,7 +57,9 @@ class SpeechAnalyzer:
         word_list = token_return_list
         fillers2d = []  # Handled dynamically in code
         # Create Fillers list from file
-        fillers_file = open(r"project/backend/speech_analysis/fillers.txt", "r")
+        root = os.path.dirname(os.path.abspath(__file__))
+        fillers_file = open(root + "\\fillers.txt", "r")
+        print("T1")
         fillers = fillers_file.readlines()
         fillers_file.close()
         # Generate 2d word array of filler phrases
@@ -69,7 +71,7 @@ class SpeechAnalyzer:
         # Filler = {filler} word/words {filler/} - "f"
         # Repeat = {repeat} word {repeat/} - "r"
         # Dragged = {dragged} word {dragged/} - "d"
-
+        print("T2")
         filler_count = 0
         temp_curr = 0
         dragged_count = 0
@@ -120,6 +122,7 @@ class SpeechAnalyzer:
 
                         if phrase_match:
                             word_list[curr_index].tags.append("fs")  # Filler start tag
+                            w_index = w_index - 1
                             word_list[curr_index + w_index].tags.append("fe")  # Filler end tag
                             filler_count += w_index
 
@@ -131,6 +134,7 @@ class SpeechAnalyzer:
                     word_list.insert(curr_index + 1,
                                      word(txt="{/space/}", start_time=-1, end_time=-1, tags=[]))
 
+        print("T3")
         word_string_list = []
         # Write tagged list to a file
         for w in word_list:
@@ -138,6 +142,7 @@ class SpeechAnalyzer:
 
         string_list_file = open(r"words_string_list.txt", "w")
         string_list_file.writelines(word_string_list)
+        print("T4")
         string_list_file.close()
 
         return word_list, filler_count, dragged_count, repeated_count
@@ -174,10 +179,12 @@ class SpeechAnalyzer:
     #this function puts together all the functions to execute analysis of tokens
     def analyzed_tokens(self, input_tokens):
         consolidated, word_count, duration_in_20_ms, total_gaps = self.consolidate_tokens(input_tokens)
+        print("A1")
         duration_sec = duration_in_20_ms/50
         wpm = (word_count/duration_sec)*60
         gap_ratio = ((total_gaps/50)/duration_sec)
         tagged, filler_count, dragged_count, repeated_count = self.tag_words(consolidated)
+        print("A2")
         filler_ratio = filler_count/word_count
         dragged_ratio = dragged_count/word_count
         repeated_ratio = repeated_count/word_count
