@@ -89,19 +89,27 @@ const SignUp = (props) => {
          <Grid item xs={3}/>
          <Grid item xs={6}>
             <h1> Sign Up To Prexcel</h1>
-            <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center', backgroundColor: 'whitesmoke'}} elevation={3}>
+            <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center', backgroundColor: '#E5E5E5'}} elevation={3}>
                <p style={{paddingTop: '5%'}}> Please fill in the following information to sign-up.</p>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="register_username" label="Username" variant="outlined" required/>
+                  <Paper sx={{backgroundColor: 'white', marginRight: '36%', marginLeft: '36%'}} elevation={4}>
+                     <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="register_username" label="Username" variant="filled" required/>
+                  </Paper>
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="register_email" label="Email" variant="outlined" required/>
+                  <Paper sx={{backgroundColor: 'white', marginRight: '36%', marginLeft: '36%'}} elevation={4}>
+                     <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="register_email" label="Email" variant="filled" required/>
+                  </Paper>
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="register_password" label="Password" variant="outlined" required/>
+                  <Paper sx={{backgroundColor: 'white', marginRight: '36%', marginLeft: '36%'}} elevation={4}>
+                     <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="register_password" label="Password" variant="filled" required/>
+                  </Paper>
                </Grid>
                <Grid style={{ marginTop: '5%', marginBottom: '5%'}} item xs={12}>
-                  <TextField id="register_password_2" label="Confirm Password" variant="outlined" required/>
+                  <Paper sx={{backgroundColor: 'white', marginRight: '36%', marginLeft: '36%'}} elevation={4}>
+                     <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="register_password_2" label="Confirm Password" variant="filled" required/>
+                  </Paper>
                </Grid>
                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
                   <Button style={{ marginRight: '5%'}} variant="contained" onClick={attemptSignup}>SignUp</Button>

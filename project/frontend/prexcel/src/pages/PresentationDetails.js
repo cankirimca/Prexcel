@@ -93,19 +93,24 @@ export default function PresentationDetails(props) {
                <Card sx={{backgroundColor:'#E5E5E5', textAlign:"left", marginLeft: '5%', marginRight: '5%'}} elevation={8}>
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%', marginTop:'5%'}} elevation={4}>
-                     <p style={{textIndent: '2.5%' , marginTop: '4%'}}>Final Grade is : {props.selectedPresentations[0].grade}</p>
+                     <p style={{textIndent: '2.5%' , marginTop: '4%'}}>Final Grade is : { (Math.round(100 * props.selectedPresentations[0].grade * 100) / 100).toFixed(2) }</p>
                   </Card>
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
                      <p style={{marginLeft: '2.5%'}}><u>Grades:</u></p>
-                     <p style={{marginLeft: '2.5%'}}>Gap Ratio : {props.selectedPresentations[0].gap_ratio}</p>
-                     <p style={{marginLeft: '2.5%'}}>Filler Ratio : {props.selectedPresentations[0].filler_ratio}</p>
+                     <p style={{marginLeft: '2.5%'}}>Gap Grade : { (Math.round(100 * (1 - props.selectedPresentations[0].gap_ratio) * 100) / 100).toFixed(2) }</p>
+                     <p style={{marginLeft: '2.5%'}}>Filler Grade : { (Math.round(100 * (1 - props.selectedPresentations[0].filler_ratio) * 100) / 100).toFixed(2) }</p>
                      <p style={{marginLeft: '2.5%'}}>Face Recognition Score : {props.selectedPresentations[0].fd_score}</p>
                   </Card>
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
 
-                     <p style={{marginLeft: '2.5%'}}>Some Remarks:</p>
+                     <p style={{marginLeft: '2.5%'}}>Statistics:  </p>
+                     <ul align="left">
+                        <li>You dragged { (Math.round(100 * props.selectedPresentations[0].dragged_ratio * 100) / 100).toFixed(2) } % of the time. </li>
+                        <li>You fill { (Math.round(100 * props.selectedPresentations[0].filler_ratio * 100) / 100).toFixed(2) } % of the time. </li>
+                        <li>You had a gap { (Math.round(100 * props.selectedPresentations[0].gap_ratio * 100) / 100).toFixed(2) } % of the time. </li>
+                     </ul>
                   </Card>
                </Card>
             </Grid>

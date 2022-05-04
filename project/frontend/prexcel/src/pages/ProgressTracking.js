@@ -23,7 +23,11 @@ export default function ProgressTracking(props) {
       else if (dataType === "fd_score")
          return obj.fd_score;
       else if (dataType === "grade")
-         return obj.grade;
+         return (Math.round(100 * obj.grade * 100) / 100).toFixed(2);
+      else if (dataType === "gap")
+         return (Math.round(100 * (1 - obj.gap_ratio) * 100) / 100).toFixed(2);
+      else if (dataType === "filler")
+         return (Math.round(100 * (1 - obj.filler_ratio) * 100) / 100).toFixed(2);
    }
 
    const state = {
@@ -47,15 +51,24 @@ export default function ProgressTracking(props) {
             borderWidth: 2,
             data: formData(props.selectedPresentations, "fd_score")
          },
-         /*{
-            label: 'Grade 2',
+         {
+            label: 'Gap Score',
             fill: false,
             lineTension: 0,
             backgroundColor: '#56358a',
             borderColor: '#56358a',
             borderWidth: 2,
-            data: [64, 28, 75, 35, 91]
-         }*/
+            data: formData(props.selectedPresentations, "gap")
+         },
+         {
+            label: 'Filler Score',
+            fill: false,
+            lineTension: 0,
+            backgroundColor: 'green',
+            borderColor: 'green',
+            borderWidth: 2,
+            data: formData(props.selectedPresentations, "filler")
+         }
       ]
    }
 
