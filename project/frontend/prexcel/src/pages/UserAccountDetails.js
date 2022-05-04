@@ -94,7 +94,7 @@ const UserAccountDetails = (props) => {
                </Grid>
                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
                   <Button style={{marginRight: '5%'}} variant="contained" onClick={attemptDelete}>Delete Account</Button>
-                  <Button variant="contained" onClick={goToMainMenu}>Back To Main Menu</Button>
+                  <Button data-testid="user_account_details_button_id" variant="contained" onClick={goToMainMenu}>Back To Main Menu</Button>
                </Grid>
             </Paper>
          </Grid>

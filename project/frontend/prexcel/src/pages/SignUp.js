@@ -25,8 +25,8 @@ const addUser = (newUser) => {
 
 const SignUp = (props) => {
 
-   const [dialogContent, setDialogContent] = useState("Sign Up gg");
-   const [dialogTitle, setDialogTitle] = useState("Sign Up gg");
+   const [dialogContent, setDialogContent] = useState("Sign Up");
+   const [dialogTitle, setDialogTitle] = useState("Sign Up");
 
    const [dialogOpen, setDialogOpen] = useState(false);
    const handleClose = () => {
@@ -92,21 +92,21 @@ const SignUp = (props) => {
             <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center', backgroundColor: 'whitesmoke'}} elevation={3}>
                <p style={{paddingTop: '5%'}}> Please fill in the following information to sign-up.</p>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="register_username" label="Username" variant="outlined" required/>
+                  <TextField data-testid="register_username_id" id="register_username" label="Username" variant="outlined" required/>
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="register_email" label="Email" variant="outlined" required/>
+                  <TextField data-testid="register_email_id" id="register_email" label="Email" variant="outlined" required/>
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="register_password" label="Password" variant="outlined" required/>
+                  <TextField data-testid="register_password_id_1" id="register_password" label="Password" variant="outlined" required/>
                </Grid>
                <Grid style={{ marginTop: '5%', marginBottom: '5%'}} item xs={12}>
-                  <TextField id="register_password_2" label="Confirm Password" variant="outlined" required/>
+                  <TextField data-testid="register_password_id_2" id="register_password_2" label="Confirm Password" variant="outlined" required/>
                </Grid>
                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
-                  <Button style={{ marginRight: '5%'}} variant="contained" onClick={attemptSignup}>SignUp</Button>
-                  <Button variant="contained" onClick={goToLogin}>Cancel</Button>
-                  <DialogBox open={dialogOpen} onClose={handleClose}
+                  <Button data-testid="signup_button_id" style={{ marginRight: '5%'}} variant="contained" onClick={attemptSignup}>SignUp</Button>
+                  <Button data-testid="cancel_button_id" variant="contained" onClick={goToLogin}>Cancel</Button>
+                  <DialogBox data-testid="signup_error_message_id" open={dialogOpen} onClose={handleClose}
                              dialogContent={dialogContent}
                              dialogTitle={dialogTitle}/>
                </Grid>
