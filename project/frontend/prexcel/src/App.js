@@ -29,6 +29,7 @@ import UploadRecordingScreen from "./pages/UploadRecordingScreen";
 import ProgressTracking from "./pages/ProgressTracking";
 import CheckCamera from "./pages/CheckCamera";
 import UploadPresentationLoading from "./pages/UploadPresentationLoading";
+import TutorialApp from "./pages/TutorialApp";
 
 function App() {
 
@@ -89,6 +90,10 @@ function App() {
          return <CheckCamera onCheckCameraHandler={changeViewHandler} />;
       else if (currentScreen === ScreenIds.LOADING_SCREEN)
          return <UploadPresentationLoading onPresentationLoadingHandler={changeViewHandler} />;
+      else if (currentScreen === ScreenIds.TUTORIAL_APP_SCREEN_ID)
+         return <TutorialApp onTutorialAppHandler={changeViewHandler} />;
+      // else if (currentScreen === ScreenIds.TUTORIAL_PRESENTATION_SCREEN_ID)
+      //    return <TutorialPresentation onTutorialPresentationHandler={changeViewHandler} />;
    }
 
 //  function navigate() {

@@ -50,7 +50,7 @@ export default function ChatBotScreen(props) {
       let msgObj = [{
          position: "left",
          question: "",
-         color: "#5865F2"
+         color: "#2979ff"
       }];
       for (let i in questions) {
          msgObj[0].question = msgObj[0].question + questions[i].question + "\n";
@@ -198,7 +198,7 @@ export default function ChatBotScreen(props) {
                </Paper>
 
                <form onSubmit={questionSubmitHandler}>
-                  <Button onClick={scrollToTop} style={{color:"#5865F2"}} size="large" endIcon={<ArrowUpwardIcon/>} variant="text"> </Button>
+                  <Button onClick={scrollToTop} style={{color:"#2979ff"}} size="large" endIcon={<ArrowUpwardIcon/>} variant="text"> </Button>
                   <TextField size="small" sx={{
                      marginLeft: '1%',
                      marginRight: '1%',
