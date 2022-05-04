@@ -72,6 +72,7 @@ export default function LivePresentation(props) {
       getFaceDetectionFlag();
       getDecibel();
       getRecommendations();
+      getTranscript();
    }
 
    function endPresentation() {
@@ -149,7 +150,7 @@ export default function LivePresentation(props) {
       }, 500);
    }
 
-   /*function getTranscript() {
+   function getTranscript() {
       interval3 = setInterval(async function () {
          await fetch('http://localhost:5000/getTranscript', {
             method: 'GET',
@@ -160,11 +161,11 @@ export default function LivePresentation(props) {
          })
             .then(resp => resp.json())
             .then((data) => {
-               setDecibel(data)
+               setTranscript(data)
             })
             .catch(error => console.log(error))
       }, 500);
-   }*/
+   }
 
    function getRecommendations() {
       interval4 = setInterval(async function () {
