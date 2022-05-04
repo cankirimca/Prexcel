@@ -28,7 +28,8 @@ def format_metadata_output(tokens, result_tokens):
  
 class SpeechToTextModel:
 
-    def __init__(self, tokens, words):
+    def __init__(self, tokens, words, transcript):
+        self.transcript = transcript
         self.model = Model(pbmm_path)
         self.result_tokens = tokens
         self.model.enableExternalScorer(scorer_path)
@@ -77,6 +78,7 @@ class SpeechToTextModel:
                 self.stream.feedAudioContent(np.frombuffer(frame, np.int16))
                 x = self.stream.intermediateDecodeWithMetadata()
                 y = self.stream.intermediateDecode()
+                self.transcript[0] = y
                 self.words[0] = y.split()
                 #print(self.words[0])
                 if x.transcripts[0].tokens:

@@ -56,26 +56,10 @@ class WordRecommender:
         last_added = time.time()
         last_length = 0
         while not stop_flag[0]:
-            #print(self.words[0])
-            #print(self.words[0])
-            if (not self.words[0]):
-                last_added = time.time()
-                continue
-            
+            time.sleep(2)
             if len(self.words[0]) < 4:
-                #print("small")
-                last_added = time.time()
                 continue
-
-            if last_length < len(self.words[0]):
-                last_length = len(self.words[0])
-                last_added = time.time()
-
-            if (time.time() - last_added > 2.5):
-                self.recommendations.append(self.generate_recommendation(self.words[0]))
-
-                #print("recom:",self.recommendations[-1])
-                last_added = time.time()
+            self.recommendations.append(self.generate_recommendation(self.words[0]))
         print("recommendations ended-----------------")        
             
 

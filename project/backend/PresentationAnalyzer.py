@@ -14,7 +14,8 @@ class PresentationAnalyzer:
     def __init__(self, user_id, presentation_name, file_path):
         self.tokens = []
         self.words = [None]
-        self.stt = SpeechToTextModel(self.tokens, self.words)
+        self.transcript = [None]
+        self.stt = SpeechToTextModel(self.tokens, self.words, self.transcript)
         self.fd = FaceDetection()
         self.fd_flags = []
         self.user_id = user_id

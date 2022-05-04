@@ -135,8 +135,8 @@ def get_decibel_flag():
 @cross_origin()
 def get_transcript():
     # todo add live transcript
-    #if presentation_assistant.vc_db_list:
-    #    return jsonify(presentation_assistant.vc_db_list)
+    if (presentation_assistant != None) and (presentation_assistant.transcript[0] != None):
+        return jsonify(presentation_assistant.transcript[0])
     return jsonify("")
 
 @app.route('/processUploadedPresentation', methods = ['POST'])

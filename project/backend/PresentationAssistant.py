@@ -13,7 +13,8 @@ class PresentationAssistant:
         self.tokens = []
         self.words = [None]
         self.recommendations = []
-        self.stt = SpeechToTextModel(self.tokens, self.words)
+        self.transcript = [None]
+        self.stt = SpeechToTextModel(self.tokens, self.words, self.transcript)
         self.udm = UserDataManager()
         self.fd = FaceDetection()
         self.sa = SpeechAnalyzer()

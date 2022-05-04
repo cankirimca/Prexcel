@@ -86,7 +86,7 @@ export default function NewPresentation(props) {
 
                <Grid style={{marginTop: '5%'}} item xs={12}>
                   <Paper sx={{ marginRight: '33%', marginLeft: '33%'}} elevation={4}>
-                     <TextField sx={{width: '99%', border: "2px solid #507786", borderRadius: '5px',}}
+                     <TextField sx={{width: '99%', border: "2px solid #2c778f", borderRadius: '5px',}}
                                 id="presentation_name" label="Name of the presentation"
                                 variant="filled"/>
                   </Paper>
