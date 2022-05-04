@@ -7,8 +7,8 @@ import os
 # Note that: 1 timestep == 0.02 seconds
 
 SPACE_CONST = 16
-DRAG_CONST_PER_CHAR = 7
-REPEAT_RANGE = 20
+DRAG_CONST_PER_CHAR = 8
+REPEAT_RANGE = 15
 REPEAT_COUNT = 3
 
 token = namedtuple("token", "text timestep")
@@ -99,7 +99,7 @@ class SpeechAnalyzer:
                             repeated_count += 1
 
                 # Insert dragged tag
-                if word_list[curr_index].end_time - word_list[curr_index].start_time > DRAG_CONST_PER_CHAR * len(
+                if len(word_list[curr_index].txt) > 1 and word_list[curr_index].end_time - word_list[curr_index].start_time > DRAG_CONST_PER_CHAR * len(
                         word_list[curr_index].txt):
                     # Add "d" tag
                     word_list[curr_index].tags.append("d")
