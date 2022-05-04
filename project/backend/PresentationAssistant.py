@@ -1,9 +1,9 @@
 from speech_to_text.SpeechToTextModel import SpeechToTextModel
-from project.backend.database.UserDataManager import UserDataManager
-from project.backend.face_detection.FaceDetection import FaceDetection
-from project.backend.word_recommendation.WordRecommender import WordRecommender
-from project.backend.speech_analysis.SpeechAnalyzer import SpeechAnalyzer
-from project.backend.audio_volume.VolumeChecker import VolumeChecker
+from database.UserDataManager import UserDataManager
+from face_detection.FaceDetection import FaceDetection
+from word_recommendation.WordRecommender import WordRecommender
+from speech_analysis.SpeechAnalyzer import SpeechAnalyzer
+from audio_volume.VolumeChecker import VolumeChecker
 from threading import Thread
 
 class PresentationAssistant:

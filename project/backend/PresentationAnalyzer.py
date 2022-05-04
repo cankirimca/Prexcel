@@ -1,7 +1,7 @@
 from speech_to_text.SpeechToTextModel import SpeechToTextModel
-from project.backend.database.UserDataManager import UserDataManager
-from project.backend.face_detection.FaceDetection import FaceDetection
-from project.backend.speech_analysis.SpeechAnalyzer import SpeechAnalyzer
+from database.UserDataManager import UserDataManager
+from face_detection.FaceDetection import FaceDetection
+from speech_analysis.SpeechAnalyzer import SpeechAnalyzer
 
 import os
 import sys
