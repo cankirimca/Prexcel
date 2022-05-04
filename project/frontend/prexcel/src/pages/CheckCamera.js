@@ -35,7 +35,7 @@ const CheckCamera = (props) => {
    // todo
    function goToLivePresentation(){
 
-      props.onCheckCameraHandler(ScreenIds.LIVE_FEEDBACK_SCREEN_ID);
+      props.onCheckCameraHandler(ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID);
    }
 
 
@@ -59,8 +59,11 @@ const CheckCamera = (props) => {
                   <Button style={{backgroundColor:'#507786'}} variant="contained" onClick={stopVideo}> Stop Camera </Button>) : (
                   <Button style={{backgroundColor:'#507786'}} variant="contained" onClick={startVideo}> Start Camera </Button>)}
 
+               {!playing &&
+                  <Button style={{backgroundColor:'#507786', marginLeft:"3%"}} variant="contained" onClick={goToLivePresentation}>Continue To Presentation</Button>}
+
                {playing &&
-                  <Button style={{backgroundColor:'#507786'}} variant="contained" onClick={goToLivePresentation}>Continue To Presentation</Button>}
+                  <Button style={{backgroundColor:'#507786', marginLeft:"3%"}} disabled variant="contained">Continue To Presentation</Button>}
 
             </Grid>
             <Grid item xs={2}/>

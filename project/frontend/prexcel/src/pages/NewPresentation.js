@@ -33,7 +33,7 @@ export default function NewPresentation(props) {
       const name = document.getElementById('presentation_name').value;
       if (name.length > 0) {
          props.onNewPresentationName(name);
-         props.onNewPresentationHandler(ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID)
+         props.onNewPresentationHandler(ScreenIds.CHECK_CAMERA);
       } else {
          console.log("dialog box opening");
          setDialogOpen(true);
