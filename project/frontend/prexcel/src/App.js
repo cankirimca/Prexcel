@@ -67,7 +67,7 @@ function App() {
          return <MainMenu onMainMenuHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.MY_PRESENTATIONS_SCREEN_ID)
          return <MyPresentations currentUserID={currentUserID} onPresentationSelection={presentationSelectionHandler} onMyPresentationsHandler={changeViewHandler}/>;
-      else if (currentScreen === ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID)
+      else if (currentScreen === ScreenIds.LIVE_PRESENTATION_FEEDBACK_SCREEN_ID)
          return <LivePresentation newPresentationName={newPresentationName} currentUserID={currentUserID} onLivePresentationHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.PRESENTATION_DETAILS_SCREEN_ID)
          return <PresentationDetails processTranscriptHandler={processTranscriptHandler} selectedPresentations={selectedPresentations} onPresentationDetails={changeViewHandler}/>;

@@ -35,7 +35,7 @@ const CheckCamera = (props) => {
    // todo
    function goToLivePresentation(){
 
-      props.onCheckCameraHandler(ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID);
+      props.onCheckCameraHandler(ScreenIds.LIVE_PRESENTATION_FEEDBACK_SCREEN_ID);
    }
 
 

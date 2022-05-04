@@ -26,7 +26,7 @@ const MainMenu = (props) => {
    }
 
   function goToLivePresentation() {
-      props.onMainMenuHandler(ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID);
+      props.onMainMenuHandler(ScreenIds.LIVE_PRESENTATION_FEEDBACK_SCREEN_ID);
   }
 
    function goToNewPresentation() {
