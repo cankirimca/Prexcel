@@ -80,23 +80,22 @@ def start_presentation():
         print("exception") 
         print(str(e))    
 
-@app.route('/getTokens', methods = ['GET'])    
+"""@app.route('/getTokens', methods = ['GET'])    
 @cross_origin()
 def get_tokens():
     if request.method == 'GET':
         global presentation_assistant
         a = jsonify(presentation_assistant)
         return a
-    return jsonify("")
+    return jsonify("")"""
 
 @app.route('/endPresentation', methods = ['GET'])
 @cross_origin()
 def end_presentation():
     try:
         global presentation_assistant
-        if request.method == 'GET' and presentation_assistant:
+        if request.method == 'GET' and (presentation_assistant != None):
             presentation_assistant.end_presentation()
-            #presentation_assistant = None
             print("in app, presentation ended")
         return jsonify("Presentation Ended")
     except Exception as e:
@@ -107,7 +106,7 @@ def end_presentation():
 @cross_origin()
 def get_face_detection_flag():
     global presentation_assistant
-    if presentation_assistant and presentation_assistant.fd_flags and len(presentation_assistant.fd_flags) > 0:
+    if (presentation_assistant != None) and (presentation_assistant.fd_flags != None) and len(presentation_assistant.fd_flags) > 0:
         print( jsonify(presentation_assistant.fd_flags[-1]))
         return jsonify(presentation_assistant.fd_flags[-1])
     return jsonify("")     
@@ -116,9 +115,10 @@ def get_face_detection_flag():
 @cross_origin()
 def get_recommendations():
     global presentation_assistant
-    if presentation_assistant and presentation_assistant.recommendations and len(presentation_assistant.recommendations) > 1:
-        print( jsonify(presentation_assistant.recommendations[0]))
-        return jsonify(presentation_assistant.recommendations[0])
+    #print(presentation_assistant)
+    if (presentation_assistant != None) and len(presentation_assistant.recommendations) > 0:
+        print("----------------posted-----------------")
+        return jsonify(presentation_assistant.recommendations[-1])
     return jsonify("")          
 
             
@@ -126,7 +126,7 @@ def get_recommendations():
 @cross_origin()
 def get_decibel_flag():
     global presentation_assistant
-    if presentation_assistant and presentation_assistant.vc_db_list:
+    if (presentation_assistant != None) and presentation_assistant.vc_db_list:
         return jsonify(presentation_assistant.vc_db_list[-1])
     return jsonify("")
 

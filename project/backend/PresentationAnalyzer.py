@@ -24,15 +24,26 @@ class PresentationAnalyzer:
         self.udm = UserDataManager()
 
     def process_video_recording(self):
+        print(1)
         self.convert_video_to_audio()
+        print(2)
         self.stt.transcribe_stream(root + "\\temp_audio_mono.wav")
+        print(3)
         transcript, word_count, duration, wpm, gap_ratio, filler_ratio, dragged_ratio, repeated_ratio = self.sa.analyzed_tokens(self.tokens)
+        print(4)
         self.fd.detect_face_from_file(self.file_path, self.fd_flags)
+        print(5)
         fd_score = 0
+
         for flag in self.fd_flags:
             if flag == "+":
                 fd_score += 1
-        fd_score = fd_score/len(self.fd_flags)   
+        print(6)
+        if self.fd_flags == None or len(self.fd_flags):
+            fd_score = 0   
+        else:          
+            fd_score = fd_score/len(self.fd_flags)  
+        print(7)  
         print("fd score:", fd_score)
         score = ((1-(filler_ratio)*3)+(1-(gap_ratio)*3) + (fd_score) + (1-(repeated_ratio)*3)+ (1-(dragged_ratio)*3))/5
         print(score)

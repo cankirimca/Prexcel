@@ -189,9 +189,9 @@ export default function TranscriptDetails(props) {
                <Paper elevation={3} style={{ margin: '5%', paddingBottom:'1%'}}>
                   Statistics
                   <ul align="left">
-                     <li>You dragged X% of the time. </li>
-                     <li>You fill {props.selectedPresentations[0].filler_ratio} of the time. </li>
-                     <li>You had a gap {props.selectedPresentations[0].gap_ratio} of the time. </li>
+                     <li>You dragged { (Math.round(100 * props.selectedPresentations[0].dragged_ratio * 100) / 100).toFixed(2) } % of the time. </li>
+                     <li>You fill { (Math.round(100 * props.selectedPresentations[0].filler_ratio * 100) / 100).toFixed(2) } % of the time. </li>
+                     <li>You had a gap { (Math.round(100 * props.selectedPresentations[0].gap_ratio * 100) / 100).toFixed(2) } % of the time. </li>
                   </ul>
                </Paper>
             </Grid>
