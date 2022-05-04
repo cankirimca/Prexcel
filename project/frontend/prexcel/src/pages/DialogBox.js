@@ -18,7 +18,7 @@ export default function DialogBox(props) {
             </DialogContent>
             <DialogActions sx={{backgroundColor: '#F5F5F5'}}>
                <Button sx={{color:'#507786',}} onClick={props.onClose} autoFocus>
-                  Agree
+                  Go Back
                </Button>
             </DialogActions>
          </Dialog>

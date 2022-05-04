@@ -57,14 +57,14 @@ const CheckCamera = (props) => {
                </Paper>
 
                {playing ? (
-                  <Button style={{backgroundColor:'darkblue', marginTop:"3%"}} variant="contained" onClick={stopVideo}> Stop Camera </Button>) : (
-                  <Button style={{backgroundColor:'darkblue', marginTop:"3%"}} variant="contained" onClick={startVideo}> Start Camera </Button>)}
+                  <Button style={{marginTop:"3%"}} variant="contained" onClick={stopVideo}> Stop Camera </Button>) : (
+                  <Button style={{marginTop:"3%"}} variant="contained" onClick={startVideo}> Start Camera </Button>)}
 
                {!playing &&
-                  <Button style={{backgroundColor:'darkblue', marginLeft:"3%", marginTop:"3%"}} variant="contained" onClick={goToLivePresentation}>Continue To Presentation</Button>}
+                  <Button style={{marginLeft:"3%", marginTop:"3%"}} variant="contained" onClick={goToLivePresentation}>Continue To Presentation</Button>}
 
                {playing &&
-                  <Button style={{backgroundColor:'gray', marginLeft:"3%", marginTop:"3%"}} disabled variant="contained">Cannot Proceed to Presentation While Your Camera is Open</Button>}
+                  <Button style={{marginLeft:"3%", marginTop:"3%"}} disabled variant="contained">Cannot Proceed to Presentation While Your Camera is Open</Button>}
 
             </Grid>
             <Grid item xs={2}/>

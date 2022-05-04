@@ -104,8 +104,8 @@ const SignUp = (props) => {
                   <TextField id="register_password_2" label="Confirm Password" variant="outlined" required/>
                </Grid>
                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
-                  <Button style={{ backgroundColor: 'darkblue', marginRight: '5%'}} variant="contained" onClick={attemptSignup}>SignUp</Button>
-                  <Button style={{ backgroundColor: 'darkblue'}} variant="contained" onClick={goToLogin}>Cancel</Button>
+                  <Button style={{ marginRight: '5%'}} variant="contained" onClick={attemptSignup}>SignUp</Button>
+                  <Button variant="contained" onClick={goToLogin}>Cancel</Button>
                   <DialogBox open={dialogOpen} onClose={handleClose}
                              dialogContent={dialogContent}
                              dialogTitle={dialogTitle}/>

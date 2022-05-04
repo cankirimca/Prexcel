@@ -240,11 +240,11 @@ export default function LivePresentation(props) {
                   justifyContent: 'center'
                }} elevation={0}>
 
-                  <Button disabled={startButtonDisabled} id="startPresentationButton" style={{backgroundColor:'darkblue', color:"white", margin: '1.5%'}}
+                  <Button disabled={startButtonDisabled} id="startPresentationButton" style={{ color:"white", margin: '1.5%'}}
                           variant="contained" onClick={startPresentation}>Start Presentation</Button>
-                  <Button disabled={endButtonDisabled} id="endPresentationButton" style={{backgroundColor:'darkblue', color:"white", margin: '1.5%'}}
+                  <Button disabled={endButtonDisabled} id="endPresentationButton" style={{color:"white", margin: '1.5%'}}
                           variant="contained" onClick={endPresentation}>End Presentation</Button>
-                  <Button style={{backgroundColor:'darkblue', margin: '1.5%'}} variant="contained" onClick={goBackToMainMenu}>Back to Main
+                  <Button style={{margin: '1.5%'}} variant="contained" onClick={goBackToMainMenu}>Back to Main
                      Menu</Button>
 
 

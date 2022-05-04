@@ -133,8 +133,8 @@ export default function MyPresentations(props) {
                </Paper>
                <Paper sx={{marginRight:'25%', marginLeft:'25%', backgroundColor:'whitesmoke'}} elevation={8}>
                   <Button style={{marginTop:'5%', backgroundColor:'darkblue',}} disabled={!(selectedRows.length === 1)} variant="contained" onClick={goToPresentationDetails}>View Report</Button><br/><br/>
-                  <Button style={{backgroundColor:'darkblue'}} disabled={!(selectedRows.length >= 2)} variant="contained" onClick={goToProgressTracking}>See Progress</Button><br/><br/>
-                  <Button style={{marginBottom:'5%', backgroundColor:'darkblue', color:"white"}} variant="contained" onClick={goBackToMainMenu}>Back To Main Menu</Button>
+                  <Button  disabled={!(selectedRows.length >= 2)} variant="contained" onClick={goToProgressTracking}>See Progress</Button><br/><br/>
+                  <Button style={{marginBottom:'5%', color:"white"}} variant="contained" onClick={goBackToMainMenu}>Back To Main Menu</Button>
                </Paper>
             </Grid>
             <Grid item xs={3}/>

@@ -94,8 +94,8 @@ const UserAccountDetails = (props) => {
                      You may delete your account, but beware, this process cannot be reversed!
                </Grid>
                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
-                  <Button style={{backgroundColor:'darkblue', marginRight: '5%'}} variant="contained" onClick={attemptDelete}>Delete Account</Button>
-                  <Button style={{backgroundColor:'darkblue'}} variant="contained" onClick={goToMainMenu}>Back To Main Menu</Button>
+                  <Button style={{marginRight: '5%'}} variant="contained" onClick={attemptDelete}>Delete Account</Button>
+                  <Button variant="contained" onClick={goToMainMenu}>Back To Main Menu</Button>
                </Grid>
             </Paper>
          </Grid>

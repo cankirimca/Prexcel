@@ -93,11 +93,11 @@ export default function NewPresentation(props) {
                </Grid>
 
                <Grid style={{marginTop: '5%', paddingBottom: '5%'}} item xs={12}>
-                  <Button style={{backgroundColor: 'darkblue', marginRight: '5%'}} variant="contained"
+                  <Button style={{ marginRight: '5%'}} variant="contained"
                           onClick={goToLivePresentation}>Perform a Live Presentation</Button>
-                  <Button style={{backgroundColor: 'darkblue', marginRight: '5%'}} variant="contained"
+                  <Button style={{ marginRight: '5%'}} variant="contained"
                           onClick={goToUploadPresentation}>Upload a Recording</Button>
-                  <Button style={{backgroundColor: 'darkblue',}} variant="contained"
+                  <Button variant="contained"
                           onClick={goToMainMenu}>Cancel</Button>
                   <DialogBox open={dialogOpen} onClose={handleClose}
                              dialogContent={"Please enter a presentation name to continue."}

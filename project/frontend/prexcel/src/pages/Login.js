@@ -110,8 +110,8 @@ const Login = (props) => {
                </Grid>
 
                <Grid style={{marginTop: '5%', paddingBottom: '5%'}} item xs={12}>
-                  <Button style={{backgroundColor:'darkblue', marginRight: '5%'}} variant="contained" onClick={AttemptLogin}>Log-In</Button>
-                  <Button style={{backgroundColor:'darkblue'}} variant="contained" onClick={goToSignUp}>Sign-Up</Button>
+                  <Button style={{marginRight: '5%'}} variant="contained" onClick={AttemptLogin}>Log-In</Button>
+                  <Button variant="contained" onClick={goToSignUp}>Sign-Up</Button>
                   <DialogBox open={dialogOpen} onClose={handleClose}
                              dialogContent={"Please re-enter your login credentials."}
                              dialogTitle={"Incorrect password or username!"}/>

@@ -50,13 +50,13 @@ const MainMenu = (props) => {
             <Grid item xs={4}/>
             <Grid item xs={4}>
                <Paper style={{backgroundColor:'whitesmoke', marginTop: '2.5%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={8}>
-                  <Button style={{ backgroundColor:'darkblue', marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={goToNewPresentation}>Start a Presentation</Button> <br/>
-                  <Button style={{ backgroundColor:'darkblue', marginBottom: '5%'}} variant="contained" onClick={goToMyPresentations}>My Presentations</Button> <br/>
-                  <Button style={{ backgroundColor:'darkblue', marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Prexcel</Button> <br/>
-                  <Button style={{ backgroundColor:'darkblue', marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Presentations</Button> <br/>
-                  <Button style={{ backgroundColor:'darkblue', marginBottom: '5%'}} variant="contained" onClick={goToUserAccountDetails}>User-Account-Details</Button> <br/>
-                  <Button style={{ backgroundColor:'darkblue', marginBottom: '5%'}} variant="contained" onClick={goToChatBot}>Chat Bot</Button> <br/>
-                  <Button style={{ backgroundColor:'darkblue', marginBottom: '5%'}} variant="contained" onClick={logOut}>Log-Out</Button>
+                  <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={goToNewPresentation}>Start a Presentation</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToMyPresentations}>My Presentations</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Prexcel</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Presentations</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToUserAccountDetails}>User-Account-Details</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToChatBot}>Chat Bot</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={logOut}>Log-Out</Button>
                </Paper>
             </Grid>
             <Grid item xs={4}/>
