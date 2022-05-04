@@ -110,7 +110,7 @@ export default function MyPresentations(props) {
 
             <Grid item xs={3}/>
             <Grid item xs={6}>
-               <Paper sx={{backgroundColor:'#E5E5E5', height:400, marginTop: '2.5%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={8}>
+               <Paper sx={{backgroundColor:'whitesmoke', height:400, marginTop: '2.5%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={8}>
                   <DataGrid
                      rows={rows}
                      columns={columns}
@@ -131,10 +131,10 @@ export default function MyPresentations(props) {
                   {console.log(JSON.stringify(selectedRows, null, 4))}
                   <br/>
                </Paper>
-               <Paper sx={{marginRight:'25%', marginLeft:'25%', backgroundColor:'#2C2F33'}} elevation={8}>
-                  <Button style={{marginTop:'5%', backgroundColor:'#5865F2',}} disabled={!(selectedRows.length === 1)} variant="contained" onClick={goToPresentationDetails}>View Report</Button><br/><br/>
-                  <Button style={{backgroundColor:'#5865F2',}} disabled={!(selectedRows.length >= 2)} variant="contained" onClick={goToProgressTracking}>See Progress</Button><br/><br/>
-                  <Button style={{marginBottom:'5%', backgroundColor:'#5865F2',}} variant="contained" onClick={goBackToMainMenu}>Back To Main Menu</Button>
+               <Paper sx={{marginRight:'25%', marginLeft:'25%', backgroundColor:'whitesmoke'}} elevation={8}>
+                  <Button style={{marginTop:'5%', backgroundColor:'darkblue',}} disabled={!(selectedRows.length === 1)} variant="contained" onClick={goToPresentationDetails}>View Report</Button><br/><br/>
+                  <Button style={{backgroundColor:'darkblue'}} disabled={!(selectedRows.length >= 2)} variant="contained" onClick={goToProgressTracking}>See Progress</Button><br/><br/>
+                  <Button style={{marginBottom:'5%', backgroundColor:'darkblue', color:"white"}} variant="contained" onClick={goBackToMainMenu}>Back To Main Menu</Button>
                </Paper>
             </Grid>
             <Grid item xs={3}/>
