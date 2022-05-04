@@ -13,7 +13,6 @@ var interval3 = 0;
 
 export default function LivePresentation(props) {
 
-   const [playing, setPlaying] = useState(false);
 
    const [fd_flag, setFdFlag] = useState("");
    const [decibel_flag, setDecibel] = useState("");
@@ -30,27 +29,7 @@ export default function LivePresentation(props) {
 
    const [flagGap, setFlagGap] = useState(true);
 
-   function startVideo() {
-      setPlaying(true);
-      navigator.getUserMedia(
-         {
-            video: true,
-         },
-         (stream) => {
-            let video = document.getElementsByClassName("app__videoFeed")[0];
-            if (video) {
-               video.srcObject = stream;
-            }
-         },
-         (err) => console.error(err)
-      );
-   };
 
-   function stopVideo() {
-      setPlaying(false);
-      let video = document.getElementsByClassName("app__videoFeed")[0];
-      video.srcObject.getTracks()[0].stop();
-   }
 
    function changeFlagGap() {
       setFlagGap(!flagGap)
@@ -192,13 +171,7 @@ export default function LivePresentation(props) {
 
             <Grid item xs={1}/>
             <Grid item xs={7}>
-               <Paper sx={{marginTop: '1.7%', backgroundColor: 'lightblue'}} align="center"
-                      elevation={1}>
-                  <video  width='80%' muted autoPlay className="app__videoFeed"/><br/>
-               </Paper>
-               {playing ? (
-                  <Button style={{backgroundColor:'#507786'}} variant="contained" onClick={stopVideo}> Stop Camera </Button>) : (
-                  <Button style={{backgroundColor:'#507786'}} variant="contained" onClick={startVideo}> Start Camera </Button>)}
+
 
             </Grid>
             <Grid item xs={3}>

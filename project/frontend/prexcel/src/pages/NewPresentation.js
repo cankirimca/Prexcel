@@ -41,6 +41,18 @@ export default function NewPresentation(props) {
 
    }
 
+   function goToCheckCamera() {
+      const name = document.getElementById('presentation_name').value;
+      if (name.length > 0) {
+         props.onNewPresentationName(name);
+         props.onNewPresentationHandler(ScreenIds.CHECK_CAMERA)
+      } else {
+         console.log("dialog box opening");
+         setDialogOpen(true);
+      }
+
+   }
+
    // todo
    function goToUploadPresentation() {
 
@@ -82,11 +94,9 @@ export default function NewPresentation(props) {
 
                <Grid style={{marginTop: '5%', paddingBottom: '5%'}} item xs={12}>
                   <Button style={{backgroundColor: '#5865F2', marginRight: '5%'}} variant="contained"
-                          onClick={goToLivePresentation}>Perform a
-                     Live Presentation</Button>
+                          onClick={goToLivePresentation}>Perform a Live Presentation</Button>
                   <Button style={{backgroundColor: '#5865F2', marginRight: '5%'}} variant="contained"
-                          onClick={goToUploadPresentation}>Upload a
-                     Recording</Button>
+                          onClick={goToUploadPresentation}>Upload a Recording</Button>
                   <Button style={{backgroundColor: '#5865F2',}} variant="contained"
                           onClick={goToMainMenu}>Cancel</Button>
                   <DialogBox open={dialogOpen} onClose={handleClose}
