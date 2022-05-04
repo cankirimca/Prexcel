@@ -57,7 +57,6 @@ const UserAccountDetails = (props) => {
             return resp.json()
          })
          .then((data) => {
-            console.log(data);
             setUsername(data[0])
             setEmail(data[2])
             setID(data[3])

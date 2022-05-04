@@ -41,6 +41,10 @@ const MainMenu = (props) => {
       props.onMainMenuHandler(ScreenIds.TUTORIAL_APP_SCREEN_ID);
    }
 
+   function goToTutorialPresentation() {
+      props.onMainMenuHandler(ScreenIds.TUTORIAL_PRESENTATION_SCREEN_ID);
+   }
+
    return (
       <div>
          <Grid container spacing={2}>
@@ -57,7 +61,7 @@ const MainMenu = (props) => {
                   <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={goToNewPresentation}>Start a Presentation</Button> <br/>
                   <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToMyPresentations}>My Presentations</Button> <br/>
                   <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToTutorialApp}>Tutorial on Prexcel</Button> <br/>
-                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial on Presentations</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToTutorialPresentation}>Tutorial on Presentations</Button> <br/>
                   <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToUserAccountDetails}>User-Account-Details</Button> <br/>
                   <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToChatBot}>Chat Bot</Button> <br/>
                   <Button style={{ marginBottom: '5%'}} variant="contained" onClick={logOut}>Log-Out</Button>

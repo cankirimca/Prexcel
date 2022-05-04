@@ -30,6 +30,7 @@ import ProgressTracking from "./pages/ProgressTracking";
 import CheckCamera from "./pages/CheckCamera";
 import UploadPresentationLoading from "./pages/UploadPresentationLoading";
 import TutorialApp from "./pages/TutorialApp";
+import TutorialPresentation from "./pages/TutorialPresentation";
 
 function App() {
 
@@ -92,8 +93,8 @@ function App() {
          return <UploadPresentationLoading onPresentationLoadingHandler={changeViewHandler} />;
       else if (currentScreen === ScreenIds.TUTORIAL_APP_SCREEN_ID)
          return <TutorialApp onTutorialAppHandler={changeViewHandler} />;
-      // else if (currentScreen === ScreenIds.TUTORIAL_PRESENTATION_SCREEN_ID)
-      //    return <TutorialPresentation onTutorialPresentationHandler={changeViewHandler} />;
+      else if (currentScreen === ScreenIds.TUTORIAL_PRESENTATION_SCREEN_ID)
+          return <TutorialPresentation onTutorialPresentationHandler={changeViewHandler} />;
    }
 
 //  function navigate() {
