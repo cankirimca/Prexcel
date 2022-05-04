@@ -124,7 +124,7 @@ class SpeechAnalyzer:
                             word_list[curr_index].tags.append("fs")  # Filler start tag
                             w_index = w_index - 1
                             word_list[curr_index + w_index].tags.append("fe")  # Filler end tag
-                            filler_count += w_index
+                            filler_count += w_index + 1
 
                 # Insert space tag
                 if word_list[curr_index + 1].end_time > 0 and (
