@@ -18,7 +18,12 @@ export default function LivePresentation(props) {
    const [fd_flag, setFdFlag] = useState("");
    const [decibel_flag, setDecibel] = useState("");
    const [transcript, setTranscript] = useState("");
-   const [recommendations, setRecommendations] = useState("");
+   const [recommendations, setRecommendations] = useState([]);
+   const [recommendation1, setRecommendation1] = useState("");
+   const [recommendation2, setRecommendation2] = useState("");
+   const [recommendation3, setRecommendation3] = useState("");
+   const [recommendation4, setRecommendation4] = useState("");
+   const [recommendation5, setRecommendation5] = useState("");
    
 
 
@@ -63,14 +68,18 @@ export default function LivePresentation(props) {
       setStartButtonDisabled(true);
       setEndButtonDisabled(false);
       startPresentationThreads();
+      //setTimeout(getFaceDetectionFlag,2000)
+      //setTimeout(getDecibel,2000)
       getFaceDetectionFlag();
       getDecibel();
+      getRecommendations();
    }
 
    function endPresentation() {
       clearInterval(interval1);
       clearInterval(interval2);
       clearInterval(interval3);
+      clearInterval(interval4);
       setFdFlag("")
       setDecibel("")
       
@@ -142,7 +151,7 @@ export default function LivePresentation(props) {
       }, 500);
    }
 
-   function getTranscript() {
+   /*function getTranscript() {
       interval3 = setInterval(async function () {
          await fetch('http://localhost:5000/getTranscript', {
             method: 'GET',
@@ -157,7 +166,7 @@ export default function LivePresentation(props) {
             })
             .catch(error => console.log(error))
       }, 500);
-   }
+   }*/
 
    function getRecommendations() {
       interval4 = setInterval(async function () {
@@ -170,10 +179,25 @@ export default function LivePresentation(props) {
          })
             .then(resp => resp.json())
             .then((data) => {
-               setRecommendations(data)
+               console.log(data);
+               setRecommendations(data);
+               console.log(recommendations);
+               /*if (recommendations.length > 0)
+                  setRecommendation1(recommendations[0]);
+               if (recommendations.length > 1);
+                  setRecommendation2(recommendations[1])
+               if (recommendations.length > 2)   
+                  setRecommendation3(recommendations[2])
+               if (recommendations.length > 3)
+                  setRecommendation4(recommendations[3])
+               if (recommendations.length > 4)   
+                  setRecommendation5(recommendations[4])*/
+
             })
             .catch(error => console.log(error))
       }, 500);
+
+
    }
 
    function goBackToMainMenu() {
@@ -216,11 +240,11 @@ export default function LivePresentation(props) {
                   }} align="left" elevation={3}>
                      <h3 style={{paddingTop: '2%', marginLeft: '5%'}}> Word Recommendations</h3>
                      <ul style={{paddingTop: '2%', paddingBottom: '2%', marginLeft: '5%'}}>
-                        <li> {recommendations}</li>
-                        <li> word 2</li>
-                        <li> word 3</li>
-                        <li> word 4</li>
-                        <li> word 5</li>
+                        <li> {recommendation1}</li>
+                        <li> {recommendation2}</li>
+                        <li> {recommendation3}</li>
+                        <li> {recommendation4}</li>
+                        <li> {recommendation5}</li>
                      </ul>
                   </Paper>
                }

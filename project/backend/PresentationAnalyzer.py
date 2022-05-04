@@ -29,10 +29,16 @@ class PresentationAnalyzer:
         transcript, word_count, duration, wpm, gap_ratio, filler_ratio, dragged_ratio, repeated_ratio = self.sa.analyzed_tokens(self.tokens)
         self.fd.detect_face_from_file(self.file_path, self.fd_flags)
         fd_score = 0
+
         for flag in self.fd_flags:
             if flag == "+":
                 fd_score += 1
-        fd_score = fd_score/len(self.fd_flags)   
+
+        if self.fd_flags == None or len(len(self.fd_flags)):
+            fd_score = 0   
+        else:          
+            fd_score = fd_score/len(self.fd_flags)  
+          
         print("fd score:", fd_score)
         score = ((1-(filler_ratio)*3)+(1-(gap_ratio)*3) + (fd_score) + (1-(repeated_ratio)*3)+ (1-(dragged_ratio)*3))/5
         print(score)

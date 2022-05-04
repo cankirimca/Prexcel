@@ -40,7 +40,7 @@ class WordRecommender:
         if len(vector) < 4:
             return    
         predictions = self.lstm_model.predict(np.array([vector]))
-        predictions = self.w2v_model.most_similar( predictions, [], 5)
+        predictions = self.w2v_model.most_similar( predictions, [], 10)
 
         added = 0
         for element in predictions:
@@ -72,9 +72,9 @@ class WordRecommender:
                 last_added = time.time()
 
             if (time.time() - last_added > 2.5):
-                print("time limit exceeded")
-                self.recommendations = self.generate_recommendation(self.words[0])
-                print("recom:",self.recommendations)
+                self.recommendations.append(self.generate_recommendation(self.words[0]))
+
+                #print("recom:",self.recommendations[-1])
                 last_added = time.time()
         print("recommendations ended-----------------")        
             
