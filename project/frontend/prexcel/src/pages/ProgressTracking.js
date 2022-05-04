@@ -103,7 +103,7 @@ export default function ProgressTracking(props) {
                <Paper sx={{backgroundColor:'#E5E5E5', padding:'1%'}} elevation={8}>
                   <ul align="left">
                      { (props.selectedPresentations).map(item => (
-                        PresentationInstance(item.name, "no date specified") ))
+                        PresentationInstance(item.name, new Date(String(item.p_date)).toDateString() )))
                      }
                   </ul>
                </Paper>

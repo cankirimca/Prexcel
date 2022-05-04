@@ -66,15 +66,19 @@ def get_user():
 @app.route('/startPresentation', methods = ['POST'])
 @cross_origin()
 def start_presentation():
-    if request.method == 'POST':
-        #TODO add presentation name screen
-        #presentation_name = username = request.json["presentation_name"]
-        global presentation_assistant
-        presentation_name = request.json["presentation_name"] 
-        presentation_assistant = PresentationAssistant(user_id, presentation_name)
-        presentation_assistant.initiate_presentation()
-    return jsonify("")
-
+    try:
+        if request.method == 'POST':
+            #TODO add presentation name screen
+            #presentation_name = username = request.json["presentation_name"]
+            global presentation_assistant
+            presentation_name = request.json["presentation_name"] 
+            presentation_assistant = PresentationAssistant(user_id, presentation_name)
+            presentation_assistant.initiate_presentation()
+        return jsonify("")
+    except Exception as e:
+        print("exception") 
+        print(str(e))    
+        
 @app.route('/getTokens', methods = ['GET'])    
 @cross_origin()
 def get_tokens():

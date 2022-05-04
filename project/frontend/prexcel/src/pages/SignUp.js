@@ -3,6 +3,7 @@ import {render} from "react-dom";
 import * as ReactDOM from "react-dom";
 import ScreenIds from "./ScreenIds";
 import {Button, Grid, Paper, TextField} from "@mui/material";
+import DialogBox from "./DialogBox";
 
 
 
@@ -24,21 +25,44 @@ const addUser = (newUser) => {
 
 const SignUp = (props) => {
 
+   const [dialogContent, setDialogContent] = useState("Sign Up gg");
+   const [dialogTitle, setDialogTitle] = useState("Sign Up gg");
+
+   const [dialogOpen, setDialogOpen] = useState(false);
+   const handleClose = () => {
+      setDialogOpen(false);
+   };
+
    function attemptSignup() {
 
       const username = document.getElementById('register_username')
       const email = document.getElementById('register_email')
       const password = document.getElementById('register_password')
+      const password2 = document.getElementById('register_password_2')
 
       // todo check login credentials
       let signUpSuccessful = true;
+
+      if (password.value !== password2.value) {
+         signUpSuccessful = false;
+         setDialogTitle("Passwords do not match!");
+         setDialogContent("Please re-enter your passwords.")
+         setDialogOpen(true);
+      }
+      else if (username.value === "" || email.value === "" || password.value === "" || password2.value === "") {
+         signUpSuccessful = false;
+         setDialogTitle("Some fields are empty!");
+         setDialogContent("Please fill the empty field.");
+      }
 
       const newData = {
          "username": username.value,
          "email": email.value,
          "password": password.value
       };
-      addUser(newData);
+
+      if (signUpSuccessful)
+         addUser(newData);
 
 
       // TODO we are doing something completely different here...
@@ -49,7 +73,7 @@ const SignUp = (props) => {
 
       // otherwise reshow the login screen
       else {
-         // todo display signup failed message
+         setDialogOpen(true);
 
       }
    }
@@ -68,20 +92,23 @@ const SignUp = (props) => {
             <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
                <p style={{paddingTop: '5%'}}> Please fill in the following information to sign-up.</p>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="register_username" label="Username" variant="outlined" />
+                  <TextField id="register_username" label="Username" variant="outlined" required/>
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="register_email" label="Email" variant="outlined" />
+                  <TextField id="register_email" label="Email" variant="outlined" required/>
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
-                  <TextField id="register_password" label="Password" variant="outlined" />
+                  <TextField id="register_password" label="Password" variant="outlined" required/>
                </Grid>
                <Grid style={{ marginTop: '5%', marginBottom: '5%'}} item xs={12}>
-                  <TextField id="outlined-basic" label="Confirm Password" variant="outlined" />
+                  <TextField id="register_password_2" label="Confirm Password" variant="outlined" required/>
                </Grid>
                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
                   <Button style={{ marginRight: '5%'}} variant="contained" onClick={attemptSignup}>SignUp</Button>
                   <Button variant="contained" onClick={goToLogin}>Cancel</Button>
+                  <DialogBox open={dialogOpen} onClose={handleClose}
+                             dialogContent={dialogContent}
+                             dialogTitle={dialogTitle}/>
                </Grid>
             </Paper>
 
