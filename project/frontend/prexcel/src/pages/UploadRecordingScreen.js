@@ -33,6 +33,7 @@ export default function UploadRecordingScreen(props) {
    function processRecording() {
       setFlagProcessingPresentation(true);
 
+      props.onUploadPresentationHandler(ScreenIds.LOADING_SCREEN);
 
       // todo set the flag processing presentation such that no other button is clickable while presentation is being processed.
       const processPresentation = (presentationData) => {
@@ -56,13 +57,15 @@ export default function UploadRecordingScreen(props) {
          "presentation_name": props.newPresentationName, //todo add real name
       }
 
+
       processPresentation(presentationData);
 
       // todo Alternatively, switch them to a new page and remove the continue to report details  button
 
-
+      // TODO LOGIC HERE
       setPresentationProcessed(true);
    }
+
    function onFileSelected(){
       setFlagPresentationSelector(true);
       console.log("called function");
@@ -102,22 +105,24 @@ export default function UploadRecordingScreen(props) {
                      <Button style={{ margin: '5%'}} variant="contained" onClick={() => selectPresentation}>Reselect a Recording</Button>
 */}
 
-                  { flagPresentationSelector == false &&
+                  { flagPresentationSelector === false &&
                      <Button style={{ margin: '5%'}} variant="contained" disabled>Process The Recording</Button>
                   }
+
                   { flagPresentationSelector &&
                      <Button style={{ margin: '5%'}} variant="contained" onClick={processRecording}>Process The Recording</Button>
                   }
 
-                  { flagPresentationProcessed &&
+                  { /*flagPresentationProcessed &&
                      <Button style={{ margin: '5%'}} variant="contained" onClick={goToPresentationDetails}>Continue to the Report</Button>
-                  }
-                  { flagPresentationSelector && flagProcessingPresentation && flagPresentationProcessed === false &&
+                  */}
+
+                  {/* flagPresentationSelector && flagProcessingPresentation && flagPresentationProcessed === false &&
                      <Button style={{ margin: '5%'}} variant="contained" disabled>Your presentation is being processed...</Button>
-                  }
-                  { flagPresentationSelector === false &&
+                  */}
+                  {/* flagPresentationSelector === false &&
                      <Button style={{ marginRight: '5%'}} variant="contained" disabled>Continue to the Report</Button>
-                  }
+                  */}
 
                </Grid>
             </Paper>

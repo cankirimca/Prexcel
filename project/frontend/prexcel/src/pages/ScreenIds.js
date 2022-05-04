@@ -19,6 +19,7 @@ const ScreenIds = {
    LIVE_FEEDBACK_SCREEN_ID: 11,
    NEW_PRESENTATION_ID: 22,
    CHECK_CAMERA: 23,
+   LOADING_SCREEN: 24,
 
 
    // tutorials
