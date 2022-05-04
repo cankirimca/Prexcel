@@ -97,22 +97,22 @@ const Login = (props) => {
 
                <Grid style={{marginTop: '5%',}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '33%', marginLeft: '32.1%'}} elevation={4}>
-                     <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="login_username" label="Username"
+                     <TextField data-testid="login_username_field" sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="login_username" label="Username"
                                 variant="filled"/>
                   </Paper>
                </Grid>
 
                <Grid style={{marginTop: '5%'}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '33%', marginLeft: '32.1%'}} elevation={4}>
-                     <TextField sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="login_password" label="Password"
+                     <TextField data-testid="login_password_field" sx={{width:'99%', border: "2px solid #507786", borderRadius:'5px',}} id="login_password" label="Password"
                                 variant="filled" type="password"/>
                   </Paper>
                </Grid>
 
                <Grid style={{marginTop: '5%', paddingBottom: '5%'}} item xs={12}>
-                  <Button style={{marginRight: '5%'}} variant="contained" onClick={AttemptLogin}>Log-In</Button>
-                  <Button variant="contained" onClick={goToSignUp}>Sign-Up</Button>
-                  <DialogBox open={dialogOpen} onClose={handleClose}
+                  <Button data-testid="login_button_id" style={{marginRight: '5%'}} variant="contained" onClick={AttemptLogin}>Log-In</Button>
+                  <Button data-testid="sign_up_button_id" variant="contained" onClick={goToSignUp}>Sign-Up</Button>
+                  <DialogBox login_error_message="login_error_message_id" open={dialogOpen} onClose={handleClose}
                              dialogContent={"Please re-enter your login credentials."}
                              dialogTitle={"Incorrect password or username!"}/>
                </Grid>

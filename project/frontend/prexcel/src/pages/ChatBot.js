@@ -216,7 +216,7 @@ export default function ChatBotScreen(props) {
                </form>
                <Button style={{marginTop: '2%', marginRight:'1%'}} variant="contained"
                        onClick={deleteMessages}>Clear</Button>
-               <Button style={{marginTop: '2%', marginLeft:'1%'}} variant="contained"
+               <Button data-testid="main_menu_button_id" style={{marginTop: '2%', marginLeft:'1%'}} variant="contained"
                        onClick={goBackToMainMenu}>Main Menu</Button>
             </Grid>
             <Grid item xs={3}/>

@@ -49,7 +49,7 @@ const MainMenu = (props) => {
       <div>
          <Grid container spacing={2}>
             <Grid item xs={12} >
-               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
+               <h1 data-testid="prexcel_title_id" style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
                   Prexcel
                </h1><br/>
                <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >The Multifunctional Presentation Assistant

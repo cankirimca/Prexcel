@@ -30,7 +30,7 @@ const TutorialPresentation = (props) => {
                   <p>text</p>
                </Paper>
 
-               <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goBackToMainMenu}>Go Back</Button>
+               <Button data-testid="tutorial_presentation_cancel_button_id" style={{ marginBottom: '5%'}} variant="contained" onClick={goBackToMainMenu}>Go Back</Button>
 
             </Grid>
             <Grid item xs={2}/>

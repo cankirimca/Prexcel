@@ -97,7 +97,7 @@ export default function NewPresentation(props) {
                           onClick={goToLivePresentation}>Perform a Live Presentation</Button>
                   <Button style={{ marginRight: '5%'}} variant="contained"
                           onClick={goToUploadPresentation}>Upload a Recording</Button>
-                  <Button variant="contained"
+                  <Button data-testid="new_presentation_cancel_button_id" variant="contained"
                           onClick={goToMainMenu}>Cancel</Button>
                   <DialogBox open={dialogOpen} onClose={handleClose}
                              dialogContent={"Please enter a presentation name to continue."}
