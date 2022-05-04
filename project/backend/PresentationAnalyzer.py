@@ -46,8 +46,11 @@ class PresentationAnalyzer:
         if not self.file_path:
             return 0
         if self.file_path[-4:] == ".wav":
-            self.process_voice_recording()
-            return 1 
+            try:
+                self.process_voice_recording()
+                return 1 
+            except:
+                return 0       
         elif self.file_path[-4:] == ".mp4":    
             try:
                 self.process_video_recording()
@@ -59,10 +62,17 @@ class PresentationAnalyzer:
             return 0
 
     def process_voice_recording(self):
-        self.stt.transcribe_stream(self.file_path)
-        transcript, word_count, duration, wpm, gap_ratio, filler_ratio = self.sa.analyzed_tokens(self.tokens)
-        self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count, 0) 
-        print("processing ended")  
+        sound = AudioSegment.from_wav(self.file_path)
+        sound = sound.set_channels(1)
+        sound = sound.set_frame_rate(16000)
+        sound.export(root + "\\temp_audio_mono.wav" , format="wav")
+        self.stt.transcribe_stream(root + "\\temp_audio_mono.wav")
+
+        fd_score = 0 #for audio-only presentations
+        transcript, word_count, duration, wpm, gap_ratio, filler_ratio, dragged_ratio, repeated_ratio = self.sa.analyzed_tokens(self.tokens)
+        score = ((1-(filler_ratio)*3)+(1-(gap_ratio)*3) + (fd_score) + (1-(repeated_ratio)*3)+ (1-(dragged_ratio)*3))/5
+        self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score, score, dragged_ratio, repeated_ratio) 
+        print("pushed to database")
 
     def convert_video_to_audio(self):
         print("in convert")
@@ -75,5 +85,6 @@ class PresentationAnalyzer:
         sound.export(root + "\\temp_audio_mono.wav" , format="wav")
         print("convert ended")
 
-#pa = PresentationAnalyzer(12, "qwe", "C:/Users/can/Downloads/speech.mp4")
-#pa.convert_video_to_audio("sad")
+#pa = PresentationAnalyzer(12, "qwe", "C:/Users/can/Downloads/Kayıt (19).wav")
+#pa = PresentationAnalyzer(12, "qwe", "C:/Users/can/Desktop/can.wav")
+#pa.process_recording()

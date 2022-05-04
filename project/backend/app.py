@@ -73,12 +73,13 @@ def start_presentation():
             global presentation_assistant
             presentation_name = request.json["presentation_name"] 
             presentation_assistant = PresentationAssistant(user_id, presentation_name)
+            print("pa created outer")
             presentation_assistant.initiate_presentation()
         return jsonify("")
     except Exception as e:
         print("exception") 
         print(str(e))    
-        
+
 @app.route('/getTokens', methods = ['GET'])    
 @cross_origin()
 def get_tokens():
@@ -105,15 +106,26 @@ def end_presentation():
 @app.route('/getFaceDetectionFlag', methods = ['GET'])
 @cross_origin()
 def get_face_detection_flag():
-    if presentation_assistant and presentation_assistant.fd_flags:
-        print( jsonify(presentation_assistant.fd_flags))
-        return jsonify(presentation_assistant.fd_flags)
-    return jsonify("")      
+    global presentation_assistant
+    if presentation_assistant and presentation_assistant.fd_flags and len(presentation_assistant.fd_flags) > 0:
+        print( jsonify(presentation_assistant.fd_flags[-1]))
+        return jsonify(presentation_assistant.fd_flags[-1])
+    return jsonify("")     
+
+@app.route('/getRecommendations', methods = ['GET'])
+@cross_origin()
+def get_recommendations():
+    global presentation_assistant
+    if presentation_assistant and presentation_assistant.recommendations and len(presentation_assistant.recommendations) > 1:
+        print( jsonify(presentation_assistant.recommendations[0]))
+        return jsonify(presentation_assistant.recommendations[0])
+    return jsonify("")          
 
             
 @app.route('/getDecibelFlag', methods = ['GET'])
 @cross_origin()
 def get_decibel_flag():
+    global presentation_assistant
     if presentation_assistant and presentation_assistant.vc_db_list:
         return jsonify(presentation_assistant.vc_db_list[-1])
     return jsonify("")

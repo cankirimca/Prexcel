@@ -32,6 +32,7 @@ class PresentationAssistant:
         self.fd_thread = Thread(target = self.initiate_face_detection)
         self.vc_thread = Thread(target = self.initiate_volume_checker)
         self.wr_thread = Thread(target = self.initiate_word_recommender)
+        print("pa created")
 
 
     def initiate_speech_to_text(self):
@@ -83,9 +84,11 @@ class PresentationAssistant:
             print(str(e))
 
     def initiate_presentation(self):
+        print("start initiate")
         #create speech-to-text thread
         self.stt_thread.start()
         self.fd_thread.start()
         self.vc_thread.start()
         self.wr_thread.start()
+
 

@@ -10,6 +10,7 @@ let transcriptRunning = false;
 var interval1 = 0;
 var interval2 = 0;
 var interval3 = 0;
+var interval4 = 0;
 
 export default function LivePresentation(props) {
 
@@ -17,6 +18,7 @@ export default function LivePresentation(props) {
    const [fd_flag, setFdFlag] = useState("");
    const [decibel_flag, setDecibel] = useState("");
    const [transcript, setTranscript] = useState("");
+   const [recommendations, setRecommendations] = useState("");
    
 
 
@@ -117,12 +119,10 @@ export default function LivePresentation(props) {
          })
             .then(resp => resp.json())
             .then((data) => {
-               tempFlag = data
+               setFdFlag(data)
             })
             .catch(error => console.log(error))
       }, 500);
-
-      console.log(tempFlag)
    }
 
    function getDecibel() {
@@ -154,6 +154,23 @@ export default function LivePresentation(props) {
             .then(resp => resp.json())
             .then((data) => {
                setDecibel(data)
+            })
+            .catch(error => console.log(error))
+      }, 500);
+   }
+
+   function getRecommendations() {
+      interval4 = setInterval(async function () {
+         await fetch('http://localhost:5000/getRecommendations', {
+            method: 'GET',
+            headers: {
+               'ContentType': 'application/json',
+               'Accept': 'application/json'
+            },
+         })
+            .then(resp => resp.json())
+            .then((data) => {
+               setRecommendations(data)
             })
             .catch(error => console.log(error))
       }, 500);
@@ -199,7 +216,7 @@ export default function LivePresentation(props) {
                   }} align="left" elevation={3}>
                      <h3 style={{paddingTop: '2%', marginLeft: '5%'}}> Word Recommendations</h3>
                      <ul style={{paddingTop: '2%', paddingBottom: '2%', marginLeft: '5%'}}>
-                        <li> word 1</li>
+                        <li> {recommendations}</li>
                         <li> word 2</li>
                         <li> word 3</li>
                         <li> word 4</li>
