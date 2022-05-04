@@ -35,7 +35,7 @@ const CheckCamera = (props) => {
    // todo
    function goToLivePresentation(){
 
-      props.onCheckCameraHandler(ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID);
+      props.onCheckCameraHandler(ScreenIds.LIVE_PRESENTATION_FEEDBACK_SCREEN_ID);
    }
 
 
@@ -43,27 +43,28 @@ const CheckCamera = (props) => {
       <div>
          <Grid container spacing={2}>
             <Grid item xs={12} >
-               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center', color:'white'}} >
+               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
                   Prexcel
                </h1><br/>
-               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center', color:'white'}} >The Multifunctional Presentation Assistant
+               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >The Multifunctional Presentation Assistant
                </h1><br/>
             </Grid>
             <Grid item xs={2}/>
             <Grid item xs={8}>
-               <Paper sx={{marginTop: '1.7%', backgroundColor: 'lightblue'}} align="center"
+               <Paper sx={{marginTop: '1.7%', backgroundColor: 'dimgray'}} align="center"
                       elevation={1}>
                   <video  width='80%' muted autoPlay className="app__videoFeed"/><br/>
                </Paper>
+
                {playing ? (
-                  <Button style={{backgroundColor:'#507786'}} variant="contained" onClick={stopVideo}> Stop Camera </Button>) : (
-                  <Button style={{backgroundColor:'#507786'}} variant="contained" onClick={startVideo}> Start Camera </Button>)}
+                  <Button style={{marginTop:"3%"}} variant="contained" onClick={stopVideo}> Stop Camera </Button>) : (
+                  <Button style={{marginTop:"3%"}} variant="contained" onClick={startVideo}> Start Camera </Button>)}
 
                {!playing &&
-                  <Button style={{backgroundColor:'#507786', marginLeft:"3%"}} variant="contained" onClick={goToLivePresentation}>Continue To Presentation</Button>}
+                  <Button style={{marginLeft:"3%", marginTop:"3%"}} variant="contained" onClick={goToLivePresentation}>Continue To Presentation</Button>}
 
                {playing &&
-                  <Button style={{backgroundColor:'#507786', marginLeft:"3%"}} disabled variant="contained">Continue To Presentation</Button>}
+                  <Button style={{marginLeft:"3%", marginTop:"3%"}} disabled variant="contained">Cannot Proceed to Presentation While Your Camera is Open</Button>}
 
             </Grid>
             <Grid item xs={2}/>

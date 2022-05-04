@@ -26,7 +26,7 @@ const MainMenu = (props) => {
    }
 
   function goToLivePresentation() {
-      props.onMainMenuHandler(ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID);
+      props.onMainMenuHandler(ScreenIds.LIVE_PRESENTATION_FEEDBACK_SCREEN_ID);
   }
 
    function goToNewPresentation() {
@@ -37,26 +37,34 @@ const MainMenu = (props) => {
      props.onMainMenuHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
    }
 
+   function goToTutorialApp() {
+      props.onMainMenuHandler(ScreenIds.TUTORIAL_APP_SCREEN_ID);
+   }
+
+   function goToTutorialPresentation() {
+      props.onMainMenuHandler(ScreenIds.TUTORIAL_PRESENTATION_SCREEN_ID);
+   }
+
    return (
       <div>
          <Grid container spacing={2}>
             <Grid item xs={12} >
-               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center', color:'white'}} >
+               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
                   Prexcel
                </h1><br/>
-               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center', color:'white'}} >The Multifunctional Presentation Assistant
+               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >The Multifunctional Presentation Assistant
                </h1><br/>
             </Grid>
             <Grid item xs={4}/>
             <Grid item xs={4}>
-               <Paper style={{backgroundColor:'#2C2F33', marginTop: '2.5%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={8}>
-                  <Button style={{ backgroundColor:'#5865F2', marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={goToNewPresentation}>Start a Presentation</Button> <br/>
-                  <Button style={{ backgroundColor:'#5865F2', marginBottom: '5%'}} variant="contained" onClick={goToMyPresentations}>My Presentations</Button> <br/>
-                  <Button style={{ backgroundColor:'#5865F2', marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Prexcel</Button> <br/>
-                  <Button style={{ backgroundColor:'#5865F2', marginBottom: '5%'}} variant="contained" onClick={doNothing}>Tutorial of Presentations</Button> <br/>
-                  <Button style={{ backgroundColor:'#5865F2', marginBottom: '5%'}} variant="contained" onClick={goToUserAccountDetails}>User-Account-Details</Button> <br/>
-                  <Button style={{ backgroundColor:'#5865F2', marginBottom: '5%'}} variant="contained" onClick={goToChatBot}>Chat Bot</Button> <br/>
-                  <Button style={{ backgroundColor:'#5865F2', marginBottom: '5%'}} variant="contained" onClick={logOut}>Log-Out</Button>
+               <Paper style={{backgroundColor:'whitesmoke', marginTop: '2.5%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={8}>
+                  <Button style={{ marginTop: '5%', marginBottom: '5%'}} variant="contained" onClick={goToNewPresentation}>Start a Presentation</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToMyPresentations}>My Presentations</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToTutorialApp}>Tutorial on Prexcel</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToTutorialPresentation}>Tutorial on Presentations</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToUserAccountDetails}>User-Account-Details</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToChatBot}>Chat Bot</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={logOut}>Log-Out</Button>
                </Paper>
             </Grid>
             <Grid item xs={4}/>

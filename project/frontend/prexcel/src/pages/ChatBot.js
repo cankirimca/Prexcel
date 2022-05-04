@@ -50,7 +50,7 @@ export default function ChatBotScreen(props) {
       let msgObj = [{
          position: "left",
          question: "",
-         color: "#5865F2"
+         color: "#2979ff"
       }];
       for (let i in questions) {
          msgObj[0].question = msgObj[0].question + questions[i].question + "\n";
@@ -159,7 +159,7 @@ export default function ChatBotScreen(props) {
       const newAnswer = {
          position: "left",
          question: answ,
-         color: "#5865F2"
+         color: "#2979ff"
       };
       const newList = [...messageList, newQuestionNumberText, newAnswer];
       setMessageList(newList);
@@ -189,7 +189,7 @@ export default function ChatBotScreen(props) {
                      marginBottom: '5%',
                      alignItems: 'center',
                      justifyContent: 'center',
-                     backgroundColor: '#E5E5E5'
+                     backgroundColor: 'whitesmoke'
                   }}
                   className="App"
                >
@@ -198,7 +198,7 @@ export default function ChatBotScreen(props) {
                </Paper>
 
                <form onSubmit={questionSubmitHandler}>
-                  <Button onClick={scrollToTop} style={{color:"#5865F2"}} size="large" endIcon={<ArrowUpwardIcon/>} variant="text"> </Button>
+                  <Button onClick={scrollToTop} style={{color:"#2979ff"}} size="large" endIcon={<ArrowUpwardIcon/>} variant="text"> </Button>
                   <TextField size="small" sx={{
                      marginLeft: '1%',
                      marginRight: '1%',
@@ -210,13 +210,13 @@ export default function ChatBotScreen(props) {
                              label="Enter question no"
                              variant="filled"/>
 
-                  <Button size="large" type="submit" endIcon={<SendIcon/>} style={{fontSize:'119%', backgroundColor: '#5865F2',}}
+                  <Button size="large" type="submit" endIcon={<SendIcon/>} style={{fontSize:'119%'}}
                           variant="contained">send</Button><br/>
 
                </form>
-               <Button style={{backgroundColor: '#5865F2', marginTop: '2%', marginRight:'1%'}} variant="contained"
+               <Button style={{marginTop: '2%', marginRight:'1%'}} variant="contained"
                        onClick={deleteMessages}>Clear</Button>
-               <Button style={{backgroundColor: '#5865F2', marginTop: '2%', marginLeft:'1%'}} variant="contained"
+               <Button style={{marginTop: '2%', marginLeft:'1%'}} variant="contained"
                        onClick={goBackToMainMenu}>Main Menu</Button>
             </Grid>
             <Grid item xs={3}/>

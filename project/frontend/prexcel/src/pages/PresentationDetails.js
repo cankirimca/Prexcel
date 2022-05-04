@@ -128,8 +128,8 @@ export default function PresentationDetails(props) {
                </Card>
             </Grid>
          </Grid>
-         <Button style={{backgroundColor:'#507786', marginTop:'1.5%'}} variant="contained" onClick={goToTextTranscript}>See Text Transcript</Button><br/>
-         <Button style={{backgroundColor:'#507786', marginTop:'1.5%'}}variant="contained" onClick={goBackToMyPresentations}>Back To My Presentations</Button><br/><br/><br/>
+         <Button style={{marginTop:'1.5%'}} variant="contained" onClick={goToTextTranscript}>See Text Transcript</Button><br/>
+         <Button style={{marginTop:'1.5%'}}variant="contained" onClick={goBackToMyPresentations}>Back To My Presentations</Button><br/><br/><br/>
       </div>
    );
 }

@@ -89,7 +89,7 @@ const SignUp = (props) => {
          <Grid item xs={3}/>
          <Grid item xs={6}>
             <h1> Sign Up To Prexcel</h1>
-            <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+            <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center', backgroundColor: 'whitesmoke'}} elevation={3}>
                <p style={{paddingTop: '5%'}}> Please fill in the following information to sign-up.</p>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
                   <TextField id="register_username" label="Username" variant="outlined" required/>

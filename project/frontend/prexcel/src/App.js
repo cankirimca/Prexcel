@@ -29,6 +29,8 @@ import UploadRecordingScreen from "./pages/UploadRecordingScreen";
 import ProgressTracking from "./pages/ProgressTracking";
 import CheckCamera from "./pages/CheckCamera";
 import UploadPresentationLoading from "./pages/UploadPresentationLoading";
+import TutorialApp from "./pages/TutorialApp";
+import TutorialPresentation from "./pages/TutorialPresentation";
 
 function App() {
 
@@ -67,7 +69,7 @@ function App() {
          return <MainMenu onMainMenuHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.MY_PRESENTATIONS_SCREEN_ID)
          return <MyPresentations currentUserID={currentUserID} onPresentationSelection={presentationSelectionHandler} onMyPresentationsHandler={changeViewHandler}/>;
-      else if (currentScreen === ScreenIds.PROCESSING_PRESENTATION_SCREEN_ID)
+      else if (currentScreen === ScreenIds.LIVE_PRESENTATION_FEEDBACK_SCREEN_ID)
          return <LivePresentation newPresentationName={newPresentationName} currentUserID={currentUserID} onLivePresentationHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.PRESENTATION_DETAILS_SCREEN_ID)
          return <PresentationDetails processTranscriptHandler={processTranscriptHandler} selectedPresentations={selectedPresentations} onPresentationDetails={changeViewHandler}/>;
@@ -89,6 +91,10 @@ function App() {
          return <CheckCamera onCheckCameraHandler={changeViewHandler} />;
       else if (currentScreen === ScreenIds.LOADING_SCREEN)
          return <UploadPresentationLoading onPresentationLoadingHandler={changeViewHandler} />;
+      else if (currentScreen === ScreenIds.TUTORIAL_APP_SCREEN_ID)
+         return <TutorialApp onTutorialAppHandler={changeViewHandler} />;
+      else if (currentScreen === ScreenIds.TUTORIAL_PRESENTATION_SCREEN_ID)
+          return <TutorialPresentation onTutorialPresentationHandler={changeViewHandler} />;
    }
 
 //  function navigate() {
@@ -105,7 +111,7 @@ function App() {
 //  }
 
    return(
-      <div className="App" style={{backgroundColor:"#23272A", height: "102vh" }}>
+      <div className="App" style={{backgroundColor:"lightblue", height: "102vh" }}>
          {UIViewController()}
       </div>
    );

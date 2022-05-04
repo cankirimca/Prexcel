@@ -80,12 +80,12 @@ export default function NewPresentation(props) {
                flexDirection: 'row',
                alignItems: 'center',
                justifyContent: 'center',
-               backgroundColor: '#2C2F33'
+               backgroundColor: 'whitesmoke'
             }} elevation={8}>
-               <p style={{color: 'white', paddingTop: '5%'}}> Enter the name for your presentation:</p>
+               <p style={{color: 'black', paddingTop: '5%'}}> Enter the name for your presentation:</p>
 
                <Grid style={{marginTop: '5%'}} item xs={12}>
-                  <Paper sx={{backgroundColor: 'white', marginRight: '33%', marginLeft: '33%'}} elevation={4}>
+                  <Paper sx={{ marginRight: '33%', marginLeft: '33%'}} elevation={4}>
                      <TextField sx={{width: '99%', border: "2px solid #507786", borderRadius: '5px',}}
                                 id="presentation_name" label="Name of the presentation"
                                 variant="filled"/>
@@ -93,11 +93,11 @@ export default function NewPresentation(props) {
                </Grid>
 
                <Grid style={{marginTop: '5%', paddingBottom: '5%'}} item xs={12}>
-                  <Button style={{backgroundColor: '#5865F2', marginRight: '5%'}} variant="contained"
+                  <Button style={{ marginRight: '5%'}} variant="contained"
                           onClick={goToLivePresentation}>Perform a Live Presentation</Button>
-                  <Button style={{backgroundColor: '#5865F2', marginRight: '5%'}} variant="contained"
+                  <Button style={{ marginRight: '5%'}} variant="contained"
                           onClick={goToUploadPresentation}>Upload a Recording</Button>
-                  <Button style={{backgroundColor: '#5865F2',}} variant="contained"
+                  <Button variant="contained"
                           onClick={goToMainMenu}>Cancel</Button>
                   <DialogBox open={dialogOpen} onClose={handleClose}
                              dialogContent={"Please enter a presentation name to continue."}

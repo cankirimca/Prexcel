@@ -205,6 +205,7 @@ export default function LivePresentation(props) {
    }
 
    //</p> <br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <br/><br/>
+   // <p style={{marginLeft: '5%'}}> Transcript (To be removed I believe) : {transcript} </p> <br/>
 
    return (
       <div>
@@ -219,19 +220,25 @@ export default function LivePresentation(props) {
             <Grid item xs={1}/>
             <Grid item xs={7}>
 
+               <Paper sx={{backgroundColor: 'whitesmoke'}} align="left" elevation={3}>
+                  <h3> TRANSCRIPT</h3> <br/>
+                  <p> {transcript}</p> <br/>
+
+               </Paper>
+
 
             </Grid>
             <Grid item xs={3}>
 
-               <Paper sx={{backgroundColor: '#E5E5E5'}} align="left" elevation={3}>
+               <Paper sx={{backgroundColor: 'whitesmoke'}} align="left" elevation={3}>
                   <p style={{paddingTop: '2%', marginLeft: '5%'}}> Face Detection: {fd_flag}</p> <br/>
                   <p style={{marginLeft: '5%'}}> Current Decibel: {decibel_flag}</p> <br/>
-                  <p style={{marginLeft: '5%'}}> Transcript (To be removed I believe) : {transcript} </p> <br/>
+
                </Paper>
 
                {flagGap &&
                   <Paper style={{
-                     backgroundColor: '#E5E5E5',
+                     backgroundColor: 'whitesmoke',
                      marginTop: '5%',
                      marginBottom: '2%',
                      flexDirection: 'row',
@@ -257,23 +264,22 @@ export default function LivePresentation(props) {
             <Grid item xs={2}/>
             <Grid item xs={8}>
                <Paper style={{
-                  backgroundColor: '#E5E5E5',
+                  backgroundColor: 'whitesmoke',
                   marginTop: '1%',
                   flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'center'
                }} elevation={0}>
 
-                  <Button disabled={startButtonDisabled} id="startPresentationButton" style={{backgroundColor:'#507786', margin: '1.5%'}}
+                  <Button disabled={startButtonDisabled} id="startPresentationButton" style={{ color:"white", margin: '1.5%'}}
                           variant="contained" onClick={startPresentation}>Start Presentation</Button>
-                  <Button disabled={endButtonDisabled} id="endPresentationButton" style={{backgroundColor:'#507786', margin: '1.5%'}}
+                  <Button disabled={endButtonDisabled} id="endPresentationButton" style={{color:"white", margin: '1.5%'}}
                           variant="contained" onClick={endPresentation}>End Presentation</Button>
-                  <Button style={{backgroundColor:'#507786', margin: '1.5%'}} variant="contained" onClick={goBackToMainMenu}>Back to Main
+                  <Button style={{margin: '1.5%'}} variant="contained" onClick={goBackToMainMenu}>Back to Main
                      Menu</Button>
 
 
-                  <Button style={{backgroundColor:'#507786', margin: '1.5%'}} variant="contained" onClick={changeFlagGap}>Change flagGap (will be
-                     removed)</Button>
+                  <Button style={{ margin: '1.5%'}} variant="contained" onClick={changeFlagGap}>Enable Word Recommendations</Button>
 
 
                </Paper>
