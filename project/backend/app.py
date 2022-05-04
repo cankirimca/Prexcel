@@ -87,10 +87,16 @@ def get_tokens():
 @app.route('/endPresentation', methods = ['GET'])
 @cross_origin()
 def end_presentation():
-    global presentation_assistant
-    if request.method == 'GET' and presentation_assistant:
-        presentation_assistant.end_presentation()
-    return jsonify("")
+    try:
+        global presentation_assistant
+        if request.method == 'GET' and presentation_assistant:
+            presentation_assistant.end_presentation()
+            #presentation_assistant = None
+            print("in app, presentation ended")
+        return jsonify("Presentation Ended")
+    except Exception as e:
+        print("exception") 
+        print(str(e))    
 
 @app.route('/getFaceDetectionFlag', methods = ['GET'])
 @cross_origin()
@@ -141,5 +147,6 @@ def get_user_info():
 
 if __name__ == "__main__":
     app.run(host='localhost', port=5000)
+    print("Ended app")
 
 

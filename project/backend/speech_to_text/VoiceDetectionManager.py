@@ -78,7 +78,7 @@ class VoiceDetectionManager(object):
         triggered = False
 
         for frame in frames:
-            if len(frame) < 640 or stop_flag[0]:
+            if len(frame) < 640:
                 return
 
             is_speech = self.vad.is_speech(frame, self.sample_rate)

@@ -90,6 +90,9 @@ export default function LivePresentation(props) {
       clearInterval(interval1);
       clearInterval(interval2);
       clearInterval(interval3);
+      setFdFlag("")
+      setDecibel("")
+      
       fetch('http://localhost:5000/endPresentation', {
          method: 'GET',
          headers: {
@@ -125,6 +128,7 @@ export default function LivePresentation(props) {
     }*/
 
    function getFaceDetectionFlag() {
+      var tempFlag = 0 
       interval1 = setInterval(async function () {
          await fetch('http://localhost:5000/getFaceDetectionFlag', {
             method: 'GET',
@@ -134,10 +138,12 @@ export default function LivePresentation(props) {
          })
             .then(resp => resp.json())
             .then((data) => {
-               setFdFlag(data)
+               tempFlag = data
             })
             .catch(error => console.log(error))
       }, 500);
+
+      console.log(tempFlag)
    }
 
    function getDecibel() {
