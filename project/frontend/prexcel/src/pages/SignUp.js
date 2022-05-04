@@ -89,7 +89,7 @@ const SignUp = (props) => {
          <Grid item xs={3}/>
          <Grid item xs={6}>
             <h1> Sign Up To Prexcel</h1>
-            <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center'}} elevation={3}>
+            <Paper style={{marginTop: '20%', marginBottom:'5%', flexDirection:'row', alignItems:'center', justifyContent:'center', backgroundColor: 'whitesmoke'}} elevation={3}>
                <p style={{paddingTop: '5%'}}> Please fill in the following information to sign-up.</p>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
                   <TextField id="register_username" label="Username" variant="outlined" required/>
@@ -104,8 +104,8 @@ const SignUp = (props) => {
                   <TextField id="register_password_2" label="Confirm Password" variant="outlined" required/>
                </Grid>
                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
-                  <Button style={{ marginRight: '5%'}} variant="contained" onClick={attemptSignup}>SignUp</Button>
-                  <Button variant="contained" onClick={goToLogin}>Cancel</Button>
+                  <Button style={{ backgroundColor: 'darkblue', marginRight: '5%'}} variant="contained" onClick={attemptSignup}>SignUp</Button>
+                  <Button style={{ backgroundColor: 'darkblue'}} variant="contained" onClick={goToLogin}>Cancel</Button>
                   <DialogBox open={dialogOpen} onClose={handleClose}
                              dialogContent={dialogContent}
                              dialogTitle={dialogTitle}/>
