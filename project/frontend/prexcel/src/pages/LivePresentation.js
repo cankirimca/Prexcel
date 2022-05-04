@@ -179,9 +179,8 @@ export default function LivePresentation(props) {
          })
             .then(resp => resp.json())
             .then((data) => {
-               console.log(data);
-               setRecommendations(data);
-               console.log(recommendations);
+               console.log(typeof(data))
+               //setRecommendations(data)
                /*if (recommendations.length > 0)
                   setRecommendation1(recommendations[0]);
                if (recommendations.length > 1);
@@ -192,11 +191,11 @@ export default function LivePresentation(props) {
                   setRecommendation4(recommendations[3])
                if (recommendations.length > 4)   
                   setRecommendation5(recommendations[4])*/
-
             })
             .catch(error => console.log(error))
       }, 500);
 
+      console.log(recommendations)     
 
    }
 
