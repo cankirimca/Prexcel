@@ -55,7 +55,6 @@ export default function LivePresentation(props) {
             console.log(data)
          })
          .catch(error => console.log(error))
-      console.log("can");
    }
 
    const presentationData = {
@@ -94,7 +93,6 @@ export default function LivePresentation(props) {
             console.log(data)
          })
          .catch(error => console.log(error))
-      console.log("can");
       //transcript = "Stopped"
       
       //document.getElementById("endPresentationButton").disabled = true;
@@ -179,23 +177,20 @@ export default function LivePresentation(props) {
          })
             .then(resp => resp.json())
             .then((data) => {
-               console.log(typeof(data))
                //setRecommendations(data)
-               /*if (recommendations.length > 0)
-                  setRecommendation1(recommendations[0]);
-               if (recommendations.length > 1);
-                  setRecommendation2(recommendations[1])
-               if (recommendations.length > 2)   
-                  setRecommendation3(recommendations[2])
-               if (recommendations.length > 3)
-                  setRecommendation4(recommendations[3])
-               if (recommendations.length > 4)   
-                  setRecommendation5(recommendations[4])*/
+               if (data.length > 0)
+                  setRecommendation1(data[0]);
+               if (data.length > 1);
+                  setRecommendation2(data[1])
+               if (data.length > 2)   
+                  setRecommendation3(data[2])
+               if (data.length > 3)
+                  setRecommendation4(data[3])
+               if (data.length > 4)   
+                  setRecommendation5(data[4])
             })
             .catch(error => console.log(error))
-      }, 500);
-
-      console.log(recommendations)     
+      }, 500);  
 
    }
 
