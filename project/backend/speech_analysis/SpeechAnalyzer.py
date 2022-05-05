@@ -6,7 +6,7 @@ import os
 # Constants for determining time based tag insertion
 # Note that: 1 timestep == 0.02 seconds
 
-SPACE_CONST = 16
+SPACE_CONST = 10
 DRAG_CONST_PER_CHAR = 8
 REPEAT_RANGE = 15
 REPEAT_COUNT = 3
