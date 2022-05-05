@@ -12,8 +12,6 @@
     "@testing-library/user-event": "^12.8.3",
     "chart.js": "^3.7.1",
     "concurrently": "^6.5.1",
-    "electron": "^16.0.3",
-    "electron-builder": "^22.14.5",
     "electron-is-dev": "^2.0.0",
     "mysql": "^2.18.1",
     "react": "^17.0.2",
@@ -25,13 +23,31 @@
     "wait-on": "^6.0.0",
     "web-vitals": "^1.1.2"
   },
+  "devDependencies": {
+    "electron": "^16.0.3",
+    "electron-builder": "^22.14.5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron-dev": "electron .",
+    "build-installer": "electron-builder",
     "dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "build": {
+    "extends": null,
+    "appId": "prexcel",
+    "win": {
+      "target": ["nsis"],
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis" : {
+      "uninstallDisplayName": "Prexcel",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "eslintConfig": {
     "extends": [
