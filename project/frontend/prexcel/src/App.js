@@ -117,7 +117,11 @@ function App() {
 //  }
 
    return(
+<<<<<<< HEAD
+      <div className="App" style={{backgroundColor:"#2C3E50 ", height: "102vh" }}>
+=======
       <div className="App" style={{backgroundColor:"lightblue", minHeight: "102vh" }}>
+>>>>>>> ba8f4d9dabac92d0a2d4ed98244f2e47a1fc2bfb
          {UIViewController()}
       </div>
    );
