@@ -169,7 +169,7 @@ export default function TranscriptDetails(props) {
       <div>
          <Grid container>
             <Grid item xs={12}>
-               <h2>Transcript of "{props.selectedPresentations[0].name}"</h2>
+               <h2 style={{color:'whitesmoke'}}>Transcript of "{props.selectedPresentations[0].name}"</h2>
             </Grid>
 
             <Grid item xs={7} style={{ marginTop: '1.65%', marginLeft: '2%'}}>

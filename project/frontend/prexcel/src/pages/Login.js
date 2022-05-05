@@ -77,7 +77,7 @@ const Login = (props) => {
       <Grid container spacing={2}>
 
          <Grid item xs={12}>
-            <h1 style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>Welcome To Prexcel </h1>
+            <h1 style={{color:'whitesmoke', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>Welcome To Prexcel </h1>
          </Grid>
 
          <Grid item xs={4}/>

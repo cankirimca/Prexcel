@@ -43,10 +43,10 @@ const CheckCamera = (props) => {
       <div>
          <Grid container spacing={2}>
             <Grid item xs={12} >
-               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
+               <h1 style={{color:'whitesmoke', flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
                   Prexcel
                </h1><br/>
-               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}} >The Multifunctional Presentation Assistant
+               <h1 style={{color:'whitesmoke', flexDirection:'row', alignItems:'center', justifyContent:'center'}} >The Multifunctional Presentation Assistant
                </h1><br/>
             </Grid>
             <Grid item xs={2}/>

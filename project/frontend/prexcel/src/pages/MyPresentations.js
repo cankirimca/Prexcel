@@ -105,7 +105,7 @@ export default function MyPresentations(props) {
          <Grid container spacing={2}>
 
             <Grid item xs={12}>
-               <h1>My Presentations</h1>
+               <h1 style={{color:'whitesmoke'}}>My Presentations</h1>
             </Grid>
 
             <Grid item xs={3}/>
