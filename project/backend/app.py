@@ -161,6 +161,13 @@ def get_user_info():
     info = ud.get_user_info(user_id[0])[0]
     return jsonify(info)
 
+@app.route('/deleteUser', methods = ['POST'])
+@cross_origin()
+def delete_user():
+    ud = UserDataManager()
+    ud.delete_user(user_id[0]) 
+    return jsonify("User Deleted")
+
 if __name__ == "__main__":
     app.run(host='localhost', port=5000)
     print("Ended app")

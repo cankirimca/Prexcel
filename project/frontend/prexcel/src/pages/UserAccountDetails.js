@@ -4,26 +4,40 @@ import * as ReactDOM from "react-dom";
 import ScreenIds from "./ScreenIds";
 import {Button, Grid, Paper, TextField} from "@mui/material";
 
+const deleteUser = () => {
+   let success = true;
+   fetch('http://localhost:5000/deleteUser', {
+      method: 'POST',
+      headers: {
+         'Content-Type':'application/json'
+      },
+   })
+      .then((resp) => {
+         return resp.json()
+      })
+      .then((data) => {
+         console.log(data)
+      })
+      .catch(error => {
+         console.log(error)
+         success = false
+      })
 
-
-// TODO
-const deleteUser = (currUser) => {
-
-   return false;
+   return success;
 };
 
 const UserAccountDetails = (props) => {
-
    const [id, setID] = useState([]);
    const [username, setUsername] = useState([]);
    const [presentationCount, setPresentationCount] = useState([]);   
-   const [email, setEmail] = useState([]);   
+   const [email, setEmail] = useState([]);  
 
-   // TODO
+   useEffect(() => {
+      getUserInfo();
+    }, []);
+
    function attemptDelete() {
-
-      const currUser = null; // TODO
-      let deleteSuccessful = deleteUser( currUser);
+      let deleteSuccessful = deleteUser();
 
       // if successful change to main menu
       if ( deleteSuccessful){
@@ -66,9 +80,6 @@ const UserAccountDetails = (props) => {
 
       return success;
    };
-
-   getUserInfo();
-
 
    return (
       <Grid container spacing={2}>

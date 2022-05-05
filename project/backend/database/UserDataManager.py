@@ -40,8 +40,8 @@ class UserDataManager:
         self.connection.commit()
 
     def delete_user(self, user_id):
-        self.cursor.execute("DELETE FROM User WHERE user_id = %d", user_id)
-        #self.cursor.execute("DELETE FROM Presentation WHERE user_id = %d", user_id)
+        self.cursor.execute("DELETE FROM User WHERE user_id = %s" % user_id)
+        self.cursor.execute("DELETE FROM Presentation WHERE user_id = %s" % user_id)
         self.connection.commit()
 
     def get_user_name(self, user_id):
@@ -66,7 +66,7 @@ class UserDataManager:
 
     def get_presentation_name(self, presentation_id):
         self.cursor.execute("SELECT presentation_name FROM Presentation WHERE presentation_id = %s", presentation_id)
-        return self.cursor.fetchone()[0]
+        return self.cursor.fetchone()[0] 
 
     def get_presentations_for_user(self, user_id):
         self.cursor.execute("SELECT * FROM Presentation WHERE user_id = %s", user_id)
