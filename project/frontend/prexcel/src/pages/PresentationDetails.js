@@ -135,11 +135,12 @@ export default function PresentationDetails(props) {
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>
 
                      <p style={{ marginLeft: '2.5%'}}>Word per minute (wpm) : {props.selectedPresentations[0].wpm}</p>
-                     <ul align="left">
-                        <li style={{color:'white'}}> __ </li>
-                        <li style={{color:'white'}}> __ </li>
-                     </ul>
+
                   </Card>
+                  <ul align="left">
+                     <li style={{color:'#E5E5E5'}}> <br/> </li>
+                     <li style={{color:'#E5E5E5'}}> <br/> </li>
+                  </ul>
                </Card>
             </Grid>
          </Grid>
