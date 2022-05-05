@@ -162,6 +162,9 @@ export default function TranscriptDetails(props) {
    function printArr(){
       console.log(props.processedTranscriptArr);
    }
+
+   // <Button variant="contained" onClick={printArr}>print</Button>
+
    return(
       <div>
          <Grid container>
@@ -202,7 +205,6 @@ export default function TranscriptDetails(props) {
 
             <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
                <Button variant="contained" onClick={goBackToPresentationDetails}>Back To Presentation Details</Button>
-               <Button variant="contained" onClick={printArr}>print</Button>
 
             </Grid>
             <Grid item xs={4}/>
