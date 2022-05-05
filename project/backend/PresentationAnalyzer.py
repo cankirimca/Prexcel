@@ -82,7 +82,7 @@ class PresentationAnalyzer:
 
         fd_score = 0 #for audio-only presentations
         transcript, word_count, duration, wpm, gap_ratio, filler_ratio, dragged_ratio, repeated_ratio = self.sa.analyzed_tokens(self.tokens)
-        score = ((1-(filler_ratio)*3)+(1-(gap_ratio)*3) + (fd_score) + (1-(repeated_ratio)*3)+ (1-(dragged_ratio)*3))/5
+        score = ((1-(filler_ratio)*3)+(1-(gap_ratio)*3) + (1-(repeated_ratio)*3)+ (1-(dragged_ratio)*3))/4
         self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score, score, dragged_ratio, repeated_ratio) 
         print("pushed to database")
 
