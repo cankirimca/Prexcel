@@ -56,7 +56,6 @@ class PresentationAssistant:
         print(" volume checker terminated")
 
     def initiate_word_recommender(self):
-        print("recom thread----------------------------------")
         self.wr_exit[0] = False
         self.wr.check_recommendations(self.wr_exit)
         print("word recom terminated")
@@ -92,8 +91,6 @@ class PresentationAssistant:
             print(str(e))
 
     def initiate_presentation(self):
-        print("start initiate")
-        #create speech-to-text thread
         self.stt_thread.start()
         self.fd_thread.start()
         self.vc_thread.start()

@@ -68,6 +68,10 @@ class UserDataManager:
         self.cursor.execute("SELECT presentation_name FROM Presentation WHERE presentation_id = %s", presentation_id)
         return self.cursor.fetchone()[0] 
 
+    def get_presentation_count(self, user_id):
+        self.cursor.execute("SELECT count(*) FROM Presentation WHERE user_id = %s", user_id)
+        return self.cursor.fetchone()[0]   
+
     def get_presentations_for_user(self, user_id):
         self.cursor.execute("SELECT * FROM Presentation WHERE user_id = %s", user_id)
         return self.cursor.fetchall()   

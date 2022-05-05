@@ -6,9 +6,35 @@ import {useState} from "react";
 
 export default function PresentationDetails(props) {
 
-   function goBackToMyPresentations() {
+
+
+   function goBackToMyPresentations(){
       props.onPresentationDetails(ScreenIds.MY_PRESENTATIONS_SCREEN_ID);
    }
+
+   const deletePresentation = () => {
+      let id = props.selectedPresentations[0].id;
+      let success = true;
+      fetch('http://localhost:5000/deletePresentation', {
+         method: 'POST',
+         headers: {
+            'Content-Type':'application/json'
+         },
+         body:JSON.stringify(id)
+      })
+         .then((resp) => {
+            return resp.json()
+         })
+         .then((data) => {
+            console.log(data);
+         })
+         .catch(error => console.log(error))
+         
+      goBackToMyPresentations();    
+      return success;
+   };
+
+   
 
    const str_type_regular = 0;
    const str_type_filler = 1;
@@ -145,7 +171,8 @@ export default function PresentationDetails(props) {
             </Grid>
          </Grid>
          <Button style={{marginTop:'1.5%'}} variant="contained" onClick={goToTextTranscript}>See Text Transcript</Button><br/>
-         <Button style={{marginTop:'1.5%'}} variant="contained" onClick={goBackToMyPresentations}>Back To My Presentations</Button><br/><br/><br/>
+         <Button style={{marginTop:'1.5%'}} variant="contained" onClick={deletePresentation}>Delete Presentation</Button><br/>
+         <Button style={{marginTop:'1.5%'}} variant="contained" onClick={goBackToMyPresentations}>Back To My Presentations</Button><br/><br/><br/>     
       </div>
    );
 }

@@ -17,7 +17,6 @@ word_recommender = None
 
 
 app = Flask(__name__)
-print("can")
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
@@ -73,11 +72,9 @@ def start_presentation():
             global presentation_assistant
             presentation_name = request.json["presentation_name"] 
             presentation_assistant = PresentationAssistant(user_id, presentation_name)
-            print("pa created outer")
             presentation_assistant.initiate_presentation()
         return jsonify("")
     except Exception as e:
-        print("exception") 
         print(str(e))    
 
 """@app.route('/getTokens', methods = ['GET'])    
@@ -96,10 +93,8 @@ def end_presentation():
         global presentation_assistant
         if request.method == 'GET' and (presentation_assistant != None):
             presentation_assistant.end_presentation()
-            print("in app, presentation ended")
         return jsonify("Presentation Ended")
     except Exception as e:
-        print("exception") 
         print(str(e))    
 
 @app.route('/getFaceDetectionFlag', methods = ['GET'])
@@ -115,9 +110,7 @@ def get_face_detection_flag():
 @cross_origin()
 def get_recommendations():
     global presentation_assistant
-    #print(presentation_assistant)
     if (presentation_assistant != None) and len(presentation_assistant.recommendations) > 0:
-        print("----------------posted-----------------")
         return jsonify(presentation_assistant.recommendations[-1])
     return jsonify("")          
 
@@ -144,9 +137,7 @@ def get_transcript():
 def process_upload():
     try:    
         file_path = request.json["path"]
-        print("path:", file_path)
         file_path = file_path.replace("\\", "/")
-        print("path:", file_path)
         presentation_name = request.json["presentation_name"]  
         pa = PresentationAnalyzer(user_id, presentation_name, file_path)
         pa.process_recording()
@@ -161,12 +152,28 @@ def get_user_info():
     info = ud.get_user_info(user_id[0])[0]
     return jsonify(info)
 
+@app.route('/getPresentationCount', methods = ['GET'])
+@cross_origin()
+def get_presentation_count():
+    ud = UserDataManager()
+    info = ud.get_presentation_count(user_id[0])
+    return jsonify(info)
+
 @app.route('/deleteUser', methods = ['POST'])
 @cross_origin()
 def delete_user():
     ud = UserDataManager()
     ud.delete_user(user_id[0]) 
     return jsonify("User Deleted")
+
+@app.route('/deletePresentation', methods = ['POST'])
+@cross_origin()
+def delete_presentation():
+    ud = UserDataManager()
+    presentation_id = request.json 
+    print("id: ", presentation_id)
+    ud.delete_presentation(presentation_id) 
+    return jsonify("Presentation Deleted")    
 
 if __name__ == "__main__":
     app.run(host='localhost', port=5000)

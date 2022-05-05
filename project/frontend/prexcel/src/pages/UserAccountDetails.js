@@ -74,9 +74,25 @@ const UserAccountDetails = (props) => {
             setUsername(data[0])
             setEmail(data[2])
             setID(data[3])
-            setPresentationCount(data[4])
+            
          })
          .catch(error => console.log(error))
+
+
+         fetch('http://localhost:5000/getPresentationCount', {
+            method: 'GET',
+            headers: {
+               'Content-Type':'application/json'
+            },
+   
+         })
+            .then((resp) => {
+               return resp.json()
+            })
+            .then((data) => {
+               setPresentationCount(data)
+            })
+            .catch(error => console.log(error))
 
       return success;
    };
