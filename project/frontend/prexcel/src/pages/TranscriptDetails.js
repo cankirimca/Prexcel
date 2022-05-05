@@ -158,6 +158,13 @@ export default function TranscriptDetails(props) {
    }
 
    //                   <Button variant="contained" onClick={processTranscript}>Print</Button>
+
+   function printArr(){
+      console.log(props.processedTranscriptArr);
+   }
+
+   // <Button variant="contained" onClick={printArr}>print</Button>
+
    return(
       <div>
          <Grid container>
@@ -190,14 +197,15 @@ export default function TranscriptDetails(props) {
                   Statistics
                   <ul align="left">
                      <li>You dragged { (Math.round(100 * props.selectedPresentations[0].dragged_ratio * 100) / 100).toFixed(2) } % of the time. </li>
-                     <li>You fill { (Math.round(100 * props.selectedPresentations[0].filler_ratio * 100) / 100).toFixed(2) } % of the time. </li>
-                     <li>You had a gap { (Math.round(100 * props.selectedPresentations[0].gap_ratio * 100) / 100).toFixed(2) } % of the time. </li>
+                     <li>You filled time { (Math.round(100 * props.selectedPresentations[0].filler_ratio * 100) / 100).toFixed(2) } % of the time. </li>
+                     <li>You were silent { (Math.round(100 * props.selectedPresentations[0].gap_ratio * 100) / 100).toFixed(2) } % of the time. </li>
                   </ul>
                </Paper>
             </Grid>
 
             <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
                <Button variant="contained" onClick={goBackToPresentationDetails}>Back To Presentation Details</Button>
+
             </Grid>
             <Grid item xs={4}/>
 

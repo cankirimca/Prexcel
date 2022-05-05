@@ -33,6 +33,8 @@ export default function UploadRecordingScreen(props) {
    function processRecording() {
       setFlagProcessingPresentation(true);
 
+      props.uploadHandler(false);
+
       props.onUploadPresentationHandler(ScreenIds.LOADING_SCREEN);
 
       // todo set the flag processing presentation such that no other button is clickable while presentation is being processed.
@@ -46,6 +48,9 @@ export default function UploadRecordingScreen(props) {
          })
          .then((resp) => {
             console.log(resp.json())
+
+            props.uploadHandler(true);
+
             return resp.json()
          })
 
