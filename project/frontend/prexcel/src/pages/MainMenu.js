@@ -63,7 +63,7 @@ const MainMenu = (props) => {
                   <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToTutorialApp}>Tutorial on Prexcel</Button> <br/>
                   <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToTutorialPresentation}>Tutorial on Presentations</Button> <br/>
                   <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToUserAccountDetails}>User-Account-Details</Button> <br/>
-                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToChatBot}>Chat Bot</Button> <br/>
+                  <Button style={{ marginBottom: '5%'}} variant="contained" onClick={goToChatBot}>Interactive Q&A Chat Bot</Button> <br/>
                   <Button style={{ marginBottom: '5%'}} variant="contained" onClick={logOut}>Log-Out</Button>
                </Paper>
             </Grid>
