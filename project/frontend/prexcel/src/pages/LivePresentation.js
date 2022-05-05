@@ -16,7 +16,7 @@ export default function LivePresentation(props) {
 
 
    const [fd_flag, setFdFlag] = useState("");
-   const [decibel_flag, setDecibel] = useState("");
+   const [decibel_flag, setDecibel] = useState(0);
    const [transcript, setTranscript] = useState("");
    const [recommendations, setRecommendations] = useState([]);
    const [recommendation1, setRecommendation1] = useState("");
@@ -115,6 +115,34 @@ export default function LivePresentation(props) {
              .catch(error => console.log(error))
           }, 500);
     }*/
+
+
+   function FdValue(value) {
+      // const trArr = props.processedTranscriptArr;
+
+      if (value === "+") {
+         return <span style={{backgroundColor: "green"}}>DETECTED </span>;
+      } else if (value === "-") {
+         return <span style={{backgroundColor: "red"}}>NOT DETECTED</span>;
+      }
+   }
+
+   function DecibelValue(value) {
+      // const trArr = props.processedTranscriptArr;
+
+      if (value < 10) {
+         return <span style={{backgroundColor: "red"}}>TOO LOW</span>;
+      } else if (value < 25) {
+         return <span style={{backgroundColor: "yellow"}}>LOW</span>;
+      }else if (value > 60){
+         return <span style={{backgroundColor: "red"}}>TOO HIGH</span>;
+      }else if (value > 50){
+         return <span style={{backgroundColor: "yellow"}}>HIGH</span>;
+      }else{
+         return <span style={{backgroundColor: "green"}}>IDEAL</span>;
+      }
+      
+   }
 
    function getFaceDetectionFlag() {
       var tempFlag = 0 
@@ -226,8 +254,8 @@ export default function LivePresentation(props) {
             <Grid item xs={3}>
 
                <Paper sx={{backgroundColor: 'whitesmoke'}} align="left" elevation={3}>
-                  <p style={{paddingTop: '2%', marginLeft: '5%'}}> Face Detection: {fd_flag}</p> <br/>
-                  <p style={{marginLeft: '5%'}}> Current Decibel: {decibel_flag}</p> <br/>
+                  <p id = "fd-flag" style={{paddingTop: '2%', marginLeft: '5%'}}> Face Detection: {FdValue(fd_flag)}</p> <br/>
+                  <p id = "decibel-flag" style={{marginLeft: '5%'}}> Current Decibel: {DecibelValue(decibel_flag)}</p> <br/>
 
                </Paper>
 

@@ -173,7 +173,7 @@ def delete_presentation():
     presentation_id = request.json 
     print("id: ", presentation_id)
     ud.delete_presentation(presentation_id) 
-    return jsonify("Presentation Deleted")    
+    return jsonify("Presentation Deleted")  
 
 if __name__ == "__main__":
     app.run(host='localhost', port=5000)
