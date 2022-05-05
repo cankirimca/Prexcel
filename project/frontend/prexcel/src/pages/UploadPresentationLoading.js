@@ -6,7 +6,9 @@ import {Button, Grid, Paper, TextField} from "@mui/material";
 import { useFilePicker } from 'use-file-picker';
 
 export default function UploadPresentationLoading(props) {
-   const [processingDone, setProcessingDone] = useState(false);
+
+
+   //const [processingDone, setProcessingDone] = useState(false);
 
 
    function goToMainMenu() {
@@ -18,10 +20,12 @@ export default function UploadPresentationLoading(props) {
       console.log(":(");
    }
 
-   function setProcessingState(){
+   /*function setProcessingState(){
       setProcessingDone(!processingDone);
-   }
+   }*/
 
+   // <Button style={{margin: '5%'}} variant="contained" onClick={setProcessingState}>Set Recording Processed
+   //                      (Demo/TB Removed)</Button>
 
    const processingNotDone =
       <Grid container spacing={2}>
@@ -34,15 +38,12 @@ export default function UploadPresentationLoading(props) {
                   marginBottom: '5%',
                   flexDirection: 'row',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
+                  paddingTop: '2%',
                }} elevation={3}>
-                  <p style={{margin: "2%"}}> Please wait while your presentation is being processed. </p>
+                  <p style={{margin: "2%"}}> <i> Please wait while your presentation is being processed... </i> </p>
 
                   <Button style={{margin: '5%'}} variant="contained" onClick={goToMainMenu}>Cancel</Button>
-                  <Button style={{margin: '5%'}} variant="contained" disabled>Continue</Button>
-                  <Button style={{margin: '5%'}} variant="contained" onClick={setProcessingState}>Set Recording Processed
-                     (Demo/TB Removed)</Button>
-
                </Paper>
 
             </Grid>
@@ -61,13 +62,12 @@ export default function UploadPresentationLoading(props) {
                marginBottom: '5%',
                flexDirection: 'row',
                alignItems: 'center',
-               justifyContent: 'center'
+               justifyContent: 'center',
+               paddingTop: '2%',
             }} elevation={3}>
                <p style={{margin: "2%"}}> You can now find your presentation under the MyPresentations screen. </p>
 
                <Button style={{margin: '5%'}} variant="contained" onClick={goToMainMenu}>Continue To Main Menu</Button>
-               <Button style={{margin: '5%'}} variant="contained" onClick={setProcessingState}>Set Recording Processed
-                  (Demo/TB Removed)</Button>
             </Paper>
 
          </Grid>
@@ -78,10 +78,10 @@ export default function UploadPresentationLoading(props) {
 
    return (
       <Grid container spacing={2}>
-         { !processingDone &&
+         { !props.uploadDone &&
             processingNotDone
          }
-         { processingDone &&
+         { props.uploadDone &&
             processingFinished
          }
 

@@ -42,6 +42,12 @@ function App() {
    const [selectedPresentations, setSelectedPresentations] = useState([]);
    const [newPresentationName, setNewPresentationName] = useState("");
 
+   const [uploadDone, setUploadDone] = useState(false);
+
+   function uploadHandler(uploadDone) {
+      setUploadDone(uploadDone);
+   }
+
    function processTranscriptHandler (transcript) {
       setTranscriptArr(transcript);
    }
@@ -84,13 +90,13 @@ function App() {
       else if (currentScreen === ScreenIds.NEW_PRESENTATION_ID)
          return <NewPresentation onNewPresentationName={newPresentationNameHandler} onNewPresentationHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.UPLOAD_PRESENTATION_SCREEN_ID)
-         return <UploadRecordingScreen newPresentationName={newPresentationName} onUploadPresentationHandler={changeViewHandler}/>;
+         return <UploadRecordingScreen uploadHandler={uploadHandler} newPresentationName={newPresentationName} onUploadPresentationHandler={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.PROGRESS_TRACKING_SCREEN_ID)
          return <ProgressTracking selectedPresentations={selectedPresentations} onProgressTracking={changeViewHandler}/>;
       else if (currentScreen === ScreenIds.CHECK_CAMERA)
          return <CheckCamera onCheckCameraHandler={changeViewHandler} />;
       else if (currentScreen === ScreenIds.LOADING_SCREEN)
-         return <UploadPresentationLoading onPresentationLoadingHandler={changeViewHandler} />;
+         return <UploadPresentationLoading uploadDone={uploadDone} onPresentationLoadingHandler={changeViewHandler} />;
       else if (currentScreen === ScreenIds.TUTORIAL_APP_SCREEN_ID)
          return <TutorialApp onTutorialAppHandler={changeViewHandler} />;
       else if (currentScreen === ScreenIds.TUTORIAL_PRESENTATION_SCREEN_ID)
