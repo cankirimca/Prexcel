@@ -10,38 +10,49 @@ export default function ChatBotScreen(props) {
    const questions = [
       {
          position: "left",
-         question: "1. Tell Me About Yourself.",
-         answer: 'This question seems simple, so many people fail to prepare for it, but it’s crucial. Here\'s the deal: Don’t give your complete employment (or personal) history. Instead, give a pitch—one that’s concise and compelling and that shows exactly why you’re the right fit for the job. Muse writer and MIT career counselor Lily Zhang recommends using a present, past, future formula. Talk a little bit about your current role (including the scope and perhaps one big accomplishment), then give some background as to how you got there and experience you have that’s relevant. Finally, segue into why you want—and would be perfect for—this role.',
+         question: "1. How is my presentation graded?",
+         answer: "Your presentation is graded based on 3 criteria. First of these is the face detection score, " +
+            "which is a measure of how long you kept face contact with the camera. Second is the gap score, which is a " +
+            "measure of how much big gaps you had in your speech. Final score is the filler words/dragged words score," +
+            " which is determined based on how many words you dragged, or repeated during the presentation.",
          color: "lightblue"
       },
       {
          position: "left",
-         question: "2. How Did You Hear About This Position?",
-         answer: 'Another seemingly innocuous interview question, this is actually a perfect opportunity to stand out and show your passion for and connection to the company. For example, if you found out about the gig through a friend or professional contact, name-drop that person, then share why you were so excited about the job. If you discovered the company through an event or article, share that. Even if you found the listing through a random job board, share what, specifically, caught your eye about the role.',
+         question: "2. How can I start a live presentation?",
+         answer: 'Go to the "Start a Presentation" tab, enter the name of your presentation and the select the option ' +
+            'for starting a live presentation. You will have a chance to calibrate your camera in this screen. ' +
+            'Once you continue to presentation screen, you can start the presentation by the relevant button. ' +
+            'You will see the your face detection and volume on the left, as well as the word recommendations right below them. ' +
+            'Your transcript will also be printed on the screen. You can end the presentation at any time and return to main menu.',
          color: "lightblue"
       },
       {
          position: "left",
-         question: "3. Why Do You Want to Work at This Company?",
-         answer: 'Beware of generic answers! If what you say can apply to a whole slew of other companies, or if your response makes you sound like every other candidate, you’re missing an opportunity to stand out. Zhang recommends one of four strategies: Do your research and point to something that makes the company unique that really appeals to you; talk about how you’ve watched the company grow and change since you first heard of it; focus on the organization’s opportunities for future growth and how you can contribute to it; or share what’s gotten you excited from your interactions with employees so far. Whichever route you choose, make sure to be specific. And if you can’t figure out why you’d want to work at the company you’re interviewing with by the time you’re well into the hiring process? It might be a red flag telling you that this position is not the right fit.',
+         question: "3. How can I upload recording of a presentation?",
+         answer: 'Go to the "Start a Presentation" tab,  enter the name of your presentation and the select the option ' +
+            'for uploading a presentation. Your presentation will be processed. You will not be able to move to' +
+            ' any other screen during this time. Once finished, you can see your detailed analysis report from the ' +
+            '"My Presentations" screen.',
          color: "lightblue"
       },
       {
          position: "left",
-         question: "4. Why Do You Want This Job?\n",
-         answer: 'Again, companies want to hire people who are passionate about the job, so you should have a great answer about why you want the position. (And if you don’t? You probably should apply elsewhere.) First, identify a couple of key factors that make the role a great fit for you (e.g., “I love customer support because I love the constant human interaction and the satisfaction that comes from helping someone solve a problem”), then share why you love the company (e.g., “I’ve always been passionate about education, and I think you’re doing great things, so I want to be a part of it”).',
+         question: "4. Is my personal data stored?",
+         answer: 'We never store your personal data. All you data is processed on your machine locally, ' +
+            'and never uploaded to cloud.',
          color: "lightblue"
       },
       {
          position: "left",
-         question: "5:   Question 5 LooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooNG",
-         answer: 'Answer 5 LoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooNG',
+         question: "5. How can I track my progress across presentations?",
+         answer: 'From the "My Presentations" screen, select the presentations you want to track and select see progress report.',
          color: "lightblue"
       },
       {
          position: "left",
-         question: "6:   Question 6 heheh heheh hehe hehe ehhe ehh eheheh ehehhe ehhehe ehheh ehhehe hehehe ehhehe ",
-         answer: 'Answer 6 ehbehbehehe ehbheb hebhe hebhehb  hbehhehb  bhehehbhehb hebhhe',
+         question: "6. Can I delete my account/presentations?",
+         answer: 'Yes. You can do both on the "User-Account Details" screen.',
          color: "lightblue"
       }
    ];
@@ -189,7 +200,8 @@ export default function ChatBotScreen(props) {
                      marginBottom: '5%',
                      alignItems: 'center',
                      justifyContent: 'center',
-                     backgroundColor: 'whitesmoke'
+                     backgroundColor: 'whitesmoke',
+                     padding: "5%"
                   }}
                   className="App"
                >
