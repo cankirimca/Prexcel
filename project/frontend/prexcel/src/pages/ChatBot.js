@@ -95,7 +95,7 @@ export default function ChatBotScreen(props) {
          height: "auto",
          float: props.position,
          background: props.color,
-         color: "#E5E5E5",
+         color: "whitesmoke",
 
          overflowWrap: "break-word",
          wordWrap: "break-word",
@@ -174,7 +174,7 @@ export default function ChatBotScreen(props) {
             <Grid item xs={3}/>
             <Grid item xs={6} style={{height: "100vh"}}>
 
-               <h1 style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+               <h1 style={{color:'whitesmoke', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                   ChatBot
                </h1>
 

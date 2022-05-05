@@ -84,8 +84,8 @@ export default function PresentationDetails(props) {
          <Grid container spacing={2}>
 
             <Grid item xs={12}>
-               <h2>{props.selectedPresentations[0].name} Presentation </h2>
-               <p>Detailed Analysis Report</p>
+               <h2 style={{color:'whitesmoke'}}>{props.selectedPresentations[0].name} Presentation </h2>
+               <p style={{color:'whitesmoke'}}>Detailed Analysis Report</p>
             </Grid>
 
             <Grid item xs={5}/>

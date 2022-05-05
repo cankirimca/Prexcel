@@ -73,7 +73,7 @@ export default function NewPresentation(props) {
 
          <Grid item xs={3}/>
          <Grid item xs={6}>
-            <h1> Create A New Presentation...</h1>
+            <h1 style={{color:'whitesmoke'}}> Create A New Presentation...</h1>
             <Paper style={{
                marginTop: '20%',
                marginBottom: '5%',

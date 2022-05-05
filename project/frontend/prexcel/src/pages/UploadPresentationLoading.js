@@ -31,9 +31,9 @@ export default function UploadPresentationLoading(props) {
       <Grid container spacing={2}>
             <Grid item xs={2} />
             <Grid item xs={8}>
-               <h1>Processing Your Presentation...</h1>
+               <h1 style={{color:'whitesmoke'}}>Processing Your Presentation...</h1>
                <Paper style={{
-                  backgroundColor: '#E5E5E5',
+                  backgroundColor: 'whitesmoke',
                   marginTop: '20%',
                   marginBottom: '5%',
                   flexDirection: 'row',
@@ -55,9 +55,9 @@ export default function UploadPresentationLoading(props) {
 
          <Grid item xs={2}/>
          <Grid item xs={8}>
-            <h1>Your presentation is processed!</h1>
+            <h1 style={{color:'whitesmoke'}}>Your presentation is processed!</h1>
             <Paper style={{
-               backgroundColor: '#E5E5E5',
+               backgroundColor: 'whitesmoke',
                marginTop: '20%',
                marginBottom: '5%',
                flexDirection: 'row',

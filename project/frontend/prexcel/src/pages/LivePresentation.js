@@ -207,7 +207,7 @@ export default function LivePresentation(props) {
          <Grid container spacing={2}>
 
             <Grid item xs={12}>
-               <h1 style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+               <h1 style={{color:'whitesmoke', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                   Live Presentation for "{props.newPresentationName}"
                </h1>
             </Grid>
@@ -216,7 +216,7 @@ export default function LivePresentation(props) {
             <Grid item xs={7}>
 
                <Paper sx={{backgroundColor: 'whitesmoke'}} align="left" elevation={3}>
-                  <h3> TRANSCRIPT</h3> <br/>
+                  <h3 style={{paddingTop:'2%', paddingLeft:'2%'}}> TRANSCRIPT</h3> <br/>
                   <p> {transcript}</p> <br/>
 
                </Paper>

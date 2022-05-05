@@ -15,7 +15,7 @@ const TutorialApp = (props) => {
       <div>
          <Grid container spacing={2}>
             <Grid item xs={12} >
-               <h1 style={{flexDirection:'row', alignItems:'center', justifyContent:'center', marginTop:"2%"}} >
+               <h1 style={{color:'whitesmoke', flexDirection:'row', alignItems:'center', justifyContent:'center', marginTop:"2%"}} >
                   TUTORIAL ON PREXCEL
                </h1>
             </Grid>

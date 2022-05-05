@@ -86,7 +86,7 @@ export default function ProgressTracking(props) {
          <Grid container spacing={2}>
 
             <Grid item xs={12}>
-               <h1>Progress Tracking</h1>
+               <h1 style={{color:'whitesmoke'}}>Progress Tracking</h1>
             </Grid>
 
             <Grid item xs={1}/>
