@@ -29,7 +29,7 @@ export default function PresentationDetails(props) {
             console.log(data);
          })
          .catch(error => console.log(error))
-         
+
       goBackToMyPresentations();    
       return success;
    };
@@ -132,7 +132,7 @@ export default function PresentationDetails(props) {
                      <p style={{marginLeft: '2.5%'}}><u>Grades:</u></p>
                      <p style={{marginLeft: '2.5%'}}>Gap Grade : { (Math.round(100 * (1 - props.selectedPresentations[0].gap_ratio) * 100) / 100).toFixed(2) }</p>
                      <p style={{marginLeft: '2.5%'}}>Filler Grade : { (Math.round(100 * (1 - props.selectedPresentations[0].filler_ratio) * 100) / 100).toFixed(2) }</p>
-                     <p style={{marginLeft: '2.5%'}}>Face Recognition Score : {props.selectedPresentations[0].fd_score}</p>
+                     <p style={{marginLeft: '2.5%'}}>Face Recognition Score : {(Math.round(100 * props.selectedPresentations[0].fd_score))}</p>
                   </Card>
 
                   <Card sx={{ marginLeft: '8%', marginRight: '8%', marginBottom: '8%'}} elevation={4}>

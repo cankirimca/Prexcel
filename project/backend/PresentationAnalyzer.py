@@ -40,7 +40,7 @@ class PresentationAnalyzer:
             if flag == "+":
                 fd_score += 1
         print(6)
-        if self.fd_flags == None or len(self.fd_flags):
+        if self.fd_flags == None or len(self.fd_flags) == 0:
             fd_score = 0   
         else:          
             fd_score = fd_score/len(self.fd_flags)  
@@ -84,10 +84,8 @@ class PresentationAnalyzer:
         transcript, word_count, duration, wpm, gap_ratio, filler_ratio, dragged_ratio, repeated_ratio = self.sa.analyzed_tokens(self.tokens)
         score = ((1-(filler_ratio)*3)+(1-(gap_ratio)*3) + (1-(repeated_ratio)*3)+ (1-(dragged_ratio)*3))/4
         self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score, score, dragged_ratio, repeated_ratio) 
-        print("pushed to database")
 
     def convert_video_to_audio(self):
-        print("in convert")
         clip = VideoFileClip(self.file_path)
         path = root + "\\temp_audio_stereo.wav"       
         clip.audio.write_audiofile(path, fps=16000, codec='pcm_s16le')
