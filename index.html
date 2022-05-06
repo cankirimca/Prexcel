@@ -1,50 +1,270 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
     <title>Prexcel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
-    <link rel="stylesheet" href="style.css">
+        body, html {
+            height: 100%;
+            line-height: 1.8;
+        }
+
+        /* Full height image header */
+        .bgimg-1 {
+            background-position: center;
+            background-size: cover;
+            background-image: url("background.jpg");
+            min-height: 100%;
+        }
+
+        .w3-bar .w3-button {
+            padding: 16px;
+        }
+
+        .report-box{
+            margin-top: 10px;
+            display: inline-block;
+            width: 100%;
+            padding: 20px 30px;
+            border: #222;
+            border-radius: 1px;
+            display: inline-block;
+            width: 100%;
+            padding: 20px 30px;
+            border-style: outset;
+
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        .img {
+            float: left;
+            width:  100px;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="website-header">
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="documents.html">Documents</a></li>
-                    <li><a href="aboutUs.html">About Us</a></li>
-                </ul>
-            </nav>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+        <a href="#home" class="w3-bar-item w3-button w3-wide">PREXCEL</a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small">
+            <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
+            <a href="#team" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
+            <a href="#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> DOCUMENTS</a>
+            <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
         </div>
-    </header>
-    <main>
-        <div class="site-section">
-        <div class="site-section-inside">
+        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
-            <div class="section-header">
-                <h2>Welcome to the Prexcel website</h2>
-            </div>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</div>
 
-            <div class="feature-box">
-                <h5 style="text-align: center;">This website contains the project reports and all other relevant information about Prexcel</h5>
-            </div>
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+    <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
+    <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">DOCUMENTS</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+</nav>
 
-            <div>
-                <p style="text-align: center"><i>"A desktop app that aims to help you make better presentations and improve your online presentation skills."</i></p>
-                <br>
-                <p style="text-align: left"><b>1. Presentation Analysis & Detailed Feedback : </b> Either through live recording or external uploading of a video, the video is analysed and detailed feedback is given based on a visual and speech
-                    analysis.</p><br>
-                <p style="text-align: left"><b>2. Live Feedback : </b>Prexcel gives live feedback when the user is recording their presentations using the
-                    recording functionality.</p><br>
-                <p style="text-align: left"><b>3. Tutorial : </b>The app contains a tutorial page and functionality, which includes information
-                    about making good presentations. There is a chatbot instead of searching for particular information on the tutorial page</p><br>
-                <p style="text-align: left"><b>4. User Accounts and Progress Tracking : </b>Users can create accounts and use the app with their accounts. They can see their past presentation grades and they
-                    can track their improvement.</p><br>
-            </div>
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+    <div class="w3-display-left w3-text-white" style="padding:48px">
+        <span class="w3-jumbo w3-hide-small">Welcome to Prexcel</span><br>
+        <span class="w3-xxlarge w3-hide-large w3-hide-medium">Welcome to the Prexcel</span><br>
+        <span class="w3-large">A desktop app that aims to help you make better presentations and improve your online presentation skills.</span>
+        <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Learn more</a></p>
+    </div>
+</header>
 
+<!-- About Section -->
+<div class="w3-container" style="padding:128px 16px" id="about">
+
+    <div>
+        <img class="center" src="prexcel_logo.png" style="width: 300px">
+    </div>
+
+    <h3 class="w3-center">ABOUT PREXCEL</h3>
+    <p class="w3-center w3-large">Key features of our application</p>
+    <div class="w3-row-padding w3-center" style="margin-top:64px">
+        <div class="w3-quarter">
+            <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+            <p class="w3-large">Analysis & Feedback</p>
+            <p>Either through live recording or external uploading of a video, the video is analysed and detailed feedback is given based on a visual and speech analysis.</p>
         </div>
+        <div class="w3-quarter">
+            <i class="fa fa-desktop w3-margin-bottom w3-jumbo"></i>
+            <p class="w3-large">Live Feedback</p>
+            <p>Prexcel gives live feedback when the user is recording their presentations using the recording functionality.</p>
         </div>
-    </main>
+        <div class="w3-quarter">
+            <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+            <p class="w3-large">Tutorial</p>
+            <p>The app contains a tutorial page and functionality, which includes information about making good presentations. There is a chatbot instead of searching for particular information on the tutorial page.</p>
+        </div>
+        <div class="w3-quarter">
+            <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+            <p class="w3-large">Accounts & Progress</p>
+            <p>Users can create accounts and use the app with their accounts. They can see their past presentation grades and they can track their improvement.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Work Section -->
+<div class="w3-container" style="padding:128px 16px" id="work">
+    <h3 class="w3-center">PROJECT DOCUMENTS</h3>
+
+    <div class="report-box">
+        <h5>Project Specifications Report</h5>
+        <p><a href="https://drive.google.com/file/d/10zIu-0saW8JjhODghWcTTCHEdleZ_R6l/view?usp=sharing">View PDF</a></p>
+    </div>
+    <div class="report-box">
+        <h5>Assessment of Innovativeness Form</h5>
+        <p><a href="https://drive.google.com/file/d/1GAah70qFairMXNmcKeiNNEcvoL5r5gA4/view?usp=sharing">View PDF</a></p>
+    </div>
+    <div class="report-box">
+        <h5>Analysis Report</h5>
+        <p><a href="https://drive.google.com/file/d/1FfWlgtWtvRX0j9NjQwhFK3HRWL982C_W/view?usp=sharing">View PDF</a></p>
+    </div>
+    <div class="report-box">
+        <h5>High-Level Design Report</h5>
+        <p><a href="https://drive.google.com/file/d/1PB03DqOWrflvgd2-r1_KTNudZzgTxllm/view?usp=sharing">View PDF</a></p>
+    </div>
+    <div class="report-box">
+        <h5>Low-Level Design Report</h5>
+        <p><a href="https://drive.google.com/file/d/1PULfn3PWLHUebKAnuvUkph-DfOxz1pXU/view?usp=sharing">View PDF</a></p>
+    </div>
+    <div class="report-box">
+        <h5>Final Report</h5>
+        <p><a href="https://drive.google.com/file/d/1YUfiCZG1oVvLE3rRCHgOiO5oF-qmqozJ/view?usp=sharing">View PDF</a></p>
+    </div>
+</div>
+
+<!-- Team Section -->
+<div class="w3-container" style="padding:128px 16px" id="team">
+    <h3 class="w3-center">THE TEAM</h3>
+    <p class="w3-center w3-large">The ones who developed this application</p>
+    <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+        <div class="w3-col l2 m6 w3-margin-bottom" style="margin-left: 150px">
+            <div class="w3-card">
+                <img class="img" src="Can_Kirimca.JPG" alt="John" style="width:100%">
+                <div class="w3-container">
+                    <h3>Can Kırımca</h3>
+                </div>
+            </div>
+        </div>
+        <div class="w3-col l2 m6 w3-margin-bottom">
+            <div class="w3-card">
+                <img class="img" src="Can_Kirsallioba.png" alt="John" style="width:100%">
+                <div class="w3-container">
+                    <h3>Can Kırşallıoba</h3>
+                </div>
+            </div>
+        </div>
+        <div class="w3-col l2 m6 w3-margin-bottom">
+            <div class="w3-card">
+                <img class="img" src="Alper.jpg" alt="John" style="width:100%">
+                <div class="w3-container">
+                    <h3>Alper Sarı</h3>
+                </div>
+            </div>
+        </div>
+        <div class="w3-col l2 m6 w3-margin-bottom">
+            <div class="w3-card">
+                <img class="img" src="Baris_Tiftik.png" alt="John" style="width:100%">
+                <div class="w3-container">
+                    <h3>Barış Tiftik</h3>
+                </div>
+            </div>
+        </div>
+        <div class="w3-col l2 m6 w3-margin-bottom">
+            <div class="w3-card">
+                <img class="img" src="Burak_Uslu.jpg" alt="John" style="width:100%">
+                <div class="w3-container">
+                    <h3>Burak Yiğit Uslu</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+    <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image">
+        <p id="caption" class="w3-opacity w3-large"></p>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
+    <h3 class="w3-center">CONTACT</h3>
+    <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+    <div style="margin-top:48px">
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> can.kirimca@ug.bilkent.edu.tr</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> can.kirsallioba@ug.bilkent.edu.tr</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> alper.sari@ug.bilkent.edu.tr</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> baris.tiftik@ug.bilkent.edu.tr</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> yigit.uslu@ug.bilkent.edu.tr</p>
+        <br>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+    <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+</footer>
+
+<script>
+   // Modal Image Gallery
+   function onClick(element) {
+      document.getElementById("img01").src = element.src;
+      document.getElementById("modal01").style.display = "block";
+      var captionText = document.getElementById("caption");
+      captionText.innerHTML = element.alt;
+   }
+
+
+   // Toggle between showing and hiding the sidebar when clicking the menu icon
+   var mySidebar = document.getElementById("mySidebar");
+
+   function w3_open() {
+      if (mySidebar.style.display === 'block') {
+         mySidebar.style.display = 'none';
+      } else {
+         mySidebar.style.display = 'block';
+      }
+   }
+
+   // Close the sidebar with the close button
+   function w3_close() {
+      mySidebar.style.display = "none";
+   }
+</script>
+
 </body>
 </html>
