@@ -34,7 +34,7 @@ function createWindow () {
     // remote-URL: https://burakyuslu.github.io/prexcel-react-app-server
 
     // TODO You may change the URL of the server here, if you want to connect to localhost and host the react server locally
-    win.loadURL('https://burakyuslu.github.io/prexcel-react-app-server');
+    win.loadURL('https://burakyuslu.github.io/prexcel-react-server/');
     // win.loadURL('http://localhost:3000');
 
     // Open the DevTools.
