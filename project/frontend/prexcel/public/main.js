@@ -16,12 +16,13 @@ function createWindow () {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
-        title: "Prexcel Dev",
+        title: "Prexcel",
         show: false,
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule:true
-        }
+        },
+        // icon:'../public/prexcel_logo.png'
 
     })
 

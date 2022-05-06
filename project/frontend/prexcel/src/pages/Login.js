@@ -3,6 +3,8 @@ import {render} from "react-dom";
 import * as ReactDOM from "react-dom";
 import ScreenIds from "./ScreenIds";
 
+import pLogo from "./images/prexcel_logo.png";
+
 // material ui components
 import {Button, Grid, Paper, TextField} from "@mui/material";
 import DialogBox from "./DialogBox";
@@ -73,18 +75,23 @@ const Login = (props) => {
       props.onLoginHandler(ScreenIds.SIGNUP_SCREEN_ID)
    }
 
+   //             <h1 style={{color:'whitesmoke', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>Welcome To Prexcel </h1>
+
    return (
       <Grid container spacing={2}>
 
          <Grid item xs={12}>
-            <h1 style={{color:'whitesmoke', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>Welcome To Prexcel </h1>
+
          </Grid>
 
          <Grid item xs={4}/>
          <Grid item xs={4}>
+            <img src={pLogo} style={{marginTop:"7%", width: 400, height: 400,borderRadius: 400/ 2}} />
+
+
             <Paper style={{
                backgroundColor: 'whitesmoke',
-               marginTop: '50%',
+               marginTop: '10%',
                marginBottom: '5%',
                flexDirection: 'row',
                alignItems: 'center',
