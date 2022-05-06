@@ -104,12 +104,12 @@ const SignUp = (props) => {
                </Grid>
                <Grid style={{ marginTop: '5%'}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '36%', marginLeft: '36%'}} elevation={4}>
-                     <TextField sx={{width:'99%', border: "2px solid #2c778f", borderRadius:'5px',}} data-testid="register_password_id_1" id="register_password" label="Password" variant="filled" required/>
+                     <TextField sx={{width:'99%', border: "2px solid #2c778f", borderRadius:'5px',}} type="password" data-testid="register_password_id_1" id="register_password" label="Password" variant="filled" required/>
                   </Paper>
                </Grid>
                <Grid style={{ marginTop: '5%', marginBottom: '5%'}} item xs={12}>
                   <Paper sx={{backgroundColor: 'white', marginRight: '36%', marginLeft: '36%'}} elevation={4}>
-                     <TextField sx={{width:'99%', border: "2px solid #2c778f", borderRadius:'5px',}} data-testid="register_password_id_2" id="register_password_2" label="Confirm Password" variant="filled" required/>
+                     <TextField sx={{width:'99%', border: "2px solid #2c778f", borderRadius:'5px',}} type="password" data-testid="register_password_id_2" id="register_password_2" label="Confirm Password" variant="filled" required/>
                   </Paper>
                </Grid>
                <Grid style={{ marginTop: '5%', paddingBottom:'5%'}} item xs={12}>
