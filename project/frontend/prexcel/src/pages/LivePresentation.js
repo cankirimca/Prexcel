@@ -80,8 +80,9 @@ export default function LivePresentation(props) {
       clearInterval(interval2);
       clearInterval(interval3);
       clearInterval(interval4);
-      setFdFlag("")
-      setDecibel("")
+      setFdFlag("");
+      setDecibel("");
+      setTranscript("");
       
       fetch('http://localhost:5000/endPresentation', {
          method: 'GET',

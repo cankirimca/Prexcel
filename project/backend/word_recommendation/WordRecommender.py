@@ -15,7 +15,6 @@ class WordRecommender:
         self.recommendations = recommendations
         self.words = words
 
-
     def generate_recommendation(self, words):
         #input_text = strip_punctuation(input_text)
         #input_text = remove_stopwords(input_text)
@@ -53,11 +52,9 @@ class WordRecommender:
 
     def check_recommendations(self, stop_flag):
         print("check recommendations--------------------------")
-        last_added = time.time()
-        last_length = 0
         while not stop_flag[0]:
             time.sleep(2)
-            if len(self.words[0]) < 4:
+            if self.words[0] == None or len(self.words[0]) < 4:
                 continue
             self.recommendations.append(self.generate_recommendation(self.words[0]))
         print("recommendations ended-----------------")        

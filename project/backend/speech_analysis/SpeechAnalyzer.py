@@ -179,15 +179,21 @@ class SpeechAnalyzer:
     #this function puts together all the functions to execute analysis of tokens
     def analyzed_tokens(self, input_tokens):
         consolidated, word_count, duration_in_20_ms, total_gaps = self.consolidate_tokens(input_tokens)
-        print("A1")
         duration_sec = duration_in_20_ms/50
         wpm = (word_count/duration_sec)*60
-        gap_ratio = ((total_gaps/50)/duration_sec)
+        if duration_sec != 0:
+            gap_ratio = ((total_gaps/50)/duration_sec)
+        else:
+            gap_ratio = 0
         tagged, filler_count, dragged_count, repeated_count = self.tag_words(consolidated)
-        print("A2")
-        filler_ratio = filler_count/word_count
-        dragged_ratio = dragged_count/word_count
-        repeated_ratio = repeated_count/word_count
+        if word_count != 0:
+            filler_ratio = filler_count/word_count
+            dragged_ratio = dragged_count/word_count
+            repeated_ratio = repeated_count/word_count
+        else: 
+            filler_ratio = 0
+            dragged_ratio = 0
+            repeated_ratio = 0   
         return self.finalise_write_string(tagged), word_count, duration_sec, wpm, gap_ratio, filler_ratio, dragged_ratio, repeated_ratio
 
 #the below code is used for the testing of this class

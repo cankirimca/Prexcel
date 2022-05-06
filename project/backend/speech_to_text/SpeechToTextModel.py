@@ -29,14 +29,23 @@ def format_metadata_output(tokens, result_tokens):
 class SpeechToTextModel:
 
     def __init__(self, tokens, words, transcript):
+        print(11)
         self.transcript = transcript
+        print(22)
         self.model = Model(pbmm_path)
+        print(33)
         self.result_tokens = tokens
+        print(44)
         self.model.enableExternalScorer(scorer_path)
+        print(55)
         self.model.setScorerAlphaBeta(lm_alpha, lm_beta)
+        print(66)
         self.model.setBeamWidth(beam_width)
+        print(77)
         self.stream = self.model.createStream()
+        print(88)
         self.vdm = VoiceDetectionManager()
+        print(99)
         self.words = words
 
     def read_wav_file(self, filename):

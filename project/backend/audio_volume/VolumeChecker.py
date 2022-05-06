@@ -56,14 +56,12 @@ class VolumeChecker():
 
 
     def check_volume(self, decibel_list, check_volume_stop_flag):
-        vc = VolumeChecker()
-
+        s = self.stream_start()
         while True:
-            s = vc.stream_start()
-            rms = vc.rms(s)
-            db = vc.convert_rms_to_decibel(rms)
-            s.stop_stream()
-
+            time.sleep(0.1)
+            
+            rms = self.rms(s)
+            db = self.convert_rms_to_decibel(rms)
             if check_volume_stop_flag[0]:
                 break
 
@@ -72,7 +70,7 @@ class VolumeChecker():
             decibel_list.append(db)
 
             #print(decibel_list)
-
+        s.stop_stream()
         return decibel_list
 
 
