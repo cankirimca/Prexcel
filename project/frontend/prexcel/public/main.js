@@ -30,8 +30,12 @@ function createWindow () {
     // todo
     win.maximize();
     win.show();
-    //load the index.html from a url
-    win.loadURL('http://localhost:3000');
+
+    // remote-URL: https://burakyuslu.github.io/prexcel-react-app-server
+
+    // TODO You may change the URL of the server here, if you want to connect to localhost and host the react server locally
+    win.loadURL('https://burakyuslu.github.io/prexcel-react-app-server');
+    // win.loadURL('http://localhost:3000');
 
     // Open the DevTools.
     // comment the following line when deploying for the demo.
