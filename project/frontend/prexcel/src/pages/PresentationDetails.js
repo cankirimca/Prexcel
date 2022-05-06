@@ -12,10 +12,10 @@ export default function PresentationDetails(props) {
       props.onPresentationDetails(ScreenIds.MY_PRESENTATIONS_SCREEN_ID);
    }
 
-   const deletePresentation = () => {
+   async function deletePresentation(){
       let id = props.selectedPresentations[0].id;
       let success = true;
-      fetch('http://localhost:5000/deletePresentation', {
+      await fetch('http://localhost:5000/deletePresentation', {
          method: 'POST',
          headers: {
             'Content-Type':'application/json'
