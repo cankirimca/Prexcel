@@ -15,7 +15,6 @@ export default function UploadPresentationLoading(props) {
       props.onPresentationLoadingHandler(ScreenIds.MAIN_MENU_SCREEN_ID)
    }
 
-   // todo I think we scrape this off, just send the user back to my presentations or main menu
    function goToPresentationDetails() {
       console.log(":(");
    }

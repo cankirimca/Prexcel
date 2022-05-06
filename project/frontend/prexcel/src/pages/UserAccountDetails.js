@@ -45,7 +45,6 @@ const UserAccountDetails = (props) => {
       }
 
       else {
-         // todo display signup failed message
 
       }
    }

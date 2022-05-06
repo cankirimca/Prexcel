@@ -75,17 +75,17 @@ export default function ChatBotScreen(props) {
    const [newQuestionNumber, setNewQuestionNumber] = useState(0);
    const [value, setValue] = useState('');
 
-   /////
-   const ref = useRef();
 
-   function scrollToTop() {
-      if (ref.current) {
-         ref.current.scrollIntoView({behavior: "smooth", block: "end"});
-      }
+
+   
+
+   const chatbot_end_ref = useRef(null)
+    
+   const scrollToTop = () => {
+      chatbot_end_ref.current.scrollIntoView({ behavior: "smooth" })
    }
-   /////
-
-
+   
+   
    function goBackToMainMenu() {
       props.onChatBot(ScreenIds.MAIN_MENU_SCREEN_ID);
    }
@@ -172,7 +172,10 @@ export default function ChatBotScreen(props) {
          question: answ,
          color: "#2979ff"
       };
-      const newList = [...messageList, newQuestionNumberText, newAnswer];
+
+      const questionList = messageList[0];
+
+      const newList = [...messageList, newQuestionNumberText, newAnswer, questionList];
       setMessageList(newList);
 
       setValue(""); // clears the input field
@@ -186,10 +189,11 @@ export default function ChatBotScreen(props) {
             <Grid item xs={6} style={{height: "100vh"}}>
 
                <h1 style={{color:'whitesmoke', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                  ChatBot
+                  Interactive Q&A Chat Bot
                </h1>
 
                <Paper
+                  id= "paper_id"
                   elevation={8}
                   sx={{
 
@@ -206,7 +210,7 @@ export default function ChatBotScreen(props) {
                   className="App"
                >
                   <TextList messageList={messageList}/>
-                  <div ref={ref}/>
+                  <div ref={chatbot_end_ref}/>
                </Paper>
 
                <form onSubmit={questionSubmitHandler}>
