@@ -22,6 +22,7 @@ function createWindow () {
             nodeIntegration: true,
             enableRemoteModule:true
         },
+        autoHideMenuBar: true
         // icon:'../public/prexcel_logo.png'
 
     })
@@ -33,8 +34,8 @@ function createWindow () {
     win.loadURL('http://localhost:3000');
 
     // Open the DevTools.
-    // todo comment the following line when deploying for the demo.
-    win.webContents.openDevTools();
+    // comment the following line when deploying for the demo.
+    // win.webContents.openDevTools();
     // win.removeMenu();
 }
 
