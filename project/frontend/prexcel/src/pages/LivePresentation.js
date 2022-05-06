@@ -245,7 +245,7 @@ export default function LivePresentation(props) {
 
                <Paper sx={{backgroundColor: 'whitesmoke'}} align="left" elevation={3}>
                   <h3 style={{paddingTop:'2%', paddingLeft:'2%'}}> TRANSCRIPT</h3> <br/>
-                  <p> {transcript}</p> <br/>
+                  <p style={{marginLeft:'2%'}} > {transcript}</p> <br/>
 
                </Paper>
 

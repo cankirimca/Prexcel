@@ -4,7 +4,7 @@ from PresentationAnalyzer import PresentationAnalyzer
 from database.UserDataManager import UserDataManager
 from flask_cors import CORS, cross_origin
 
-from project.backend.word_recommendation.WordRecommender import WordRecommender
+from word_recommendation.WordRecommender import WordRecommender
 
 transcript = [""]
 
