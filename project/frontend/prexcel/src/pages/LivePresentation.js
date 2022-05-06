@@ -227,7 +227,6 @@ export default function LivePresentation(props) {
       props.onLivePresentationHandler(ScreenIds.MAIN_MENU_SCREEN_ID);
    }
 
-   //</p> <br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <br/><br/>
    // <p style={{marginLeft: '5%'}}> Transcript (To be removed I believe) : {transcript} </p> <br/>
 
    return (

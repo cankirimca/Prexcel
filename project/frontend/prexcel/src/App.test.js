@@ -125,7 +125,7 @@ test('test for going back to main menu from start presentation page', () => {
   render(<MainMenu />);
   
   const title = screen.getByTestId("prexcel_title_id");
-  expect(title.textContent).toStrictEqual("Prexcel");
+  expect(title.textContent).toStrictEqual("The Multifunctional Presentation Assistant");
 });
 
 

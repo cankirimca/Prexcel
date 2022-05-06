@@ -57,8 +57,7 @@ const MainMenu = (props) => {
 
                <img src={pLogo} style={{marginTop:"2%", width: 250, height: 250,borderRadius: 400/ 2}} />
 
-               <h1 data-testid="prexcel_title_id" style={{fontStyle: 'italic', color:'whitesmoke', flexDirection:'row', alignItems:'center', justifyContent:'center'}} >The Multifunctional Presentation Assistant
-               </h1>
+               <h1 data-testid="prexcel_title_id" style={{fontStyle: 'italic', color:'whitesmoke', flexDirection:'row', alignItems:'center', justifyContent:'center'}} >The Multifunctional Presentation Assistant</h1>
             </Grid>
             <Grid item xs={4}/>
             <Grid item xs={4}>

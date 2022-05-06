@@ -75,7 +75,7 @@ const Login = (props) => {
       props.onLoginHandler(ScreenIds.SIGNUP_SCREEN_ID)
    }
 
-   //             <h1 style={{color:'whitesmoke', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>Welcome To Prexcel </h1>
+   // <h1 style={{color:'whitesmoke', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>Welcome To Prexcel </h1>
 
    return (
       <Grid container spacing={2}>

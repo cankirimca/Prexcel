@@ -103,18 +103,6 @@ function App() {
           return <TutorialPresentation onTutorialPresentationHandler={changeViewHandler} />;
    }
 
-//  function navigate() {
-//    if (currentScreen === 0)
-//      return <Login onLoginHandler={newScreenHandler}/>;
-//    else if (currentScreen === 1)
-//      return <MainMenu onMainMenuHandler={newScreenHandler}/>;
-//    else if (currentScreen === 2)
-//      return <MyPresentations onMyPresentationsHandler={newScreenHandler}/>;
-//    else if (currentScreen === 3)
-//      return <PresentationDetails onPresentationDetails={newScreenHandler}/>;
-//    else if (currentScreen === 4)
-//      return <TranscriptDetails onTranscriptDetails={newScreenHandler}/>
-//  }
 
    return(
       <div className="App" style={{backgroundColor:"#2C3E50", minHeight: "102vh" }}>
@@ -122,26 +110,6 @@ function App() {
       </div>
    );
 
-   /*return (
-      <div>
-         <Router>
-            <div>
-               <p>
-                  app.js file
-               </p>
-               <Link to="/login">
-                  <button variant="outlined">
-                     Sign up
-                  </button>
-               </Link>
-            </div>
-            <Routes>
-               <Route path="/pages/Login" component={<Login />} />
-               <Route path="/pages/MainMenu" component={<MainMenu />} />
-            </Routes>
-         </Router>
-      </div>
-   );*/
 }
 
 export default App;
