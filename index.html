@@ -58,6 +58,105 @@
             margin-right: auto;
             width: 50%;
         }
+
+        .img:hover{
+        color: #424242; 
+        -webkit-transition: all .3s ease-in;
+        -moz-transition: all .3s ease-in;
+        -ms-transition: all .3s ease-in;
+        -o-transition: all .3s ease-in;
+        transition: all .3s ease-in;
+        opacity: 1;
+        transform: scale(1.15);
+        -ms-transform: scale(1.15); /* IE 9 */
+        -webkit-transform: scale(1.15); /* Safari and Chrome */
+        }
+
+        #myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        }
+
+    #myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+    #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content, #caption {  
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+    }
     </style>
 </head>
 <body>
@@ -107,6 +206,8 @@
         <img class="center" src="prexcel_logo.png" style="width: 300px">
     </div>
 
+    
+
     <h3 class="w3-center">ABOUT PREXCEL</h3>
     <p class="w3-center w3-large">Key features of our application</p>
     <div class="w3-row-padding w3-center" style="margin-top:64px">
@@ -133,42 +234,43 @@
     </div>
 </div>
 
+<div class="w3-container" style="padding:128px 16px" id="demo">
+    <h3 class="w3-center">DEMO VIDEO</h3>
+<center>
+    <iframe class="w3-center" width="420" height="315"
+    src="https://www.youtube.com/embed/3kHLEXY40ok">
+    </iframe>
+    <h3 class="w3-center">POSTER</h3>
+    <img id="myImg" src="poster.png" alt="Prexcel" style="width:100%;max-width:300px">
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+    </div>
+</center>
+</div>    
+   
+
 <!-- Work Section -->
 <div class="w3-container" style="padding:128px 16px" id="work">
     <h3 class="w3-center">PROJECT DOCUMENTS</h3>
 
     <div class="report-box">
-        <h5>Project Specifications Report</h5>
-        <p><a href="https://drive.google.com/file/d/10zIu-0saW8JjhODghWcTTCHEdleZ_R6l/view?usp=sharing">View PDF</a></p>
+        <h5>Project Specifications Report | <a href="https://drive.google.com/file/d/10zIu-0saW8JjhODghWcTTCHEdleZ_R6l/view?usp=sharing">View PDF</a></h5>
+        <h5>Assessment of Innovativeness Form | <a href="https://drive.google.com/file/d/1GAah70qFairMXNmcKeiNNEcvoL5r5gA4/view?usp=sharing">View PDF</a></h5>
+        <h5>Analysis Report | <a href="https://drive.google.com/file/d/1FfWlgtWtvRX0j9NjQwhFK3HRWL982C_W/view?usp=sharing">View PDF</a></h5>
+        <h5>High-Level Design Report | <a href="https://drive.google.com/file/d/1PB03DqOWrflvgd2-r1_KTNudZzgTxllm/view?usp=sharing">View PDF</a></h5>
+        <h5>Low-Level Design Report | <a href="https://drive.google.com/file/d/1PULfn3PWLHUebKAnuvUkph-DfOxz1pXU/view?usp=sharing">View PDF</a></h5>
+        <h5>Final Report | <a href="https://drive.google.com/file/d/1YUfiCZG1oVvLE3rRCHgOiO5oF-qmqozJ/view?usp=sharing">View PDF</a></h5>
+        <h5>User Manual | <a href="https://drive.google.com/file/d/1G7O4IU7wRp6o6_oOtwpQU3WPKy2bZ9OD/view?usp=sharing">View PDF</a></h5>
+
     </div>
-    <div class="report-box">
-        <h5>Assessment of Innovativeness Form</h5>
-        <p><a href="https://drive.google.com/file/d/1GAah70qFairMXNmcKeiNNEcvoL5r5gA4/view?usp=sharing">View PDF</a></p>
-    </div>
-    <div class="report-box">
-        <h5>Analysis Report</h5>
-        <p><a href="https://drive.google.com/file/d/1FfWlgtWtvRX0j9NjQwhFK3HRWL982C_W/view?usp=sharing">View PDF</a></p>
-    </div>
-    <div class="report-box">
-        <h5>High-Level Design Report</h5>
-        <p><a href="https://drive.google.com/file/d/1PB03DqOWrflvgd2-r1_KTNudZzgTxllm/view?usp=sharing">View PDF</a></p>
-    </div>
-    <div class="report-box">
-        <h5>Low-Level Design Report</h5>
-        <p><a href="https://drive.google.com/file/d/1PULfn3PWLHUebKAnuvUkph-DfOxz1pXU/view?usp=sharing">View PDF</a></p>
-    </div>
-    <div class="report-box">
-        <h5>Final Report</h5>
-        <p><a href="https://drive.google.com/file/d/1YUfiCZG1oVvLE3rRCHgOiO5oF-qmqozJ/view?usp=sharing">View PDF</a></p>
-    </div>
+
 </div>
 
-<div class="w3-container" style="padding:128px 16px" id="demo">
-    <h3 class="w3-center">DEMO VIDEO</h3>
-    <center><iframe class="w3-center" width="420" height="315"
-    src="https://www.youtube.com/embed/3kHLEXY40ok">
-    </iframe></center>
-</div>    
+
 
 <!-- Team Section -->
 <div class="w3-container" style="padding:128px 16px" id="team">
@@ -232,11 +334,11 @@
     <h3 class="w3-center">CONTACT</h3>
     <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
     <div style="margin-top:48px">
-        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> can.kirimca@ug.bilkent.edu.tr</p>
-        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> can.kirsallioba@ug.bilkent.edu.tr</p>
-        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> alper.sari@ug.bilkent.edu.tr</p>
-        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> baris.tiftik@ug.bilkent.edu.tr</p>
-        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> yigit.uslu@ug.bilkent.edu.tr</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> can.kirimca[ at ]ug.bilkent.edu.tr</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> can.kirsallioba[ at ]ug.bilkent.edu.tr</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> alper.sari[ at ]ug.bilkent.edu.tr</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> baris.tiftik[ at ]ug.bilkent.edu.tr</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> yigit.uslu[ at ]ug.bilkent.edu.tr</p>
         <br>
     </div>
 </div>
@@ -271,6 +373,27 @@
    function w3_close() {
       mySidebar.style.display = "none";
    }
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById("myImg");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() { 
+          modal.style.display = "none";
+        }
 </script>
 
 </body>
