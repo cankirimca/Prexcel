@@ -34,36 +34,26 @@ class PresentationAssistant:
         self.fd_thread = Thread(target = self.initiate_face_detection)
         self.vc_thread = Thread(target = self.initiate_volume_checker)
         self.wr_thread = Thread(target = self.initiate_word_recommender)
-        print("pa created")
 
     def initiate_speech_to_text(self):
         self.stt_exit[0] = False
-        print(11)
         self.stt.transcribe_live(self.stt_exit)
-        print("speech to text terminated")
 
     def initiate_face_detection(self):
         self.fd_exit[0] = False
-        print(22)
         self.facial_orientation_score = self.fd.detect_face( self.fd_flags, self.fd_exit)
-        print("face detection terminated")
 
 
     def initiate_volume_checker(self):
         self.vc_exit[0] = False
-        print(33)
         self.vc.check_volume(self.vc_db_list, self.vc_exit)
-        print(" volume checker terminated")
 
     def initiate_word_recommender(self):
         self.wr_exit[0] = False
         self.wr.check_recommendations(self.wr_exit)
-        print("word recom terminated")
-
 
     def end_presentation(self):
         try:
-            print("presentation ended")
             self.stt_exit[0] = True   
             self.fd_exit[0] = True
             self.vc_exit[0] = True
@@ -86,7 +76,6 @@ class PresentationAssistant:
             self.tokens.clear()
             self.words = [None]
             self.recommendations = [None]
-            print("presentation added")
         except Exception as e:
             print(str(e))
 
