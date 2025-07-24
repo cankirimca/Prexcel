@@ -34,22 +34,14 @@ class PresentationAnalyzer:
         for flag in self.fd_flags:
             if flag == "+":
                 fd_score += 1
-        print(6)
         if self.fd_flags == None or len(self.fd_flags) == 0:
             fd_score = 0   
         else:          
             fd_score = fd_score/len(self.fd_flags)  
-        print(7)  
-        print("fd score:", fd_score)
         score = ((1-(filler_ratio)*3)+(1-(gap_ratio)*3) + (fd_score) + (1-(repeated_ratio)*3)+ (1-(dragged_ratio)*3))/5
-        print(score)
-        print("face detection module finished.")
         self.udm.add_presentation(self.presentation_name, transcript, self.user_id, wpm, duration, gap_ratio, filler_ratio, word_count, fd_score, score, dragged_ratio, repeated_ratio) 
-        print("pushed to database")
 
     def process_recording(self):
-        print("in process")
-        print(self.file_path[-4])
         if not self.file_path:
             return 0
         if self.file_path[-4:] == ".wav":
@@ -87,8 +79,3 @@ class PresentationAnalyzer:
         sound = AudioSegment.from_wav(root + "\\temp_audio_stereo.wav")
         sound = sound.set_channels(1)
         sound.export(root + "\\temp_audio_mono.wav" , format="wav")
-        print("convert ended")
-
-#pa = PresentationAnalyzer(12, "qwe", "C:/Users/can/Downloads/Kayıt (19).wav")
-#pa = PresentationAnalyzer(12, "qwe", "C:/Users/can/Desktop/can.wav")
-#pa.process_recording()
