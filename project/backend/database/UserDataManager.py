@@ -1,20 +1,6 @@
-#db instance identifier: prexcel
-#username: admin
-#password: prexcel123
-#host: prexcel.clrzpgynpipe.eu-central-1.rds.amazonaws.com
-#port: 3306
-
 import pymysql
 from random import randint
 from datetime import date
-
-#from project.backend.app import get_user_info
-
-instance_name = "prexcel"
-username = "admin"
-db_password = "prexcel123"
-hostname = "prexcel.clrzpgynpipe.eu-central-1.rds.amazonaws.com"
-port = "3306"
 
 class UserDataManager:
     def __init__(self):
